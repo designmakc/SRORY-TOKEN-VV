@@ -116,12 +116,10 @@ const selectedBreakpoint = ref(currentBreakpoint.value);
 
 const handleThemeChange = () => {
   setTheme(selectedTheme.value);
-  console.log('✅ Тема изменена на:', selectedTheme.value);
 };
 
 const handleBreakpointChange = () => {
   setBreakpoint(selectedBreakpoint.value);
-  console.log('✅ Breakpoint изменён на:', selectedBreakpoint.value);
 };
 </script>
 

@@ -203,7 +203,6 @@ function addUnits(value, variableName, resolvedType) {
 function resolveVariable(variableId, modeConfig = {}, depth = 0) {
   // Защита от бесконечной рекурсии
   if (depth > 10) {
-    console.error('⚠️ Превышена максимальная глубина разрешения алиасов');
     return null;
   }
 
@@ -215,13 +214,11 @@ function resolveVariable(variableId, modeConfig = {}, depth = 0) {
 
   const variable = variableMap.get(variableId);
   if (!variable) {
-    console.warn(`⚠️ Переменная ${variableId} не найдена`);
     return null;
   }
 
   const collection = collectionMap.get(variable.variableCollectionId);
   if (!collection) {
-    console.warn(`⚠️ Коллекция ${variable.variableCollectionId} не найдена`);
     return null;
   }
 
@@ -231,7 +228,6 @@ function resolveVariable(variableId, modeConfig = {}, depth = 0) {
   const value = variable.valuesByMode[modeId];
 
   if (value === null || value === undefined) {
-    console.warn(`⚠️ Нет значения для переменной ${variable.name} в режиме ${modeId} коллекции ${collection.name}`);
     
     // Возвращаем fallback значения для базовых токенов
     if (variable.name.includes('spacing/space-0')) return 0;
@@ -253,7 +249,6 @@ function resolveVariable(variableId, modeConfig = {}, depth = 0) {
       if (referencedVariable) {
         return resolveVariable(referencedVariable.id, modeConfig, depth + 1);
       } else {
-        console.warn(`⚠️ Кросс-JSON ссылка "${keyPart}" не найдена`);
         return null;
       }
     }
@@ -296,7 +291,6 @@ function getVariableByName(name, modeConfig = {}) {
       return resolveVariable(variable.id, modeConfig);
     }
   }
-  console.warn(`⚠️ Переменная "${name}" не найдена`);
   return null;
 }
 
@@ -332,7 +326,6 @@ function getSemanticTokens(modeConfig = {}) {
   const semanticCollectionId = collectionNameToId.get(COLLECTION_HIERARCHY.SEMANTIC);
   
   if (!semanticCollectionId) {
-    console.warn('⚠️ Коллекция Semantic не найдена');
     return semanticVariables;
   }
   
@@ -356,12 +349,13 @@ function getComponentTokens(modeConfig = {}) {
   for (const [varId, variable] of variableMap.entries()) {
     const collection = collectionMap.get(variable.collectionId);
     
-    // Проверяем, что это component коллекция ИЛИ токен начинается с counter/
+    // Проверяем, что это component коллекция ИЛИ токен начинается с component/, counter/, checkbox/
     const isComponentCollection = collection && collection.name.toLowerCase().includes('component');
     const isCounterToken = variable.name.startsWith('counter/');
     const isComponentToken = variable.name.startsWith('component/');
+    const isCheckboxToken = variable.name.startsWith('checkbox/');
     
-    if (isComponentCollection || isCounterToken || isComponentToken) {
+    if (isComponentCollection || isCounterToken || isComponentToken || isCheckboxToken) {
       const resolvedValue = resolveVariable(varId, modeConfig);
       if (resolvedValue !== null) {
         componentVariables[variable.name] = resolvedValue;
@@ -369,8 +363,65 @@ function getComponentTokens(modeConfig = {}) {
     }
   }
   
-  console.log('🔍 Component токены найдены:', Object.keys(componentVariables).length);
   return componentVariables;
+}
+
+// Функция для определения, нужно ли добавлять 'px' к токену
+function shouldAddPxSuffix(tokenName) {
+  const pxTokenPatterns = [
+    /^spacing\//,
+    /^padding\//,
+    /^margin\//,
+    /^gap\//,
+    /^size\//,
+    /\/size\//,
+    /\/padding\//,
+    /\/margin\//,
+    /\/gap\//,
+    /\/min-width/,
+    /\/max-width/,
+    /\/min-height/,
+    /\/max-height/,
+    /border-radius/,
+    /border-width/,
+    /paragraph-spacing/,
+    /checkbox\/size/,
+    /checkbox\/padding/,
+    /radiobutton\/size/,
+    /button\/padding/,
+    /button\/text-container\/padding-horizontal/,
+    /chips\/size/,
+    /chips\/padding/,
+    /toggle\/size/,
+    /counter\/size/,
+    /main-content\/max-width/,
+    /main-content\/min-width/
+  ];
+  
+  return pxTokenPatterns.some(pattern => pattern.test(tokenName));
+}
+
+// Функция для форматирования значения токена с добавлением 'px' где нужно
+function formatTokenValue(tokenName, value) {
+  // Если значение уже строка с единицами или var() - оставляем как есть
+  if (typeof value === 'string' && (
+    value.includes('px') || 
+    value.includes('rem') || 
+    value.includes('%') || 
+    value.includes('var(') ||
+    value.includes('em') ||
+    value.includes('vh') ||
+    value.includes('vw')
+  )) {
+    return value;
+  }
+  
+  // Если это число и токен требует px - добавляем
+  if (typeof value === 'number' && shouldAddPxSuffix(tokenName)) {
+    return `${value}px`;
+  }
+  
+  return value;
 }
 
 // Генерация CSS переменных из семантических токенов
@@ -384,13 +435,15 @@ function generateCSSVariables(modeConfig = {}, prefix = '--') {
   // Добавляем semantic токены
   for (const [name, value] of Object.entries(semanticTokens)) {
     const cssName = name.replace(/\//g, '-').toLowerCase();
-    cssVars.push(`${prefix}${cssName}: ${value};`);
+    const formattedValue = formatTokenValue(name, value);
+    cssVars.push(`${prefix}${cssName}: ${formattedValue};`);
   }
   
   // Добавляем component токены
   for (const [name, value] of Object.entries(componentTokens)) {
     const cssName = name.replace(/\//g, '-').toLowerCase();
-    cssVars.push(`${prefix}${cssName}: ${value};`);
+    const formattedValue = formatTokenValue(name, value);
+    cssVars.push(`${prefix}${cssName}: ${formattedValue};`);
   }
   
   
@@ -431,6 +484,10 @@ export {
   generateCSSVariables,
   clearCache,
   getConfigInfo,
+  
+  // Функции форматирования токенов
+  shouldAddPxSuffix,
+  formatTokenValue,
   
   // Константы
   COLLECTION_HIERARCHY,

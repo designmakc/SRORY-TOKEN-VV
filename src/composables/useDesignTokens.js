@@ -47,8 +47,6 @@ export function useDesignTokens() {
     if (['blue', 'red', 'stone'].includes(theme)) {
       currentTheme.value = theme;
       clearCache(); // Очищаем кэш при смене темы
-    } else {
-      console.warn(`⚠️ Неизвестная тема: ${theme}`);
     }
   };
 
@@ -57,8 +55,6 @@ export function useDesignTokens() {
     if (['wide', 'desktop', 'tablet', 'mobile'].includes(breakpoint)) {
       currentBreakpoint.value = breakpoint;
       clearCache(); // Очищаем кэш при смене breakpoint
-    } else {
-      console.warn(`⚠️ Неизвестный breakpoint: ${breakpoint}`);
     }
   };
 

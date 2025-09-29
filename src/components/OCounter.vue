@@ -13,7 +13,7 @@
 import { computed, onMounted } from 'vue'
 
 export default {
-  name: 'VCounter',
+  name: 'OCounter',
   props: {
     label: {
       type: [String, Number],
@@ -39,7 +39,6 @@ export default {
 
     // Принудительная инжекция токенов при монтировании компонента
     onMounted(() => {
-      console.log('🔄 VCounter: Принудительная инжекция токенов...')
       if (window.$injectTokens) {
         window.$injectTokens()
       }

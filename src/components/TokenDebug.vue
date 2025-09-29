@@ -79,13 +79,10 @@ export default {
     const manualInject = () => {
       if (window.$injectTokens) {
         window.$injectTokens()
-        console.log('✅ Ручная инжекция выполнена')
         // Обновляем проверку DOM после инжекции
         setTimeout(() => {
           checkDOM()
         }, 100)
-      } else {
-        console.error('❌ Функция $injectTokens не найдена')
       }
     }
     

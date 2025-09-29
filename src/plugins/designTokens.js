@@ -23,28 +23,19 @@ export const designTokensPlugin = {
     // Функция для инжекции CSS переменных
     const injectTokens = () => {
       if (!autoInject) {
-        console.log('⚠️ Автоинжекция отключена');
         return;
       }
 
       const target = document.documentElement; // Используем documentElement вместо querySelector
       if (!target) {
-        console.error('⚠️ Root element не найден');
         return;
       }
-
-      console.log('🎨 Инжектирую токены...');
       
       const cssVars = cssVariables.value;
-      console.log('🔍 cssVariables.value:', cssVars);
       
       if (!cssVars) {
-        console.error('⚠️ CSS переменные пустые');
-        console.log('🔍 cssVariables объект:', cssVariables);
         return;
       }
-
-      console.log('📝 CSS переменные получены:', cssVars.substring(0, 200) + '...');
 
       // Парсим и применяем
       const vars = cssVars.split('\n').reduce((acc, line) => {
@@ -63,39 +54,21 @@ export const designTokensPlugin = {
         return acc;
       }, {});
 
-      console.log(`✅ Найдено ${Object.keys(vars).length} токенов`);
-
       Object.entries(vars).forEach(([key, value]) => {
         target.style.setProperty(key, value);
       });
-      
-      console.log('✅ Токены применены к :root');
-      
-      // Проверяем, что токены действительно применились
-      const testVar = '--counter-padding-md-vertical';
-      const appliedValue = getComputedStyle(target).getPropertyValue(testVar);
-      console.log(`🔍 Проверка токена ${testVar}:`, appliedValue);
-      
-      if (!appliedValue) {
-        console.error(`❌ Токен ${testVar} не найден в DOM!`);
-      } else {
-        console.log(`✅ Токен ${testVar} успешно применен: ${appliedValue}`);
-      }
     };
 
     // Инжектируем токены сразу после установки темы
     setTimeout(() => {
-      console.log('🔄 Первая попытка инжекции токенов...');
       injectTokens();
     }, 0);
 
     // Инжектируем токены при монтировании
     app.mixin({
       mounted() {
-        console.log('🚀 Компонент смонтирован:', this.$el?.tagName);
         // Инжектируем токены для любого компонента
         setTimeout(() => {
-          console.log('🔄 Инжекция токенов после монтирования...');
           injectTokens();
         }, 50);
       }
@@ -104,14 +77,12 @@ export const designTokensPlugin = {
     // Дополнительная инжекция через DOMContentLoaded
     if (document.readyState === 'loading') {
       document.addEventListener('DOMContentLoaded', () => {
-        console.log('🔄 DOM загружен, инжектирую токены...');
         setTimeout(() => {
           injectTokens();
         }, 100);
       });
     } else {
       // DOM уже загружен
-      console.log('🔄 DOM уже загружен, инжектирую токены...');
       setTimeout(() => {
         injectTokens();
       }, 100);
@@ -135,7 +106,6 @@ export const designTokensPlugin = {
     window.$injectTokens = injectTokens;
     window.$tokens = useDesignTokens();
 
-    console.log('✅ Design Tokens Plugin установлен');
   }
 };
 

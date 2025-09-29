@@ -9,11 +9,8 @@ const injectTokensToDOM = () => {
   const { cssVariables } = useDesignTokens();
   const root = document.documentElement;
   
-  console.log('🎨 Storybook: Инжектирую токены в DOM...');
-  
   const cssVars = cssVariables.value;
   if (!cssVars) {
-    console.error('⚠️ Storybook: CSS переменные пустые');
     return;
   }
 
@@ -34,16 +31,12 @@ const injectTokensToDOM = () => {
     return acc;
   }, {});
 
-  console.log(`✅ Storybook: Найдено ${Object.keys(vars).length} токенов`);
-
   Object.entries(vars).forEach(([key, value]) => {
     root.style.setProperty(key, value);
   });
   
   // Применяем стили для Storybook фонов
   applyStorybookBackgrounds();
-  
-  console.log('✅ Storybook: Токены применены к :root');
 };
 
 // Функция для применения правильных фонов в Storybook
@@ -208,13 +201,11 @@ setup((app) => {
   
   // Инжектируем токены сразу при загрузке Storybook
   setTimeout(() => {
-    console.log('🚀 Storybook: Инициализация токенов...');
     injectTokensToDOM();
   }, 100);
   
   // Обработчик смены темы
   const handleThemeChange = () => {
-    console.log('🎨 Storybook: Смена темы, обновляю фоны...');
     setTimeout(() => {
       applyStorybookBackgrounds();
     }, 200);

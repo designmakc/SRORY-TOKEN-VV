@@ -1,0 +1,32 @@
+<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g filter="url(#filter0_i_167_533)">
+<path d="M9.03622 0.937401L17.7268 2.08154L23.063 9.03578L21.9189 17.7264L14.9646 23.0626L6.27401 21.9184L0.937844 14.9642L2.08199 6.27357L9.03622 0.937401Z" fill="url(#paint0_linear_167_533)"/>
+</g>
+<g filter="url(#filter1_d_167_533)">
+<path d="M13.4998 17.5201L10.4998 18.0007V6.43167L13.4998 6.00073V17.5201Z" fill="white"/>
+</g>
+<defs>
+<filter id="filter0_i_167_533" x="0.937744" y="0.937378" width="22.1252" height="22.1252" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+<feFlood flood-opacity="0" result="BackgroundImageFix"/>
+<feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
+<feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+<feOffset dy="-1"/>
+<feComposite in2="hardAlpha" operator="arithmetic" k2="-1" k3="1"/>
+<feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.24 0"/>
+<feBlend mode="normal" in2="shape" result="effect1_innerShadow_167_533"/>
+</filter>
+<filter id="filter1_d_167_533" x="10.4998" y="6.00073" width="3" height="12.5" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+<feFlood flood-opacity="0" result="BackgroundImageFix"/>
+<feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+<feOffset dy="0.5"/>
+<feComposite in2="hardAlpha" operator="out"/>
+<feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.24 0"/>
+<feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_167_533"/>
+<feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_167_533" result="shape"/>
+</filter>
+<linearGradient id="paint0_linear_167_533" x1="9.03622" y1="0.937401" x2="14.9646" y2="23.0626" gradientUnits="userSpaceOnUse">
+<stop stop-color="#999999"/>
+<stop offset="1" stop-color="#595959"/>
+</linearGradient>
+</defs>
+</svg>

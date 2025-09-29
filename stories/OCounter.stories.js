@@ -32,53 +32,60 @@ export default {
   parameters: {
     docs: {
       description: {
-        component: 'Компонент Counter используется для отображения количественных меток, уведомлений и компактных числовых значений. Применяется в составе кнопок, бейджей, тегов и навигационных элементов.'
+        component: 'Компонент OCounter используется для отображения количественных меток, уведомлений и компактных числовых значений. Применяется в составе кнопок, бейджей, тегов и навигационных элементов.'
       }
     }
   }
 }
 
-const Template = (args) => ({
-  components: { OCounter },
-  setup() {
-    return { args }
+// Основные варианты - ИСПОЛЬЗУЕМ CSF3 ФОРМАТ С ОБЪЕКТАМИ
+export const Primary = {
+  args: {
+    label: '2',
+    variant: 'primary',
+    size: 'md'
+  }
+}
+
+export const Secondary = {
+  args: {
+    label: '5',
+    variant: 'secondary',
+    size: 'md'
+  }
+}
+
+export const Tertiary = {
+  args: {
+    label: '12',
+    variant: 'tertiary',
+    size: 'md'
+  }
+}
+
+export const Inverse = {
+  args: {
+    label: '99+',
+    variant: 'inverse',
+    size: 'md'
+  }
+}
+
+// История Docs для автодокументации
+export const Docs = {
+  args: {
+    label: '42',
+    variant: 'primary',
+    size: 'md'
   },
-  template: '<OCounter v-bind="args" />'
-})
-
-// Основные варианты
-export const Primary = Template.bind({})
-Primary.args = {
-  label: '2',
-  variant: 'primary',
-  size: 'md'
+  parameters: {
+    docs: {
+      description: {
+        story: 'Основная документация компонента OCounter с примерами использования и описанием всех вариантов'
+      }
+    }
+  }
 }
-
-export const Secondary = Template.bind({})
-Secondary.args = {
-  label: '5',
-  variant: 'secondary',
-  size: 'md'
-}
-
-export const Tertiary = Template.bind({})
-Tertiary.args = {
-  label: '12',
-  variant: 'tertiary',
-  size: 'md'
-}
-
-export const Inverse = Template.bind({})
-Inverse.args = {
-  label: '99+',
-  variant: 'inverse',
-  size: 'md'
-}
-
-
-
-
-
 
 // Добавляем CSS стили для Stories
 const storyStyles = `
@@ -231,20 +238,4 @@ if (typeof document !== 'undefined') {
   const styleElement = document.createElement('style')
   styleElement.textContent = storyStyles.replace('<style>', '').replace('</style>', '')
   document.head.appendChild(styleElement)
-}
-
-// История Docs для автодокументации
-export const Docs = {
-  args: {
-    label: '42',
-    variant: 'primary',
-    size: 'md'
-  },
-  parameters: {
-    docs: {
-      description: {
-        story: 'Основная документация компонента VCounter с примерами использования и описанием всех вариантов'
-      }
-    }
-  }
 }
