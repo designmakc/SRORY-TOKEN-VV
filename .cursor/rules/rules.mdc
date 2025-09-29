@@ -1,0 +1,455 @@
+---
+alwaysApply: true
+---
+
+Always use context7 when I need code generation, setup or configuration steps, or
+library/API documentation. This means you should automatically use the Context7 MCP
+tools to resolve library id and get library docs without me having to explicitly ask.
+
+# Vue 3 + Figma Design Tokens Rules
+
+Always use context7 when I need code generation, setup or configuration steps, or library/API documentation.
+
+## КРИТИЧЕСКИЕ ЗАПРЕТЫ
+
+### НЕТ TAILWIND В ПРОЕКТЕ
+- Никаких Tailwind классов (flex, px-4, bg-blue-500, text-sm, rounded, shadow)
+- Никаких utility-first классов
+- Никаких @apply директив
+
+### ЗАПРЕЩЕНО
+- Хардкод стилей: #3b82f6, 16px, rgba(0,0,0,0.5)
+- Использование Primitive токенов напрямую
+- Придумывать названия токенов
+- Inline стили без токенов: style="padding: 16px"
+
+## ОБЯЗАТЕЛЬНЫЕ ПРАВИЛА
+
+### 1. Только CSS переменные токенов
+
+**Правильная структура:**
+```vue
+<template>
+  <div :class="['component-name', `component-name--${variant}`]">
+    <slot />
+  </div>
+</template>
+
+<script setup>
+import { useDesignTokens } from '@/composables/useDesignTokens';
+
+defineProps({
+  variant: {
+    type: String,
+    default: 'primary',
+    validator: (v) => ['primary', 'secondary'].includes(v)
+  }
+});
+</script>
+
+<style scoped>
+.component-name {
+  display: flex;
+  align-items: center;
+  background: var(--color-background-primary);
+  padding: var(--spacing-md);
+  border-radius: var(--border-radius-md);
+}
+
+.component-name--secondary {
+  background: var(--color-background-secondary);
+}
+</style>
+```
+
+### 2. Workflow создания компонента
+
+**Обязательная последовательность:**
+
+1. **Найди токены:**
+   ```bash
+   npm run tokens:info --search [component-name]
+   ```
+
+2. **ПОКАЖИ МНЕ список токенов** - ЖДИ ПОДТВЕРЖДЕНИЯ
+
+3. **Создай компонент:**
+   - Props точно как в Figma
+   - Стили ТОЛЬКО через var(--token-name)
+   - Без Tailwind, без хардкода
+
+4. **Создай Stories** для всех вариантов
+
+### 3. Создание из Figma (с MCP)
+
+```
+Шаги:
+1. MCP Figma → получи структуру, props, стили
+2. npm run tokens:info --search [name] → найди токены
+3. ПОКАЖИ МНЕ токены ДО кода → жди подтверждения
+4. Создай компонент с правильными токенами
+5. Создай Stories
+
+ЕСЛИ токена нет → СПРОСИ, не придумывай!
+```
+## FIGMA HUG VS FIXED
+
+Когда получаешь данные из Figma:
+
+**Hug content:**
+- Используй `min-width` / `min-height`
+- Элемент растет по содержимому
+- Пример: `min-width: 20px` (может быть 20px, 30px, 40px...)
+
+**Fixed:**
+- Используй `width` / `height`
+- Фиксированный размер
+- Пример: `width: 6px` (всегда 6px)
+
+**Fill container:**
+- Используй `width: 100%` или `flex-grow: 1`
+- Заполняет доступное пространство
+
+### 4. Именование файлов
+
+- Компоненты: `VButton.vue` (префикс V)
+- Stories: `VButton.stories.js`
+- Composables: `useDesignTokens.js`
+- Импорты: `@/composables/useDesignTokens`
+
+## ПРИМЕРЫ
+
+### НЕПРАВИЛЬНО
+```vue
+<!-- Tailwind классы -->
+<div class="flex items-center px-4 py-2 bg-blue-500 text-white rounded-lg">
+
+<!-- Хардкод -->
+<div style="padding: 16px; color: #333;">
+
+<style>
+.button {
+  background: #3b82f6;
+  padding: 16px;
+}
+</style>
+```
+
+### ПРАВИЛЬНО
+```vue
+<template>
+  <div :class="['button', `button--${variant}`]">
+</template>
+
+<style scoped>
+.button {
+  display: flex;
+  align-items: center;
+  padding: var(--button-padding-vertical-lg) var(--button-padding-horizontal-lg);
+  background: var(--color-background-button-primary-default);
+  color: var(--color-text-on-interactive-primary);
+  border-radius: var(--button-border-radius-lg);
+}
+
+.button--secondary {
+  background: var(--color-background-button-secondary-default);
+}
+</style>
+```
+
+## АРХИТЕКТУРА ТОКЕНОВ
+
+```
+Semantic (90% использования) → Theme/Adaptive → Primitive
+```
+
+- Используй ТОЛЬКО Semantic токены
+- Theme: blue, red, stone (автоматическая тематизация)
+- Adaptive: wide, desktop, tablet, mobile (автоматическая адаптивность)
+- Primitive игнорируй (используется внутри системы)
+
+## КОМАНДЫ
+
+```bash
+npm run tokens:info                    # Все токены
+npm run tokens:info --search button    # Поиск
+npm run tokens:info --collection Semantic  # Коллекция
+npm run tokens:validate                # Валидация
+npm run tokens:generate-docs           # Обновить документацию
+npm run storybook                      # Запуск Storybook
+```
+
+## ЧЕК-ЛИСТ ПЕРЕД КОММИТОМ
+
+- Нет Tailwind классов
+- Нет хардкода значений
+- Все стили через var(--token-name)
+- Props совпадают с Figma (если из Figma)
+- Созданы Stories для всех вариантов
+- npm run tokens:validate проходит
+
+## STORYBOOK TEMPLATE
+
+```javascript
+import VComponent from '../src/components/VComponent.vue';
+import { useDesignTokens } from '../src/composables/useDesignTokens';
+
+export default {
+  title: 'Components/ComponentName',
+  component: VComponent,
+  tags: ['autodocs'],
+  decorators: [
+    (story, context) => {
+      const { setTheme, setBreakpoint } = useDesignTokens();
+      if (context.globals.theme) setTheme(context.globals.theme);
+      if (context.globals.breakpoint) setBreakpoint(context.globals.breakpoint);
+      return { components: { story }, template: '<story />' };
+    }
+  ]
+};
+
+export const Primary = {
+  args: {
+    variant: 'primary',
+    label: 'Button'
+  }
+};
+```
+
+## ОТЛАДКА
+
+### Если стили не применяются:
+1. Открой DevTools → Elements → выбери элемент
+2. Проверь что CSS переменные есть в :root
+3. Проверь что используется var(--token-name)
+4. Проверь консоль на предупреждения resolver'а
+
+### Если токен не найден:
+```javascript
+import { getConfigInfo, findVariablesByPattern } from '@/utils/figma-variables-resolver';
+
+// Информация о системе
+console.log(getConfigInfo());
+
+// Поиск токенов
+console.log(findVariablesByPattern('button', 'Semantic'));
+```
+
+---
+
+**Главное:** Если сомневаешься - СПРОСИ. Покажи токены ДО кода. Не используй Tailwind. Не хардкодь. Не придумывай токены.
+# Vue 3 + Figma Design Tokens Rules
+
+Always use context7 when I need code generation, setup or configuration steps, or library/API documentation.
+
+## КРИТИЧЕСКИЕ ЗАПРЕТЫ
+
+### НЕТ TAILWIND В ПРОЕКТЕ
+- Никаких Tailwind классов (flex, px-4, bg-blue-500, text-sm, rounded, shadow)
+- Никаких utility-first классов
+- Никаких @apply директив
+
+### ЗАПРЕЩЕНО
+- Хардкод стилей: #3b82f6, 16px, rgba(0,0,0,0.5)
+- Использование Primitive токенов напрямую
+- Придумывать названия токенов
+- Inline стили без токенов: style="padding: 16px"
+
+## ОБЯЗАТЕЛЬНЫЕ ПРАВИЛА
+
+### 1. Только CSS переменные токенов
+
+**Правильная структура:**
+```vue
+<template>
+  <div :class="['component-name', `component-name--${variant}`]">
+    <slot />
+  </div>
+</template>
+
+<script setup>
+import { useDesignTokens } from '@/composables/useDesignTokens';
+
+defineProps({
+  variant: {
+    type: String,
+    default: 'primary',
+    validator: (v) => ['primary', 'secondary'].includes(v)
+  }
+});
+</script>
+
+<style scoped>
+.component-name {
+  display: flex;
+  align-items: center;
+  background: var(--color-background-primary);
+  padding: var(--spacing-md);
+  border-radius: var(--border-radius-md);
+}
+
+.component-name--secondary {
+  background: var(--color-background-secondary);
+}
+</style>
+```
+
+### 2. Workflow создания компонента
+
+**Обязательная последовательность:**
+
+1. **Найди токены:**
+   ```bash
+   npm run tokens:info --search [component-name]
+   ```
+
+2. **ПОКАЖИ МНЕ список токенов** - ЖДИ ПОДТВЕРЖДЕНИЯ
+
+3. **Создай компонент:**
+   - Props точно как в Figma
+   - Стили ТОЛЬКО через var(--token-name)
+   - Без Tailwind, без хардкода
+
+4. **Создай Stories** для всех вариантов
+
+### 3. Создание из Figma (с MCP)
+
+```
+Шаги:
+1. MCP Figma → получи структуру, props, стили
+2. npm run tokens:info --search [name] → найди токены
+3. ПОКАЖИ МНЕ токены ДО кода → жди подтверждения
+4. Создай компонент с правильными токенами
+5. Создай Stories
+
+ЕСЛИ токена нет → СПРОСИ, не придумывай!
+```
+
+### 4. Именование файлов
+
+- Компоненты: `VButton.vue` (префикс V)
+- Stories: `VButton.stories.js`
+- Composables: `useDesignTokens.js`
+- Импорты: `@/composables/useDesignTokens`
+
+## ПРИМЕРЫ
+
+### НЕПРАВИЛЬНО
+```vue
+<!-- Tailwind классы -->
+<div class="flex items-center px-4 py-2 bg-blue-500 text-white rounded-lg">
+
+<!-- Хардкод -->
+<div style="padding: 16px; color: #333;">
+
+<style>
+.button {
+  background: #3b82f6;
+  padding: 16px;
+}
+</style>
+```
+
+### ПРАВИЛЬНО
+```vue
+<template>
+  <div :class="['button', `button--${variant}`]">
+</template>
+
+<style scoped>
+.button {
+  display: flex;
+  align-items: center;
+  padding: var(--button-padding-vertical-lg) var(--button-padding-horizontal-lg);
+  background: var(--color-background-button-primary-default);
+  color: var(--color-text-on-interactive-primary);
+  border-radius: var(--button-border-radius-lg);
+}
+
+.button--secondary {
+  background: var(--color-background-button-secondary-default);
+}
+</style>
+```
+
+## АРХИТЕКТУРА ТОКЕНОВ
+
+```
+Semantic (90% использования) → Theme/Adaptive → Primitive
+```
+
+- Используй ТОЛЬКО Semantic токены
+- Theme: blue, red, stone (автоматическая тематизация)
+- Adaptive: wide, desktop, tablet, mobile (автоматическая адаптивность)
+- Primitive игнорируй (используется внутри системы)
+
+## КОМАНДЫ
+
+```bash
+npm run tokens:info                    # Все токены
+npm run tokens:info --search button    # Поиск
+npm run tokens:info --collection Semantic  # Коллекция
+npm run tokens:validate                # Валидация
+npm run tokens:generate-docs           # Обновить документацию
+npm run storybook                      # Запуск Storybook
+```
+
+## ЧЕК-ЛИСТ ПЕРЕД КОММИТОМ
+
+- Нет Tailwind классов
+- Нет хардкода значений
+- Все стили через var(--token-name)
+- Props совпадают с Figma (если из Figma)
+- Созданы Stories для всех вариантов
+- npm run tokens:validate проходит
+
+## STORYBOOK TEMPLATE
+
+```javascript
+import VComponent from '../src/components/VComponent.vue';
+import { useDesignTokens } from '../src/composables/useDesignTokens';
+
+export default {
+  title: 'Components/ComponentName',
+  component: VComponent,
+  tags: ['autodocs'],
+  decorators: [
+    (story, context) => {
+      const { setTheme, setBreakpoint } = useDesignTokens();
+      if (context.globals.theme) setTheme(context.globals.theme);
+      if (context.globals.breakpoint) setBreakpoint(context.globals.breakpoint);
+      return { components: { story }, template: '<story />' };
+    }
+  ]
+};
+
+export const Primary = {
+  args: {
+    variant: 'primary',
+    label: 'Button'
+  }
+};
+```
+
+## ОТЛАДКА
+
+### Если стили не применяются:
+1. Открой DevTools → Elements → выбери элемент
+2. Проверь что CSS переменные есть в :root
+3. Проверь что используется var(--token-name)
+4. Проверь консоль на предупреждения resolver'а
+
+### Если токен не найден:
+```javascript
+import { getConfigInfo, findVariablesByPattern } from '@/utils/figma-variables-resolver';
+
+// Информация о системе
+console.log(getConfigInfo());
+
+// Поиск токенов
+console.log(findVariablesByPattern('button', 'Semantic'));
+```
+
+---
+
+**Главное:** Если сомневаешься - СПРОСИ. Покажи токены ДО кода. Не используй Tailwind. Не хардкодь. Не придумывай токены.

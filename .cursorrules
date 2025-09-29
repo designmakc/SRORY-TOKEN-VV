@@ -1,0 +1,131 @@
+
+# Design Tokens Rules
+
+## Обязательные правила:
+
+1. ВСЕГДА используй семантические токены: getToken('color/button/primary/bg')
+2. НИКОГДА не используй хардкод: НЕТ #3b82f6, НЕТ 16px
+3. Только CSS переменные: var(--token-name)
+4. Не используй Primitive токены напрямую
+5. Не используй технические коллекции (EightShapes Specs, Specs Layout, content)
+6. ВСЕГДА проверяй docs/AVAILABLE_TOKENS.md перед созданием компонента
+7. Используй npm run tokens:info --search для поиска токенов
+8. НЕ придумывай токены - только из документации
+9. Никогда не делай того что я тебя не прошу!
+
+## Структура токенов:
+Semantic (90% использования) → Theme/Adaptive → Primitive
+
+## Темы: blue | red | stone
+## Breakpoints: wide | desktop | tablet | mobile
+
+## Импорт:
+import { useDesignTokens } from '@/composables/useDesignTokens';
+
+## Использование:
+const { getToken, setTheme, currentTheme } = useDesignTokens();
+
+## Документация токенов:
+- docs/AVAILABLE_TOKENS.md - Полный список токенов
+- docs/README.md - Инструкции по использованию
+- npm run tokens:generate-docs - Обновление документации
+- npm run tokens:info [term] - Поиск токенов
+
+Подробнее: README.md, QUICK_REFERENCE.md
+
+## ИМЕНОВАНИЕ ФАЙЛОВ
+
+### 5. Именование файлов
+
+✅ **Правильно:**
+- Компоненты: `OButton.vue` (префикс O)
+- Stories: `OButton.stories.js`
+- Composables: `useDesignTokens.js` (префикс use)
+- Plugins: `designTokens.js` (camelCase)
+
+❌ **Неправильно:**
+- `Button.vue` (без префикса)
+- `VButton.vue` (старый префикс V)
+- `button.vue` (lowercase)
+
+## STORYBOOK STORIES - ОБЯЗАТЕЛЬНЫЕ ТРЕБОВАНИЯ
+
+### При создании любого компонента ВСЕГДА создавай Stories файл
+
+**Структура Stories файла:**
+```javascript
+import OComponentName from '../src/components/OComponentName.vue';
+import { useDesignTokens } from '../src/composables/useDesignTokens';
+
+export default {
+  title: 'Components/ComponentName',
+  component: OComponentName,
+  tags: ['autodocs'], // ⚠️ ОБЯЗАТЕЛЬНО для автоматической документации
+  argTypes: {
+    variant: {
+      control: 'select',
+      options: ['primary', 'secondary'],
+      description: 'Вариант стиля компонента'
+    },
+    size: {
+      control: 'select', 
+      options: ['sm', 'md', 'lg'],
+      description: 'Размер компонента'
+    }
+  },
+  decorators: [
+    (story, context) => {
+      const { setTheme, setBreakpoint } = useDesignTokens();
+      if (context.globals.theme) setTheme(context.globals.theme);
+      if (context.globals.breakpoint) setBreakpoint(context.globals.breakpoint);
+      return { components: { story }, template: '<story />' };
+    }
+  ],
+  parameters: {
+    docs: {
+      description: {
+        component: 'Краткое описание компонента и его назначения'
+      }
+    }
+  }
+};
+
+// Обязательные stories:
+export const Primary = {
+  args: {
+    variant: 'primary',
+    size: 'md'
+  }
+};
+
+// Story для каждого варианта
+export const AllVariants = () => ({
+  components: { OComponentName },
+  template: `
+    <div style="display: flex; gap: 16px;">
+      <OComponentName variant="primary" />
+      <OComponentName variant="secondary" />
+    </div>
+  `
+});
+```
+
+ОБЯЗАТЕЛЬНО включай:
+
+✅ tags: ['autodocs'] - для автодокументации
+✅ argTypes - описание всех props с controls
+✅ decorators - для поддержки тем
+✅ parameters.docs.description - описание компонента
+✅ Минимум 3-4 stories: Primary, All Variants, Size Showcase, In Context
+
+Описания должны быть:
+
+На русском языке
+Понятные для дизайнеров
+Объясняющие когда использовать компонент
+
+ЗАПРЕЩЕНО:
+
+❌ Создавать компонент без Stories
+❌ Забывать tags: ['autodocs']
+❌ Не добавлять описания в argTypes
