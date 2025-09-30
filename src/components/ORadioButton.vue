@@ -9,18 +9,8 @@
         'o-radio-button--checked': isChecked
       }
     ]"
+    @click="handleClick"
   >
-    <!-- Скрытый input для accessibility -->
-    <input
-      type="radio"
-      :checked="isChecked"
-      :disabled="isDisabled"
-      :value="value"
-      :aria-invalid="hasError"
-      @change="handleChange"
-      class="o-radio-button__input"
-    />
-    
     <span 
       :class="[
         'o-radio-button__radio',
@@ -89,13 +79,11 @@ const emit = defineEmits(['update:isChecked', 'change']);
 const isHovered = ref(false);
 const isPressed = ref(false);
 
-// Генерируем уникальный ID для accessibility
-const id = computed(() => `radio-${Math.random().toString(36).substr(2, 9)}`);
 
-const handleChange = (event) => {
+const handleClick = () => {
   if (!props.isDisabled) {
-    emit('update:isChecked', event.target.checked);
-    emit('change', event.target.value);
+    emit('update:isChecked', !props.isChecked);
+    emit('change', props.value);
   }
 };
 
@@ -129,18 +117,6 @@ const handleMouseUp = () => {
   position: relative;
 }
 
-/* Скрытый input */
-.o-radio-button__input {
-  position: absolute;
-  opacity: 0;
-  pointer-events: none;
-  width: 0;
-  height: 0;
-  margin: 0;
-  padding: 0;
-  border: none;
-  outline: none;
-}
 
 .o-radio-button--disabled {
   opacity: var(--opacity-disabled);
@@ -153,7 +129,7 @@ const handleMouseUp = () => {
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: var(--radiobutton-border-radius);
+  border-radius: 50%;
   border: 1px solid var(--color-border-interactive-default);
   transition: border-color 0.2s ease;
   flex-shrink: 0;
@@ -212,7 +188,7 @@ const handleMouseUp = () => {
 }
 
 .o-radio-button--error .o-radio-button__icon {
-  background-color: var(--color-text-error);
+  background-color: var(--color-icon-feedback-error);
 }
 
 /* Label */
@@ -220,6 +196,7 @@ const handleMouseUp = () => {
   font-family: var(--typography-font-family-secondary);
   font-size: var(--typography-font-size-body-lg);
   font-weight: var(--typography-font-weight-regular);
+  line-height: var(--typography-line-height-body-sm);
   color: var(--color-text-primary);
   user-select: none;
 }
@@ -233,10 +210,10 @@ const handleMouseUp = () => {
   position: absolute;
   top: 100%;
   left: 0;
-  font-family: var(--typography-font-family-body);
-  font-size: var(--typography-font-size-body-sm);
+  font-family: var(--typography-font-family-secondary);
+  font-size: var(--typography-font-size-body-lg);
   color: var(--color-text-error);
-  margin-top: var(--spacing-space-xs);
+  margin-top: var(--gap-input-selection-label);
   display: none;
 }
 

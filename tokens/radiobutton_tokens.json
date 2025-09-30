@@ -1,0 +1,1819 @@
+{
+  "version": "1.0.0",
+  "exported": "2025-09-30T17:53:34.016Z",
+  "component": {
+    "id": "1064:1226",
+    "name": "radiobutton",
+    "type": "COMPONENT_SET",
+    "description": "Используется для выбор одного элемента из двух и более вариантов."
+  },
+  "tokenUsage": {},
+  "styles": [],
+  "layers": [
+    {
+      "id": "1064:1227",
+      "name": "state=default, size=md, isChecked=true, isDisabled=false, hasError=false",
+      "type": "COMPONENT",
+      "tokens": {
+        "spacing": {
+          "gap": {
+            "token": "gap/input-selection/label",
+            "value": 8,
+            "collection": "semantic"
+          }
+        }
+      },
+      "children": [
+        {
+          "id": "1064:1228",
+          "name": "radio",
+          "type": "FRAME",
+          "tokens": {
+            "colors": {
+              "stroke-0": {
+                "token": "color/border/interactive/default",
+                "value": "#FFFFFF",
+                "collection": "semantic"
+              }
+            }
+          },
+          "children": [
+            {
+              "id": "1084:761",
+              "name": "radioIcon",
+              "type": "ELLIPSE",
+              "tokens": {
+                "colors": {
+                  "fill-0": {
+                    "token": "color/background/interactive/primary/default",
+                    "value": "#F6A913",
+                    "collection": "semantic"
+                  }
+                }
+              }
+            }
+          ]
+        },
+        {
+          "id": "1064:1230",
+          "name": "label",
+          "type": "TEXT",
+          "tokens": {
+            "colors": {
+              "fill-0": {
+                "token": "color/text/primary",
+                "value": "#FFFFFF",
+                "collection": "semantic"
+              }
+            },
+            "typography": {
+              "fontFamily": {
+                "token": "typography/font-family/secondary",
+                "value": "Roboto",
+                "collection": "primitive"
+              },
+              "fontSize": {
+                "token": "typography/font-size/body/lg",
+                "value": 16,
+                "collection": "semantic"
+              },
+              "fontWeight": {
+                "token": "typography/font-weight/regular",
+                "value": 400,
+                "collection": "semantic"
+              },
+              "lineHeight": {
+                "token": "typography/line-height/body/sm",
+                "value": 16,
+                "collection": "semantic"
+              }
+            }
+          },
+          "styles": [
+            {
+              "type": "TEXT",
+              "name": "Label/lg",
+              "styleId": "S:0462ea2d02d3a721e1b1854e9e6cb49e6a1d4a4b,",
+              "layer": "label"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "1064:1231",
+      "name": "state=default, size=md, isChecked=true, isDisabled=false, hasError=true",
+      "type": "COMPONENT",
+      "tokens": {
+        "spacing": {
+          "gap": {
+            "token": "gap/input-selection/label",
+            "value": 8,
+            "collection": "semantic"
+          }
+        }
+      },
+      "children": [
+        {
+          "id": "1087:775",
+          "name": "radio",
+          "type": "FRAME",
+          "tokens": {
+            "colors": {
+              "stroke-0": {
+                "token": "color/border/interactive/error",
+                "value": "#E64B41",
+                "collection": "semantic"
+              }
+            }
+          },
+          "children": [
+            {
+              "id": "1087:776",
+              "name": "radioIcon",
+              "type": "ELLIPSE",
+              "tokens": {
+                "colors": {
+                  "fill-0": {
+                    "token": "color/icon/feedback/error",
+                    "value": "#E64B41",
+                    "collection": "semantic"
+                  }
+                }
+              }
+            }
+          ]
+        },
+        {
+          "id": "1064:1234",
+          "name": "label",
+          "type": "TEXT",
+          "tokens": {
+            "colors": {
+              "fill-0": {
+                "token": "color/text/error",
+                "value": "#E64B41",
+                "collection": "semantic"
+              }
+            },
+            "typography": {
+              "fontFamily": {
+                "token": "typography/font-family/secondary",
+                "value": "Roboto",
+                "collection": "primitive"
+              },
+              "fontSize": {
+                "token": "typography/font-size/body/lg",
+                "value": 16,
+                "collection": "semantic"
+              },
+              "fontWeight": {
+                "token": "typography/font-weight/regular",
+                "value": 400,
+                "collection": "semantic"
+              },
+              "lineHeight": {
+                "token": "typography/line-height/body/sm",
+                "value": 16,
+                "collection": "semantic"
+              }
+            }
+          },
+          "styles": [
+            {
+              "type": "TEXT",
+              "name": "Label/lg",
+              "styleId": "S:0462ea2d02d3a721e1b1854e9e6cb49e6a1d4a4b,",
+              "layer": "label"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "1064:1235",
+      "name": "state=hover, size=md, isChecked=true, isDisabled=false, hasError=false",
+      "type": "COMPONENT",
+      "tokens": {
+        "spacing": {
+          "gap": {
+            "token": "gap/input-selection/label",
+            "value": 8,
+            "collection": "semantic"
+          }
+        }
+      },
+      "children": [
+        {
+          "id": "1087:762",
+          "name": "radio",
+          "type": "FRAME",
+          "tokens": {
+            "colors": {
+              "stroke-0": {
+                "token": "color/border/interactive/hover",
+                "value": "#FFFFFF",
+                "collection": "semantic"
+              }
+            }
+          },
+          "children": [
+            {
+              "id": "1087:763",
+              "name": "radioIcon",
+              "type": "ELLIPSE",
+              "tokens": {
+                "colors": {
+                  "fill-0": {
+                    "token": "color/background/interactive/primary/hover",
+                    "value": "#F7B636",
+                    "collection": "semantic"
+                  }
+                }
+              }
+            }
+          ]
+        },
+        {
+          "id": "1064:1238",
+          "name": "label",
+          "type": "TEXT",
+          "tokens": {
+            "colors": {
+              "fill-0": {
+                "token": "color/text/primary",
+                "value": "#FFFFFF",
+                "collection": "semantic"
+              }
+            },
+            "typography": {
+              "fontFamily": {
+                "token": "typography/font-family/secondary",
+                "value": "Roboto",
+                "collection": "primitive"
+              },
+              "fontSize": {
+                "token": "typography/font-size/body/lg",
+                "value": 16,
+                "collection": "semantic"
+              },
+              "fontWeight": {
+                "token": "typography/font-weight/regular",
+                "value": 400,
+                "collection": "semantic"
+              },
+              "lineHeight": {
+                "token": "typography/line-height/body/sm",
+                "value": 16,
+                "collection": "semantic"
+              }
+            }
+          },
+          "styles": [
+            {
+              "type": "TEXT",
+              "name": "Label/lg",
+              "styleId": "S:0462ea2d02d3a721e1b1854e9e6cb49e6a1d4a4b,",
+              "layer": "label"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "1064:1239",
+      "name": "state=press, size=md, isChecked=true, isDisabled=false, hasError=false",
+      "type": "COMPONENT",
+      "tokens": {
+        "spacing": {
+          "gap": {
+            "token": "gap/input-selection/label",
+            "value": 8,
+            "collection": "semantic"
+          }
+        }
+      },
+      "children": [
+        {
+          "id": "1087:765",
+          "name": "radio",
+          "type": "FRAME",
+          "tokens": {
+            "colors": {
+              "stroke-0": {
+                "token": "color/border/interactive/press",
+                "value": "#FFFFFF",
+                "collection": "semantic"
+              }
+            }
+          },
+          "children": [
+            {
+              "id": "1087:766",
+              "name": "radioIcon",
+              "type": "ELLIPSE",
+              "tokens": {
+                "colors": {
+                  "fill-0": {
+                    "token": "color/background/interactive/primary/press",
+                    "value": "#F8C154",
+                    "collection": "semantic"
+                  }
+                }
+              }
+            }
+          ]
+        },
+        {
+          "id": "1064:1242",
+          "name": "label",
+          "type": "TEXT",
+          "tokens": {
+            "colors": {
+              "fill-0": {
+                "token": "color/text/primary",
+                "value": "#FFFFFF",
+                "collection": "semantic"
+              }
+            },
+            "typography": {
+              "fontFamily": {
+                "token": "typography/font-family/secondary",
+                "value": "Roboto",
+                "collection": "primitive"
+              },
+              "fontSize": {
+                "token": "typography/font-size/body/lg",
+                "value": 16,
+                "collection": "semantic"
+              },
+              "fontWeight": {
+                "token": "typography/font-weight/regular",
+                "value": 400,
+                "collection": "semantic"
+              },
+              "lineHeight": {
+                "token": "typography/line-height/body/sm",
+                "value": 16,
+                "collection": "semantic"
+              }
+            }
+          },
+          "styles": [
+            {
+              "type": "TEXT",
+              "name": "Label/lg",
+              "styleId": "S:0462ea2d02d3a721e1b1854e9e6cb49e6a1d4a4b,",
+              "layer": "label"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "1064:1243",
+      "name": "state=press, size=md, isChecked=true, isDisabled=true, hasError=false",
+      "type": "COMPONENT",
+      "tokens": {
+        "spacing": {
+          "gap": {
+            "token": "gap/input-selection/label",
+            "value": 8,
+            "collection": "semantic"
+          }
+        }
+      },
+      "children": [
+        {
+          "id": "1087:768",
+          "name": "radio",
+          "type": "FRAME",
+          "tokens": {
+            "colors": {
+              "stroke-0": {
+                "token": "color/border/interactive/default",
+                "value": "#FFFFFF",
+                "collection": "semantic"
+              }
+            }
+          },
+          "children": [
+            {
+              "id": "1087:769",
+              "name": "radioIcon",
+              "type": "ELLIPSE",
+              "tokens": {
+                "colors": {
+                  "fill-0": {
+                    "token": "color/background/interactive/primary/default",
+                    "value": "#F6A913",
+                    "collection": "semantic"
+                  }
+                }
+              }
+            }
+          ]
+        },
+        {
+          "id": "1064:1246",
+          "name": "label",
+          "type": "TEXT",
+          "tokens": {
+            "colors": {
+              "fill-0": {
+                "token": "color/text/primary",
+                "value": "#FFFFFF",
+                "collection": "semantic"
+              }
+            },
+            "typography": {
+              "fontFamily": {
+                "token": "typography/font-family/secondary",
+                "value": "Roboto",
+                "collection": "primitive"
+              },
+              "fontSize": {
+                "token": "typography/font-size/body/lg",
+                "value": 16,
+                "collection": "semantic"
+              },
+              "fontWeight": {
+                "token": "typography/font-weight/regular",
+                "value": 400,
+                "collection": "semantic"
+              },
+              "lineHeight": {
+                "token": "typography/line-height/body/sm",
+                "value": 16,
+                "collection": "semantic"
+              }
+            }
+          },
+          "styles": [
+            {
+              "type": "TEXT",
+              "name": "Label/lg",
+              "styleId": "S:0462ea2d02d3a721e1b1854e9e6cb49e6a1d4a4b,",
+              "layer": "label"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "1064:1327",
+      "name": "state=default, size=md, isChecked=false, isDisabled=false, hasError=false",
+      "type": "COMPONENT",
+      "tokens": {
+        "spacing": {
+          "gap": {
+            "token": "gap/input-selection/label",
+            "value": 8,
+            "collection": "semantic"
+          }
+        }
+      },
+      "children": [
+        {
+          "id": "1087:793",
+          "name": "radio",
+          "type": "FRAME",
+          "tokens": {
+            "colors": {
+              "stroke-0": {
+                "token": "color/border/interactive/default",
+                "value": "#FFFFFF",
+                "collection": "semantic"
+              }
+            }
+          },
+          "children": [
+            {
+              "id": "1087:794",
+              "name": "radioIcon",
+              "type": "ELLIPSE",
+              "tokens": {
+                "colors": {
+                  "fill-0": {
+                    "token": "color/background/interactive/primary/default",
+                    "value": "#F6A913",
+                    "collection": "semantic"
+                  }
+                }
+              }
+            }
+          ]
+        },
+        {
+          "id": "1064:1330",
+          "name": "label",
+          "type": "TEXT",
+          "tokens": {
+            "colors": {
+              "fill-0": {
+                "token": "color/text/primary",
+                "value": "#FFFFFF",
+                "collection": "semantic"
+              }
+            },
+            "typography": {
+              "fontFamily": {
+                "token": "typography/font-family/secondary",
+                "value": "Roboto",
+                "collection": "primitive"
+              },
+              "fontSize": {
+                "token": "typography/font-size/body/lg",
+                "value": 16,
+                "collection": "semantic"
+              },
+              "fontWeight": {
+                "token": "typography/font-weight/regular",
+                "value": 400,
+                "collection": "semantic"
+              },
+              "lineHeight": {
+                "token": "typography/line-height/body/sm",
+                "value": 16,
+                "collection": "semantic"
+              }
+            }
+          },
+          "styles": [
+            {
+              "type": "TEXT",
+              "name": "Label/lg",
+              "styleId": "S:0462ea2d02d3a721e1b1854e9e6cb49e6a1d4a4b,",
+              "layer": "label"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "1064:1331",
+      "name": "state=hover, size=md, isChecked=false, isDisabled=false, hasError=false",
+      "type": "COMPONENT",
+      "tokens": {
+        "spacing": {
+          "gap": {
+            "token": "gap/input-selection/label",
+            "value": 8,
+            "collection": "semantic"
+          }
+        }
+      },
+      "children": [
+        {
+          "id": "1087:796",
+          "name": "radio",
+          "type": "FRAME",
+          "tokens": {
+            "colors": {
+              "stroke-0": {
+                "token": "color/border/interactive/hover",
+                "value": "#FFFFFF",
+                "collection": "semantic"
+              }
+            }
+          },
+          "children": [
+            {
+              "id": "1087:797",
+              "name": "radioIcon",
+              "type": "ELLIPSE",
+              "tokens": {
+                "colors": {
+                  "fill-0": {
+                    "token": "color/background/interactive/primary/default",
+                    "value": "#F6A913",
+                    "collection": "semantic"
+                  }
+                }
+              }
+            }
+          ]
+        },
+        {
+          "id": "1064:1334",
+          "name": "label",
+          "type": "TEXT",
+          "tokens": {
+            "colors": {
+              "fill-0": {
+                "token": "color/text/primary",
+                "value": "#FFFFFF",
+                "collection": "semantic"
+              }
+            },
+            "typography": {
+              "fontFamily": {
+                "token": "typography/font-family/secondary",
+                "value": "Roboto",
+                "collection": "primitive"
+              },
+              "fontSize": {
+                "token": "typography/font-size/body/lg",
+                "value": 16,
+                "collection": "semantic"
+              },
+              "fontWeight": {
+                "token": "typography/font-weight/regular",
+                "value": 400,
+                "collection": "semantic"
+              },
+              "lineHeight": {
+                "token": "typography/line-height/body/sm",
+                "value": 16,
+                "collection": "semantic"
+              }
+            }
+          },
+          "styles": [
+            {
+              "type": "TEXT",
+              "name": "Label/lg",
+              "styleId": "S:0462ea2d02d3a721e1b1854e9e6cb49e6a1d4a4b,",
+              "layer": "label"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "1064:1335",
+      "name": "state=press, size=md, isChecked=false, isDisabled=false, hasError=false",
+      "type": "COMPONENT",
+      "tokens": {
+        "spacing": {
+          "gap": {
+            "token": "gap/input-selection/label",
+            "value": 8,
+            "collection": "semantic"
+          }
+        }
+      },
+      "children": [
+        {
+          "id": "1087:799",
+          "name": "radio",
+          "type": "FRAME",
+          "tokens": {
+            "colors": {
+              "stroke-0": {
+                "token": "color/border/interactive/press",
+                "value": "#FFFFFF",
+                "collection": "semantic"
+              }
+            }
+          },
+          "children": [
+            {
+              "id": "1087:800",
+              "name": "radioIcon",
+              "type": "ELLIPSE",
+              "tokens": {
+                "colors": {
+                  "fill-0": {
+                    "token": "color/background/interactive/primary/default",
+                    "value": "#F6A913",
+                    "collection": "semantic"
+                  }
+                }
+              }
+            }
+          ]
+        },
+        {
+          "id": "1064:1338",
+          "name": "label",
+          "type": "TEXT",
+          "tokens": {
+            "colors": {
+              "fill-0": {
+                "token": "color/text/primary",
+                "value": "#FFFFFF",
+                "collection": "semantic"
+              }
+            },
+            "typography": {
+              "fontFamily": {
+                "token": "typography/font-family/secondary",
+                "value": "Roboto",
+                "collection": "primitive"
+              },
+              "fontSize": {
+                "token": "typography/font-size/body/lg",
+                "value": 16,
+                "collection": "semantic"
+              },
+              "fontWeight": {
+                "token": "typography/font-weight/regular",
+                "value": 400,
+                "collection": "semantic"
+              },
+              "lineHeight": {
+                "token": "typography/line-height/body/sm",
+                "value": 16,
+                "collection": "semantic"
+              }
+            }
+          },
+          "styles": [
+            {
+              "type": "TEXT",
+              "name": "Label/lg",
+              "styleId": "S:0462ea2d02d3a721e1b1854e9e6cb49e6a1d4a4b,",
+              "layer": "label"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "1064:1339",
+      "name": "state=press, size=md, isChecked=false, isDisabled=true, hasError=false",
+      "type": "COMPONENT",
+      "tokens": {
+        "spacing": {
+          "gap": {
+            "token": "gap/input-selection/label",
+            "value": 8,
+            "collection": "semantic"
+          }
+        }
+      },
+      "children": [
+        {
+          "id": "1087:802",
+          "name": "radio",
+          "type": "FRAME",
+          "tokens": {
+            "colors": {
+              "stroke-0": {
+                "token": "color/border/interactive/default",
+                "value": "#FFFFFF",
+                "collection": "semantic"
+              }
+            }
+          },
+          "children": [
+            {
+              "id": "1087:803",
+              "name": "radioIcon",
+              "type": "ELLIPSE",
+              "tokens": {
+                "colors": {
+                  "fill-0": {
+                    "token": "color/background/interactive/primary/default",
+                    "value": "#F6A913",
+                    "collection": "semantic"
+                  }
+                }
+              }
+            }
+          ]
+        },
+        {
+          "id": "1064:1342",
+          "name": "label",
+          "type": "TEXT",
+          "tokens": {
+            "colors": {
+              "fill-0": {
+                "token": "color/text/primary",
+                "value": "#FFFFFF",
+                "collection": "semantic"
+              }
+            },
+            "typography": {
+              "fontFamily": {
+                "token": "typography/font-family/secondary",
+                "value": "Roboto",
+                "collection": "primitive"
+              },
+              "fontSize": {
+                "token": "typography/font-size/body/lg",
+                "value": 16,
+                "collection": "semantic"
+              },
+              "fontWeight": {
+                "token": "typography/font-weight/regular",
+                "value": 400,
+                "collection": "semantic"
+              },
+              "lineHeight": {
+                "token": "typography/line-height/body/sm",
+                "value": 16,
+                "collection": "semantic"
+              }
+            }
+          },
+          "styles": [
+            {
+              "type": "TEXT",
+              "name": "Label/lg",
+              "styleId": "S:0462ea2d02d3a721e1b1854e9e6cb49e6a1d4a4b,",
+              "layer": "label"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "1064:1343",
+      "name": "state=default, size=md, isChecked=false, isDisabled=false, hasError=true",
+      "type": "COMPONENT",
+      "tokens": {
+        "spacing": {
+          "gap": {
+            "token": "gap/input-selection/label",
+            "value": 8,
+            "collection": "semantic"
+          }
+        }
+      },
+      "children": [
+        {
+          "id": "1087:805",
+          "name": "radio",
+          "type": "FRAME",
+          "tokens": {
+            "colors": {
+              "stroke-0": {
+                "token": "color/border/interactive/error",
+                "value": "#E64B41",
+                "collection": "semantic"
+              }
+            }
+          },
+          "children": [
+            {
+              "id": "1087:806",
+              "name": "radioIcon",
+              "type": "ELLIPSE",
+              "tokens": {
+                "colors": {
+                  "fill-0": {
+                    "token": "color/background/interactive/primary/default",
+                    "value": "#F6A913",
+                    "collection": "semantic"
+                  }
+                }
+              }
+            }
+          ]
+        },
+        {
+          "id": "1064:1346",
+          "name": "label",
+          "type": "TEXT",
+          "tokens": {
+            "colors": {
+              "fill-0": {
+                "token": "color/text/error",
+                "value": "#E64B41",
+                "collection": "semantic"
+              }
+            },
+            "typography": {
+              "fontFamily": {
+                "token": "typography/font-family/secondary",
+                "value": "Roboto",
+                "collection": "primitive"
+              },
+              "fontSize": {
+                "token": "typography/font-size/body/lg",
+                "value": 16,
+                "collection": "semantic"
+              },
+              "fontWeight": {
+                "token": "typography/font-weight/regular",
+                "value": 400,
+                "collection": "semantic"
+              },
+              "lineHeight": {
+                "token": "typography/line-height/body/sm",
+                "value": 16,
+                "collection": "semantic"
+              }
+            }
+          },
+          "styles": [
+            {
+              "type": "TEXT",
+              "name": "Label/lg",
+              "styleId": "S:0462ea2d02d3a721e1b1854e9e6cb49e6a1d4a4b,",
+              "layer": "label"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "1064:1287",
+      "name": "state=default, size=sm, isChecked=true, isDisabled=false, hasError=false",
+      "type": "COMPONENT",
+      "tokens": {
+        "spacing": {
+          "gap": {
+            "token": "gap/input-selection/label",
+            "value": 8,
+            "collection": "semantic"
+          }
+        }
+      },
+      "children": [
+        {
+          "id": "1087:808",
+          "name": "radio",
+          "type": "FRAME",
+          "tokens": {
+            "colors": {
+              "stroke-0": {
+                "token": "color/border/interactive/default",
+                "value": "#FFFFFF",
+                "collection": "semantic"
+              }
+            }
+          },
+          "children": [
+            {
+              "id": "1087:809",
+              "name": "radioIcon",
+              "type": "ELLIPSE",
+              "tokens": {
+                "colors": {
+                  "fill-0": {
+                    "token": "color/background/interactive/primary/default",
+                    "value": "#F6A913",
+                    "collection": "semantic"
+                  }
+                }
+              }
+            }
+          ]
+        },
+        {
+          "id": "1064:1290",
+          "name": "label",
+          "type": "TEXT",
+          "tokens": {
+            "colors": {
+              "fill-0": {
+                "token": "color/text/primary",
+                "value": "#FFFFFF",
+                "collection": "semantic"
+              }
+            },
+            "typography": {
+              "fontFamily": {
+                "token": "typography/font-family/secondary",
+                "value": "Roboto",
+                "collection": "primitive"
+              },
+              "fontSize": {
+                "token": "typography/font-size/body/lg",
+                "value": 16,
+                "collection": "semantic"
+              },
+              "fontWeight": {
+                "token": "typography/font-weight/regular",
+                "value": 400,
+                "collection": "semantic"
+              },
+              "lineHeight": {
+                "token": "typography/line-height/body/sm",
+                "value": 16,
+                "collection": "semantic"
+              }
+            }
+          },
+          "styles": [
+            {
+              "type": "TEXT",
+              "name": "Label/lg",
+              "styleId": "S:0462ea2d02d3a721e1b1854e9e6cb49e6a1d4a4b,",
+              "layer": "label"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "1064:1295",
+      "name": "state=hover, size=sm, isChecked=true, isDisabled=false, hasError=false",
+      "type": "COMPONENT",
+      "tokens": {
+        "spacing": {
+          "gap": {
+            "token": "gap/input-selection/label",
+            "value": 8,
+            "collection": "semantic"
+          }
+        }
+      },
+      "children": [
+        {
+          "id": "1088:407",
+          "name": "radio",
+          "type": "FRAME",
+          "tokens": {
+            "colors": {
+              "stroke-0": {
+                "token": "color/border/interactive/hover",
+                "value": "#FFFFFF",
+                "collection": "semantic"
+              }
+            }
+          },
+          "children": [
+            {
+              "id": "1088:408",
+              "name": "radioIcon",
+              "type": "ELLIPSE",
+              "tokens": {
+                "colors": {
+                  "fill-0": {
+                    "token": "color/background/interactive/primary/hover",
+                    "value": "#F7B636",
+                    "collection": "semantic"
+                  }
+                }
+              }
+            }
+          ]
+        },
+        {
+          "id": "1064:1298",
+          "name": "label",
+          "type": "TEXT",
+          "tokens": {
+            "colors": {
+              "fill-0": {
+                "token": "color/text/primary",
+                "value": "#FFFFFF",
+                "collection": "semantic"
+              }
+            },
+            "typography": {
+              "fontFamily": {
+                "token": "typography/font-family/secondary",
+                "value": "Roboto",
+                "collection": "primitive"
+              },
+              "fontSize": {
+                "token": "typography/font-size/body/lg",
+                "value": 16,
+                "collection": "semantic"
+              },
+              "fontWeight": {
+                "token": "typography/font-weight/regular",
+                "value": 400,
+                "collection": "semantic"
+              },
+              "lineHeight": {
+                "token": "typography/line-height/body/sm",
+                "value": 16,
+                "collection": "semantic"
+              }
+            }
+          },
+          "styles": [
+            {
+              "type": "TEXT",
+              "name": "Label/lg",
+              "styleId": "S:0462ea2d02d3a721e1b1854e9e6cb49e6a1d4a4b,",
+              "layer": "label"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "1064:1303",
+      "name": "state=press, size=sm, isChecked=true, isDisabled=false, hasError=false",
+      "type": "COMPONENT",
+      "tokens": {
+        "spacing": {
+          "gap": {
+            "token": "gap/input-selection/label",
+            "value": 8,
+            "collection": "semantic"
+          }
+        }
+      },
+      "children": [
+        {
+          "id": "1088:410",
+          "name": "radio",
+          "type": "FRAME",
+          "tokens": {
+            "colors": {
+              "stroke-0": {
+                "token": "color/border/interactive/press",
+                "value": "#FFFFFF",
+                "collection": "semantic"
+              }
+            }
+          },
+          "children": [
+            {
+              "id": "1088:411",
+              "name": "radioIcon",
+              "type": "ELLIPSE",
+              "tokens": {
+                "colors": {
+                  "fill-0": {
+                    "token": "color/background/interactive/primary/press",
+                    "value": "#F8C154",
+                    "collection": "semantic"
+                  }
+                }
+              }
+            }
+          ]
+        },
+        {
+          "id": "1064:1306",
+          "name": "label",
+          "type": "TEXT",
+          "tokens": {
+            "colors": {
+              "fill-0": {
+                "token": "color/text/primary",
+                "value": "#FFFFFF",
+                "collection": "semantic"
+              }
+            },
+            "typography": {
+              "fontFamily": {
+                "token": "typography/font-family/secondary",
+                "value": "Roboto",
+                "collection": "primitive"
+              },
+              "fontSize": {
+                "token": "typography/font-size/body/lg",
+                "value": 16,
+                "collection": "semantic"
+              },
+              "fontWeight": {
+                "token": "typography/font-weight/regular",
+                "value": 400,
+                "collection": "semantic"
+              },
+              "lineHeight": {
+                "token": "typography/line-height/body/sm",
+                "value": 16,
+                "collection": "semantic"
+              }
+            }
+          },
+          "styles": [
+            {
+              "type": "TEXT",
+              "name": "Label/lg",
+              "styleId": "S:0462ea2d02d3a721e1b1854e9e6cb49e6a1d4a4b,",
+              "layer": "label"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "1064:1311",
+      "name": "state=default, size=sm, isChecked=true, isDisabled=true, hasError=false",
+      "type": "COMPONENT",
+      "tokens": {
+        "spacing": {
+          "gap": {
+            "token": "gap/input-selection/label",
+            "value": 8,
+            "collection": "semantic"
+          }
+        }
+      },
+      "children": [
+        {
+          "id": "1088:413",
+          "name": "radio",
+          "type": "FRAME",
+          "tokens": {
+            "colors": {
+              "stroke-0": {
+                "token": "color/border/interactive/default",
+                "value": "#FFFFFF",
+                "collection": "semantic"
+              }
+            }
+          },
+          "children": [
+            {
+              "id": "1088:414",
+              "name": "radioIcon",
+              "type": "ELLIPSE",
+              "tokens": {
+                "colors": {
+                  "fill-0": {
+                    "token": "color/background/interactive/primary/default",
+                    "value": "#F6A913",
+                    "collection": "semantic"
+                  }
+                }
+              }
+            }
+          ]
+        },
+        {
+          "id": "1064:1314",
+          "name": "label",
+          "type": "TEXT",
+          "tokens": {
+            "colors": {
+              "fill-0": {
+                "token": "color/text/primary",
+                "value": "#FFFFFF",
+                "collection": "semantic"
+              }
+            },
+            "typography": {
+              "fontFamily": {
+                "token": "typography/font-family/secondary",
+                "value": "Roboto",
+                "collection": "primitive"
+              },
+              "fontSize": {
+                "token": "typography/font-size/body/lg",
+                "value": 16,
+                "collection": "semantic"
+              },
+              "fontWeight": {
+                "token": "typography/font-weight/regular",
+                "value": 400,
+                "collection": "semantic"
+              },
+              "lineHeight": {
+                "token": "typography/line-height/body/sm",
+                "value": 16,
+                "collection": "semantic"
+              }
+            }
+          },
+          "styles": [
+            {
+              "type": "TEXT",
+              "name": "Label/lg",
+              "styleId": "S:0462ea2d02d3a721e1b1854e9e6cb49e6a1d4a4b,",
+              "layer": "label"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "1064:1319",
+      "name": "state=default, size=sm, isChecked=true, isDisabled=false, hasError=true",
+      "type": "COMPONENT",
+      "tokens": {
+        "spacing": {
+          "gap": {
+            "token": "gap/input-selection/label",
+            "value": 8,
+            "collection": "semantic"
+          }
+        }
+      },
+      "children": [
+        {
+          "id": "1088:416",
+          "name": "radio",
+          "type": "FRAME",
+          "tokens": {
+            "colors": {
+              "stroke-0": {
+                "token": "color/border/interactive/error",
+                "value": "#E64B41",
+                "collection": "semantic"
+              }
+            }
+          },
+          "children": [
+            {
+              "id": "1088:417",
+              "name": "radioIcon",
+              "type": "ELLIPSE",
+              "tokens": {
+                "colors": {
+                  "fill-0": {
+                    "token": "color/background/feedback/error/lvl-1",
+                    "value": "#E64B41",
+                    "collection": "semantic"
+                  }
+                }
+              }
+            }
+          ]
+        },
+        {
+          "id": "1064:1322",
+          "name": "label",
+          "type": "TEXT",
+          "tokens": {
+            "colors": {
+              "fill-0": {
+                "token": "color/text/error",
+                "value": "#E64B41",
+                "collection": "semantic"
+              }
+            },
+            "typography": {
+              "fontFamily": {
+                "token": "typography/font-family/secondary",
+                "value": "Roboto",
+                "collection": "primitive"
+              },
+              "fontSize": {
+                "token": "typography/font-size/body/lg",
+                "value": 16,
+                "collection": "semantic"
+              },
+              "fontWeight": {
+                "token": "typography/font-weight/regular",
+                "value": 400,
+                "collection": "semantic"
+              },
+              "lineHeight": {
+                "token": "typography/line-height/body/sm",
+                "value": 16,
+                "collection": "semantic"
+              }
+            }
+          },
+          "styles": [
+            {
+              "type": "TEXT",
+              "name": "Label/lg",
+              "styleId": "S:0462ea2d02d3a721e1b1854e9e6cb49e6a1d4a4b,",
+              "layer": "label"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "1064:1267",
+      "name": "state=default, size=sm, isChecked=false, isDisabled=false, hasError=false",
+      "type": "COMPONENT",
+      "tokens": {
+        "spacing": {
+          "gap": {
+            "token": "gap/input-selection/label",
+            "value": 8,
+            "collection": "semantic"
+          }
+        }
+      },
+      "children": [
+        {
+          "id": "1088:422",
+          "name": "radio",
+          "type": "FRAME",
+          "tokens": {
+            "colors": {
+              "stroke-0": {
+                "token": "color/border/interactive/default",
+                "value": "#FFFFFF",
+                "collection": "semantic"
+              }
+            }
+          },
+          "children": [
+            {
+              "id": "1088:423",
+              "name": "radioIcon",
+              "type": "ELLIPSE",
+              "tokens": {
+                "colors": {
+                  "fill-0": {
+                    "token": "color/background/interactive/primary/default",
+                    "value": "#F6A913",
+                    "collection": "semantic"
+                  }
+                }
+              }
+            }
+          ]
+        },
+        {
+          "id": "1064:1270",
+          "name": "label",
+          "type": "TEXT",
+          "tokens": {
+            "colors": {
+              "fill-0": {
+                "token": "color/text/primary",
+                "value": "#FFFFFF",
+                "collection": "semantic"
+              }
+            },
+            "typography": {
+              "fontFamily": {
+                "token": "typography/font-family/secondary",
+                "value": "Roboto",
+                "collection": "primitive"
+              },
+              "fontSize": {
+                "token": "typography/font-size/body/lg",
+                "value": 16,
+                "collection": "semantic"
+              },
+              "fontWeight": {
+                "token": "typography/font-weight/regular",
+                "value": 400,
+                "collection": "semantic"
+              },
+              "lineHeight": {
+                "token": "typography/line-height/body/sm",
+                "value": 16,
+                "collection": "semantic"
+              }
+            }
+          },
+          "styles": [
+            {
+              "type": "TEXT",
+              "name": "Label/lg",
+              "styleId": "S:0462ea2d02d3a721e1b1854e9e6cb49e6a1d4a4b,",
+              "layer": "label"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "1064:1271",
+      "name": "state=hover, size=sm, isChecked=false, isDisabled=false, hasError=false",
+      "type": "COMPONENT",
+      "tokens": {
+        "spacing": {
+          "gap": {
+            "token": "gap/input-selection/label",
+            "value": 8,
+            "collection": "semantic"
+          }
+        }
+      },
+      "children": [
+        {
+          "id": "1088:425",
+          "name": "radio",
+          "type": "FRAME",
+          "tokens": {
+            "colors": {
+              "stroke-0": {
+                "token": "color/border/interactive/hover",
+                "value": "#FFFFFF",
+                "collection": "semantic"
+              }
+            }
+          },
+          "children": [
+            {
+              "id": "1088:426",
+              "name": "radioIcon",
+              "type": "ELLIPSE",
+              "tokens": {
+                "colors": {
+                  "fill-0": {
+                    "token": "color/background/interactive/primary/default",
+                    "value": "#F6A913",
+                    "collection": "semantic"
+                  }
+                }
+              }
+            }
+          ]
+        },
+        {
+          "id": "1064:1274",
+          "name": "label",
+          "type": "TEXT",
+          "tokens": {
+            "colors": {
+              "fill-0": {
+                "token": "color/text/primary",
+                "value": "#FFFFFF",
+                "collection": "semantic"
+              }
+            },
+            "typography": {
+              "fontFamily": {
+                "token": "typography/font-family/secondary",
+                "value": "Roboto",
+                "collection": "primitive"
+              },
+              "fontSize": {
+                "token": "typography/font-size/body/lg",
+                "value": 16,
+                "collection": "semantic"
+              },
+              "fontWeight": {
+                "token": "typography/font-weight/regular",
+                "value": 400,
+                "collection": "semantic"
+              },
+              "lineHeight": {
+                "token": "typography/line-height/body/sm",
+                "value": 16,
+                "collection": "semantic"
+              }
+            }
+          },
+          "styles": [
+            {
+              "type": "TEXT",
+              "name": "Label/lg",
+              "styleId": "S:0462ea2d02d3a721e1b1854e9e6cb49e6a1d4a4b,",
+              "layer": "label"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "1064:1275",
+      "name": "state=press, size=sm, isChecked=false, isDisabled=false, hasError=false",
+      "type": "COMPONENT",
+      "tokens": {
+        "spacing": {
+          "gap": {
+            "token": "gap/input-selection/label",
+            "value": 8,
+            "collection": "semantic"
+          }
+        }
+      },
+      "children": [
+        {
+          "id": "1088:428",
+          "name": "radio",
+          "type": "FRAME",
+          "tokens": {
+            "colors": {
+              "stroke-0": {
+                "token": "color/border/interactive/press",
+                "value": "#FFFFFF",
+                "collection": "semantic"
+              }
+            }
+          },
+          "children": [
+            {
+              "id": "1088:429",
+              "name": "radioIcon",
+              "type": "ELLIPSE",
+              "tokens": {
+                "colors": {
+                  "fill-0": {
+                    "token": "color/background/interactive/primary/default",
+                    "value": "#F6A913",
+                    "collection": "semantic"
+                  }
+                }
+              }
+            }
+          ]
+        },
+        {
+          "id": "1064:1278",
+          "name": "label",
+          "type": "TEXT",
+          "tokens": {
+            "colors": {
+              "fill-0": {
+                "token": "color/text/primary",
+                "value": "#FFFFFF",
+                "collection": "semantic"
+              }
+            },
+            "typography": {
+              "fontFamily": {
+                "token": "typography/font-family/secondary",
+                "value": "Roboto",
+                "collection": "primitive"
+              },
+              "fontSize": {
+                "token": "typography/font-size/body/lg",
+                "value": 16,
+                "collection": "semantic"
+              },
+              "fontWeight": {
+                "token": "typography/font-weight/regular",
+                "value": 400,
+                "collection": "semantic"
+              },
+              "lineHeight": {
+                "token": "typography/line-height/body/sm",
+                "value": 16,
+                "collection": "semantic"
+              }
+            }
+          },
+          "styles": [
+            {
+              "type": "TEXT",
+              "name": "Label/lg",
+              "styleId": "S:0462ea2d02d3a721e1b1854e9e6cb49e6a1d4a4b,",
+              "layer": "label"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "1064:1279",
+      "name": "state=default, size=sm, isChecked=false, isDisabled=true, hasError=false",
+      "type": "COMPONENT",
+      "tokens": {
+        "spacing": {
+          "gap": {
+            "token": "gap/input-selection/label",
+            "value": 8,
+            "collection": "semantic"
+          }
+        }
+      },
+      "children": [
+        {
+          "id": "1088:431",
+          "name": "radio",
+          "type": "FRAME",
+          "tokens": {
+            "colors": {
+              "stroke-0": {
+                "token": "color/border/interactive/default",
+                "value": "#FFFFFF",
+                "collection": "semantic"
+              }
+            }
+          },
+          "children": [
+            {
+              "id": "1088:432",
+              "name": "radioIcon",
+              "type": "ELLIPSE",
+              "tokens": {
+                "colors": {
+                  "fill-0": {
+                    "token": "color/background/interactive/primary/default",
+                    "value": "#F6A913",
+                    "collection": "semantic"
+                  }
+                }
+              }
+            }
+          ]
+        },
+        {
+          "id": "1064:1282",
+          "name": "label",
+          "type": "TEXT",
+          "tokens": {
+            "colors": {
+              "fill-0": {
+                "token": "color/text/primary",
+                "value": "#FFFFFF",
+                "collection": "semantic"
+              }
+            },
+            "typography": {
+              "fontFamily": {
+                "token": "typography/font-family/secondary",
+                "value": "Roboto",
+                "collection": "primitive"
+              },
+              "fontSize": {
+                "token": "typography/font-size/body/lg",
+                "value": 16,
+                "collection": "semantic"
+              },
+              "fontWeight": {
+                "token": "typography/font-weight/regular",
+                "value": 400,
+                "collection": "semantic"
+              },
+              "lineHeight": {
+                "token": "typography/line-height/body/sm",
+                "value": 16,
+                "collection": "semantic"
+              }
+            }
+          },
+          "styles": [
+            {
+              "type": "TEXT",
+              "name": "Label/lg",
+              "styleId": "S:0462ea2d02d3a721e1b1854e9e6cb49e6a1d4a4b,",
+              "layer": "label"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "1064:1283",
+      "name": "state=default, size=sm, isChecked=false, isDisabled=true, hasError=true",
+      "type": "COMPONENT",
+      "tokens": {
+        "spacing": {
+          "gap": {
+            "token": "gap/input-selection/label",
+            "value": 8,
+            "collection": "semantic"
+          }
+        }
+      },
+      "children": [
+        {
+          "id": "1088:434",
+          "name": "radio",
+          "type": "FRAME",
+          "tokens": {
+            "colors": {
+              "stroke-0": {
+                "token": "color/border/interactive/error",
+                "value": "#E64B41",
+                "collection": "semantic"
+              }
+            }
+          },
+          "children": [
+            {
+              "id": "1088:435",
+              "name": "radioIcon",
+              "type": "ELLIPSE",
+              "tokens": {
+                "colors": {
+                  "fill-0": {
+                    "token": "color/background/interactive/primary/default",
+                    "value": "#F6A913",
+                    "collection": "semantic"
+                  }
+                }
+              }
+            }
+          ]
+        },
+        {
+          "id": "1064:1286",
+          "name": "label",
+          "type": "TEXT",
+          "tokens": {
+            "colors": {
+              "fill-0": {
+                "token": "color/text/error",
+                "value": "#E64B41",
+                "collection": "semantic"
+              }
+            },
+            "typography": {
+              "fontFamily": {
+                "token": "typography/font-family/secondary",
+                "value": "Roboto",
+                "collection": "primitive"
+              },
+              "fontSize": {
+                "token": "typography/font-size/body/lg",
+                "value": 16,
+                "collection": "semantic"
+              },
+              "fontWeight": {
+                "token": "typography/font-weight/regular",
+                "value": 400,
+                "collection": "semantic"
+              },
+              "lineHeight": {
+                "token": "typography/line-height/body/sm",
+                "value": 16,
+                "collection": "semantic"
+              }
+            }
+          },
+          "styles": [
+            {
+              "type": "TEXT",
+              "name": "Label/lg",
+              "styleId": "S:0462ea2d02d3a721e1b1854e9e6cb49e6a1d4a4b,",
+              "layer": "label"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "validation": {
+    "hasUnresolvedTokens": false,
+    "missingVariables": [],
+    "hardcodedValues": []
+  }
+}

@@ -241,7 +241,7 @@ const handleMouseUp = () => {
 
 /* Label стили */
 .o-checkbox__label {
-  font-family: var(--typography-font-family-secondary);
+  font-family: var(--typography-font-family-body);
   font-size: var(--typography-font-size-body-lg);
   font-weight: var(--typography-font-weight-regular);
   line-height: var(--typography-line-height-body-sm);
