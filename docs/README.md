@@ -16,9 +16,14 @@ npm run tokens:generate-docs
 
 ### 2. Поиск токенов
 ```bash
-npm run tokens:info button
-npm run tokens:info color
-npm run tokens:info size
+# ✅ ПРАВИЛЬНО - по исходным именам из JSON (с слешами)
+npm run tokens:info -- --search "radiobutton"
+npm run tokens:info -- --search "color/text"
+npm run tokens:info -- --search "spacing/space"
+
+# ❌ НЕПРАВИЛЬНО - по CSS переменным (с дефисами)
+npm run tokens:info -- --search "radiobutton-size-radio-icon-md"
+npm run tokens:info -- --search "color-text-primary"
 ```
 
 ### 3. Валидация токенов
@@ -117,11 +122,39 @@ export default {
 ## 📝 Правила использования
 
 1. **ВСЕГДА** проверяйте `docs/AVAILABLE_TOKENS.md` перед созданием компонента
-2. **Используйте** `npm run tokens:info --search` для поиска токенов
+2. **Используйте** `npm run tokens:info -- --search` для поиска токенов
 3. **НЕ придумывайте** токены - только из документации
 4. **Используйте** семантические токены: `getToken('color/button/primary/bg')`
 5. **НЕ используйте** хардкод: НЕТ `#3b82f6`, НЕТ `16px`
 6. **Только** CSS переменные: `var(--token-name)`
+
+### 🔍 Правила поиска токенов
+
+#### ✅ ПРАВИЛЬНО - поиск по исходным именам (JSON)
+```bash
+# Поиск по категории
+npm run tokens:info -- --search "color"
+npm run tokens:info -- --search "button"
+npm run tokens:info -- --search "radiobutton"
+
+# Поиск по подкатегории
+npm run tokens:info -- --search "color/text"
+npm run tokens:info -- --search "spacing/space"
+npm run tokens:info -- --search "radiobutton/size"
+```
+
+#### ❌ НЕПРАВИЛЬНО - поиск по CSS переменным
+```bash
+# Эти команды НЕ РАБОТАЮТ!
+npm run tokens:info -- --search "color-text-primary"
+npm run tokens:info -- --search "radiobutton-size-radio-icon-md"
+npm run tokens:info -- --search "spacing-space-8"
+```
+
+#### 🔄 Преобразование имен
+- **JSON**: `radiobutton/size/radioIcon/md` → **CSS**: `--radiobutton-size-radio-icon-md`
+- **Поиск**: используй JSON формат с слешами
+- **В компонентах**: используй CSS формат с дефисами
 
 ## 🎯 Лучшие практики
 
@@ -147,25 +180,66 @@ export default {
 
 ## 🔍 Поиск и фильтрация
 
-### Поиск по категории
+### ⚠️ ВАЖНО: Правильный способ поиска токенов
+
+**`tokenInfo.js` ищет по исходным именам из JSON, НЕ по CSS переменным!**
+
+#### ✅ ПРАВИЛЬНО - по исходным именам (с слешами)
 ```bash
-npm run tokens:info color
-npm run tokens:info button
-npm run tokens:info typography
+# Поиск по категории
+npm run tokens:info -- --search "color"
+npm run tokens:info -- --search "button"
+npm run tokens:info -- --search "typography"
+
+# Поиск по подкатегории
+npm run tokens:info -- --search "color/text"
+npm run tokens:info -- --search "spacing/space"
+npm run tokens:info -- --search "radiobutton/size"
+
+# Поиск по состоянию
+npm run tokens:info -- --search "hover"
+npm run tokens:info -- --search "active"
+npm run tokens:info -- --search "disabled"
+
+# Поиск по размеру
+npm run tokens:info -- --search "sm"
+npm run tokens:info -- --search "md"
+npm run tokens:info -- --search "lg"
 ```
 
-### Поиск по состоянию
+#### ❌ НЕПРАВИЛЬНО - по CSS переменным (с дефисами)
 ```bash
-npm run tokens:info hover
-npm run tokens:info active
-npm run tokens:info disabled
+# Эти команды НЕ РАБОТАЮТ!
+npm run tokens:info -- --search "color-text-primary"
+npm run tokens:info -- --search "radiobutton-size-radio-icon-md"
+npm run tokens:info -- --search "spacing-space-8"
 ```
 
-### Поиск по размеру
+### 🔄 Преобразование имен
+
+| JSON (исходное) | CSS переменная | Поиск |
+|----------------|----------------|-------|
+| `radiobutton/size/radioIcon/md` | `--radiobutton-size-radio-icon-md` | ✅ `radiobutton/size/radioIcon` |
+| `color/text/primary` | `--color-text-primary` | ✅ `color/text/primary` |
+| `spacing/space/8` | `--spacing-space-8` | ✅ `spacing/space/8` |
+
+### 📋 Примеры правильного поиска
+
 ```bash
-npm run tokens:info sm
-npm run tokens:info md
-npm run tokens:info lg
+# Найти все токены radiobutton
+npm run tokens:info -- --search "radiobutton"
+
+# Найти токены размеров
+npm run tokens:info -- --search "size"
+
+# Найти токены цветов текста
+npm run tokens:info -- --search "color/text"
+
+# Найти токены отступов
+npm run tokens:info -- --search "spacing"
+
+# Найти токены типографики
+npm run tokens:info -- --search "typography"
 ```
 
 ## 📊 Статистика

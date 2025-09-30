@@ -10,13 +10,24 @@ const IGNORED_COLLECTIONS = [
   'content'
 ];
 
-// Иерархия коллекций (от верхнего уровня к базовому)
+// Иерархия коллекций
+// - primitive/theme/adaptive: базовые значения (не используются напрямую в компонентах)
+// - semantic: общие токены, ссылаются на базовые (используются в компонентах)
+// - component: специфичные токены компонентов, ссылаются на semantic (используются в компонентах)
 const COLLECTION_HIERARCHY = {
   SEMANTIC: 'semantic',
   THEME: 'theme',
   ADAPTIVE: 'adaptive',
   PRIMITIVE: 'primitive'
 };
+
+// Паттерны для определения компонентных коллекций
+// Компонентные коллекции содержат токены специфичные для UI компонентов
+const COMPONENT_COLLECTION_PATTERNS = [
+  'component',
+  'components',
+  /Component$/i
+];
 
 // 🔧 НЕ РЕДАКТИРОВАТЬ НИЖЕ ЭТОЙ ЛИНИИ 🔧
 
@@ -320,42 +331,41 @@ function findVariablesByPattern(pattern, filterByCollection = null) {
   return matches;
 }
 
-// Получение всех семантических токенов (основная рабочая коллекция)
-function getSemanticTokens(modeConfig = {}) {
-  const semanticVariables = {};
-  const semanticCollectionId = collectionNameToId.get(COLLECTION_HIERARCHY.SEMANTIC);
-  
-  if (!semanticCollectionId) {
-    return semanticVariables;
-  }
-  
-  for (const variable of variableMap.values()) {
-    if (variable.variableCollectionId === semanticCollectionId) {
-      const value = resolveVariable(variable.id, modeConfig);
-      if (value !== null) {
-        semanticVariables[variable.name] = value;
-      }
-    }
-  }
-  
-  return semanticVariables;
-}
 
-// Получение component токенов
+// Получение component токенов с автоматическим обнаружением
+// Возвращает токены из semantic и component коллекций
 function getComponentTokens(modeConfig = {}) {
   const componentVariables = {};
   
-  // Ищем все переменные, которые начинаются с component/ или содержат counter/
   for (const [varId, variable] of variableMap.entries()) {
-    const collection = collectionMap.get(variable.collectionId);
+    const collection = collectionMap.get(variable.variableCollectionId);
     
-    // Проверяем, что это component коллекция ИЛИ токен начинается с component/, counter/, checkbox/
-    const isComponentCollection = collection && collection.name.toLowerCase().includes('component');
-    const isCounterToken = variable.name.startsWith('counter/');
-    const isComponentToken = variable.name.startsWith('component/');
-    const isCheckboxToken = variable.name.startsWith('checkbox/');
+    // Пропускаем технические коллекции
+    if (!collection || IGNORED_COLLECTIONS.includes(collection.name)) {
+      continue;
+    }
     
-    if (isComponentCollection || isCounterToken || isComponentToken || isCheckboxToken) {
+    // Проверяем, соответствует ли коллекция паттернам компонентных коллекций
+    const isComponentCollection = COMPONENT_COLLECTION_PATTERNS.some(pattern => {
+      if (typeof pattern === 'string') {
+        return collection.name.toLowerCase().includes(pattern.toLowerCase());
+      }
+      return pattern.test(collection.name);
+    });
+    
+    // Проверяем, является ли это semantic коллекцией
+    const isSemanticCollection = collection.name === COLLECTION_HIERARCHY.SEMANTIC;
+    
+    // Проверяем, является ли это базовой коллекцией (primitive/theme/adaptive)
+    const isBaseCollection = [
+      COLLECTION_HIERARCHY.PRIMITIVE,
+      COLLECTION_HIERARCHY.THEME,
+      COLLECTION_HIERARCHY.ADAPTIVE
+    ].includes(collection.name);
+    
+    // Включаем токены из semantic и component коллекций
+    // Исключаем только primitive/theme/adaptive
+    if ((isComponentCollection || isSemanticCollection) && !isBaseCollection) {
       const resolvedValue = resolveVariable(varId, modeConfig);
       if (resolvedValue !== null) {
         componentVariables[variable.name] = resolvedValue;
@@ -364,6 +374,20 @@ function getComponentTokens(modeConfig = {}) {
   }
   
   return componentVariables;
+}
+
+/**
+ * Преобразование CamelCase в kebab-case
+ * Примеры:
+ * - radioIcon → radio-icon
+ * - maxWidth → max-width
+ * - fontSize → font-size
+ * 
+ * @param {String} str - Строка в CamelCase
+ * @returns {String} Строка в kebab-case
+ */
+function camelToKebab(str) {
+  return str.replace(/([a-z0-9])([A-Z])/g, '$1-$2');
 }
 
 // Функция для определения, нужно ли добавлять 'px' к токену
@@ -416,6 +440,11 @@ function formatTokenValue(tokenName, value) {
     return value;
   }
   
+  // ✅ ДОБАВИТЬ: Добавление % к opacity токенам
+  if (typeof value === 'number' && tokenName.includes('opacity')) {
+    return `${value}%`;
+  }
+  
   // Если это число и токен требует px - добавляем
   if (typeof value === 'number' && shouldAddPxSuffix(tokenName)) {
     return `${value}px`;
@@ -424,28 +453,35 @@ function formatTokenValue(tokenName, value) {
   return value;
 }
 
-// Генерация CSS переменных из семантических токенов
+/**
+ * Генерация CSS переменных из токенов
+ * Возвращает строку с CSS переменными для инжекции в :root
+ * 
+ * Преобразования:
+ * - CamelCase → kebab-case (radioIcon → radio-icon)
+ * - Слэши → дефисы (spacing/space-8 → spacing-space-8)
+ * - Все в нижний регистр
+ * 
+ * Примеры:
+ * - "radiobutton/size/radioIcon/md" → "--radiobutton-size-radio-icon-md"
+ * - "button/maxWidth" → "--button-max-width"
+ * 
+ * @param {Object} modeConfig - Конфигурация режимов (theme, breakpoint)
+ * @param {String} prefix - Префикс для CSS переменных (по умолчанию '--')
+ * @returns {String} Строка CSS переменных
+ */
 function generateCSSVariables(modeConfig = {}, prefix = '--') {
-  const semanticTokens = getSemanticTokens(modeConfig);
   const componentTokens = getComponentTokens(modeConfig);
-  
   
   const cssVars = [];
   
-  // Добавляем semantic токены
-  for (const [name, value] of Object.entries(semanticTokens)) {
-    const cssName = name.replace(/\//g, '-').toLowerCase();
-    const formattedValue = formatTokenValue(name, value);
-    cssVars.push(`${prefix}${cssName}: ${formattedValue};`);
-  }
-  
-  // Добавляем component токены
+  // Добавляем все токены (semantic + component)
   for (const [name, value] of Object.entries(componentTokens)) {
-    const cssName = name.replace(/\//g, '-').toLowerCase();
+    // Сначала преобразуем CamelCase в kebab-case, затем заменяем слэши и делаем toLowerCase
+    const cssName = camelToKebab(name).replace(/\//g, '-').toLowerCase();
     const formattedValue = formatTokenValue(name, value);
     cssVars.push(`${prefix}${cssName}: ${formattedValue};`);
   }
-  
   
   return cssVars.join('\n');
 }
@@ -475,7 +511,6 @@ export {
   // Основные функции
   resolveVariable, 
   getVariableByName, 
-  getSemanticTokens,
   getComponentTokens,
   
   // Утилиты
@@ -488,9 +523,11 @@ export {
   // Функции форматирования токенов
   shouldAddPxSuffix,
   formatTokenValue,
+  camelToKebab,
   
   // Константы
   COLLECTION_HIERARCHY,
+  COMPONENT_COLLECTION_PATTERNS,
   
   // Карты (для продвинутого использования)
   variableMap, 

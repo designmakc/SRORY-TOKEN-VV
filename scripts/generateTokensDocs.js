@@ -7,7 +7,7 @@ import { fileURLToPath } from 'node:url';
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 // Импортируем resolver для работы с токенами
-import { getSemanticTokens, generateCSSVariables } from '../src/utils/figma-variables-resolver.js';
+import { getComponentTokens, generateCSSVariables } from '../src/utils/figma-variables-resolver.js';
 
 /**
  * Группирует токены по категориям
@@ -387,9 +387,9 @@ async function generateTokensDocs() {
   try {
     console.log('🚀 Генерация документации токенов...');
     
-    // Получаем семантические токены
-    const tokens = getSemanticTokens();
-    console.log(`📊 Найдено ${Object.keys(tokens).length} семантических токенов`);
+    // Получаем компонентные токены (semantic + component)
+    const tokens = getComponentTokens();
+    console.log(`📊 Найдено ${Object.keys(tokens).length} токенов (semantic + component)`);
     
     // Группируем по категориям
     const categories = groupTokensByCategory(tokens);

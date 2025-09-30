@@ -1,7 +1,6 @@
 // composables/useDesignTokens.js
 import { ref, computed, watch } from 'vue';
 import { 
-  getSemanticTokens, 
   getComponentTokens,
   generateCSSVariables,
   clearCache,
@@ -25,11 +24,8 @@ export function useDesignTokens() {
 
   // Получение всех токенов (semantic + component) с учетом текущей темы и breakpoint
   const tokens = computed(() => {
-    const semanticTokens = getSemanticTokens(modeConfig.value);
-    const componentTokens = getComponentTokens(modeConfig.value);
-    
-    // Объединяем semantic и component токены
-    return { ...semanticTokens, ...componentTokens };
+    // getComponentTokens теперь возвращает и semantic, и component токены
+    return getComponentTokens(modeConfig.value);
   });
 
   // CSS переменные для инжекции в стили

@@ -200,3 +200,5 @@ stories/
 - Поддержка screen readers через aria-label
 - Семантическая разметка для счетчиков
 - Keyboard navigation support
+
+

@@ -146,7 +146,7 @@ export const Primary = {
 - border, radius
 
 НЕ добавляются для:
-- opacity, font-weight, line-height, z-index
+-  font-weight, line-height, z-index
 
 ## КОМАНДЫ
 
@@ -162,7 +162,7 @@ npm run storybook                      # Запуск
 - [ ] Нет Tailwind классов
 - [ ] Нет хардкода
 - [ ] Все токены существуют
-- [ ] Props совпадают с Figma
+- [ ] все Props совпадают с Figma!
 - [ ] Stories созданы
 - [ ] `tags: ['autodocs']` есть
 
