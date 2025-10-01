@@ -57,7 +57,7 @@ export default {
   display: inline-flex; /* Hug содержимое */
   align-items: center;
   justify-content: center;
-  border-radius: var(--counter-border-radius, 9999px);
+  border-radius: var(--counter-border-radius);
   box-sizing: border-box;
 }
 
@@ -81,21 +81,21 @@ export default {
 
 /* Размеры - ТОЧНО по Figma */
 .counter--md {
-  min-width: var(--counter-size-md-min-width, 20px); /* Минимальная ширина */
-  height: var(--counter-size-md-height, 20px); /* Фиксированная высота */
-  padding: var(--counter-padding-md-vertical, 2px) var(--counter-padding-md-horizontal, 6px);
+  min-width: var(--counter-size-md-min-width);
+  height: var(--counter-size-md-height);
+  padding: var(--counter-padding-md-vertical) var(--counter-padding-md-horizontal);
 }
 
 .counter--sm {
-  min-width: var(--counter-size-sm-min-width, 16px); /* Минимальная ширина */
-  height: var(--counter-size-sm-height, 16px); /* Фиксированная высота */
-  padding: var(--counter-padding-sm-vertical, 1px) var(--counter-padding-sm-horizontal, 4px);
+  min-width: var(--counter-size-sm-min-width);
+  height: var(--counter-size-sm-height);
+  padding: var(--counter-padding-sm-vertical) var(--counter-padding-sm-horizontal);
 }
 
 .counter--xs {
-  width: var(--counter-size-xs-width, 6px); /* Фиксированная ширина для xs */
-  height: var(--counter-size-xs-height, 6px); /* Фиксированная высота для xs */
-  padding: 0; /* БЕЗ padding по Figma */
+  width: var(--counter-size-xs-width);
+  height: var(--counter-size-xs-height);
+  padding: var(--counter-padding-xs-vertical) var(--counter-padding-xs-horizontal);
 }
 
 /* Текст - ТОЧНО по Figma */
@@ -103,19 +103,19 @@ export default {
   font-family: var(--typography-font-family-header);
   text-align: center;
   white-space: nowrap;
-  line-height: 1;
 }
 
 .counter-text--md {
-  font-size: var(--typography-font-size-header-2xs, 12px);
-  font-weight: var(--typography-font-weight-semibold, 600);
-  letter-spacing: var(--typography-letter-spacing-header-2xs, 0.36px);
+  font-size: var(--typography-font-size-header-2xs);
+  font-weight: var(--typography-font-weight-header-2xs);
+  line-height: var(--typography-line-height-trim-2xs);
 }
 
 .counter-text--sm {
   font-family: var(--typography-font-family-secondary);
-  font-size: var(--typography-font-size-body-2xs, 8px);
-  font-weight: var(--typography-font-weight-bold, 700);
+  font-size: var(--typography-font-size-body-2xs);
+  font-weight: var(--typography-font-weight-bold);
+  line-height: var(--typography-line-height-body-4xs);
 }
 
 /* Цвета текста */
