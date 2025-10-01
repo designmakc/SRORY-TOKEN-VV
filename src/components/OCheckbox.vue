@@ -93,7 +93,7 @@ const iconSize = computed(() => {
 });
 
 const iconColor = computed(() => {
-  return 'var(--color-text-on-interactive-primary)';
+  return 'var(--color-icon-inverse)';
 });
 
 // Обработчики событий
@@ -142,6 +142,7 @@ const handleMouseUp = () => {
   justify-content: center;
   box-sizing: border-box;
   border-radius: var(--checkbox-border-radius);
+  padding: var(--checkbox-padding-md);
   transition: all 0.2s ease;
 }
 

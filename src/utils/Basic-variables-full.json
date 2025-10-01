@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "lastModified": "2025-09-30T07:05:23.003Z",
+  "lastModified": "2025-10-01T13:03:11.928Z",
   "collections": [
     {
       "id": "VariableCollectionId:55:267",
@@ -13580,8 +13580,8 @@
         "VariableID:2282:34130",
         "VariableID:2282:34131",
         "VariableID:2021:128286",
-        "VariableID:2282:33976",
         "VariableID:2282:19063",
+        "VariableID:2282:33976",
         "VariableID:2282:33977",
         "VariableID:2417:58653",
         "VariableID:2417:47641",
@@ -13628,7 +13628,11 @@
         "VariableID:3603:79356",
         "VariableID:3603:79357",
         "VariableID:3603:79358",
-        "VariableID:3603:79359"
+        "VariableID:3603:79359",
+        "VariableID:3845:25693",
+        "VariableID:3845:25694",
+        "VariableID:3845:25695",
+        "VariableID:3845:25696"
       ],
       "variables": [
         {
@@ -14962,25 +14966,6 @@
           "variableCollectionId": "VariableCollectionId:795:1945"
         },
         {
-          "id": "VariableID:2282:33976",
-          "name": "sizing/footer/width/max-width",
-          "description": "Максимальная ширина для основного контейнера",
-          "key": "e52d0c510cc694ea3fe9234564b60e41b77bb9dc",
-          "resolvedType": "FLOAT",
-          "valuesByMode": {
-            "795:4": 574,
-            "795:5": 1023,
-            "795:6": 1400,
-            "795:7": 1920
-          },
-          "scopes": [
-            "WIDTH_HEIGHT"
-          ],
-          "hiddenFromPublishing": true,
-          "codeSyntax": {},
-          "variableCollectionId": "VariableCollectionId:795:1945"
-        },
-        {
           "id": "VariableID:2282:19063",
           "name": "sizing/game-section/size",
           "description": "",
@@ -14996,6 +14981,25 @@
             "ALL_SCOPES"
           ],
           "hiddenFromPublishing": false,
+          "codeSyntax": {},
+          "variableCollectionId": "VariableCollectionId:795:1945"
+        },
+        {
+          "id": "VariableID:2282:33976",
+          "name": "sizing/footer/width/max-width",
+          "description": "Максимальная ширина для основного контейнера",
+          "key": "e52d0c510cc694ea3fe9234564b60e41b77bb9dc",
+          "resolvedType": "FLOAT",
+          "valuesByMode": {
+            "795:4": 574,
+            "795:5": 1023,
+            "795:6": 1400,
+            "795:7": 1920
+          },
+          "scopes": [
+            "WIDTH_HEIGHT"
+          ],
+          "hiddenFromPublishing": true,
           "codeSyntax": {},
           "variableCollectionId": "VariableCollectionId:795:1945"
         },
@@ -16010,6 +16014,82 @@
             "795:5": 768,
             "795:6": 934,
             "795:7": 934
+          },
+          "scopes": [
+            "WIDTH_HEIGHT"
+          ],
+          "hiddenFromPublishing": false,
+          "codeSyntax": {},
+          "variableCollectionId": "VariableCollectionId:795:1945"
+        },
+        {
+          "id": "VariableID:3845:25693",
+          "name": "sizing/modal/min-height-md",
+          "description": "",
+          "key": "cb625e1abb9a52eed94fd476558b745d936ded08",
+          "resolvedType": "FLOAT",
+          "valuesByMode": {
+            "795:4": 200,
+            "795:5": 200,
+            "795:6": 200,
+            "795:7": 200
+          },
+          "scopes": [
+            "WIDTH_HEIGHT"
+          ],
+          "hiddenFromPublishing": false,
+          "codeSyntax": {},
+          "variableCollectionId": "VariableCollectionId:795:1945"
+        },
+        {
+          "id": "VariableID:3845:25694",
+          "name": "sizing/modal/min-height-lg",
+          "description": "",
+          "key": "4aba0436c47747e6dc2326cf36c83674cc24d25e",
+          "resolvedType": "FLOAT",
+          "valuesByMode": {
+            "795:4": 480,
+            "795:5": 480,
+            "795:6": 480,
+            "795:7": 480
+          },
+          "scopes": [
+            "WIDTH_HEIGHT"
+          ],
+          "hiddenFromPublishing": false,
+          "codeSyntax": {},
+          "variableCollectionId": "VariableCollectionId:795:1945"
+        },
+        {
+          "id": "VariableID:3845:25695",
+          "name": "sizing/modal/max-height-md",
+          "description": "",
+          "key": "8fa215916f6591a47631bb70f25b001711e86503",
+          "resolvedType": "FLOAT",
+          "valuesByMode": {
+            "795:4": 640,
+            "795:5": 640,
+            "795:6": 640,
+            "795:7": 640
+          },
+          "scopes": [
+            "WIDTH_HEIGHT"
+          ],
+          "hiddenFromPublishing": false,
+          "codeSyntax": {},
+          "variableCollectionId": "VariableCollectionId:795:1945"
+        },
+        {
+          "id": "VariableID:3845:25696",
+          "name": "sizing/modal/max-height-lg",
+          "description": "",
+          "key": "4933c69337a9f3625f8f6797eac56363249e90d3",
+          "resolvedType": "FLOAT",
+          "valuesByMode": {
+            "795:4": 800,
+            "795:5": 1024,
+            "795:6": 640,
+            "795:7": 640
           },
           "scopes": [
             "WIDTH_HEIGHT"

@@ -15,7 +15,9 @@
     "tokens:generate-types": "node scripts/generateTokenTypes.js",
     "tokens:validate": "node scripts/validateTokens.js",
     "tokens:info": "node scripts/tokenInfo.js",
-    "tokens:generate-docs": "node scripts/generateTokensDocs.js"
+    "tokens:generate-docs": "node scripts/generateTokensDocs.js",
+    "tokens:review": "node scripts/tokensReview.js",
+    "tokens:audit": "node scripts/componentAudit.js"
   },
   "dependencies": {
     "vue": "^3.4.0"

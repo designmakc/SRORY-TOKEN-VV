@@ -10,7 +10,7 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 const IGNORED_COLLECTIONS = ['EightShapes Specs', 'Specs Layout', 'content'];
-const REQUIRED_COLLECTIONS = ['Primitive', 'Semantic', 'theme', 'adaptive'];
+const REQUIRED_COLLECTIONS = ['primitive', 'semantic', 'theme', 'adaptive'];
 
 // Цвета для консоли
 const colors = {
