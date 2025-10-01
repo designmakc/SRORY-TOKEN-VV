@@ -356,16 +356,15 @@ function getComponentTokens(modeConfig = {}) {
     // Проверяем, является ли это semantic коллекцией
     const isSemanticCollection = collection.name === COLLECTION_HIERARCHY.SEMANTIC;
     
-    // Проверяем, является ли это базовой коллекцией (primitive/theme/adaptive)
+    // Проверяем, является ли это базовой коллекцией (primitive/theme)
     const isBaseCollection = [
       COLLECTION_HIERARCHY.PRIMITIVE,
-      COLLECTION_HIERARCHY.THEME,
-      COLLECTION_HIERARCHY.ADAPTIVE
+      COLLECTION_HIERARCHY.THEME
     ].includes(collection.name);
     
-    // Включаем токены из semantic и component коллекций
-    // Исключаем только primitive/theme/adaptive
-    if ((isComponentCollection || isSemanticCollection) && !isBaseCollection) {
+    // Включаем токены из semantic, component и adaptive коллекций
+    // Исключаем только primitive/theme
+    if ((isComponentCollection || isSemanticCollection || collection.name === COLLECTION_HIERARCHY.ADAPTIVE) && !isBaseCollection) {
       const resolvedValue = resolveVariable(varId, modeConfig);
       if (resolvedValue !== null) {
         componentVariables[variable.name] = resolvedValue;
@@ -443,6 +442,11 @@ function formatTokenValue(tokenName, value) {
   // ✅ ДОБАВИТЬ: Добавление % к opacity токенам
   if (typeof value === 'number' && tokenName.includes('opacity')) {
     return `${value}%`;
+  }
+  
+  // ✅ ИСКЛЮЧЕНИЕ: line-height токены должны быть в пикселях
+  if (typeof value === 'number' && tokenName.includes('line-height')) {
+    return `${value}px`; // Возвращаем в пикселях для точного контроля
   }
   
   // Если это число и токен требует px - добавляем

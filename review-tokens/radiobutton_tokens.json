@@ -1,6 +1,6 @@
 {
   "version": "1.0.0",
-  "exported": "2025-09-30T17:53:34.016Z",
+  "exported": "2025-10-01T13:43:32.880Z",
   "component": {
     "id": "1064:1226",
     "name": "radiobutton",
@@ -8,6 +8,128 @@
     "description": "Используется для выбор одного элемента из двух и более вариантов."
   },
   "tokenUsage": {},
+  "tokensPreview": [
+    {
+      "token": "component/radiobutton/border-radius",
+      "collection": "component",
+      "type": "FLOAT",
+      "usageCount": 20
+    },
+    {
+      "token": "component/radiobutton/size/md",
+      "collection": "component",
+      "type": "FLOAT",
+      "usageCount": 20
+    },
+    {
+      "token": "component/radiobutton/size/radioIcon/md",
+      "collection": "component",
+      "type": "FLOAT",
+      "usageCount": 20
+    },
+    {
+      "token": "component/radiobutton/size/radioIcon/sm",
+      "collection": "component",
+      "type": "FLOAT",
+      "usageCount": 20
+    },
+    {
+      "token": "component/radiobutton/size/sm",
+      "collection": "component",
+      "type": "FLOAT",
+      "usageCount": 20
+    },
+    {
+      "token": "primitive/typography/font-family/secondary",
+      "collection": "primitive",
+      "type": "STRING",
+      "usageCount": 20
+    },
+    {
+      "token": "semantic/color/background/interactive/primary/default",
+      "collection": "semantic",
+      "type": "COLOR",
+      "usageCount": 14
+    },
+    {
+      "token": "semantic/color/background/interactive/primary/hover",
+      "collection": "semantic",
+      "type": "COLOR",
+      "usageCount": 2
+    },
+    {
+      "token": "semantic/color/background/interactive/primary/press",
+      "collection": "semantic",
+      "type": "COLOR",
+      "usageCount": 2
+    },
+    {
+      "token": "semantic/color/border/interactive/default",
+      "collection": "semantic",
+      "type": "COLOR",
+      "usageCount": 8
+    },
+    {
+      "token": "semantic/color/border/interactive/error",
+      "collection": "semantic",
+      "type": "COLOR",
+      "usageCount": 4
+    },
+    {
+      "token": "semantic/color/border/interactive/hover",
+      "collection": "semantic",
+      "type": "COLOR",
+      "usageCount": 4
+    },
+    {
+      "token": "semantic/color/border/interactive/press",
+      "collection": "semantic",
+      "type": "COLOR",
+      "usageCount": 4
+    },
+    {
+      "token": "semantic/color/icon/feedback/error",
+      "collection": "semantic",
+      "type": "COLOR",
+      "usageCount": 2
+    },
+    {
+      "token": "semantic/color/text/error",
+      "collection": "semantic",
+      "type": "COLOR",
+      "usageCount": 4
+    },
+    {
+      "token": "semantic/color/text/primary",
+      "collection": "semantic",
+      "type": "COLOR",
+      "usageCount": 16
+    },
+    {
+      "token": "semantic/gap/input-selection/label",
+      "collection": "semantic",
+      "type": "FLOAT",
+      "usageCount": 20
+    },
+    {
+      "token": "semantic/typography/font-size/body/lg",
+      "collection": "semantic",
+      "type": "FLOAT",
+      "usageCount": 20
+    },
+    {
+      "token": "semantic/typography/font-weight/regular",
+      "collection": "semantic",
+      "type": "FLOAT",
+      "usageCount": 20
+    },
+    {
+      "token": "semantic/typography/line-height/body/sm",
+      "collection": "semantic",
+      "type": "FLOAT",
+      "usageCount": 20
+    }
+  ],
   "styles": [],
   "layers": [
     {
@@ -17,12 +139,23 @@
       "tokens": {
         "spacing": {
           "gap": {
-            "token": "gap/input-selection/label",
+            "token": "semantic/gap/input-selection/label",
             "value": 8,
-            "collection": "semantic"
+            "collection": "semantic",
+            "type": "FLOAT"
           }
+        },
+        "borders": {
+          "width": 1
         }
       },
+      "hardcodedValues": [
+        {
+          "property": "strokeWeight",
+          "value": 1,
+          "layer": "state=default, size=md, isChecked=true, isDisabled=false, hasError=false"
+        }
+      ],
       "children": [
         {
           "id": "1064:1228",
@@ -31,12 +164,43 @@
           "tokens": {
             "colors": {
               "stroke-0": {
-                "token": "color/border/interactive/default",
+                "token": "semantic/color/border/interactive/default",
                 "value": "#FFFFFF",
-                "collection": "semantic"
+                "collection": "semantic",
+                "type": "COLOR"
+              }
+            },
+            "borders": {
+              "radius": {
+                "token": "component/radiobutton/border-radius",
+                "value": 9999,
+                "collection": "component",
+                "type": "FLOAT"
+              },
+              "width": 1
+            },
+            "size": {
+              "width": {
+                "token": "component/radiobutton/size/md",
+                "value": 24,
+                "collection": "component",
+                "type": "FLOAT"
+              },
+              "height": {
+                "token": "component/radiobutton/size/md",
+                "value": 24,
+                "collection": "component",
+                "type": "FLOAT"
               }
             }
           },
+          "hardcodedValues": [
+            {
+              "property": "strokeWeight",
+              "value": 1,
+              "layer": "radio"
+            }
+          ],
           "children": [
             {
               "id": "1084:761",
@@ -45,12 +209,37 @@
               "tokens": {
                 "colors": {
                   "fill-0": {
-                    "token": "color/background/interactive/primary/default",
+                    "token": "semantic/color/background/interactive/primary/default",
                     "value": "#F6A913",
-                    "collection": "semantic"
+                    "collection": "semantic",
+                    "type": "COLOR"
+                  }
+                },
+                "borders": {
+                  "width": 1
+                },
+                "size": {
+                  "width": {
+                    "token": "component/radiobutton/size/radioIcon/md",
+                    "value": 12,
+                    "collection": "component",
+                    "type": "FLOAT"
+                  },
+                  "height": {
+                    "token": "component/radiobutton/size/radioIcon/md",
+                    "value": 12,
+                    "collection": "component",
+                    "type": "FLOAT"
                   }
                 }
-              }
+              },
+              "hardcodedValues": [
+                {
+                  "property": "strokeWeight",
+                  "value": 1,
+                  "layer": "radioIcon"
+                }
+              ]
             }
           ]
         },
@@ -61,32 +250,40 @@
           "tokens": {
             "colors": {
               "fill-0": {
-                "token": "color/text/primary",
+                "token": "semantic/color/text/primary",
                 "value": "#FFFFFF",
-                "collection": "semantic"
+                "collection": "semantic",
+                "type": "COLOR"
               }
             },
             "typography": {
               "fontFamily": {
-                "token": "typography/font-family/secondary",
+                "token": "primitive/typography/font-family/secondary",
                 "value": "Roboto",
-                "collection": "primitive"
+                "collection": "primitive",
+                "type": "STRING"
               },
               "fontSize": {
-                "token": "typography/font-size/body/lg",
+                "token": "semantic/typography/font-size/body/lg",
                 "value": 16,
-                "collection": "semantic"
+                "collection": "semantic",
+                "type": "FLOAT"
               },
               "fontWeight": {
-                "token": "typography/font-weight/regular",
+                "token": "semantic/typography/font-weight/regular",
                 "value": 400,
-                "collection": "semantic"
+                "collection": "semantic",
+                "type": "FLOAT"
               },
               "lineHeight": {
-                "token": "typography/line-height/body/sm",
+                "token": "semantic/typography/line-height/body/sm",
                 "value": 16,
-                "collection": "semantic"
+                "collection": "semantic",
+                "type": "FLOAT"
               }
+            },
+            "borders": {
+              "width": 1
             }
           },
           "styles": [
@@ -94,6 +291,13 @@
               "type": "TEXT",
               "name": "Label/lg",
               "styleId": "S:0462ea2d02d3a721e1b1854e9e6cb49e6a1d4a4b,",
+              "layer": "label"
+            }
+          ],
+          "hardcodedValues": [
+            {
+              "property": "strokeWeight",
+              "value": 1,
               "layer": "label"
             }
           ]
@@ -107,12 +311,23 @@
       "tokens": {
         "spacing": {
           "gap": {
-            "token": "gap/input-selection/label",
+            "token": "semantic/gap/input-selection/label",
             "value": 8,
-            "collection": "semantic"
+            "collection": "semantic",
+            "type": "FLOAT"
           }
+        },
+        "borders": {
+          "width": 1
         }
       },
+      "hardcodedValues": [
+        {
+          "property": "strokeWeight",
+          "value": 1,
+          "layer": "state=default, size=md, isChecked=true, isDisabled=false, hasError=true"
+        }
+      ],
       "children": [
         {
           "id": "1087:775",
@@ -121,12 +336,43 @@
           "tokens": {
             "colors": {
               "stroke-0": {
-                "token": "color/border/interactive/error",
+                "token": "semantic/color/border/interactive/error",
                 "value": "#E64B41",
-                "collection": "semantic"
+                "collection": "semantic",
+                "type": "COLOR"
+              }
+            },
+            "borders": {
+              "radius": {
+                "token": "component/radiobutton/border-radius",
+                "value": 9999,
+                "collection": "component",
+                "type": "FLOAT"
+              },
+              "width": 1
+            },
+            "size": {
+              "width": {
+                "token": "component/radiobutton/size/md",
+                "value": 24,
+                "collection": "component",
+                "type": "FLOAT"
+              },
+              "height": {
+                "token": "component/radiobutton/size/md",
+                "value": 24,
+                "collection": "component",
+                "type": "FLOAT"
               }
             }
           },
+          "hardcodedValues": [
+            {
+              "property": "strokeWeight",
+              "value": 1,
+              "layer": "radio"
+            }
+          ],
           "children": [
             {
               "id": "1087:776",
@@ -135,12 +381,37 @@
               "tokens": {
                 "colors": {
                   "fill-0": {
-                    "token": "color/icon/feedback/error",
+                    "token": "semantic/color/icon/feedback/error",
                     "value": "#E64B41",
-                    "collection": "semantic"
+                    "collection": "semantic",
+                    "type": "COLOR"
+                  }
+                },
+                "borders": {
+                  "width": 1
+                },
+                "size": {
+                  "width": {
+                    "token": "component/radiobutton/size/radioIcon/md",
+                    "value": 12,
+                    "collection": "component",
+                    "type": "FLOAT"
+                  },
+                  "height": {
+                    "token": "component/radiobutton/size/radioIcon/md",
+                    "value": 12,
+                    "collection": "component",
+                    "type": "FLOAT"
                   }
                 }
-              }
+              },
+              "hardcodedValues": [
+                {
+                  "property": "strokeWeight",
+                  "value": 1,
+                  "layer": "radioIcon"
+                }
+              ]
             }
           ]
         },
@@ -151,32 +422,40 @@
           "tokens": {
             "colors": {
               "fill-0": {
-                "token": "color/text/error",
+                "token": "semantic/color/text/error",
                 "value": "#E64B41",
-                "collection": "semantic"
+                "collection": "semantic",
+                "type": "COLOR"
               }
             },
             "typography": {
               "fontFamily": {
-                "token": "typography/font-family/secondary",
+                "token": "primitive/typography/font-family/secondary",
                 "value": "Roboto",
-                "collection": "primitive"
+                "collection": "primitive",
+                "type": "STRING"
               },
               "fontSize": {
-                "token": "typography/font-size/body/lg",
+                "token": "semantic/typography/font-size/body/lg",
                 "value": 16,
-                "collection": "semantic"
+                "collection": "semantic",
+                "type": "FLOAT"
               },
               "fontWeight": {
-                "token": "typography/font-weight/regular",
+                "token": "semantic/typography/font-weight/regular",
                 "value": 400,
-                "collection": "semantic"
+                "collection": "semantic",
+                "type": "FLOAT"
               },
               "lineHeight": {
-                "token": "typography/line-height/body/sm",
+                "token": "semantic/typography/line-height/body/sm",
                 "value": 16,
-                "collection": "semantic"
+                "collection": "semantic",
+                "type": "FLOAT"
               }
+            },
+            "borders": {
+              "width": 1
             }
           },
           "styles": [
@@ -184,6 +463,13 @@
               "type": "TEXT",
               "name": "Label/lg",
               "styleId": "S:0462ea2d02d3a721e1b1854e9e6cb49e6a1d4a4b,",
+              "layer": "label"
+            }
+          ],
+          "hardcodedValues": [
+            {
+              "property": "strokeWeight",
+              "value": 1,
               "layer": "label"
             }
           ]
@@ -197,12 +483,23 @@
       "tokens": {
         "spacing": {
           "gap": {
-            "token": "gap/input-selection/label",
+            "token": "semantic/gap/input-selection/label",
             "value": 8,
-            "collection": "semantic"
+            "collection": "semantic",
+            "type": "FLOAT"
           }
+        },
+        "borders": {
+          "width": 1
         }
       },
+      "hardcodedValues": [
+        {
+          "property": "strokeWeight",
+          "value": 1,
+          "layer": "state=hover, size=md, isChecked=true, isDisabled=false, hasError=false"
+        }
+      ],
       "children": [
         {
           "id": "1087:762",
@@ -211,12 +508,43 @@
           "tokens": {
             "colors": {
               "stroke-0": {
-                "token": "color/border/interactive/hover",
+                "token": "semantic/color/border/interactive/hover",
                 "value": "#FFFFFF",
-                "collection": "semantic"
+                "collection": "semantic",
+                "type": "COLOR"
+              }
+            },
+            "borders": {
+              "radius": {
+                "token": "component/radiobutton/border-radius",
+                "value": 9999,
+                "collection": "component",
+                "type": "FLOAT"
+              },
+              "width": 1
+            },
+            "size": {
+              "width": {
+                "token": "component/radiobutton/size/md",
+                "value": 24,
+                "collection": "component",
+                "type": "FLOAT"
+              },
+              "height": {
+                "token": "component/radiobutton/size/md",
+                "value": 24,
+                "collection": "component",
+                "type": "FLOAT"
               }
             }
           },
+          "hardcodedValues": [
+            {
+              "property": "strokeWeight",
+              "value": 1,
+              "layer": "radio"
+            }
+          ],
           "children": [
             {
               "id": "1087:763",
@@ -225,12 +553,37 @@
               "tokens": {
                 "colors": {
                   "fill-0": {
-                    "token": "color/background/interactive/primary/hover",
+                    "token": "semantic/color/background/interactive/primary/hover",
                     "value": "#F7B636",
-                    "collection": "semantic"
+                    "collection": "semantic",
+                    "type": "COLOR"
+                  }
+                },
+                "borders": {
+                  "width": 1
+                },
+                "size": {
+                  "width": {
+                    "token": "component/radiobutton/size/radioIcon/md",
+                    "value": 12,
+                    "collection": "component",
+                    "type": "FLOAT"
+                  },
+                  "height": {
+                    "token": "component/radiobutton/size/radioIcon/md",
+                    "value": 12,
+                    "collection": "component",
+                    "type": "FLOAT"
                   }
                 }
-              }
+              },
+              "hardcodedValues": [
+                {
+                  "property": "strokeWeight",
+                  "value": 1,
+                  "layer": "radioIcon"
+                }
+              ]
             }
           ]
         },
@@ -241,32 +594,40 @@
           "tokens": {
             "colors": {
               "fill-0": {
-                "token": "color/text/primary",
+                "token": "semantic/color/text/primary",
                 "value": "#FFFFFF",
-                "collection": "semantic"
+                "collection": "semantic",
+                "type": "COLOR"
               }
             },
             "typography": {
               "fontFamily": {
-                "token": "typography/font-family/secondary",
+                "token": "primitive/typography/font-family/secondary",
                 "value": "Roboto",
-                "collection": "primitive"
+                "collection": "primitive",
+                "type": "STRING"
               },
               "fontSize": {
-                "token": "typography/font-size/body/lg",
+                "token": "semantic/typography/font-size/body/lg",
                 "value": 16,
-                "collection": "semantic"
+                "collection": "semantic",
+                "type": "FLOAT"
               },
               "fontWeight": {
-                "token": "typography/font-weight/regular",
+                "token": "semantic/typography/font-weight/regular",
                 "value": 400,
-                "collection": "semantic"
+                "collection": "semantic",
+                "type": "FLOAT"
               },
               "lineHeight": {
-                "token": "typography/line-height/body/sm",
+                "token": "semantic/typography/line-height/body/sm",
                 "value": 16,
-                "collection": "semantic"
+                "collection": "semantic",
+                "type": "FLOAT"
               }
+            },
+            "borders": {
+              "width": 1
             }
           },
           "styles": [
@@ -274,6 +635,13 @@
               "type": "TEXT",
               "name": "Label/lg",
               "styleId": "S:0462ea2d02d3a721e1b1854e9e6cb49e6a1d4a4b,",
+              "layer": "label"
+            }
+          ],
+          "hardcodedValues": [
+            {
+              "property": "strokeWeight",
+              "value": 1,
               "layer": "label"
             }
           ]
@@ -287,12 +655,23 @@
       "tokens": {
         "spacing": {
           "gap": {
-            "token": "gap/input-selection/label",
+            "token": "semantic/gap/input-selection/label",
             "value": 8,
-            "collection": "semantic"
+            "collection": "semantic",
+            "type": "FLOAT"
           }
+        },
+        "borders": {
+          "width": 1
         }
       },
+      "hardcodedValues": [
+        {
+          "property": "strokeWeight",
+          "value": 1,
+          "layer": "state=press, size=md, isChecked=true, isDisabled=false, hasError=false"
+        }
+      ],
       "children": [
         {
           "id": "1087:765",
@@ -301,12 +680,43 @@
           "tokens": {
             "colors": {
               "stroke-0": {
-                "token": "color/border/interactive/press",
+                "token": "semantic/color/border/interactive/press",
                 "value": "#FFFFFF",
-                "collection": "semantic"
+                "collection": "semantic",
+                "type": "COLOR"
+              }
+            },
+            "borders": {
+              "radius": {
+                "token": "component/radiobutton/border-radius",
+                "value": 9999,
+                "collection": "component",
+                "type": "FLOAT"
+              },
+              "width": 1
+            },
+            "size": {
+              "width": {
+                "token": "component/radiobutton/size/md",
+                "value": 24,
+                "collection": "component",
+                "type": "FLOAT"
+              },
+              "height": {
+                "token": "component/radiobutton/size/md",
+                "value": 24,
+                "collection": "component",
+                "type": "FLOAT"
               }
             }
           },
+          "hardcodedValues": [
+            {
+              "property": "strokeWeight",
+              "value": 1,
+              "layer": "radio"
+            }
+          ],
           "children": [
             {
               "id": "1087:766",
@@ -315,12 +725,37 @@
               "tokens": {
                 "colors": {
                   "fill-0": {
-                    "token": "color/background/interactive/primary/press",
+                    "token": "semantic/color/background/interactive/primary/press",
                     "value": "#F8C154",
-                    "collection": "semantic"
+                    "collection": "semantic",
+                    "type": "COLOR"
+                  }
+                },
+                "borders": {
+                  "width": 1
+                },
+                "size": {
+                  "width": {
+                    "token": "component/radiobutton/size/radioIcon/md",
+                    "value": 12,
+                    "collection": "component",
+                    "type": "FLOAT"
+                  },
+                  "height": {
+                    "token": "component/radiobutton/size/radioIcon/md",
+                    "value": 12,
+                    "collection": "component",
+                    "type": "FLOAT"
                   }
                 }
-              }
+              },
+              "hardcodedValues": [
+                {
+                  "property": "strokeWeight",
+                  "value": 1,
+                  "layer": "radioIcon"
+                }
+              ]
             }
           ]
         },
@@ -331,32 +766,40 @@
           "tokens": {
             "colors": {
               "fill-0": {
-                "token": "color/text/primary",
+                "token": "semantic/color/text/primary",
                 "value": "#FFFFFF",
-                "collection": "semantic"
+                "collection": "semantic",
+                "type": "COLOR"
               }
             },
             "typography": {
               "fontFamily": {
-                "token": "typography/font-family/secondary",
+                "token": "primitive/typography/font-family/secondary",
                 "value": "Roboto",
-                "collection": "primitive"
+                "collection": "primitive",
+                "type": "STRING"
               },
               "fontSize": {
-                "token": "typography/font-size/body/lg",
+                "token": "semantic/typography/font-size/body/lg",
                 "value": 16,
-                "collection": "semantic"
+                "collection": "semantic",
+                "type": "FLOAT"
               },
               "fontWeight": {
-                "token": "typography/font-weight/regular",
+                "token": "semantic/typography/font-weight/regular",
                 "value": 400,
-                "collection": "semantic"
+                "collection": "semantic",
+                "type": "FLOAT"
               },
               "lineHeight": {
-                "token": "typography/line-height/body/sm",
+                "token": "semantic/typography/line-height/body/sm",
                 "value": 16,
-                "collection": "semantic"
+                "collection": "semantic",
+                "type": "FLOAT"
               }
+            },
+            "borders": {
+              "width": 1
             }
           },
           "styles": [
@@ -364,6 +807,13 @@
               "type": "TEXT",
               "name": "Label/lg",
               "styleId": "S:0462ea2d02d3a721e1b1854e9e6cb49e6a1d4a4b,",
+              "layer": "label"
+            }
+          ],
+          "hardcodedValues": [
+            {
+              "property": "strokeWeight",
+              "value": 1,
               "layer": "label"
             }
           ]
@@ -377,12 +827,29 @@
       "tokens": {
         "spacing": {
           "gap": {
-            "token": "gap/input-selection/label",
+            "token": "semantic/gap/input-selection/label",
             "value": 8,
-            "collection": "semantic"
+            "collection": "semantic",
+            "type": "FLOAT"
           }
+        },
+        "borders": {
+          "width": 1
+        },
+        "opacity": {
+          "token": "semantic/opacity/disabled",
+          "value": 50,
+          "collection": "semantic",
+          "type": "FLOAT"
         }
       },
+      "hardcodedValues": [
+        {
+          "property": "strokeWeight",
+          "value": 1,
+          "layer": "state=press, size=md, isChecked=true, isDisabled=true, hasError=false"
+        }
+      ],
       "children": [
         {
           "id": "1087:768",
@@ -391,12 +858,43 @@
           "tokens": {
             "colors": {
               "stroke-0": {
-                "token": "color/border/interactive/default",
+                "token": "semantic/color/border/interactive/default",
                 "value": "#FFFFFF",
-                "collection": "semantic"
+                "collection": "semantic",
+                "type": "COLOR"
+              }
+            },
+            "borders": {
+              "radius": {
+                "token": "component/radiobutton/border-radius",
+                "value": 9999,
+                "collection": "component",
+                "type": "FLOAT"
+              },
+              "width": 1
+            },
+            "size": {
+              "width": {
+                "token": "component/radiobutton/size/md",
+                "value": 24,
+                "collection": "component",
+                "type": "FLOAT"
+              },
+              "height": {
+                "token": "component/radiobutton/size/md",
+                "value": 24,
+                "collection": "component",
+                "type": "FLOAT"
               }
             }
           },
+          "hardcodedValues": [
+            {
+              "property": "strokeWeight",
+              "value": 1,
+              "layer": "radio"
+            }
+          ],
           "children": [
             {
               "id": "1087:769",
@@ -405,12 +903,37 @@
               "tokens": {
                 "colors": {
                   "fill-0": {
-                    "token": "color/background/interactive/primary/default",
+                    "token": "semantic/color/background/interactive/primary/default",
                     "value": "#F6A913",
-                    "collection": "semantic"
+                    "collection": "semantic",
+                    "type": "COLOR"
+                  }
+                },
+                "borders": {
+                  "width": 1
+                },
+                "size": {
+                  "width": {
+                    "token": "component/radiobutton/size/radioIcon/md",
+                    "value": 12,
+                    "collection": "component",
+                    "type": "FLOAT"
+                  },
+                  "height": {
+                    "token": "component/radiobutton/size/radioIcon/md",
+                    "value": 12,
+                    "collection": "component",
+                    "type": "FLOAT"
                   }
                 }
-              }
+              },
+              "hardcodedValues": [
+                {
+                  "property": "strokeWeight",
+                  "value": 1,
+                  "layer": "radioIcon"
+                }
+              ]
             }
           ]
         },
@@ -421,32 +944,40 @@
           "tokens": {
             "colors": {
               "fill-0": {
-                "token": "color/text/primary",
+                "token": "semantic/color/text/primary",
                 "value": "#FFFFFF",
-                "collection": "semantic"
+                "collection": "semantic",
+                "type": "COLOR"
               }
             },
             "typography": {
               "fontFamily": {
-                "token": "typography/font-family/secondary",
+                "token": "primitive/typography/font-family/secondary",
                 "value": "Roboto",
-                "collection": "primitive"
+                "collection": "primitive",
+                "type": "STRING"
               },
               "fontSize": {
-                "token": "typography/font-size/body/lg",
+                "token": "semantic/typography/font-size/body/lg",
                 "value": 16,
-                "collection": "semantic"
+                "collection": "semantic",
+                "type": "FLOAT"
               },
               "fontWeight": {
-                "token": "typography/font-weight/regular",
+                "token": "semantic/typography/font-weight/regular",
                 "value": 400,
-                "collection": "semantic"
+                "collection": "semantic",
+                "type": "FLOAT"
               },
               "lineHeight": {
-                "token": "typography/line-height/body/sm",
+                "token": "semantic/typography/line-height/body/sm",
                 "value": 16,
-                "collection": "semantic"
+                "collection": "semantic",
+                "type": "FLOAT"
               }
+            },
+            "borders": {
+              "width": 1
             }
           },
           "styles": [
@@ -454,6 +985,13 @@
               "type": "TEXT",
               "name": "Label/lg",
               "styleId": "S:0462ea2d02d3a721e1b1854e9e6cb49e6a1d4a4b,",
+              "layer": "label"
+            }
+          ],
+          "hardcodedValues": [
+            {
+              "property": "strokeWeight",
+              "value": 1,
               "layer": "label"
             }
           ]
@@ -467,12 +1005,23 @@
       "tokens": {
         "spacing": {
           "gap": {
-            "token": "gap/input-selection/label",
+            "token": "semantic/gap/input-selection/label",
             "value": 8,
-            "collection": "semantic"
+            "collection": "semantic",
+            "type": "FLOAT"
           }
+        },
+        "borders": {
+          "width": 1
         }
       },
+      "hardcodedValues": [
+        {
+          "property": "strokeWeight",
+          "value": 1,
+          "layer": "state=default, size=md, isChecked=false, isDisabled=false, hasError=false"
+        }
+      ],
       "children": [
         {
           "id": "1087:793",
@@ -481,12 +1030,43 @@
           "tokens": {
             "colors": {
               "stroke-0": {
-                "token": "color/border/interactive/default",
+                "token": "semantic/color/border/interactive/default",
                 "value": "#FFFFFF",
-                "collection": "semantic"
+                "collection": "semantic",
+                "type": "COLOR"
+              }
+            },
+            "borders": {
+              "radius": {
+                "token": "component/radiobutton/border-radius",
+                "value": 9999,
+                "collection": "component",
+                "type": "FLOAT"
+              },
+              "width": 1
+            },
+            "size": {
+              "width": {
+                "token": "component/radiobutton/size/md",
+                "value": 24,
+                "collection": "component",
+                "type": "FLOAT"
+              },
+              "height": {
+                "token": "component/radiobutton/size/md",
+                "value": 24,
+                "collection": "component",
+                "type": "FLOAT"
               }
             }
           },
+          "hardcodedValues": [
+            {
+              "property": "strokeWeight",
+              "value": 1,
+              "layer": "radio"
+            }
+          ],
           "children": [
             {
               "id": "1087:794",
@@ -495,12 +1075,37 @@
               "tokens": {
                 "colors": {
                   "fill-0": {
-                    "token": "color/background/interactive/primary/default",
+                    "token": "semantic/color/background/interactive/primary/default",
                     "value": "#F6A913",
-                    "collection": "semantic"
+                    "collection": "semantic",
+                    "type": "COLOR"
+                  }
+                },
+                "borders": {
+                  "width": 1
+                },
+                "size": {
+                  "width": {
+                    "token": "component/radiobutton/size/radioIcon/md",
+                    "value": 12,
+                    "collection": "component",
+                    "type": "FLOAT"
+                  },
+                  "height": {
+                    "token": "component/radiobutton/size/radioIcon/md",
+                    "value": 12,
+                    "collection": "component",
+                    "type": "FLOAT"
                   }
                 }
-              }
+              },
+              "hardcodedValues": [
+                {
+                  "property": "strokeWeight",
+                  "value": 1,
+                  "layer": "radioIcon"
+                }
+              ]
             }
           ]
         },
@@ -511,32 +1116,40 @@
           "tokens": {
             "colors": {
               "fill-0": {
-                "token": "color/text/primary",
+                "token": "semantic/color/text/primary",
                 "value": "#FFFFFF",
-                "collection": "semantic"
+                "collection": "semantic",
+                "type": "COLOR"
               }
             },
             "typography": {
               "fontFamily": {
-                "token": "typography/font-family/secondary",
+                "token": "primitive/typography/font-family/secondary",
                 "value": "Roboto",
-                "collection": "primitive"
+                "collection": "primitive",
+                "type": "STRING"
               },
               "fontSize": {
-                "token": "typography/font-size/body/lg",
+                "token": "semantic/typography/font-size/body/lg",
                 "value": 16,
-                "collection": "semantic"
+                "collection": "semantic",
+                "type": "FLOAT"
               },
               "fontWeight": {
-                "token": "typography/font-weight/regular",
+                "token": "semantic/typography/font-weight/regular",
                 "value": 400,
-                "collection": "semantic"
+                "collection": "semantic",
+                "type": "FLOAT"
               },
               "lineHeight": {
-                "token": "typography/line-height/body/sm",
+                "token": "semantic/typography/line-height/body/sm",
                 "value": 16,
-                "collection": "semantic"
+                "collection": "semantic",
+                "type": "FLOAT"
               }
+            },
+            "borders": {
+              "width": 1
             }
           },
           "styles": [
@@ -544,6 +1157,13 @@
               "type": "TEXT",
               "name": "Label/lg",
               "styleId": "S:0462ea2d02d3a721e1b1854e9e6cb49e6a1d4a4b,",
+              "layer": "label"
+            }
+          ],
+          "hardcodedValues": [
+            {
+              "property": "strokeWeight",
+              "value": 1,
               "layer": "label"
             }
           ]
@@ -557,12 +1177,23 @@
       "tokens": {
         "spacing": {
           "gap": {
-            "token": "gap/input-selection/label",
+            "token": "semantic/gap/input-selection/label",
             "value": 8,
-            "collection": "semantic"
+            "collection": "semantic",
+            "type": "FLOAT"
           }
+        },
+        "borders": {
+          "width": 1
         }
       },
+      "hardcodedValues": [
+        {
+          "property": "strokeWeight",
+          "value": 1,
+          "layer": "state=hover, size=md, isChecked=false, isDisabled=false, hasError=false"
+        }
+      ],
       "children": [
         {
           "id": "1087:796",
@@ -571,12 +1202,43 @@
           "tokens": {
             "colors": {
               "stroke-0": {
-                "token": "color/border/interactive/hover",
+                "token": "semantic/color/border/interactive/hover",
                 "value": "#FFFFFF",
-                "collection": "semantic"
+                "collection": "semantic",
+                "type": "COLOR"
+              }
+            },
+            "borders": {
+              "radius": {
+                "token": "component/radiobutton/border-radius",
+                "value": 9999,
+                "collection": "component",
+                "type": "FLOAT"
+              },
+              "width": 1
+            },
+            "size": {
+              "width": {
+                "token": "component/radiobutton/size/md",
+                "value": 24,
+                "collection": "component",
+                "type": "FLOAT"
+              },
+              "height": {
+                "token": "component/radiobutton/size/md",
+                "value": 24,
+                "collection": "component",
+                "type": "FLOAT"
               }
             }
           },
+          "hardcodedValues": [
+            {
+              "property": "strokeWeight",
+              "value": 1,
+              "layer": "radio"
+            }
+          ],
           "children": [
             {
               "id": "1087:797",
@@ -585,12 +1247,37 @@
               "tokens": {
                 "colors": {
                   "fill-0": {
-                    "token": "color/background/interactive/primary/default",
+                    "token": "semantic/color/background/interactive/primary/default",
                     "value": "#F6A913",
-                    "collection": "semantic"
+                    "collection": "semantic",
+                    "type": "COLOR"
+                  }
+                },
+                "borders": {
+                  "width": 1
+                },
+                "size": {
+                  "width": {
+                    "token": "component/radiobutton/size/radioIcon/md",
+                    "value": 12,
+                    "collection": "component",
+                    "type": "FLOAT"
+                  },
+                  "height": {
+                    "token": "component/radiobutton/size/radioIcon/md",
+                    "value": 12,
+                    "collection": "component",
+                    "type": "FLOAT"
                   }
                 }
-              }
+              },
+              "hardcodedValues": [
+                {
+                  "property": "strokeWeight",
+                  "value": 1,
+                  "layer": "radioIcon"
+                }
+              ]
             }
           ]
         },
@@ -601,32 +1288,40 @@
           "tokens": {
             "colors": {
               "fill-0": {
-                "token": "color/text/primary",
+                "token": "semantic/color/text/primary",
                 "value": "#FFFFFF",
-                "collection": "semantic"
+                "collection": "semantic",
+                "type": "COLOR"
               }
             },
             "typography": {
               "fontFamily": {
-                "token": "typography/font-family/secondary",
+                "token": "primitive/typography/font-family/secondary",
                 "value": "Roboto",
-                "collection": "primitive"
+                "collection": "primitive",
+                "type": "STRING"
               },
               "fontSize": {
-                "token": "typography/font-size/body/lg",
+                "token": "semantic/typography/font-size/body/lg",
                 "value": 16,
-                "collection": "semantic"
+                "collection": "semantic",
+                "type": "FLOAT"
               },
               "fontWeight": {
-                "token": "typography/font-weight/regular",
+                "token": "semantic/typography/font-weight/regular",
                 "value": 400,
-                "collection": "semantic"
+                "collection": "semantic",
+                "type": "FLOAT"
               },
               "lineHeight": {
-                "token": "typography/line-height/body/sm",
+                "token": "semantic/typography/line-height/body/sm",
                 "value": 16,
-                "collection": "semantic"
+                "collection": "semantic",
+                "type": "FLOAT"
               }
+            },
+            "borders": {
+              "width": 1
             }
           },
           "styles": [
@@ -634,6 +1329,13 @@
               "type": "TEXT",
               "name": "Label/lg",
               "styleId": "S:0462ea2d02d3a721e1b1854e9e6cb49e6a1d4a4b,",
+              "layer": "label"
+            }
+          ],
+          "hardcodedValues": [
+            {
+              "property": "strokeWeight",
+              "value": 1,
               "layer": "label"
             }
           ]
@@ -647,12 +1349,23 @@
       "tokens": {
         "spacing": {
           "gap": {
-            "token": "gap/input-selection/label",
+            "token": "semantic/gap/input-selection/label",
             "value": 8,
-            "collection": "semantic"
+            "collection": "semantic",
+            "type": "FLOAT"
           }
+        },
+        "borders": {
+          "width": 1
         }
       },
+      "hardcodedValues": [
+        {
+          "property": "strokeWeight",
+          "value": 1,
+          "layer": "state=press, size=md, isChecked=false, isDisabled=false, hasError=false"
+        }
+      ],
       "children": [
         {
           "id": "1087:799",
@@ -661,12 +1374,43 @@
           "tokens": {
             "colors": {
               "stroke-0": {
-                "token": "color/border/interactive/press",
+                "token": "semantic/color/border/interactive/press",
                 "value": "#FFFFFF",
-                "collection": "semantic"
+                "collection": "semantic",
+                "type": "COLOR"
+              }
+            },
+            "borders": {
+              "radius": {
+                "token": "component/radiobutton/border-radius",
+                "value": 9999,
+                "collection": "component",
+                "type": "FLOAT"
+              },
+              "width": 1
+            },
+            "size": {
+              "width": {
+                "token": "component/radiobutton/size/md",
+                "value": 24,
+                "collection": "component",
+                "type": "FLOAT"
+              },
+              "height": {
+                "token": "component/radiobutton/size/md",
+                "value": 24,
+                "collection": "component",
+                "type": "FLOAT"
               }
             }
           },
+          "hardcodedValues": [
+            {
+              "property": "strokeWeight",
+              "value": 1,
+              "layer": "radio"
+            }
+          ],
           "children": [
             {
               "id": "1087:800",
@@ -675,12 +1419,37 @@
               "tokens": {
                 "colors": {
                   "fill-0": {
-                    "token": "color/background/interactive/primary/default",
+                    "token": "semantic/color/background/interactive/primary/default",
                     "value": "#F6A913",
-                    "collection": "semantic"
+                    "collection": "semantic",
+                    "type": "COLOR"
+                  }
+                },
+                "borders": {
+                  "width": 1
+                },
+                "size": {
+                  "width": {
+                    "token": "component/radiobutton/size/radioIcon/md",
+                    "value": 12,
+                    "collection": "component",
+                    "type": "FLOAT"
+                  },
+                  "height": {
+                    "token": "component/radiobutton/size/radioIcon/md",
+                    "value": 12,
+                    "collection": "component",
+                    "type": "FLOAT"
                   }
                 }
-              }
+              },
+              "hardcodedValues": [
+                {
+                  "property": "strokeWeight",
+                  "value": 1,
+                  "layer": "radioIcon"
+                }
+              ]
             }
           ]
         },
@@ -691,32 +1460,40 @@
           "tokens": {
             "colors": {
               "fill-0": {
-                "token": "color/text/primary",
+                "token": "semantic/color/text/primary",
                 "value": "#FFFFFF",
-                "collection": "semantic"
+                "collection": "semantic",
+                "type": "COLOR"
               }
             },
             "typography": {
               "fontFamily": {
-                "token": "typography/font-family/secondary",
+                "token": "primitive/typography/font-family/secondary",
                 "value": "Roboto",
-                "collection": "primitive"
+                "collection": "primitive",
+                "type": "STRING"
               },
               "fontSize": {
-                "token": "typography/font-size/body/lg",
+                "token": "semantic/typography/font-size/body/lg",
                 "value": 16,
-                "collection": "semantic"
+                "collection": "semantic",
+                "type": "FLOAT"
               },
               "fontWeight": {
-                "token": "typography/font-weight/regular",
+                "token": "semantic/typography/font-weight/regular",
                 "value": 400,
-                "collection": "semantic"
+                "collection": "semantic",
+                "type": "FLOAT"
               },
               "lineHeight": {
-                "token": "typography/line-height/body/sm",
+                "token": "semantic/typography/line-height/body/sm",
                 "value": 16,
-                "collection": "semantic"
+                "collection": "semantic",
+                "type": "FLOAT"
               }
+            },
+            "borders": {
+              "width": 1
             }
           },
           "styles": [
@@ -724,6 +1501,13 @@
               "type": "TEXT",
               "name": "Label/lg",
               "styleId": "S:0462ea2d02d3a721e1b1854e9e6cb49e6a1d4a4b,",
+              "layer": "label"
+            }
+          ],
+          "hardcodedValues": [
+            {
+              "property": "strokeWeight",
+              "value": 1,
               "layer": "label"
             }
           ]
@@ -737,12 +1521,29 @@
       "tokens": {
         "spacing": {
           "gap": {
-            "token": "gap/input-selection/label",
+            "token": "semantic/gap/input-selection/label",
             "value": 8,
-            "collection": "semantic"
+            "collection": "semantic",
+            "type": "FLOAT"
           }
+        },
+        "borders": {
+          "width": 1
+        },
+        "opacity": {
+          "token": "semantic/opacity/disabled",
+          "value": 50,
+          "collection": "semantic",
+          "type": "FLOAT"
         }
       },
+      "hardcodedValues": [
+        {
+          "property": "strokeWeight",
+          "value": 1,
+          "layer": "state=press, size=md, isChecked=false, isDisabled=true, hasError=false"
+        }
+      ],
       "children": [
         {
           "id": "1087:802",
@@ -751,12 +1552,43 @@
           "tokens": {
             "colors": {
               "stroke-0": {
-                "token": "color/border/interactive/default",
+                "token": "semantic/color/border/interactive/default",
                 "value": "#FFFFFF",
-                "collection": "semantic"
+                "collection": "semantic",
+                "type": "COLOR"
+              }
+            },
+            "borders": {
+              "radius": {
+                "token": "component/radiobutton/border-radius",
+                "value": 9999,
+                "collection": "component",
+                "type": "FLOAT"
+              },
+              "width": 1
+            },
+            "size": {
+              "width": {
+                "token": "component/radiobutton/size/md",
+                "value": 24,
+                "collection": "component",
+                "type": "FLOAT"
+              },
+              "height": {
+                "token": "component/radiobutton/size/md",
+                "value": 24,
+                "collection": "component",
+                "type": "FLOAT"
               }
             }
           },
+          "hardcodedValues": [
+            {
+              "property": "strokeWeight",
+              "value": 1,
+              "layer": "radio"
+            }
+          ],
           "children": [
             {
               "id": "1087:803",
@@ -765,12 +1597,37 @@
               "tokens": {
                 "colors": {
                   "fill-0": {
-                    "token": "color/background/interactive/primary/default",
+                    "token": "semantic/color/background/interactive/primary/default",
                     "value": "#F6A913",
-                    "collection": "semantic"
+                    "collection": "semantic",
+                    "type": "COLOR"
+                  }
+                },
+                "borders": {
+                  "width": 1
+                },
+                "size": {
+                  "width": {
+                    "token": "component/radiobutton/size/radioIcon/md",
+                    "value": 12,
+                    "collection": "component",
+                    "type": "FLOAT"
+                  },
+                  "height": {
+                    "token": "component/radiobutton/size/radioIcon/md",
+                    "value": 12,
+                    "collection": "component",
+                    "type": "FLOAT"
                   }
                 }
-              }
+              },
+              "hardcodedValues": [
+                {
+                  "property": "strokeWeight",
+                  "value": 1,
+                  "layer": "radioIcon"
+                }
+              ]
             }
           ]
         },
@@ -781,32 +1638,40 @@
           "tokens": {
             "colors": {
               "fill-0": {
-                "token": "color/text/primary",
+                "token": "semantic/color/text/primary",
                 "value": "#FFFFFF",
-                "collection": "semantic"
+                "collection": "semantic",
+                "type": "COLOR"
               }
             },
             "typography": {
               "fontFamily": {
-                "token": "typography/font-family/secondary",
+                "token": "primitive/typography/font-family/secondary",
                 "value": "Roboto",
-                "collection": "primitive"
+                "collection": "primitive",
+                "type": "STRING"
               },
               "fontSize": {
-                "token": "typography/font-size/body/lg",
+                "token": "semantic/typography/font-size/body/lg",
                 "value": 16,
-                "collection": "semantic"
+                "collection": "semantic",
+                "type": "FLOAT"
               },
               "fontWeight": {
-                "token": "typography/font-weight/regular",
+                "token": "semantic/typography/font-weight/regular",
                 "value": 400,
-                "collection": "semantic"
+                "collection": "semantic",
+                "type": "FLOAT"
               },
               "lineHeight": {
-                "token": "typography/line-height/body/sm",
+                "token": "semantic/typography/line-height/body/sm",
                 "value": 16,
-                "collection": "semantic"
+                "collection": "semantic",
+                "type": "FLOAT"
               }
+            },
+            "borders": {
+              "width": 1
             }
           },
           "styles": [
@@ -814,6 +1679,13 @@
               "type": "TEXT",
               "name": "Label/lg",
               "styleId": "S:0462ea2d02d3a721e1b1854e9e6cb49e6a1d4a4b,",
+              "layer": "label"
+            }
+          ],
+          "hardcodedValues": [
+            {
+              "property": "strokeWeight",
+              "value": 1,
               "layer": "label"
             }
           ]
@@ -827,12 +1699,23 @@
       "tokens": {
         "spacing": {
           "gap": {
-            "token": "gap/input-selection/label",
+            "token": "semantic/gap/input-selection/label",
             "value": 8,
-            "collection": "semantic"
+            "collection": "semantic",
+            "type": "FLOAT"
           }
+        },
+        "borders": {
+          "width": 1
         }
       },
+      "hardcodedValues": [
+        {
+          "property": "strokeWeight",
+          "value": 1,
+          "layer": "state=default, size=md, isChecked=false, isDisabled=false, hasError=true"
+        }
+      ],
       "children": [
         {
           "id": "1087:805",
@@ -841,12 +1724,43 @@
           "tokens": {
             "colors": {
               "stroke-0": {
-                "token": "color/border/interactive/error",
+                "token": "semantic/color/border/interactive/error",
                 "value": "#E64B41",
-                "collection": "semantic"
+                "collection": "semantic",
+                "type": "COLOR"
+              }
+            },
+            "borders": {
+              "radius": {
+                "token": "component/radiobutton/border-radius",
+                "value": 9999,
+                "collection": "component",
+                "type": "FLOAT"
+              },
+              "width": 1
+            },
+            "size": {
+              "width": {
+                "token": "component/radiobutton/size/md",
+                "value": 24,
+                "collection": "component",
+                "type": "FLOAT"
+              },
+              "height": {
+                "token": "component/radiobutton/size/md",
+                "value": 24,
+                "collection": "component",
+                "type": "FLOAT"
               }
             }
           },
+          "hardcodedValues": [
+            {
+              "property": "strokeWeight",
+              "value": 1,
+              "layer": "radio"
+            }
+          ],
           "children": [
             {
               "id": "1087:806",
@@ -855,12 +1769,37 @@
               "tokens": {
                 "colors": {
                   "fill-0": {
-                    "token": "color/background/interactive/primary/default",
+                    "token": "semantic/color/background/interactive/primary/default",
                     "value": "#F6A913",
-                    "collection": "semantic"
+                    "collection": "semantic",
+                    "type": "COLOR"
+                  }
+                },
+                "borders": {
+                  "width": 1
+                },
+                "size": {
+                  "width": {
+                    "token": "component/radiobutton/size/radioIcon/md",
+                    "value": 12,
+                    "collection": "component",
+                    "type": "FLOAT"
+                  },
+                  "height": {
+                    "token": "component/radiobutton/size/radioIcon/md",
+                    "value": 12,
+                    "collection": "component",
+                    "type": "FLOAT"
                   }
                 }
-              }
+              },
+              "hardcodedValues": [
+                {
+                  "property": "strokeWeight",
+                  "value": 1,
+                  "layer": "radioIcon"
+                }
+              ]
             }
           ]
         },
@@ -871,32 +1810,40 @@
           "tokens": {
             "colors": {
               "fill-0": {
-                "token": "color/text/error",
+                "token": "semantic/color/text/error",
                 "value": "#E64B41",
-                "collection": "semantic"
+                "collection": "semantic",
+                "type": "COLOR"
               }
             },
             "typography": {
               "fontFamily": {
-                "token": "typography/font-family/secondary",
+                "token": "primitive/typography/font-family/secondary",
                 "value": "Roboto",
-                "collection": "primitive"
+                "collection": "primitive",
+                "type": "STRING"
               },
               "fontSize": {
-                "token": "typography/font-size/body/lg",
+                "token": "semantic/typography/font-size/body/lg",
                 "value": 16,
-                "collection": "semantic"
+                "collection": "semantic",
+                "type": "FLOAT"
               },
               "fontWeight": {
-                "token": "typography/font-weight/regular",
+                "token": "semantic/typography/font-weight/regular",
                 "value": 400,
-                "collection": "semantic"
+                "collection": "semantic",
+                "type": "FLOAT"
               },
               "lineHeight": {
-                "token": "typography/line-height/body/sm",
+                "token": "semantic/typography/line-height/body/sm",
                 "value": 16,
-                "collection": "semantic"
+                "collection": "semantic",
+                "type": "FLOAT"
               }
+            },
+            "borders": {
+              "width": 1
             }
           },
           "styles": [
@@ -904,6 +1851,13 @@
               "type": "TEXT",
               "name": "Label/lg",
               "styleId": "S:0462ea2d02d3a721e1b1854e9e6cb49e6a1d4a4b,",
+              "layer": "label"
+            }
+          ],
+          "hardcodedValues": [
+            {
+              "property": "strokeWeight",
+              "value": 1,
               "layer": "label"
             }
           ]
@@ -917,12 +1871,23 @@
       "tokens": {
         "spacing": {
           "gap": {
-            "token": "gap/input-selection/label",
+            "token": "semantic/gap/input-selection/label",
             "value": 8,
-            "collection": "semantic"
+            "collection": "semantic",
+            "type": "FLOAT"
           }
+        },
+        "borders": {
+          "width": 1
         }
       },
+      "hardcodedValues": [
+        {
+          "property": "strokeWeight",
+          "value": 1,
+          "layer": "state=default, size=sm, isChecked=true, isDisabled=false, hasError=false"
+        }
+      ],
       "children": [
         {
           "id": "1087:808",
@@ -931,12 +1896,43 @@
           "tokens": {
             "colors": {
               "stroke-0": {
-                "token": "color/border/interactive/default",
+                "token": "semantic/color/border/interactive/default",
                 "value": "#FFFFFF",
-                "collection": "semantic"
+                "collection": "semantic",
+                "type": "COLOR"
+              }
+            },
+            "borders": {
+              "radius": {
+                "token": "component/radiobutton/border-radius",
+                "value": 9999,
+                "collection": "component",
+                "type": "FLOAT"
+              },
+              "width": 1
+            },
+            "size": {
+              "width": {
+                "token": "component/radiobutton/size/sm",
+                "value": 18,
+                "collection": "component",
+                "type": "FLOAT"
+              },
+              "height": {
+                "token": "component/radiobutton/size/sm",
+                "value": 18,
+                "collection": "component",
+                "type": "FLOAT"
               }
             }
           },
+          "hardcodedValues": [
+            {
+              "property": "strokeWeight",
+              "value": 1,
+              "layer": "radio"
+            }
+          ],
           "children": [
             {
               "id": "1087:809",
@@ -945,12 +1941,37 @@
               "tokens": {
                 "colors": {
                   "fill-0": {
-                    "token": "color/background/interactive/primary/default",
+                    "token": "semantic/color/background/interactive/primary/default",
                     "value": "#F6A913",
-                    "collection": "semantic"
+                    "collection": "semantic",
+                    "type": "COLOR"
+                  }
+                },
+                "borders": {
+                  "width": 1
+                },
+                "size": {
+                  "width": {
+                    "token": "component/radiobutton/size/radioIcon/sm",
+                    "value": 8,
+                    "collection": "component",
+                    "type": "FLOAT"
+                  },
+                  "height": {
+                    "token": "component/radiobutton/size/radioIcon/sm",
+                    "value": 8,
+                    "collection": "component",
+                    "type": "FLOAT"
                   }
                 }
-              }
+              },
+              "hardcodedValues": [
+                {
+                  "property": "strokeWeight",
+                  "value": 1,
+                  "layer": "radioIcon"
+                }
+              ]
             }
           ]
         },
@@ -961,32 +1982,40 @@
           "tokens": {
             "colors": {
               "fill-0": {
-                "token": "color/text/primary",
+                "token": "semantic/color/text/primary",
                 "value": "#FFFFFF",
-                "collection": "semantic"
+                "collection": "semantic",
+                "type": "COLOR"
               }
             },
             "typography": {
               "fontFamily": {
-                "token": "typography/font-family/secondary",
+                "token": "primitive/typography/font-family/secondary",
                 "value": "Roboto",
-                "collection": "primitive"
+                "collection": "primitive",
+                "type": "STRING"
               },
               "fontSize": {
-                "token": "typography/font-size/body/lg",
+                "token": "semantic/typography/font-size/body/lg",
                 "value": 16,
-                "collection": "semantic"
+                "collection": "semantic",
+                "type": "FLOAT"
               },
               "fontWeight": {
-                "token": "typography/font-weight/regular",
+                "token": "semantic/typography/font-weight/regular",
                 "value": 400,
-                "collection": "semantic"
+                "collection": "semantic",
+                "type": "FLOAT"
               },
               "lineHeight": {
-                "token": "typography/line-height/body/sm",
+                "token": "semantic/typography/line-height/body/sm",
                 "value": 16,
-                "collection": "semantic"
+                "collection": "semantic",
+                "type": "FLOAT"
               }
+            },
+            "borders": {
+              "width": 1
             }
           },
           "styles": [
@@ -994,6 +2023,13 @@
               "type": "TEXT",
               "name": "Label/lg",
               "styleId": "S:0462ea2d02d3a721e1b1854e9e6cb49e6a1d4a4b,",
+              "layer": "label"
+            }
+          ],
+          "hardcodedValues": [
+            {
+              "property": "strokeWeight",
+              "value": 1,
               "layer": "label"
             }
           ]
@@ -1007,12 +2043,23 @@
       "tokens": {
         "spacing": {
           "gap": {
-            "token": "gap/input-selection/label",
+            "token": "semantic/gap/input-selection/label",
             "value": 8,
-            "collection": "semantic"
+            "collection": "semantic",
+            "type": "FLOAT"
           }
+        },
+        "borders": {
+          "width": 1
         }
       },
+      "hardcodedValues": [
+        {
+          "property": "strokeWeight",
+          "value": 1,
+          "layer": "state=hover, size=sm, isChecked=true, isDisabled=false, hasError=false"
+        }
+      ],
       "children": [
         {
           "id": "1088:407",
@@ -1021,12 +2068,43 @@
           "tokens": {
             "colors": {
               "stroke-0": {
-                "token": "color/border/interactive/hover",
+                "token": "semantic/color/border/interactive/hover",
                 "value": "#FFFFFF",
-                "collection": "semantic"
+                "collection": "semantic",
+                "type": "COLOR"
+              }
+            },
+            "borders": {
+              "radius": {
+                "token": "component/radiobutton/border-radius",
+                "value": 9999,
+                "collection": "component",
+                "type": "FLOAT"
+              },
+              "width": 1
+            },
+            "size": {
+              "width": {
+                "token": "component/radiobutton/size/sm",
+                "value": 18,
+                "collection": "component",
+                "type": "FLOAT"
+              },
+              "height": {
+                "token": "component/radiobutton/size/sm",
+                "value": 18,
+                "collection": "component",
+                "type": "FLOAT"
               }
             }
           },
+          "hardcodedValues": [
+            {
+              "property": "strokeWeight",
+              "value": 1,
+              "layer": "radio"
+            }
+          ],
           "children": [
             {
               "id": "1088:408",
@@ -1035,12 +2113,37 @@
               "tokens": {
                 "colors": {
                   "fill-0": {
-                    "token": "color/background/interactive/primary/hover",
+                    "token": "semantic/color/background/interactive/primary/hover",
                     "value": "#F7B636",
-                    "collection": "semantic"
+                    "collection": "semantic",
+                    "type": "COLOR"
+                  }
+                },
+                "borders": {
+                  "width": 1
+                },
+                "size": {
+                  "width": {
+                    "token": "component/radiobutton/size/radioIcon/sm",
+                    "value": 8,
+                    "collection": "component",
+                    "type": "FLOAT"
+                  },
+                  "height": {
+                    "token": "component/radiobutton/size/radioIcon/sm",
+                    "value": 8,
+                    "collection": "component",
+                    "type": "FLOAT"
                   }
                 }
-              }
+              },
+              "hardcodedValues": [
+                {
+                  "property": "strokeWeight",
+                  "value": 1,
+                  "layer": "radioIcon"
+                }
+              ]
             }
           ]
         },
@@ -1051,32 +2154,40 @@
           "tokens": {
             "colors": {
               "fill-0": {
-                "token": "color/text/primary",
+                "token": "semantic/color/text/primary",
                 "value": "#FFFFFF",
-                "collection": "semantic"
+                "collection": "semantic",
+                "type": "COLOR"
               }
             },
             "typography": {
               "fontFamily": {
-                "token": "typography/font-family/secondary",
+                "token": "primitive/typography/font-family/secondary",
                 "value": "Roboto",
-                "collection": "primitive"
+                "collection": "primitive",
+                "type": "STRING"
               },
               "fontSize": {
-                "token": "typography/font-size/body/lg",
+                "token": "semantic/typography/font-size/body/lg",
                 "value": 16,
-                "collection": "semantic"
+                "collection": "semantic",
+                "type": "FLOAT"
               },
               "fontWeight": {
-                "token": "typography/font-weight/regular",
+                "token": "semantic/typography/font-weight/regular",
                 "value": 400,
-                "collection": "semantic"
+                "collection": "semantic",
+                "type": "FLOAT"
               },
               "lineHeight": {
-                "token": "typography/line-height/body/sm",
+                "token": "semantic/typography/line-height/body/sm",
                 "value": 16,
-                "collection": "semantic"
+                "collection": "semantic",
+                "type": "FLOAT"
               }
+            },
+            "borders": {
+              "width": 1
             }
           },
           "styles": [
@@ -1084,6 +2195,13 @@
               "type": "TEXT",
               "name": "Label/lg",
               "styleId": "S:0462ea2d02d3a721e1b1854e9e6cb49e6a1d4a4b,",
+              "layer": "label"
+            }
+          ],
+          "hardcodedValues": [
+            {
+              "property": "strokeWeight",
+              "value": 1,
               "layer": "label"
             }
           ]
@@ -1097,12 +2215,23 @@
       "tokens": {
         "spacing": {
           "gap": {
-            "token": "gap/input-selection/label",
+            "token": "semantic/gap/input-selection/label",
             "value": 8,
-            "collection": "semantic"
+            "collection": "semantic",
+            "type": "FLOAT"
           }
+        },
+        "borders": {
+          "width": 1
         }
       },
+      "hardcodedValues": [
+        {
+          "property": "strokeWeight",
+          "value": 1,
+          "layer": "state=press, size=sm, isChecked=true, isDisabled=false, hasError=false"
+        }
+      ],
       "children": [
         {
           "id": "1088:410",
@@ -1111,12 +2240,43 @@
           "tokens": {
             "colors": {
               "stroke-0": {
-                "token": "color/border/interactive/press",
+                "token": "semantic/color/border/interactive/press",
                 "value": "#FFFFFF",
-                "collection": "semantic"
+                "collection": "semantic",
+                "type": "COLOR"
+              }
+            },
+            "borders": {
+              "radius": {
+                "token": "component/radiobutton/border-radius",
+                "value": 9999,
+                "collection": "component",
+                "type": "FLOAT"
+              },
+              "width": 1
+            },
+            "size": {
+              "width": {
+                "token": "component/radiobutton/size/sm",
+                "value": 18,
+                "collection": "component",
+                "type": "FLOAT"
+              },
+              "height": {
+                "token": "component/radiobutton/size/sm",
+                "value": 18,
+                "collection": "component",
+                "type": "FLOAT"
               }
             }
           },
+          "hardcodedValues": [
+            {
+              "property": "strokeWeight",
+              "value": 1,
+              "layer": "radio"
+            }
+          ],
           "children": [
             {
               "id": "1088:411",
@@ -1125,12 +2285,37 @@
               "tokens": {
                 "colors": {
                   "fill-0": {
-                    "token": "color/background/interactive/primary/press",
+                    "token": "semantic/color/background/interactive/primary/press",
                     "value": "#F8C154",
-                    "collection": "semantic"
+                    "collection": "semantic",
+                    "type": "COLOR"
+                  }
+                },
+                "borders": {
+                  "width": 1
+                },
+                "size": {
+                  "width": {
+                    "token": "component/radiobutton/size/radioIcon/sm",
+                    "value": 8,
+                    "collection": "component",
+                    "type": "FLOAT"
+                  },
+                  "height": {
+                    "token": "component/radiobutton/size/radioIcon/sm",
+                    "value": 8,
+                    "collection": "component",
+                    "type": "FLOAT"
                   }
                 }
-              }
+              },
+              "hardcodedValues": [
+                {
+                  "property": "strokeWeight",
+                  "value": 1,
+                  "layer": "radioIcon"
+                }
+              ]
             }
           ]
         },
@@ -1141,32 +2326,40 @@
           "tokens": {
             "colors": {
               "fill-0": {
-                "token": "color/text/primary",
+                "token": "semantic/color/text/primary",
                 "value": "#FFFFFF",
-                "collection": "semantic"
+                "collection": "semantic",
+                "type": "COLOR"
               }
             },
             "typography": {
               "fontFamily": {
-                "token": "typography/font-family/secondary",
+                "token": "primitive/typography/font-family/secondary",
                 "value": "Roboto",
-                "collection": "primitive"
+                "collection": "primitive",
+                "type": "STRING"
               },
               "fontSize": {
-                "token": "typography/font-size/body/lg",
+                "token": "semantic/typography/font-size/body/lg",
                 "value": 16,
-                "collection": "semantic"
+                "collection": "semantic",
+                "type": "FLOAT"
               },
               "fontWeight": {
-                "token": "typography/font-weight/regular",
+                "token": "semantic/typography/font-weight/regular",
                 "value": 400,
-                "collection": "semantic"
+                "collection": "semantic",
+                "type": "FLOAT"
               },
               "lineHeight": {
-                "token": "typography/line-height/body/sm",
+                "token": "semantic/typography/line-height/body/sm",
                 "value": 16,
-                "collection": "semantic"
+                "collection": "semantic",
+                "type": "FLOAT"
               }
+            },
+            "borders": {
+              "width": 1
             }
           },
           "styles": [
@@ -1174,6 +2367,13 @@
               "type": "TEXT",
               "name": "Label/lg",
               "styleId": "S:0462ea2d02d3a721e1b1854e9e6cb49e6a1d4a4b,",
+              "layer": "label"
+            }
+          ],
+          "hardcodedValues": [
+            {
+              "property": "strokeWeight",
+              "value": 1,
               "layer": "label"
             }
           ]
@@ -1187,12 +2387,29 @@
       "tokens": {
         "spacing": {
           "gap": {
-            "token": "gap/input-selection/label",
+            "token": "semantic/gap/input-selection/label",
             "value": 8,
-            "collection": "semantic"
+            "collection": "semantic",
+            "type": "FLOAT"
           }
+        },
+        "borders": {
+          "width": 1
+        },
+        "opacity": {
+          "token": "semantic/opacity/disabled",
+          "value": 50,
+          "collection": "semantic",
+          "type": "FLOAT"
         }
       },
+      "hardcodedValues": [
+        {
+          "property": "strokeWeight",
+          "value": 1,
+          "layer": "state=default, size=sm, isChecked=true, isDisabled=true, hasError=false"
+        }
+      ],
       "children": [
         {
           "id": "1088:413",
@@ -1201,12 +2418,43 @@
           "tokens": {
             "colors": {
               "stroke-0": {
-                "token": "color/border/interactive/default",
+                "token": "semantic/color/border/interactive/default",
                 "value": "#FFFFFF",
-                "collection": "semantic"
+                "collection": "semantic",
+                "type": "COLOR"
+              }
+            },
+            "borders": {
+              "radius": {
+                "token": "component/radiobutton/border-radius",
+                "value": 9999,
+                "collection": "component",
+                "type": "FLOAT"
+              },
+              "width": 1
+            },
+            "size": {
+              "width": {
+                "token": "component/radiobutton/size/sm",
+                "value": 18,
+                "collection": "component",
+                "type": "FLOAT"
+              },
+              "height": {
+                "token": "component/radiobutton/size/sm",
+                "value": 18,
+                "collection": "component",
+                "type": "FLOAT"
               }
             }
           },
+          "hardcodedValues": [
+            {
+              "property": "strokeWeight",
+              "value": 1,
+              "layer": "radio"
+            }
+          ],
           "children": [
             {
               "id": "1088:414",
@@ -1215,12 +2463,37 @@
               "tokens": {
                 "colors": {
                   "fill-0": {
-                    "token": "color/background/interactive/primary/default",
+                    "token": "semantic/color/background/interactive/primary/default",
                     "value": "#F6A913",
-                    "collection": "semantic"
+                    "collection": "semantic",
+                    "type": "COLOR"
+                  }
+                },
+                "borders": {
+                  "width": 1
+                },
+                "size": {
+                  "width": {
+                    "token": "component/radiobutton/size/radioIcon/sm",
+                    "value": 8,
+                    "collection": "component",
+                    "type": "FLOAT"
+                  },
+                  "height": {
+                    "token": "component/radiobutton/size/radioIcon/sm",
+                    "value": 8,
+                    "collection": "component",
+                    "type": "FLOAT"
                   }
                 }
-              }
+              },
+              "hardcodedValues": [
+                {
+                  "property": "strokeWeight",
+                  "value": 1,
+                  "layer": "radioIcon"
+                }
+              ]
             }
           ]
         },
@@ -1231,32 +2504,40 @@
           "tokens": {
             "colors": {
               "fill-0": {
-                "token": "color/text/primary",
+                "token": "semantic/color/text/primary",
                 "value": "#FFFFFF",
-                "collection": "semantic"
+                "collection": "semantic",
+                "type": "COLOR"
               }
             },
             "typography": {
               "fontFamily": {
-                "token": "typography/font-family/secondary",
+                "token": "primitive/typography/font-family/secondary",
                 "value": "Roboto",
-                "collection": "primitive"
+                "collection": "primitive",
+                "type": "STRING"
               },
               "fontSize": {
-                "token": "typography/font-size/body/lg",
+                "token": "semantic/typography/font-size/body/lg",
                 "value": 16,
-                "collection": "semantic"
+                "collection": "semantic",
+                "type": "FLOAT"
               },
               "fontWeight": {
-                "token": "typography/font-weight/regular",
+                "token": "semantic/typography/font-weight/regular",
                 "value": 400,
-                "collection": "semantic"
+                "collection": "semantic",
+                "type": "FLOAT"
               },
               "lineHeight": {
-                "token": "typography/line-height/body/sm",
+                "token": "semantic/typography/line-height/body/sm",
                 "value": 16,
-                "collection": "semantic"
+                "collection": "semantic",
+                "type": "FLOAT"
               }
+            },
+            "borders": {
+              "width": 1
             }
           },
           "styles": [
@@ -1264,6 +2545,13 @@
               "type": "TEXT",
               "name": "Label/lg",
               "styleId": "S:0462ea2d02d3a721e1b1854e9e6cb49e6a1d4a4b,",
+              "layer": "label"
+            }
+          ],
+          "hardcodedValues": [
+            {
+              "property": "strokeWeight",
+              "value": 1,
               "layer": "label"
             }
           ]
@@ -1277,12 +2565,23 @@
       "tokens": {
         "spacing": {
           "gap": {
-            "token": "gap/input-selection/label",
+            "token": "semantic/gap/input-selection/label",
             "value": 8,
-            "collection": "semantic"
+            "collection": "semantic",
+            "type": "FLOAT"
           }
+        },
+        "borders": {
+          "width": 1
         }
       },
+      "hardcodedValues": [
+        {
+          "property": "strokeWeight",
+          "value": 1,
+          "layer": "state=default, size=sm, isChecked=true, isDisabled=false, hasError=true"
+        }
+      ],
       "children": [
         {
           "id": "1088:416",
@@ -1291,12 +2590,43 @@
           "tokens": {
             "colors": {
               "stroke-0": {
-                "token": "color/border/interactive/error",
+                "token": "semantic/color/border/interactive/error",
                 "value": "#E64B41",
-                "collection": "semantic"
+                "collection": "semantic",
+                "type": "COLOR"
+              }
+            },
+            "borders": {
+              "radius": {
+                "token": "component/radiobutton/border-radius",
+                "value": 9999,
+                "collection": "component",
+                "type": "FLOAT"
+              },
+              "width": 1
+            },
+            "size": {
+              "width": {
+                "token": "component/radiobutton/size/sm",
+                "value": 18,
+                "collection": "component",
+                "type": "FLOAT"
+              },
+              "height": {
+                "token": "component/radiobutton/size/sm",
+                "value": 18,
+                "collection": "component",
+                "type": "FLOAT"
               }
             }
           },
+          "hardcodedValues": [
+            {
+              "property": "strokeWeight",
+              "value": 1,
+              "layer": "radio"
+            }
+          ],
           "children": [
             {
               "id": "1088:417",
@@ -1305,12 +2635,37 @@
               "tokens": {
                 "colors": {
                   "fill-0": {
-                    "token": "color/background/feedback/error/lvl-1",
+                    "token": "semantic/color/icon/feedback/error",
                     "value": "#E64B41",
-                    "collection": "semantic"
+                    "collection": "semantic",
+                    "type": "COLOR"
+                  }
+                },
+                "borders": {
+                  "width": 1
+                },
+                "size": {
+                  "width": {
+                    "token": "component/radiobutton/size/radioIcon/sm",
+                    "value": 8,
+                    "collection": "component",
+                    "type": "FLOAT"
+                  },
+                  "height": {
+                    "token": "component/radiobutton/size/radioIcon/sm",
+                    "value": 8,
+                    "collection": "component",
+                    "type": "FLOAT"
                   }
                 }
-              }
+              },
+              "hardcodedValues": [
+                {
+                  "property": "strokeWeight",
+                  "value": 1,
+                  "layer": "radioIcon"
+                }
+              ]
             }
           ]
         },
@@ -1321,32 +2676,40 @@
           "tokens": {
             "colors": {
               "fill-0": {
-                "token": "color/text/error",
+                "token": "semantic/color/text/error",
                 "value": "#E64B41",
-                "collection": "semantic"
+                "collection": "semantic",
+                "type": "COLOR"
               }
             },
             "typography": {
               "fontFamily": {
-                "token": "typography/font-family/secondary",
+                "token": "primitive/typography/font-family/secondary",
                 "value": "Roboto",
-                "collection": "primitive"
+                "collection": "primitive",
+                "type": "STRING"
               },
               "fontSize": {
-                "token": "typography/font-size/body/lg",
+                "token": "semantic/typography/font-size/body/lg",
                 "value": 16,
-                "collection": "semantic"
+                "collection": "semantic",
+                "type": "FLOAT"
               },
               "fontWeight": {
-                "token": "typography/font-weight/regular",
+                "token": "semantic/typography/font-weight/regular",
                 "value": 400,
-                "collection": "semantic"
+                "collection": "semantic",
+                "type": "FLOAT"
               },
               "lineHeight": {
-                "token": "typography/line-height/body/sm",
+                "token": "semantic/typography/line-height/body/sm",
                 "value": 16,
-                "collection": "semantic"
+                "collection": "semantic",
+                "type": "FLOAT"
               }
+            },
+            "borders": {
+              "width": 1
             }
           },
           "styles": [
@@ -1354,6 +2717,13 @@
               "type": "TEXT",
               "name": "Label/lg",
               "styleId": "S:0462ea2d02d3a721e1b1854e9e6cb49e6a1d4a4b,",
+              "layer": "label"
+            }
+          ],
+          "hardcodedValues": [
+            {
+              "property": "strokeWeight",
+              "value": 1,
               "layer": "label"
             }
           ]
@@ -1367,12 +2737,23 @@
       "tokens": {
         "spacing": {
           "gap": {
-            "token": "gap/input-selection/label",
+            "token": "semantic/gap/input-selection/label",
             "value": 8,
-            "collection": "semantic"
+            "collection": "semantic",
+            "type": "FLOAT"
           }
+        },
+        "borders": {
+          "width": 1
         }
       },
+      "hardcodedValues": [
+        {
+          "property": "strokeWeight",
+          "value": 1,
+          "layer": "state=default, size=sm, isChecked=false, isDisabled=false, hasError=false"
+        }
+      ],
       "children": [
         {
           "id": "1088:422",
@@ -1381,12 +2762,43 @@
           "tokens": {
             "colors": {
               "stroke-0": {
-                "token": "color/border/interactive/default",
+                "token": "semantic/color/border/interactive/default",
                 "value": "#FFFFFF",
-                "collection": "semantic"
+                "collection": "semantic",
+                "type": "COLOR"
+              }
+            },
+            "borders": {
+              "radius": {
+                "token": "component/radiobutton/border-radius",
+                "value": 9999,
+                "collection": "component",
+                "type": "FLOAT"
+              },
+              "width": 1
+            },
+            "size": {
+              "width": {
+                "token": "component/radiobutton/size/sm",
+                "value": 18,
+                "collection": "component",
+                "type": "FLOAT"
+              },
+              "height": {
+                "token": "component/radiobutton/size/sm",
+                "value": 18,
+                "collection": "component",
+                "type": "FLOAT"
               }
             }
           },
+          "hardcodedValues": [
+            {
+              "property": "strokeWeight",
+              "value": 1,
+              "layer": "radio"
+            }
+          ],
           "children": [
             {
               "id": "1088:423",
@@ -1395,12 +2807,37 @@
               "tokens": {
                 "colors": {
                   "fill-0": {
-                    "token": "color/background/interactive/primary/default",
+                    "token": "semantic/color/background/interactive/primary/default",
                     "value": "#F6A913",
-                    "collection": "semantic"
+                    "collection": "semantic",
+                    "type": "COLOR"
+                  }
+                },
+                "borders": {
+                  "width": 1
+                },
+                "size": {
+                  "width": {
+                    "token": "component/radiobutton/size/radioIcon/sm",
+                    "value": 8,
+                    "collection": "component",
+                    "type": "FLOAT"
+                  },
+                  "height": {
+                    "token": "component/radiobutton/size/radioIcon/sm",
+                    "value": 8,
+                    "collection": "component",
+                    "type": "FLOAT"
                   }
                 }
-              }
+              },
+              "hardcodedValues": [
+                {
+                  "property": "strokeWeight",
+                  "value": 1,
+                  "layer": "radioIcon"
+                }
+              ]
             }
           ]
         },
@@ -1411,32 +2848,40 @@
           "tokens": {
             "colors": {
               "fill-0": {
-                "token": "color/text/primary",
+                "token": "semantic/color/text/primary",
                 "value": "#FFFFFF",
-                "collection": "semantic"
+                "collection": "semantic",
+                "type": "COLOR"
               }
             },
             "typography": {
               "fontFamily": {
-                "token": "typography/font-family/secondary",
+                "token": "primitive/typography/font-family/secondary",
                 "value": "Roboto",
-                "collection": "primitive"
+                "collection": "primitive",
+                "type": "STRING"
               },
               "fontSize": {
-                "token": "typography/font-size/body/lg",
+                "token": "semantic/typography/font-size/body/lg",
                 "value": 16,
-                "collection": "semantic"
+                "collection": "semantic",
+                "type": "FLOAT"
               },
               "fontWeight": {
-                "token": "typography/font-weight/regular",
+                "token": "semantic/typography/font-weight/regular",
                 "value": 400,
-                "collection": "semantic"
+                "collection": "semantic",
+                "type": "FLOAT"
               },
               "lineHeight": {
-                "token": "typography/line-height/body/sm",
+                "token": "semantic/typography/line-height/body/sm",
                 "value": 16,
-                "collection": "semantic"
+                "collection": "semantic",
+                "type": "FLOAT"
               }
+            },
+            "borders": {
+              "width": 1
             }
           },
           "styles": [
@@ -1444,6 +2889,13 @@
               "type": "TEXT",
               "name": "Label/lg",
               "styleId": "S:0462ea2d02d3a721e1b1854e9e6cb49e6a1d4a4b,",
+              "layer": "label"
+            }
+          ],
+          "hardcodedValues": [
+            {
+              "property": "strokeWeight",
+              "value": 1,
               "layer": "label"
             }
           ]
@@ -1457,12 +2909,23 @@
       "tokens": {
         "spacing": {
           "gap": {
-            "token": "gap/input-selection/label",
+            "token": "semantic/gap/input-selection/label",
             "value": 8,
-            "collection": "semantic"
+            "collection": "semantic",
+            "type": "FLOAT"
           }
+        },
+        "borders": {
+          "width": 1
         }
       },
+      "hardcodedValues": [
+        {
+          "property": "strokeWeight",
+          "value": 1,
+          "layer": "state=hover, size=sm, isChecked=false, isDisabled=false, hasError=false"
+        }
+      ],
       "children": [
         {
           "id": "1088:425",
@@ -1471,12 +2934,43 @@
           "tokens": {
             "colors": {
               "stroke-0": {
-                "token": "color/border/interactive/hover",
+                "token": "semantic/color/border/interactive/hover",
                 "value": "#FFFFFF",
-                "collection": "semantic"
+                "collection": "semantic",
+                "type": "COLOR"
+              }
+            },
+            "borders": {
+              "radius": {
+                "token": "component/radiobutton/border-radius",
+                "value": 9999,
+                "collection": "component",
+                "type": "FLOAT"
+              },
+              "width": 1
+            },
+            "size": {
+              "width": {
+                "token": "component/radiobutton/size/sm",
+                "value": 18,
+                "collection": "component",
+                "type": "FLOAT"
+              },
+              "height": {
+                "token": "component/radiobutton/size/sm",
+                "value": 18,
+                "collection": "component",
+                "type": "FLOAT"
               }
             }
           },
+          "hardcodedValues": [
+            {
+              "property": "strokeWeight",
+              "value": 1,
+              "layer": "radio"
+            }
+          ],
           "children": [
             {
               "id": "1088:426",
@@ -1485,12 +2979,37 @@
               "tokens": {
                 "colors": {
                   "fill-0": {
-                    "token": "color/background/interactive/primary/default",
+                    "token": "semantic/color/background/interactive/primary/default",
                     "value": "#F6A913",
-                    "collection": "semantic"
+                    "collection": "semantic",
+                    "type": "COLOR"
+                  }
+                },
+                "borders": {
+                  "width": 1
+                },
+                "size": {
+                  "width": {
+                    "token": "component/radiobutton/size/radioIcon/sm",
+                    "value": 8,
+                    "collection": "component",
+                    "type": "FLOAT"
+                  },
+                  "height": {
+                    "token": "component/radiobutton/size/radioIcon/sm",
+                    "value": 8,
+                    "collection": "component",
+                    "type": "FLOAT"
                   }
                 }
-              }
+              },
+              "hardcodedValues": [
+                {
+                  "property": "strokeWeight",
+                  "value": 1,
+                  "layer": "radioIcon"
+                }
+              ]
             }
           ]
         },
@@ -1501,32 +3020,40 @@
           "tokens": {
             "colors": {
               "fill-0": {
-                "token": "color/text/primary",
+                "token": "semantic/color/text/primary",
                 "value": "#FFFFFF",
-                "collection": "semantic"
+                "collection": "semantic",
+                "type": "COLOR"
               }
             },
             "typography": {
               "fontFamily": {
-                "token": "typography/font-family/secondary",
+                "token": "primitive/typography/font-family/secondary",
                 "value": "Roboto",
-                "collection": "primitive"
+                "collection": "primitive",
+                "type": "STRING"
               },
               "fontSize": {
-                "token": "typography/font-size/body/lg",
+                "token": "semantic/typography/font-size/body/lg",
                 "value": 16,
-                "collection": "semantic"
+                "collection": "semantic",
+                "type": "FLOAT"
               },
               "fontWeight": {
-                "token": "typography/font-weight/regular",
+                "token": "semantic/typography/font-weight/regular",
                 "value": 400,
-                "collection": "semantic"
+                "collection": "semantic",
+                "type": "FLOAT"
               },
               "lineHeight": {
-                "token": "typography/line-height/body/sm",
+                "token": "semantic/typography/line-height/body/sm",
                 "value": 16,
-                "collection": "semantic"
+                "collection": "semantic",
+                "type": "FLOAT"
               }
+            },
+            "borders": {
+              "width": 1
             }
           },
           "styles": [
@@ -1534,6 +3061,13 @@
               "type": "TEXT",
               "name": "Label/lg",
               "styleId": "S:0462ea2d02d3a721e1b1854e9e6cb49e6a1d4a4b,",
+              "layer": "label"
+            }
+          ],
+          "hardcodedValues": [
+            {
+              "property": "strokeWeight",
+              "value": 1,
               "layer": "label"
             }
           ]
@@ -1547,12 +3081,23 @@
       "tokens": {
         "spacing": {
           "gap": {
-            "token": "gap/input-selection/label",
+            "token": "semantic/gap/input-selection/label",
             "value": 8,
-            "collection": "semantic"
+            "collection": "semantic",
+            "type": "FLOAT"
           }
+        },
+        "borders": {
+          "width": 1
         }
       },
+      "hardcodedValues": [
+        {
+          "property": "strokeWeight",
+          "value": 1,
+          "layer": "state=press, size=sm, isChecked=false, isDisabled=false, hasError=false"
+        }
+      ],
       "children": [
         {
           "id": "1088:428",
@@ -1561,12 +3106,43 @@
           "tokens": {
             "colors": {
               "stroke-0": {
-                "token": "color/border/interactive/press",
+                "token": "semantic/color/border/interactive/press",
                 "value": "#FFFFFF",
-                "collection": "semantic"
+                "collection": "semantic",
+                "type": "COLOR"
+              }
+            },
+            "borders": {
+              "radius": {
+                "token": "component/radiobutton/border-radius",
+                "value": 9999,
+                "collection": "component",
+                "type": "FLOAT"
+              },
+              "width": 1
+            },
+            "size": {
+              "width": {
+                "token": "component/radiobutton/size/sm",
+                "value": 18,
+                "collection": "component",
+                "type": "FLOAT"
+              },
+              "height": {
+                "token": "component/radiobutton/size/sm",
+                "value": 18,
+                "collection": "component",
+                "type": "FLOAT"
               }
             }
           },
+          "hardcodedValues": [
+            {
+              "property": "strokeWeight",
+              "value": 1,
+              "layer": "radio"
+            }
+          ],
           "children": [
             {
               "id": "1088:429",
@@ -1575,12 +3151,37 @@
               "tokens": {
                 "colors": {
                   "fill-0": {
-                    "token": "color/background/interactive/primary/default",
+                    "token": "semantic/color/background/interactive/primary/default",
                     "value": "#F6A913",
-                    "collection": "semantic"
+                    "collection": "semantic",
+                    "type": "COLOR"
+                  }
+                },
+                "borders": {
+                  "width": 1
+                },
+                "size": {
+                  "width": {
+                    "token": "component/radiobutton/size/radioIcon/sm",
+                    "value": 8,
+                    "collection": "component",
+                    "type": "FLOAT"
+                  },
+                  "height": {
+                    "token": "component/radiobutton/size/radioIcon/sm",
+                    "value": 8,
+                    "collection": "component",
+                    "type": "FLOAT"
                   }
                 }
-              }
+              },
+              "hardcodedValues": [
+                {
+                  "property": "strokeWeight",
+                  "value": 1,
+                  "layer": "radioIcon"
+                }
+              ]
             }
           ]
         },
@@ -1591,32 +3192,40 @@
           "tokens": {
             "colors": {
               "fill-0": {
-                "token": "color/text/primary",
+                "token": "semantic/color/text/primary",
                 "value": "#FFFFFF",
-                "collection": "semantic"
+                "collection": "semantic",
+                "type": "COLOR"
               }
             },
             "typography": {
               "fontFamily": {
-                "token": "typography/font-family/secondary",
+                "token": "primitive/typography/font-family/secondary",
                 "value": "Roboto",
-                "collection": "primitive"
+                "collection": "primitive",
+                "type": "STRING"
               },
               "fontSize": {
-                "token": "typography/font-size/body/lg",
+                "token": "semantic/typography/font-size/body/lg",
                 "value": 16,
-                "collection": "semantic"
+                "collection": "semantic",
+                "type": "FLOAT"
               },
               "fontWeight": {
-                "token": "typography/font-weight/regular",
+                "token": "semantic/typography/font-weight/regular",
                 "value": 400,
-                "collection": "semantic"
+                "collection": "semantic",
+                "type": "FLOAT"
               },
               "lineHeight": {
-                "token": "typography/line-height/body/sm",
+                "token": "semantic/typography/line-height/body/sm",
                 "value": 16,
-                "collection": "semantic"
+                "collection": "semantic",
+                "type": "FLOAT"
               }
+            },
+            "borders": {
+              "width": 1
             }
           },
           "styles": [
@@ -1624,6 +3233,13 @@
               "type": "TEXT",
               "name": "Label/lg",
               "styleId": "S:0462ea2d02d3a721e1b1854e9e6cb49e6a1d4a4b,",
+              "layer": "label"
+            }
+          ],
+          "hardcodedValues": [
+            {
+              "property": "strokeWeight",
+              "value": 1,
               "layer": "label"
             }
           ]
@@ -1637,12 +3253,29 @@
       "tokens": {
         "spacing": {
           "gap": {
-            "token": "gap/input-selection/label",
+            "token": "semantic/gap/input-selection/label",
             "value": 8,
-            "collection": "semantic"
+            "collection": "semantic",
+            "type": "FLOAT"
           }
+        },
+        "borders": {
+          "width": 1
+        },
+        "opacity": {
+          "token": "semantic/opacity/disabled",
+          "value": 50,
+          "collection": "semantic",
+          "type": "FLOAT"
         }
       },
+      "hardcodedValues": [
+        {
+          "property": "strokeWeight",
+          "value": 1,
+          "layer": "state=default, size=sm, isChecked=false, isDisabled=true, hasError=false"
+        }
+      ],
       "children": [
         {
           "id": "1088:431",
@@ -1651,12 +3284,43 @@
           "tokens": {
             "colors": {
               "stroke-0": {
-                "token": "color/border/interactive/default",
+                "token": "semantic/color/border/interactive/default",
                 "value": "#FFFFFF",
-                "collection": "semantic"
+                "collection": "semantic",
+                "type": "COLOR"
+              }
+            },
+            "borders": {
+              "radius": {
+                "token": "component/radiobutton/border-radius",
+                "value": 9999,
+                "collection": "component",
+                "type": "FLOAT"
+              },
+              "width": 1
+            },
+            "size": {
+              "width": {
+                "token": "component/radiobutton/size/sm",
+                "value": 18,
+                "collection": "component",
+                "type": "FLOAT"
+              },
+              "height": {
+                "token": "component/radiobutton/size/sm",
+                "value": 18,
+                "collection": "component",
+                "type": "FLOAT"
               }
             }
           },
+          "hardcodedValues": [
+            {
+              "property": "strokeWeight",
+              "value": 1,
+              "layer": "radio"
+            }
+          ],
           "children": [
             {
               "id": "1088:432",
@@ -1665,12 +3329,37 @@
               "tokens": {
                 "colors": {
                   "fill-0": {
-                    "token": "color/background/interactive/primary/default",
+                    "token": "semantic/color/background/interactive/primary/default",
                     "value": "#F6A913",
-                    "collection": "semantic"
+                    "collection": "semantic",
+                    "type": "COLOR"
+                  }
+                },
+                "borders": {
+                  "width": 1
+                },
+                "size": {
+                  "width": {
+                    "token": "component/radiobutton/size/radioIcon/sm",
+                    "value": 8,
+                    "collection": "component",
+                    "type": "FLOAT"
+                  },
+                  "height": {
+                    "token": "component/radiobutton/size/radioIcon/sm",
+                    "value": 8,
+                    "collection": "component",
+                    "type": "FLOAT"
                   }
                 }
-              }
+              },
+              "hardcodedValues": [
+                {
+                  "property": "strokeWeight",
+                  "value": 1,
+                  "layer": "radioIcon"
+                }
+              ]
             }
           ]
         },
@@ -1681,32 +3370,40 @@
           "tokens": {
             "colors": {
               "fill-0": {
-                "token": "color/text/primary",
+                "token": "semantic/color/text/primary",
                 "value": "#FFFFFF",
-                "collection": "semantic"
+                "collection": "semantic",
+                "type": "COLOR"
               }
             },
             "typography": {
               "fontFamily": {
-                "token": "typography/font-family/secondary",
+                "token": "primitive/typography/font-family/secondary",
                 "value": "Roboto",
-                "collection": "primitive"
+                "collection": "primitive",
+                "type": "STRING"
               },
               "fontSize": {
-                "token": "typography/font-size/body/lg",
+                "token": "semantic/typography/font-size/body/lg",
                 "value": 16,
-                "collection": "semantic"
+                "collection": "semantic",
+                "type": "FLOAT"
               },
               "fontWeight": {
-                "token": "typography/font-weight/regular",
+                "token": "semantic/typography/font-weight/regular",
                 "value": 400,
-                "collection": "semantic"
+                "collection": "semantic",
+                "type": "FLOAT"
               },
               "lineHeight": {
-                "token": "typography/line-height/body/sm",
+                "token": "semantic/typography/line-height/body/sm",
                 "value": 16,
-                "collection": "semantic"
+                "collection": "semantic",
+                "type": "FLOAT"
               }
+            },
+            "borders": {
+              "width": 1
             }
           },
           "styles": [
@@ -1714,6 +3411,13 @@
               "type": "TEXT",
               "name": "Label/lg",
               "styleId": "S:0462ea2d02d3a721e1b1854e9e6cb49e6a1d4a4b,",
+              "layer": "label"
+            }
+          ],
+          "hardcodedValues": [
+            {
+              "property": "strokeWeight",
+              "value": 1,
               "layer": "label"
             }
           ]
@@ -1727,12 +3431,23 @@
       "tokens": {
         "spacing": {
           "gap": {
-            "token": "gap/input-selection/label",
+            "token": "semantic/gap/input-selection/label",
             "value": 8,
-            "collection": "semantic"
+            "collection": "semantic",
+            "type": "FLOAT"
           }
+        },
+        "borders": {
+          "width": 1
         }
       },
+      "hardcodedValues": [
+        {
+          "property": "strokeWeight",
+          "value": 1,
+          "layer": "state=default, size=sm, isChecked=false, isDisabled=true, hasError=true"
+        }
+      ],
       "children": [
         {
           "id": "1088:434",
@@ -1741,12 +3456,43 @@
           "tokens": {
             "colors": {
               "stroke-0": {
-                "token": "color/border/interactive/error",
+                "token": "semantic/color/border/interactive/error",
                 "value": "#E64B41",
-                "collection": "semantic"
+                "collection": "semantic",
+                "type": "COLOR"
+              }
+            },
+            "borders": {
+              "radius": {
+                "token": "component/radiobutton/border-radius",
+                "value": 9999,
+                "collection": "component",
+                "type": "FLOAT"
+              },
+              "width": 1
+            },
+            "size": {
+              "width": {
+                "token": "component/radiobutton/size/sm",
+                "value": 18,
+                "collection": "component",
+                "type": "FLOAT"
+              },
+              "height": {
+                "token": "component/radiobutton/size/sm",
+                "value": 18,
+                "collection": "component",
+                "type": "FLOAT"
               }
             }
           },
+          "hardcodedValues": [
+            {
+              "property": "strokeWeight",
+              "value": 1,
+              "layer": "radio"
+            }
+          ],
           "children": [
             {
               "id": "1088:435",
@@ -1755,12 +3501,37 @@
               "tokens": {
                 "colors": {
                   "fill-0": {
-                    "token": "color/background/interactive/primary/default",
+                    "token": "semantic/color/background/interactive/primary/default",
                     "value": "#F6A913",
-                    "collection": "semantic"
+                    "collection": "semantic",
+                    "type": "COLOR"
+                  }
+                },
+                "borders": {
+                  "width": 1
+                },
+                "size": {
+                  "width": {
+                    "token": "component/radiobutton/size/radioIcon/sm",
+                    "value": 8,
+                    "collection": "component",
+                    "type": "FLOAT"
+                  },
+                  "height": {
+                    "token": "component/radiobutton/size/radioIcon/sm",
+                    "value": 8,
+                    "collection": "component",
+                    "type": "FLOAT"
                   }
                 }
-              }
+              },
+              "hardcodedValues": [
+                {
+                  "property": "strokeWeight",
+                  "value": 1,
+                  "layer": "radioIcon"
+                }
+              ]
             }
           ]
         },
@@ -1771,32 +3542,40 @@
           "tokens": {
             "colors": {
               "fill-0": {
-                "token": "color/text/error",
+                "token": "semantic/color/text/error",
                 "value": "#E64B41",
-                "collection": "semantic"
+                "collection": "semantic",
+                "type": "COLOR"
               }
             },
             "typography": {
               "fontFamily": {
-                "token": "typography/font-family/secondary",
+                "token": "primitive/typography/font-family/secondary",
                 "value": "Roboto",
-                "collection": "primitive"
+                "collection": "primitive",
+                "type": "STRING"
               },
               "fontSize": {
-                "token": "typography/font-size/body/lg",
+                "token": "semantic/typography/font-size/body/lg",
                 "value": 16,
-                "collection": "semantic"
+                "collection": "semantic",
+                "type": "FLOAT"
               },
               "fontWeight": {
-                "token": "typography/font-weight/regular",
+                "token": "semantic/typography/font-weight/regular",
                 "value": 400,
-                "collection": "semantic"
+                "collection": "semantic",
+                "type": "FLOAT"
               },
               "lineHeight": {
-                "token": "typography/line-height/body/sm",
+                "token": "semantic/typography/line-height/body/sm",
                 "value": 16,
-                "collection": "semantic"
+                "collection": "semantic",
+                "type": "FLOAT"
               }
+            },
+            "borders": {
+              "width": 1
             }
           },
           "styles": [
@@ -1804,6 +3583,13 @@
               "type": "TEXT",
               "name": "Label/lg",
               "styleId": "S:0462ea2d02d3a721e1b1854e9e6cb49e6a1d4a4b,",
+              "layer": "label"
+            }
+          ],
+          "hardcodedValues": [
+            {
+              "property": "strokeWeight",
+              "value": 1,
               "layer": "label"
             }
           ]

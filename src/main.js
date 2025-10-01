@@ -1,4 +1,5 @@
-import './assets/fonts/fonts.css'; // ДОБАВЬ ЭТУ СТРОКУ
+import './assets/fonts/fonts.css';
+import './assets/styles/typography.css';
 
 import { createApp } from 'vue';
 import App from './App.vue';

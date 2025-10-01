@@ -115,6 +115,7 @@ const handleMouseUp = () => {
   gap: var(--gap-input-selection-label);
   cursor: pointer;
   position: relative;
+  
 }
 
 
@@ -129,7 +130,7 @@ const handleMouseUp = () => {
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: 50%;
+  border-radius: var(--radiobutton-border-radius);
   border: 1px solid var(--color-border-interactive-default);
   transition: border-color 0.2s ease;
   flex-shrink: 0;
@@ -164,7 +165,7 @@ const handleMouseUp = () => {
 
 /* Внутренний круг (radioIcon) */
 .o-radio-button__icon {
-  border-radius: 50%;
+  border-radius: var(--radiobutton-border-radius);
   background-color: var(--color-background-interactive-primary-default);
   transition: background-color 0.2s ease;
 }
@@ -199,6 +200,9 @@ const handleMouseUp = () => {
   line-height: var(--typography-line-height-body-sm);
   color: var(--color-text-primary);
   user-select: none;
+  min-height: auto;
+  max-height: none;
+
 }
 
 .o-radio-button--error .o-radio-button__label {

@@ -128,8 +128,9 @@ const handleMouseUp = () => {
 
 <style scoped>
 .o-checkbox {
-  display: flex;
+  display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: var(--gap-input-selection-label);
   box-sizing: border-box;
   cursor: pointer;
@@ -242,13 +243,14 @@ const handleMouseUp = () => {
 
 /* Label стили */
 .o-checkbox__label {
-  font-family: var(--typography-font-family-body);
+  font-family: var(--typography-font-family-secondary);
   font-size: var(--typography-font-size-body-lg);
   font-weight: var(--typography-font-weight-regular);
   line-height: var(--typography-line-height-body-sm);
   color: var(--color-text-primary);
-  cursor: pointer;
   user-select: none;
+  min-height: auto;
+  max-height: none;
 }
 
 /* Hover эффекты для label */
