@@ -16,6 +16,7 @@ Always use context7 for code generation, setup, configuration, or library/API do
 - Цвета: #3b82f6, rgba()
 - Размеры: 16px, 2rem
 - Inline стили без токенов
+- Вместо gap: 16px; используем семантические токены из T-shirt сетки --gap-none, --gap-3xs, --gap-3xs, --gap-*
 
 ### НЕ ПРИДУМЫВАЙ
 - Названия токенов
@@ -119,11 +120,18 @@ export default {
   ]
 };
 
-// CSF3 формат с объектами
+// CSF3 формат с объектами + КОМПАКТНЫЙ КОД
 export const Primary = {
   args: {
     variant: 'primary'
-  }
+  },
+  parameters: {
+    docs: {
+      source: {
+        code: '<OComponent variant="primary" />',
+      },
+    },
+  },
 };
 ```
 
@@ -133,10 +141,12 @@ export const Primary = {
 ✅ CSF3 формат: `export const Primary = { args: {...} }`  
 ✅ Decorators для тем  
 ✅ argTypes с описаниями  
+✅ **ОБЯЗАТЕЛЬНО** parameters.docs.source.code с компактным HTML кодом  
 ✅ Минимум 3 stories: Primary, AllVariants, InContext  
 
 ❌ НЕ используй `.bind({})` - не работает с темами  
-❌ НЕ используй функции-истории `(args) => Template(args)`
+❌ НЕ используй функции-истории `(args) => Template(args)`  
+❌ НЕ показывай внутреннюю логику в коде (ref, setup, const)
 
 ## ЕДИНИЦЫ ИЗМЕРЕНИЯ
 
@@ -207,3 +217,249 @@ console.log(findVariablesByPattern('button', 'Semantic'));
 ---
 
 **Главное:** Покажи токены ДО кода. Не придумывай. Не используй Tailwind. Спрашивай если не уверен.
+
+# Storybook Stories Code Display Rules
+
+При создании stories для Vue 3 компонентов в Storybook, следуй этим правилам форматирования кода в `parameters.docs.source.code`:
+
+## Формат для простых компонентов (без вложенности)
+```html
+<Component prop1="value" prop2="value" />
+```
+
+## Формат для компонентов с несколькими атрибутами
+```html
+<Component
+  prop1="value"
+  prop2="value"
+  prop3="value"
+/>
+```
+
+## Формат для компонентов с children
+```html
+<ParentComponent
+  label="Заголовок"
+  description="Описание"
+  direction="vertical"
+>
+  <ChildComponent label="Значение 1" />
+  <ChildComponent label="Значение 2" />
+  <ChildComponent label="Значение 3" />
+</ParentComponent>
+```
+
+## Правила форматирования:
+
+1. **Многострочные атрибуты**: каждый атрибут на новой строке с отступом 2 пробела
+2. **Закрывающая скобка**: `>` на той же строке что и последний атрибут
+3. **Дочерние элементы**: отступ 2 пробела от родителя
+4. **Закрывающий тег**: на уровне открывающего тега (без отступа)
+5. **Boolean props**: используй `:prop="true"` или `:prop="false"`, а не просто `prop`
+6. **Не показывай**: 
+   - v-bind="args"
+   - ref(), reactive(), setup()
+   - Любую JavaScript логику
+   - Значения по умолчанию (если они не важны для примера)
+
+## Структура Story:
+
+```javascript
+export const StoryName = {
+  args: {
+    prop1: 'value',
+    prop2: 'value'
+  },
+  render: args => ({
+    components: { Component },
+    setup() {
+      return { args };
+    },
+    template: `
+      <Component v-bind="args">
+        <!-- children -->
+      </Component>
+    `
+  }),
+  parameters: {
+    docs: {
+      source: {
+        code: `<Component
+  prop1="value"
+  prop2="value"
+>
+  <!-- children -->
+</Component>`
+      }
+    }
+  }
+};
+```
+
+ВАЖНО: 
+- `parameters` всегда на одном уровне с `args` и `render`
+- Код в `parameters.docs.source.code` должен быть таким, как будто разработчик вручную пишет его в своём проекте
+- Только релевантные props, без дефолтных значений
+
+# Storybook Interactive Stories Rules
+
+## Обязательные правила для создания интерактивных stories:
+
+### 1. **Каждая story должна быть интерактивной** - используй `ref()` для состояния
+```javascript
+export const Interactive = {
+  args: {
+    isChecked: false,
+    label: 'Interactive checkbox'
+  },
+  render: args => ({
+    components: { OCheckbox },
+    setup() {
+      const checked = ref(args.isChecked);
+      return { args, checked };
+    },
+    template: `
+      <OCheckbox 
+        v-bind="args" 
+        :isChecked="checked"
+        @update:isChecked="checked = $event"
+      />
+    `
+  }),
+  parameters: {
+    docs: {
+      source: {
+        code: '<OCheckbox :isChecked="false" @update:isChecked="checked = $event" />',
+      },
+    },
+  },
+};
+```
+
+### 2. **Для чекбоксов/инпутов** - всегда создавай реактивное состояние:
+```javascript
+setup() {
+  const checked = ref(args.isChecked);
+  const value = ref(args.value);
+  return { args, checked, value };
+}
+```
+
+### 3. **Привязывай события** - используй @update:propName:
+```vue
+<OCheckbox 
+  :isChecked="checked"
+  @update:isChecked="checked = $event"
+/>
+```
+
+### 4. **Правила для разных типов компонентов:**
+
+#### Чекбоксы:
+```javascript
+// Состояние
+const checked = ref(args.isChecked);
+
+// События
+@update:isChecked="checked = $event"
+```
+
+#### Радио кнопки:
+```javascript
+// Состояние
+const selectedValue = ref(args.value);
+
+// События
+@update:value="selectedValue = $event"
+```
+
+#### Счетчики:
+```javascript
+// Состояние
+const count = ref(args.value);
+
+// События
+@update:value="count = $event"
+```
+
+#### Группы компонентов:
+```javascript
+// Состояние
+const selectedItems = ref(args.selectedItems || []);
+
+// События
+@update:selectedItems="selectedItems = $event"
+```
+
+### 5. **Обязательные события для интерактивности:**
+
+- **OCheckbox**: `@update:isChecked`
+- **ORadioButton**: `@update:value`
+- **OCounter**: `@update:value`
+- **OCheckboxGroup**: `@update:selectedItems`
+- **ORadioButtonGroup**: `@update:selectedValue`
+
+### 6. **Правила отображения кода в docs:**
+
+#### Простой интерактивный компонент:
+```html
+<OCheckbox :isChecked="false" @update:isChecked="checked = $event" />
+```
+
+#### Сложный интерактивный компонент:
+```html
+<OCheckboxGroup
+  :selectedItems="[]"
+  @update:selectedItems="selectedItems = $event"
+>
+  <OCheckbox label="Option 1" />
+  <OCheckbox label="Option 2" />
+</OCheckboxGroup>
+```
+
+### 7. **Чек-лист для интерактивных stories:**
+
+- [ ] Используется `ref()` для состояния
+- [ ] События привязаны через `@update:propName`
+- [ ] Состояние обновляется в обработчиках событий
+- [ ] Код в docs показывает интерактивность
+- [ ] Все интерактивные props имеют события
+- [ ] Состояние инициализируется из args
+
+### 8. **Пример полной интерактивной story:**
+
+```javascript
+export const InteractiveCheckbox = {
+  args: {
+    isChecked: false,
+    label: 'Click me!',
+    variant: 'primary'
+  },
+  render: args => ({
+    components: { OCheckbox },
+    setup() {
+      const checked = ref(args.isChecked);
+      return { args, checked };
+    },
+    template: `
+      <OCheckbox 
+        v-bind="args" 
+        :isChecked="checked"
+        @update:isChecked="checked = $event"
+      />
+    `
+  }),
+  parameters: {
+    docs: {
+      source: {
+        code: '<OCheckbox :isChecked="false" @update:isChecked="checked = $event" label="Click me!" />',
+      },
+    },
+  },
+};
+```
+
+**КРИТИЧЕСКИ ВАЖНО:** 
+- Каждая story с интерактивными элементами ДОЛЖНА иметь реактивное состояние
+- Все события должны быть привязаны через `@update:propName`
+- Код в документации должен показывать, как пользователь будет использовать компонент с событиями

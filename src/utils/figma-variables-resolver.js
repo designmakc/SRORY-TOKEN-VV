@@ -474,14 +474,82 @@ function formatTokenValue(tokenName, value) {
  * @param {String} prefix - Префикс для CSS переменных (по умолчанию '--')
  * @returns {String} Строка CSS переменных
  */
-function generateCSSVariables(modeConfig = {}, prefix = '--') {
-  const componentTokens = getComponentTokens(modeConfig);
+// Функция для получения semantic токенов
+function getSemanticTokens(modeConfig = {}) {
+  const semanticVariables = {};
+  const semanticCollectionId = collectionNameToId.get(COLLECTION_HIERARCHY.SEMANTIC);
   
+  if (!semanticCollectionId) {
+    return semanticVariables;
+  }
+  
+  for (const variable of variableMap.values()) {
+    if (variable.variableCollectionId === semanticCollectionId) {
+      const value = resolveVariable(variable.id, modeConfig);
+      if (value !== null) {
+        semanticVariables[variable.name] = value;
+      }
+    }
+  }
+  
+  return semanticVariables;
+}
+
+// Функция для получения adaptive токенов
+function getAdaptiveTokens(modeConfig = {}) {
+  const adaptiveVariables = {};
+  const adaptiveCollectionId = collectionNameToId.get(COLLECTION_HIERARCHY.ADAPTIVE);
+  
+  if (!adaptiveCollectionId) {
+    return adaptiveVariables;
+  }
+  
+  for (const variable of variableMap.values()) {
+    if (variable.variableCollectionId === adaptiveCollectionId) {
+      const value = resolveVariable(variable.id, modeConfig);
+      if (value !== null) {
+        adaptiveVariables[variable.name] = value;
+      }
+    }
+  }
+  
+  return adaptiveVariables;
+}
+
+// Функция для получения primitive токенов
+function getPrimitiveTokens(modeConfig = {}) {
+  const primitiveVariables = {};
+  const primitiveCollectionId = collectionNameToId.get(COLLECTION_HIERARCHY.PRIMITIVE);
+  
+  if (!primitiveCollectionId) {
+    return primitiveVariables;
+  }
+  
+  for (const variable of variableMap.values()) {
+    if (variable.variableCollectionId === primitiveCollectionId) {
+      const value = resolveVariable(variable.id, modeConfig);
+      if (value !== null) {
+        primitiveVariables[variable.name] = value;
+      }
+    }
+  }
+  
+  return primitiveVariables;
+}
+
+function generateCSSVariables(modeConfig = {}, prefix = '--') {
   const cssVars = [];
   
-  // Добавляем все токены (semantic + component)
-  for (const [name, value] of Object.entries(componentTokens)) {
-    // Сначала преобразуем CamelCase в kebab-case, затем заменяем слэши и делаем toLowerCase
+  // Собираем токены из ВСЕХ core коллекций
+  const allTokens = {
+    ...getSemanticTokens(modeConfig),
+    ...getComponentTokens(modeConfig),
+    ...getAdaptiveTokens(modeConfig),
+    ...getPrimitiveTokens(modeConfig)
+  };
+  
+  // Генерируем CSS переменные
+  for (const [name, value] of Object.entries(allTokens)) {
     const cssName = camelToKebab(name).replace(/\//g, '-').toLowerCase();
     const formattedValue = formatTokenValue(name, value);
     cssVars.push(`${prefix}${cssName}: ${formattedValue};`);
@@ -516,6 +584,9 @@ export {
   resolveVariable, 
   getVariableByName, 
   getComponentTokens,
+  getSemanticTokens,
+  getAdaptiveTokens,
+  getPrimitiveTokens,
   
   // Утилиты
   getAvailableCollections,

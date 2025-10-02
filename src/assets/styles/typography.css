@@ -5,6 +5,8 @@
   height: fit-content; /* Hug - подстраивается под содержимое */
 }
 
+/* Стили для Storybook теперь в .storybook/preview-head.html */
+
 /* Adaptive H1 - Основной заголовок */
 .typography-adaptive-h1 {
   font-family: var(--typography-font-family);

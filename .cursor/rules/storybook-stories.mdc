@@ -1,0 +1,343 @@
+---
+alwaysApply: true
+---
+
+# Storybook Stories Generation Rules
+
+## Общие правила для создания Stories
+
+### 1. Структура файла
+- Использовать CSF 3.0 (Component Story Format)
+- Экспортировать default объект с метаданными
+- Каждая story - именованный экспорт
+
+### 2. Формат кода в документации
+- **ОБЯЗАТЕЛЬНО** добавлять `parameters.docs.source.code` для каждой story
+- Код должен быть компактным, в одну строку или форматированным красиво
+- Показывать только релевантные props, опускать значения по умолчанию
+- Использовать HTML/Vue синтаксис, а не JSX
+
+### 3. Пример правильного кода
+```javascript
+export const Primary = {
+  args: {
+    variant: 'primary',
+    label: 'Primary checkbox',
+  },
+  parameters: {
+    docs: {
+      source: {
+        code: '<OCheckbox variant="primary" label="Primary checkbox" />',
+      },
+    },
+  },
+};
+```
+
+### 4. Что НЕ показывать в коде
+- ref() обёртки
+- setup() функции
+- Внутреннюю логику компонента
+- Значения по умолчанию props
+- Импорты и декларации
+
+### 5. ArgTypes
+- Всегда описывать все props компонента
+- Добавлять description для каждого prop
+- Использовать правильные control types (select, boolean, text, etc.)
+
+### 6. Preview параметры
+- `docs.source.type: 'code'`
+- `docs.source.state: 'closed'` (код свёрнут по умолчанию)
+- `docs.source.format: true`
+
+## Template для генерации Stories
+
+Когда создаёшь новую story для Vue компонента:
+
+1. Импортируй компонент
+2. Создай default export с метаданными и argTypes
+3. Создай Template с минимальной логикой
+4. Для каждой story:
+   - Используй Template.bind({})
+   - Задай args с нужными значениями
+   - **ОБЯЗАТЕЛЬНО** добавь parameters.docs.source.code с красивым кодом
+5. Показывай код как будто пользователь пишет его вручную в своём проекте
+
+## Формат отображаемого кода
+
+### Компактный (для простых случаев):
+```html
+<ComponentName prop1="value" prop2="value" />
+```
+
+### Многострочный (для сложных случаев):
+```html
+<ComponentName
+  prop1="value"
+  prop2="value"
+  prop3="value"
+/>
+```
+
+### НЕ показывай:
+```html
+<script setup>
+import { ref } from 'vue';
+const isActive = ref(true);
+</script>
+<template>
+  <ComponentName .../>
+</template>
+```
+
+## Примеры правильных Stories
+
+### Простая story:
+```javascript
+export const Primary = {
+  args: {
+    variant: 'primary',
+    label: 'Button text',
+  },
+  parameters: {
+    docs: {
+      source: {
+        code: '<OButton variant="primary">Button text</OButton>',
+      },
+    },
+  },
+};
+```
+
+### Сложная story:
+```javascript
+export const WithIcon = {
+  args: {
+    variant: 'primary',
+    label: 'Save',
+    icon: 'save',
+    iconPosition: 'left',
+  },
+  parameters: {
+    docs: {
+      source: {
+        code: `<OButton
+  variant="primary"
+  icon="save"
+  iconPosition="left"
+>
+  Save
+</OButton>`,
+      },
+    },
+  },
+};
+```
+
+## Команда для Cursor
+
+Когда работаете с Cursor, используйте такой промпт:
+
+```
+Создай Storybook stories для компонента [ComponentName] по следующим правилам:
+
+1. Используй CSF 3.0 формат
+2. Для каждой story добавь parameters.docs.source.code с компактным HTML кодом
+3. Код должен показывать, как пользователь будет использовать компонент в своём проекте
+4. НЕ показывай внутреннюю логику (ref, setup, const)
+5. Показывай только значимые props, опускай defaults
+6. Формат: одна строка для простых случаев, многострочный для сложных
+
+Пример желаемого кода в docs:
+<ComponentName prop="value" :isActive="true" />
+
+А НЕ:
+<script setup>
+import { ref } from 'vue';
+const isActive = ref(true);
+</script>
+<template>
+  <ComponentName .../>
+</template>
+```
+
+## Checklist
+
+- [ ] Используется CSF 3.0 формат
+- [ ] Каждая story имеет parameters.docs.source.code
+- [ ] Код компактный и читаемый
+- [ ] Показаны только значимые props
+- [ ] Нет внутренней логики в коде
+- [ ] ArgTypes описаны для всех props
+- [ ] tags: ['autodocs'] присутствует
+- [ ] Decorators настроены для тем# Storybook Stories Generation Rules
+
+## Общие правила для создания Stories
+
+### 1. Структура файла
+- Использовать CSF 3.0 (Component Story Format)
+- Экспортировать default объект с метаданными
+- Каждая story - именованный экспорт
+
+### 2. Формат кода в документации
+- **ОБЯЗАТЕЛЬНО** добавлять `parameters.docs.source.code` для каждой story
+- Код должен быть компактным, в одну строку или форматированным красиво
+- Показывать только релевантные props, опускать значения по умолчанию
+- Использовать HTML/Vue синтаксис, а не JSX
+
+### 3. Пример правильного кода
+```javascript
+export const Primary = {
+  args: {
+    variant: 'primary',
+    label: 'Primary checkbox',
+  },
+  parameters: {
+    docs: {
+      source: {
+        code: '<OCheckbox variant="primary" label="Primary checkbox" />',
+      },
+    },
+  },
+};
+```
+
+### 4. Что НЕ показывать в коде
+- ref() обёртки
+- setup() функции
+- Внутреннюю логику компонента
+- Значения по умолчанию props
+- Импорты и декларации
+
+### 5. ArgTypes
+- Всегда описывать все props компонента
+- Добавлять description для каждого prop
+- Использовать правильные control types (select, boolean, text, etc.)
+
+### 6. Preview параметры
+- `docs.source.type: 'code'`
+- `docs.source.state: 'closed'` (код свёрнут по умолчанию)
+- `docs.source.format: true`
+
+## Template для генерации Stories
+
+Когда создаёшь новую story для Vue компонента:
+
+1. Импортируй компонент
+2. Создай default export с метаданными и argTypes
+3. Создай Template с минимальной логикой
+4. Для каждой story:
+   - Используй Template.bind({})
+   - Задай args с нужными значениями
+   - **ОБЯЗАТЕЛЬНО** добавь parameters.docs.source.code с красивым кодом
+5. Показывай код как будто пользователь пишет его вручную в своём проекте
+
+## Формат отображаемого кода
+
+### Компактный (для простых случаев):
+```html
+<ComponentName prop1="value" prop2="value" />
+```
+
+### Многострочный (для сложных случаев):
+```html
+<ComponentName
+  prop1="value"
+  prop2="value"
+  prop3="value"
+/>
+```
+
+### НЕ показывай:
+```html
+<script setup>
+import { ref } from 'vue';
+const isActive = ref(true);
+</script>
+<template>
+  <ComponentName .../>
+</template>
+```
+
+## Примеры правильных Stories
+
+### Простая story:
+```javascript
+export const Primary = {
+  args: {
+    variant: 'primary',
+    label: 'Button text',
+  },
+  parameters: {
+    docs: {
+      source: {
+        code: '<OButton variant="primary">Button text</OButton>',
+      },
+    },
+  },
+};
+```
+
+### Сложная story:
+```javascript
+export const WithIcon = {
+  args: {
+    variant: 'primary',
+    label: 'Save',
+    icon: 'save',
+    iconPosition: 'left',
+  },
+  parameters: {
+    docs: {
+      source: {
+        code: `<OButton
+  variant="primary"
+  icon="save"
+  iconPosition="left"
+>
+  Save
+</OButton>`,
+      },
+    },
+  },
+};
+```
+
+## Команда для Cursor
+
+Когда работаете с Cursor, используйте такой промпт:
+
+```
+Создай Storybook stories для компонента [ComponentName] по следующим правилам:
+
+1. Используй CSF 3.0 формат
+2. Для каждой story добавь parameters.docs.source.code с компактным HTML кодом
+3. Код должен показывать, как пользователь будет использовать компонент в своём проекте
+4. НЕ показывай внутреннюю логику (ref, setup, const)
+5. Показывай только значимые props, опускай defaults
+6. Формат: одна строка для простых случаев, многострочный для сложных
+
+Пример желаемого кода в docs:
+<ComponentName prop="value" :isActive="true" />
+
+А НЕ:
+<script setup>
+import { ref } from 'vue';
+const isActive = ref(true);
+</script>
+<template>
+  <ComponentName .../>
+</template>
+```
+
+## Checklist
+
+- [ ] Используется CSF 3.0 формат
+- [ ] Каждая story имеет parameters.docs.source.code
+- [ ] Код компактный и читаемый
+- [ ] Показаны только значимые props
+- [ ] Нет внутренней логики в коде
+- [ ] ArgTypes описаны для всех props
+- [ ] tags: ['autodocs'] присутствует
+- [ ] Decorators настроены для тем

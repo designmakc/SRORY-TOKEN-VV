@@ -1,0 +1,36 @@
+<style>
+  /* Сброс высоты для всех story контейнеров */
+  #storybook-root,
+  #storybook-docs,
+  .sb-show-main,
+  .sb-main-padded {
+    height: auto !important;
+    min-height: auto !important;
+  }
+
+  /* Специфичные стили для canvas */
+  .sb-story {
+    display: inline-block !important;
+    width: fit-content !important;
+    height: fit-content !important;
+    min-height: auto !important;
+  }
+
+  /* Для docs страниц */
+  .sbdocs-preview {
+    height: auto !important;
+    min-height: auto !important;
+  }
+
+  .docs-story > div {
+    height: auto !important;
+    min-height: auto !important;
+  }
+
+  /* Сброс высоты для всех элементов с id содержащим story */
+  [id*="story--"] {
+    height: auto !important;
+    min-height: auto !important;
+    max-height: none !important;
+  }
+</style>

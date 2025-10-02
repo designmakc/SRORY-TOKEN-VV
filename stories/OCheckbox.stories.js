@@ -64,7 +64,28 @@ export const Primary = {
     hasError: false,
     hasLabel: true,
     label: 'Primary checkbox'
-  }
+  },
+  render: args => ({
+    components: { OCheckbox },
+    setup() {
+      const checked = ref(args.isChecked);
+      return { args, checked };
+    },
+    template: `
+      <OCheckbox 
+        v-bind="args" 
+        :isChecked="checked"
+        @update:isChecked="checked = $event"
+      />
+    `
+  }),
+  parameters: {
+    docs: {
+      source: {
+        code: '<OCheckbox variant="primary" label="Primary checkbox" />',
+      },
+    },
+  },
 };
 
 // Interactive checkbox
@@ -82,7 +103,7 @@ export const Interactive = {
           :isChecked="isChecked"
           @update:isChecked="isChecked = $event"
         />
-        <p style="margin-top: 10px; color: white;">
+        <p style="margin-top: var(--gap-sm); color: var(--color-text-primary);">
           Checked: {{ isChecked }}
         </p>
       </div>
@@ -122,14 +143,14 @@ export const MultipleCheckboxes = {
     template: `
       <div>
         <h3>Multiple Checkboxes</h3>
-        <div v-for="checkbox in checkboxes" :key="checkbox.id" style="margin: 10px 0;">
+        <div v-for="checkbox in checkboxes" :key="checkbox.id" style="margin: var(--gap-sm) 0;">
           <OCheckbox 
             :isChecked="checkbox.checked"
             :label="checkbox.label"
             @update:isChecked="checkbox.checked = $event"
           />
         </div>
-        <p style="margin-top: 20px; color: white;">
+        <p style="margin-top: var(--gap-lg); color: var(--color-text-primary);">
           Selected: {{ checkboxes.filter(cb => cb.checked).map(cb => cb.label).join(', ') }}
         </p>
       </div>
@@ -148,7 +169,28 @@ export const Secondary = {
     hasError: false,
     hasLabel: true,
     label: 'Secondary checkbox'
-  }
+  },
+  render: args => ({
+    components: { OCheckbox },
+    setup() {
+      const checked = ref(args.isChecked);
+      return { args, checked };
+    },
+    template: `
+      <OCheckbox 
+        v-bind="args" 
+        :isChecked="checked"
+        @update:isChecked="checked = $event"
+      />
+    `
+  }),
+  parameters: {
+    docs: {
+      source: {
+        code: '<OCheckbox variant="secondary" label="Secondary checkbox" />',
+      },
+    },
+  },
 };
 
 // Small size
@@ -162,7 +204,28 @@ export const Small = {
     hasError: false,
     hasLabel: true,
     label: 'Small checkbox'
-  }
+  },
+  render: args => ({
+    components: { OCheckbox },
+    setup() {
+      const checked = ref(args.isChecked);
+      return { args, checked };
+    },
+    template: `
+      <OCheckbox 
+        v-bind="args" 
+        :isChecked="checked"
+        @update:isChecked="checked = $event"
+      />
+    `
+  }),
+  parameters: {
+    docs: {
+      source: {
+        code: '<OCheckbox variant="primary" size="sm" label="Small checkbox" />',
+      },
+    },
+  },
 };
 
 // Unchecked state
@@ -176,7 +239,28 @@ export const Unchecked = {
     hasError: false,
     hasLabel: true,
     label: 'Unchecked checkbox'
-  }
+  },
+  render: args => ({
+    components: { OCheckbox },
+    setup() {
+      const checked = ref(args.isChecked);
+      return { args, checked };
+    },
+    template: `
+      <OCheckbox 
+        v-bind="args" 
+        :isChecked="checked"
+        @update:isChecked="checked = $event"
+      />
+    `
+  }),
+  parameters: {
+    docs: {
+      source: {
+        code: '<OCheckbox variant="primary" label="Unchecked checkbox" />',
+      },
+    },
+  },
 };
 
 // Disabled state
@@ -190,7 +274,28 @@ export const Disabled = {
     hasError: false,
     hasLabel: true,
     label: 'Disabled checkbox'
-  }
+  },
+  render: args => ({
+    components: { OCheckbox },
+    setup() {
+      const checked = ref(args.isChecked);
+      return { args, checked };
+    },
+    template: `
+      <OCheckbox 
+        v-bind="args" 
+        :isChecked="checked"
+        @update:isChecked="checked = $event"
+      />
+    `
+  }),
+  parameters: {
+    docs: {
+      source: {
+        code: '<OCheckbox variant="primary" :isDisabled="true" label="Disabled checkbox" />',
+      },
+    },
+  },
 };
 
 // Error state
@@ -204,7 +309,28 @@ export const Error = {
     hasError: true,
     hasLabel: true,
     label: 'Error checkbox'
-  }
+  },
+  render: args => ({
+    components: { OCheckbox },
+    setup() {
+      const checked = ref(args.isChecked);
+      return { args, checked };
+    },
+    template: `
+      <OCheckbox 
+        v-bind="args" 
+        :isChecked="checked"
+        @update:isChecked="checked = $event"
+      />
+    `
+  }),
+  parameters: {
+    docs: {
+      source: {
+        code: '<OCheckbox variant="primary" :hasError="true" label="Error checkbox" />',
+      },
+    },
+  },
 };
 
 // All States Matrix (как в Figma)
@@ -212,7 +338,7 @@ export const AllStates = {
   render: () => ({
     components: { OCheckbox },
     template: `
-      <div style="display: grid; grid-template-columns: repeat(6, 1fr); gap: 20px; padding: 20px;">
+      <div style="display: grid; grid-template-columns: repeat(6, 1fr); gap: var(--gap-lg); padding: var(--gap-lg);">
         <!-- Row 1: default -->
         <div>
           <h4>Primary MD Checked</h4>

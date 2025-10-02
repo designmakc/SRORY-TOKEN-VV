@@ -1,5 +1,6 @@
 // .storybook/preview.js
-import '../src/assets/fonts/fonts.css'; // ДОБАВЬ ЭТУ СТРОКУ
+import '../src/assets/fonts/fonts.css';
+import '../src/assets/styles/storybook-fixes.css';
 
 import { setup } from '@storybook/vue3';
 import { useDesignTokens } from '@/composables/useDesignTokens';
@@ -35,7 +36,6 @@ const injectTokensToDOM = () => {
     root.style.setProperty(key, value);
   });
   
-  // Применяем стили для Storybook фонов
   applyStorybookBackgrounds();
 };
 
@@ -43,56 +43,19 @@ const injectTokensToDOM = () => {
 const applyStorybookBackgrounds = () => {
   const style = document.createElement('style');
   style.textContent = `
-    /* Фон для документации (левая панель) */
-    .docs-story {
-      background-color: var(--color-background-page-lvl-2) !important;
-      font-family: var(--typography-font-family-body) !important;
-      color: var(--color-text-secondary) !important;
-    }
-    
-    /* Фон для Canvas (область с компонентом) */
-    .sb-show-main {
-      background-color: var(--color-background-page-lvl-2) !important;
-      font-family: var(--typography-font-family-body) !important;
-      color: var(--color-text-secondary) !important;
-    }
-    
-    /* Фон для Canvas в режиме документации */
-    .docs-story .sb-show-main {
-      background-color: var(--color-background-page-lvl-2) !important;
-      font-family: var(--typography-font-family-body) !important;
-      color: var(--color-text-secondary) !important;
-    }
-    
-    /* Фон для основной области Storybook */
-    .sb-main-padded {
-      background-color: var(--color-background-page-lvl-2) !important;
-      font-family: var(--typography-font-family-body) !important;
-      color: var(--color-text-secondary) !important;
-    }
-    
-    /* Фон для Canvas области */
+    /* Фоны для всех областей Storybook */
+    .docs-story,
+    .sb-show-main,
+    .sb-main-padded,
     .sb-canvas {
       background-color: var(--color-background-page-lvl-2) !important;
       font-family: var(--typography-font-family-body) !important;
-      color: var(--color-text-secondary) !important;
+      color: var(--color-text-primary) !important;
     }
     
-    /* Фон для документации */
-    .docs-story .docs-story {
-      background-color: var(--color-background-page-lvl-2) !important;
-      font-family: var(--typography-font-family-body) !important;
-      color: var(--color-text-secondary) !important;
-    }
     
-    /* Стили для story-label */
-    .story-label {
-      font-family: var(--typography-font-family-body) !important;
-      color: var(--color-text-secondary) !important;
-    }
   `;
   
-  // Удаляем старые стили если есть
   const existingStyle = document.getElementById('storybook-backgrounds');
   if (existingStyle) {
     existingStyle.remove();
@@ -102,59 +65,45 @@ const applyStorybookBackgrounds = () => {
   document.head.appendChild(style);
 };
 
-// Глобальный декоратор для инжекции CSS переменных
+// Глобальный декоратор
 export const decorators = [
-  (story, context) => {
+  (story) => {
+    // Инжектируем токены при монтировании
+    setTimeout(() => {
+      injectTokensToDOM();
+    }, 0);
+    
     return {
       components: { story },
-      template: `<story />`,
-      setup() {
-        // Инжектируем токены при рендере каждой истории
-        setTimeout(() => {
-          injectTokensToDOM();
-        }, 0);
-        
-        // Применяем стили при смене темы
-        if (context.globals.theme) {
-          setTimeout(() => {
-            applyStorybookBackgrounds();
-          }, 100);
-        }
-        
-        return {};
-      }
+      template: '<div style="display: inline-block; width: 100%; height: fit-content;"><story /></div>'
     };
   }
 ];
 
-// Глобальные параметры Storybook
+// Глобальные параметры
 export const parameters = {
-  actions: { argTypesRegex: '^on[A-Z].*' },
+  actions: { 
+    argTypesRegex: '^on[A-Z].*' 
+  },
   controls: {
     matchers: {
       color: /(background|color)$/i,
       date: /Date$/,
     },
+    expanded: false,
   },
+  docs: {
+    source: {
+      type: 'code',
+      state: 'closed',
+      excludeDecorators: true,
+      format: true,
+      language: 'html',
+    },
+  },
+  layout: 'centered',
   backgrounds: {
-    default: 'page-lvl-2',
-    values: [
-      {
-        name: 'page-lvl-2',
-        value: 'var(--color-background-page-lvl-2)',
-        title: 'Основной фон страницы (lvl-2)'
-      },
-      {
-        name: 'page-lvl-2',
-        value: 'var(--color-background-page-lvl-2)',
-        title: 'Фон секций страницы (lvl-2)'
-      },
-      {
-        name: 'page-lvl-3',
-        value: 'var(--color-background-page-lvl-2)',
-        title: 'Фон карточек на странице (lvl-2)'
-      },
-    ],
+    disable: true,
   },
 };
 
@@ -195,25 +144,12 @@ export const globalTypes = {
 
 // Настройка Vue 3
 setup((app) => {
-  // Добавляем глобальные функции для отладки
   window.$injectTokens = injectTokensToDOM;
   window.$tokens = useDesignTokens();
   
-  // Инжектируем токены сразу при загрузке Storybook
   setTimeout(() => {
     injectTokensToDOM();
   }, 100);
-  
-  // Обработчик смены темы
-  const handleThemeChange = () => {
-    setTimeout(() => {
-      applyStorybookBackgrounds();
-    }, 200);
-  };
-  
-  // Добавляем обработчик для toolbar
-  window.addEventListener('storybook-theme-changed', handleThemeChange);
 });
 
-// Экспорт для использования в stories
 export { useDesignTokens };

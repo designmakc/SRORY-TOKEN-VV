@@ -127,14 +127,34 @@ const handleMouseUp = () => {
 </script>
 
 <style scoped>
+/* Стили для Storybook теперь в глобальных настройках */
+
 .o-checkbox {
   display: inline-flex;
   align-items: center;
-  justify-content: center;
   gap: var(--gap-input-selection-label);
   box-sizing: border-box;
   cursor: pointer;
   transition: all 0.2s ease;
+  margin: 0; /* Убираем возможные margin */
+  padding: 0; /* Убираем возможные padding */
+  width: fit-content; /* Ширина по содержимому */
+  height: fit-content; /* Высота по содержимому */
+  line-height: normal; /* Убираем возможные влияния line-height */
+  vertical-align: baseline; /* Правильное выравнивание */
+}
+
+/* Дополнительная защита от Storybook обёрток */
+[class*="story--"] .o-checkbox {
+  display: inline-flex !important;
+  align-items: center !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  height: auto !important;
+  min-height: auto !important;
+  max-height: none !important;
+  line-height: normal !important;
+  vertical-align: baseline !important;
 }
 
 .o-checkbox__box {
@@ -143,19 +163,43 @@ const handleMouseUp = () => {
   justify-content: center;
   box-sizing: border-box;
   border-radius: var(--checkbox-border-radius);
-  padding: var(--checkbox-padding-md);
+  /* padding: var(--checkbox-padding-md); */ /* Убираем padding - он не нужен для размера */
+  margin: 0; /* Убираем возможные margin */
+  padding: 0; /* Убираем возможные padding */
+  flex-shrink: 0; /* Важно! Не даёт сжиматься */
   transition: all 0.2s ease;
+  line-height: normal; /* Убираем возможные влияния line-height */
+  vertical-align: baseline; /* Правильное выравнивание */
 }
 
-/* Размеры */
+/* Дополнительная защита для box от Storybook обёрток */
+[class*="story--"] .o-checkbox__box {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  height: auto !important;
+  min-height: auto !important;
+  max-height: none !important;
+  line-height: normal !important;
+  vertical-align: baseline !important;
+  flex-shrink: 0 !important;
+}
+
+/* Размеры - используйте только width и height */
 .o-checkbox--md .o-checkbox__box {
   width: var(--checkbox-size-md);
   height: var(--checkbox-size-md);
+  min-width: var(--checkbox-size-md);
+  min-height: var(--checkbox-size-md);
 }
 
 .o-checkbox--sm .o-checkbox__box {
   width: var(--checkbox-size-sm);
   height: var(--checkbox-size-sm);
+  min-width: var(--checkbox-size-sm);
+  min-height: var(--checkbox-size-sm);
 }
 
 /* UNCHECKED состояния - показываем border */
@@ -251,6 +295,21 @@ const handleMouseUp = () => {
   user-select: none;
   min-height: auto;
   max-height: none;
+  margin: 0; /* Убираем возможные margin */
+  padding: 0; /* Убираем возможные padding */
+  vertical-align: baseline; /* Правильное выравнивание */
+}
+
+/* Дополнительная защита для label от Storybook обёрток */
+[class*="story--"] .o-checkbox__label {
+  margin: 0 !important;
+  padding: 0 !important;
+  height: auto !important;
+  min-height: auto !important;
+  max-height: none !important;
+  line-height: var(--typography-line-height-body-sm) !important;
+  vertical-align: baseline !important;
+  display: inline !important;
 }
 
 /* Hover эффекты для label */

@@ -54,14 +54,27 @@ export const Primary = {
     hasError: false,
     value: 'option1'
   },
-  render: (args) => ({
+  render: args => ({
     components: { ORadioButton },
     setup() {
       const checked = ref(args.isChecked);
       return { args, checked };
     },
-    template: '<ORadioButton :isChecked="checked" @update:isChecked="checked = $event" v-bind="args" />'
-  })
+    template: `
+      <ORadioButton 
+        v-bind="args" 
+        :isChecked="checked"
+        @update:isChecked="checked = $event"
+      />
+    `
+  }),
+  parameters: {
+    docs: {
+      source: {
+        code: '<ORadioButton label="Radio button" value="option1" />',
+      },
+    },
+  },
 };
 
 // AllStates
@@ -83,10 +96,10 @@ export const AllStates = {
       };
     },
     template: `
-      <div style="display: flex; flex-direction: column; gap: 24px;">
+      <div style="display: flex; flex-direction: column; gap: var(--gap-lg);">
         <div>
-          <h3 style="margin-bottom: 12px; color: var(--color-text-primary);">Размер MD</h3>
-          <div style="display: flex; gap: 16px; flex-wrap: wrap;">
+          <h3 style="margin-bottom: var(--gap-sm); color: var(--color-text-primary);">Размер MD</h3>
+          <div style="display: flex; gap: var(--gap-md); flex-wrap: wrap;">
             <ORadioButton :isChecked="selected1" @update:isChecked="selected1 = $event" label="Checked" size="md" value="md1" />
             <ORadioButton :isChecked="selected2" @update:isChecked="selected2 = $event" label="Unchecked" size="md" value="md2" />
             <ORadioButton :isChecked="true" label="Disabled" size="md" :isDisabled="true" value="md3" />
@@ -95,8 +108,8 @@ export const AllStates = {
         </div>
         
         <div>
-          <h3 style="margin-bottom: 12px; color: var(--color-text-primary);">Размер SM</h3>
-          <div style="display: flex; gap: 16px; flex-wrap: wrap;">
+          <h3 style="margin-bottom: var(--gap-sm); color: var(--color-text-primary);">Размер SM</h3>
+          <div style="display: flex; gap: var(--gap-md); flex-wrap: wrap;">
             <ORadioButton :isChecked="selected5" @update:isChecked="selected5 = $event" label="Checked" size="sm" value="sm1" />
             <ORadioButton :isChecked="selected6" @update:isChecked="selected6 = $event" label="Unchecked" size="sm" value="sm2" />
             <ORadioButton :isChecked="true" label="Disabled" size="sm" :isDisabled="true" value="sm3" />
@@ -120,7 +133,7 @@ export const RadioGroup = {
       return { selectedOption, setOption };
     },
     template: `
-      <div style="display: flex; flex-direction: column; gap: 12px;">
+      <div style="display: flex; flex-direction: column; gap: var(--gap-sm);">
         <h3 style="color: var(--color-text-primary);">Выберите вариант:</h3>
         <ORadioButton 
           :isChecked="selectedOption === 'option1'" 
@@ -140,7 +153,7 @@ export const RadioGroup = {
           label="Третий вариант" 
           value="option3"
         />
-        <p style="margin-top: 16px; color: var(--color-text-secondary);">
+        <p style="margin-top: var(--gap-md); color: var(--color-text-secondary);">
           Выбрано: {{ selectedOption }}
         </p>
       </div>
@@ -157,14 +170,27 @@ export const WithoutLabel = {
     isDisabled: false,
     hasError: false
   },
-  render: (args) => ({
+  render: args => ({
     components: { ORadioButton },
     setup() {
       const checked = ref(args.isChecked);
       return { args, checked };
     },
-    template: '<ORadioButton :isChecked="checked" @update:isChecked="checked = $event" v-bind="args" />'
-  })
+    template: `
+      <ORadioButton 
+        v-bind="args" 
+        :isChecked="checked"
+        @update:isChecked="checked = $event"
+      />
+    `
+  }),
+  parameters: {
+    docs: {
+      source: {
+        code: '<ORadioButton :hasLabel="false" />',
+      },
+    },
+  },
 };
 
 // ErrorStates
@@ -177,9 +203,9 @@ export const ErrorStates = {
       return { selected1, selected2 };
     },
     template: `
-      <div style="display: flex; flex-direction: column; gap: 16px;">
+      <div style="display: flex; flex-direction: column; gap: var(--gap-md);">
         <h3 style="color: var(--color-text-primary);">Состояния ошибки:</h3>
-        <div style="display: flex; gap: 16px; flex-wrap: wrap;">
+        <div style="display: flex; gap: var(--gap-md); flex-wrap: wrap;">
           <ORadioButton 
             :isChecked="selected1" @update:isChecked="selected1 = $event" 
             label="Checked с ошибкой" 
@@ -228,20 +254,20 @@ export const InteractiveDemo = {
       };
     },
     template: `
-      <div style="display: flex; flex-direction: column; gap: 24px;">
-        <div style="display: flex; flex-direction: column; gap: 16px;">
+      <div style="display: flex; flex-direction: column; gap: var(--gap-lg);">
+        <div style="display: flex; flex-direction: column; gap: var(--gap-md);">
           <h3 style="color: var(--color-text-primary);">Настройки:</h3>
-          <div style="display: flex; gap: 16px; flex-wrap: wrap; align-items: center;">
+          <div style="display: flex; gap: var(--gap-md); flex-wrap: wrap; align-items: center;">
             <div>
-              <label style="display: block; margin-bottom: 4px; color: var(--color-text-secondary);">Размер:</label>
-              <select v-model="selectedSize" style="padding: 4px 8px; border: 1px solid var(--color-border-primary); border-radius: 4px;">
+              <label style="display: block; margin-bottom: var(--gap-3xs); color: var(--color-text-secondary);">Размер:</label>
+              <select v-model="selectedSize" style="padding: var(--gap-3xs) var(--gap-xs); border: 1px solid var(--color-border-primary); border-radius: var(--border-radius-sm);">
                 <option value="md">MD</option>
                 <option value="sm">SM</option>
               </select>
             </div>
             <div>
-              <label style="display: block; margin-bottom: 4px; color: var(--color-text-secondary);">Состояние:</label>
-              <select v-model="selectedState" style="padding: 4px 8px; border: 1px solid var(--color-border-primary); border-radius: 4px;">
+              <label style="display: block; margin-bottom: var(--gap-3xs); color: var(--color-text-secondary);">Состояние:</label>
+              <select v-model="selectedState" style="padding: var(--gap-3xs) var(--gap-xs); border: 1px solid var(--color-border-primary); border-radius: var(--border-radius-sm);">
                 <option value="default">Default</option>
                 <option value="disabled">Disabled</option>
                 <option value="error">Error</option>
@@ -251,8 +277,8 @@ export const InteractiveDemo = {
         </div>
         
         <div>
-          <h3 style="color: var(--color-text-primary); margin-bottom: 12px;">Результат:</h3>
-          <div style="display: flex; flex-direction: column; gap: 8px;">
+          <h3 style="color: var(--color-text-primary); margin-bottom: var(--gap-sm);">Результат:</h3>
+          <div style="display: flex; flex-direction: column; gap: var(--gap-xs);">
             <ORadioButton 
               v-for="option in radioOptions"
               :key="option.value"
@@ -265,7 +291,7 @@ export const InteractiveDemo = {
               :value="option.value"
             />
           </div>
-          <p style="margin-top: 12px; color: var(--color-text-secondary);">
+          <p style="margin-top: var(--gap-sm); color: var(--color-text-secondary);">
             Выбрано: {{ selectedOption }}
           </p>
         </div>

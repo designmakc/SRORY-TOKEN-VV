@@ -1,0 +1,119 @@
+/* Storybook Fixes - Нейтрализация конфликтов с обёртками */
+
+/* Убираем все возможные влияния от Storybook обёрток */
+[class*="story--"] {
+  all: unset !important;
+  display: block !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  border: none !important;
+  background: transparent !important;
+  box-sizing: border-box !important;
+  width: auto !important;
+  height: auto !important;
+  min-width: auto !important;
+  min-height: auto !important;
+  max-width: none !important;
+  max-height: none !important;
+  line-height: normal !important;
+  font-size: inherit !important;
+  font-weight: inherit !important;
+  font-family: inherit !important;
+  color: inherit !important;
+  text-align: left !important;
+  vertical-align: baseline !important;
+  position: static !important;
+  top: auto !important;
+  left: auto !important;
+  right: auto !important;
+  bottom: auto !important;
+  z-index: auto !important;
+  overflow: visible !important;
+  transform: none !important;
+  transition: none !important;
+  animation: none !important;
+}
+
+/* Специально для компонентов - защита от влияния обёрток */
+[class*="story--"] .o-checkbox,
+[class*="story--"] .o-radio-button,
+[class*="story--"] .o-counter,
+[class*="story--"] .o-icon-wrap,
+[class*="story--"] .o-typography {
+  display: inline-flex !important;
+  align-items: center !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  height: auto !important;
+  min-height: auto !important;
+  max-height: none !important;
+  line-height: normal !important;
+  vertical-align: baseline !important;
+  box-sizing: border-box !important;
+  flex-shrink: 0 !important;
+}
+
+/* Защита для внутренних элементов компонентов */
+[class*="story--"] .o-checkbox__box,
+[class*="story--"] .o-radio-button__box,
+[class*="story--"] .o-counter__button,
+[class*="story--"] .o-icon-wrap__icon {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  height: auto !important;
+  min-height: auto !important;
+  max-height: none !important;
+  line-height: normal !important;
+  vertical-align: baseline !important;
+  box-sizing: border-box !important;
+  flex-shrink: 0 !important;
+}
+
+/* Защита для label элементов */
+[class*="story--"] .o-checkbox__label,
+[class*="story--"] .o-radio-button__label,
+[class*="story--"] .o-counter__label {
+  margin: 0 !important;
+  padding: 0 !important;
+  height: auto !important;
+  min-height: auto !important;
+  max-height: none !important;
+  line-height: normal !important;
+  vertical-align: baseline !important;
+  display: inline !important;
+  box-sizing: border-box !important;
+}
+
+/* Убираем возможные flex/grid влияния от Storybook */
+[class*="story--"] * {
+  box-sizing: border-box !important;
+}
+
+/* Убираем возможные влияния на размеры от Storybook */
+[class*="story--"] *:not(.o-checkbox):not(.o-radio-button):not(.o-counter):not(.o-icon-wrap):not(.o-typography) {
+  margin: 0 !important;
+  padding: 0 !important;
+  border: none !important;
+  background: transparent !important;
+  height: auto !important;
+  min-height: auto !important;
+  max-height: none !important;
+  width: auto !important;
+  min-width: auto !important;
+  max-width: none !important;
+}
+
+/* Специальная защита для Canvas области */
+.sb-canvas [class*="story--"] {
+  all: unset !important;
+  display: block !important;
+}
+
+/* Специальная защита для документации */
+.docs-story [class*="story--"] {
+  all: unset !important;
+  display: block !important;
+}

@@ -1,0 +1,55 @@
+/* Storybook Global Styles - Сброс высоты для контейнеров */
+
+/* Сброс высоты для всех Storybook контейнеров */
+[id*="story--"] {
+  height: auto !important;
+  min-height: auto !important;
+  max-height: none !important;
+}
+
+/* Сброс высоты для конкретных компонентов */
+[id*="story--components-ocheckbox"] {
+  height: auto !important;
+  min-height: auto !important;
+}
+
+[id*="story--components-oradiobutton"] {
+  height: auto !important;
+  min-height: auto !important;
+}
+
+[id*="story--components-ocounter"] {
+  height: auto !important;
+  min-height: auto !important;
+}
+
+[id*="story--components-oiconwrap"] {
+  height: auto !important;
+  min-height: auto !important;
+}
+
+[id*="story--components-otypography"] {
+  height: auto !important;
+  min-height: auto !important;
+}
+
+/* Сброс высоты для основных Storybook контейнеров */
+.sb-show-main,
+.sb-main-padded,
+.sb-canvas,
+.docs-story {
+  height: auto !important;
+  min-height: auto !important;
+}
+
+/* Сброс высоты для Canvas области */
+.sb-canvas .sb-show-main {
+  height: auto !important;
+  min-height: auto !important;
+}
+
+/* Сброс высоты для документации */
+.docs-story .docs-story {
+  height: auto !important;
+  min-height: auto !important;
+}

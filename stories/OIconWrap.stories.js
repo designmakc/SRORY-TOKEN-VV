@@ -64,7 +64,14 @@ export const Default = {
     iconColor: 'var(--color-icon-primary)',
     counterValue: 2,
     counterVariant: 'inverse'
-  }
+  },
+  parameters: {
+    docs: {
+      source: {
+        code: '<OIconWrap :sizeIcon="24" icon="navigation-action/play" :hasCounter="false" :hasOwnColor="false" iconColor="var(--color-icon-primary)" :counterValue="2" counterVariant="inverse" />',
+      },
+    },
+  },
 }
 
 // 1. Basic Icons
@@ -74,7 +81,14 @@ export const BasicIcons = {
     icon: 'navigation-action/play',
     hasCounter: false,
     hasOwnColor: false
-  }
+  },
+  parameters: {
+    docs: {
+      source: {
+        code: '<OIconWrap :sizeIcon="24" icon="navigation-action/play" :hasCounter="false" :hasOwnColor="false" />',
+      },
+    },
+  },
 }
 
 // 2. With Counter
@@ -85,7 +99,14 @@ export const WithCounter = {
     hasCounter: true,
     counterValue: 3,
     counterVariant: 'inverse'
-  }
+  },
+  parameters: {
+    docs: {
+      source: {
+        code: '<OIconWrap :sizeIcon="24" icon="communication/notification-bell-filled" :hasCounter="true" :counterValue="3" counterVariant="inverse" />',
+      },
+    },
+  },
 }
 
 // 3. Different Sizes
@@ -95,7 +116,14 @@ export const DifferentSizes = {
     icon: 'navigation-action/settings',
     hasCounter: false,
     hasOwnColor: false
-  }
+  },
+  parameters: {
+    docs: {
+      source: {
+        code: '<OIconWrap :sizeIcon="32" icon="navigation-action/settings" :hasCounter="false" :hasOwnColor="false" />',
+      },
+    },
+  },
 }
 
 // 4. With Own Colors
@@ -105,7 +133,14 @@ export const WithOwnColors = {
     icon: 'navigation-action/heart-filled',
     hasCounter: false,
     hasOwnColor: true
-  }
+  },
+  parameters: {
+    docs: {
+      source: {
+        code: '<OIconWrap :sizeIcon="24" icon="navigation-action/heart-filled" :hasCounter="false" :hasOwnColor="true" />',
+      },
+    },
+  },
 }
 
 // 5. All Variants
@@ -307,8 +342,8 @@ const storyStyles = `
 
 .avatar-container {
   position: relative;
-  width: 32px;
-  height: 32px;
+  width: var(--size-avatar-md);
+  height: var(--size-avatar-md);
   background-color: var(--color-background-tertiary);
   border-radius: 50%;
   display: flex;
@@ -322,8 +357,8 @@ const storyStyles = `
 
 .avatar-badge {
   position: absolute;
-  top: -4px;
-  right: -4px;
+  top: calc(-1 * var(--gap-3xs));
+  right: calc(-1 * var(--gap-3xs));
 }
 </style>
 `
@@ -334,6 +369,7 @@ if (typeof document !== 'undefined') {
   styleElement.textContent = storyStyles.replace('<style>', '').replace('</style>', '')
   document.head.appendChild(styleElement)
 }
+
 
 
 

@@ -44,7 +44,14 @@ export const Primary = {
     label: '2',
     variant: 'primary',
     size: 'md'
-  }
+  },
+  parameters: {
+    docs: {
+      source: {
+        code: '<OCounter label="2" variant="primary" size="md" />',
+      },
+    },
+  },
 }
 
 export const Secondary = {
@@ -52,7 +59,14 @@ export const Secondary = {
     label: '5',
     variant: 'secondary',
     size: 'md'
-  }
+  },
+  parameters: {
+    docs: {
+      source: {
+        code: '<OCounter label="5" variant="secondary" size="md" />',
+      },
+    },
+  },
 }
 
 export const Tertiary = {
@@ -60,7 +74,14 @@ export const Tertiary = {
     label: '12',
     variant: 'tertiary',
     size: 'md'
-  }
+  },
+  parameters: {
+    docs: {
+      source: {
+        code: '<OCounter label="12" variant="tertiary" size="md" />',
+      },
+    },
+  },
 }
 
 export const Inverse = {
@@ -68,7 +89,14 @@ export const Inverse = {
     label: '99+',
     variant: 'inverse',
     size: 'md'
-  }
+  },
+  parameters: {
+    docs: {
+      source: {
+        code: '<OCounter label="99+" variant="inverse" size="md" />',
+      },
+    },
+  },
 }
 
 // История Docs для автодокументации
@@ -212,8 +240,8 @@ const storyStyles = `
 
 .avatar-container {
   position: relative;
-  width: 32px;
-  height: 32px;
+  width: var(--size-avatar-md);
+  height: var(--size-avatar-md);
   background-color: var(--color-background-tertiary);
   border-radius: 50%;
   display: flex;
@@ -227,8 +255,8 @@ const storyStyles = `
 
 .avatar-badge {
   position: absolute;
-  top: -4px;
-  right: -4px;
+  top: calc(-1 * var(--gap-3xs));
+  right: calc(-1 * var(--gap-3xs));
 }
 </style>
 `
@@ -239,11 +267,3 @@ if (typeof document !== 'undefined') {
   styleElement.textContent = storyStyles.replace('<style>', '').replace('</style>', '')
   document.head.appendChild(styleElement)
 }
-
-
-
-
-
-
-
-
