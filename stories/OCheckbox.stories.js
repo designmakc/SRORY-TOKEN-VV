@@ -3,7 +3,7 @@ import { useDesignTokens } from '../src/composables/useDesignTokens';
 import { ref } from 'vue';
 
 export default {
-  title: 'Components/OCheckbox',
+  title: 'Components/Checkbox/OCheckbox',
   component: OCheckbox,
   tags: ['autodocs'],
   argTypes: {

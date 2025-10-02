@@ -109,113 +109,24 @@ export const WithCounter = {
   },
 }
 
-// 3. Different Sizes
-export const DifferentSizes = {
-  args: {
-    sizeIcon: 32,
-    icon: 'navigation-action/settings',
-    hasCounter: false,
-    hasOwnColor: false
-  },
-  parameters: {
-    docs: {
-      source: {
-        code: '<OIconWrap :sizeIcon="32" icon="navigation-action/settings" :hasCounter="false" :hasOwnColor="false" />',
-      },
-    },
-  },
-}
 
 // 4. With Own Colors
 export const WithOwnColors = {
   args: {
     sizeIcon: 24,
-    icon: 'navigation-action/heart-filled',
+    icon: 'providers/Olimp',
     hasCounter: false,
     hasOwnColor: true
   },
   parameters: {
     docs: {
       source: {
-        code: '<OIconWrap :sizeIcon="24" icon="navigation-action/heart-filled" :hasCounter="false" :hasOwnColor="true" />',
+        code: '<OIconWrap :sizeIcon="24" icon="providers/Olimp" :hasCounter="false" :hasOwnColor="true" />',
       },
     },
   },
 }
 
-// 5. All Variants
-export const AllVariants = {
-  render: () => ({
-    components: { OIconWrap },
-    template: `
-      <div class="story-container">
-        <div class="story-row">
-          <span class="story-label">Primary:</span>
-          <OIconWrap :sizeIcon="24" icon="navigation-action/play" :hasCounter="true" :counterValue="2" counterVariant="primary" />
-        </div>
-        <div class="story-row">
-          <span class="story-label">Secondary:</span>
-          <OIconWrap :sizeIcon="24" icon="navigation-action/play" :hasCounter="true" :counterValue="5" counterVariant="secondary" />
-        </div>
-        <div class="story-row">
-          <span class="story-label">Tertiary:</span>
-          <OIconWrap :sizeIcon="24" icon="navigation-action/play" :hasCounter="true" :counterValue="12" counterVariant="tertiary" />
-        </div>
-        <div class="story-row">
-          <span class="story-label">Inverse:</span>
-          <OIconWrap :sizeIcon="24" icon="navigation-action/play" :hasCounter="true" :counterValue="99" counterVariant="inverse" />
-        </div>
-      </div>
-    `
-  })
-}
-
-// 6. In Context
-export const InContext = {
-  render: () => ({
-    components: { OIconWrap },
-    template: `
-      <div class="context-container">
-        <div class="context-buttons">
-          <button class="context-button context-button--primary">
-            <OIconWrap :sizeIcon="20" icon="navigation-action/play" />
-            Play
-          </button>
-          <button class="context-button context-button--secondary">
-            <OIconWrap :sizeIcon="20" icon="navigation-action/settings" />
-            Settings
-          </button>
-        </div>
-        
-        <div class="context-stats">
-          <div class="stat-item">
-            <OIconWrap :sizeIcon="24" icon="communication/notification-bell-filled" :hasCounter="true" :counterValue="3" />
-            <span class="stat-label">Notifications</span>
-          </div>
-          <div class="stat-item">
-            <OIconWrap :sizeIcon="24" icon="communication/bubble-message-filled" :hasCounter="true" :counterValue="7" />
-            <span class="stat-label">Messages</span>
-          </div>
-        </div>
-        
-        <div class="context-avatars">
-          <div class="avatar-container">
-            <span class="avatar-icon">👤</span>
-            <div class="avatar-badge">
-              <OIconWrap :sizeIcon="16" icon="navigation-action/heart-filled" :hasCounter="true" :counterValue="1" />
-            </div>
-          </div>
-          <div class="avatar-container">
-            <span class="avatar-icon">👤</span>
-            <div class="avatar-badge">
-              <OIconWrap :sizeIcon="16" icon="navigation-action/heart-filled" :hasCounter="true" :counterValue="99" />
-            </div>
-          </div>
-        </div>
-      </div>
-    `
-  })
-}
 
 // Добавляем CSS стили для Stories
 const storyStyles = `

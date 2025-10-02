@@ -4,7 +4,7 @@ import { useDesignTokens } from '../src/composables/useDesignTokens';
 import { ref } from 'vue';
 
 export default {
-  title: 'Components/OCheckboxGroup',
+  title: 'Components/Checkbox/OCheckboxGroup',
   component: OCheckboxGroup,
   tags: ['autodocs'],
   argTypes: {
@@ -81,7 +81,15 @@ export const Default = {
   parameters: {
     docs: {
       source: {
-        code: '<OCheckboxGroup label="Уведомления" size="md"><OCheckbox label="Уведомления по email" /><OCheckbox label="SMS уведомления" /><OCheckbox label="Push уведомления" /><OCheckbox label="Telegram уведомления" /></OCheckboxGroup>',
+        code: `<OCheckboxGroup
+  label="Уведомления"
+  size="md"
+>
+  <OCheckbox label="Уведомления по email" />
+  <OCheckbox label="SMS уведомления" />
+  <OCheckbox label="Push уведомления" />
+  <OCheckbox label="Telegram уведомления" />
+</OCheckboxGroup>`,
       },
     },
   },
@@ -142,7 +150,15 @@ export const Small = {
   parameters: {
     docs: {
       source: {
-        code: '<OCheckboxGroup label="Настройки" size="sm"><OCheckbox label="Согласен с условиями" size="sm" /><OCheckbox label="Согласен на обработку данных" size="sm" /><OCheckbox label="Рекламные предложения" size="sm" /><OCheckbox label="Участвовать в опросах" size="sm" /></OCheckboxGroup>',
+        code: `<OCheckboxGroup
+  label="Настройки"
+  size="sm"
+>
+  <OCheckbox label="Согласен с условиями" size="sm" />
+  <OCheckbox label="Согласен на обработку данных" size="sm" />
+  <OCheckbox label="Рекламные предложения" size="sm" />
+  <OCheckbox label="Участвовать в опросах" size="sm" />
+</OCheckboxGroup>`,
       },
     },
   },
@@ -170,7 +186,13 @@ export const WithoutLabel = {
   parameters: {
     docs: {
       source: {
-        code: '<OCheckboxGroup size="md"><OCheckbox label="Спорт" /><OCheckbox label="Казино" /><OCheckbox label="Live игры" /><OCheckbox label="Покер" /><OCheckbox label="Турниры" /></OCheckboxGroup>'
+        code: `<OCheckboxGroup size="md">
+  <OCheckbox label="Спорт" />
+  <OCheckbox label="Казино" />
+  <OCheckbox label="Live игры" />
+  <OCheckbox label="Покер" />
+  <OCheckbox label="Турниры" />
+</OCheckboxGroup>`
       }
     }
   }
@@ -198,7 +220,15 @@ export const AllSelected = {
   parameters: {
     docs: {
       source: {
-        code: '<OCheckboxGroup label="Все выбрано" size="md"><OCheckbox label="Уведомления по email" /><OCheckbox label="SMS уведомления" /><OCheckbox label="Push уведомления" /><OCheckbox label="Telegram уведомления" /></OCheckboxGroup>'
+        code: `<OCheckboxGroup
+  label="Все выбрано"
+  size="md"
+>
+  <OCheckbox label="Уведомления по email" />
+  <OCheckbox label="SMS уведомления" />
+  <OCheckbox label="Push уведомления" />
+  <OCheckbox label="Telegram уведомления" />
+</OCheckboxGroup>`
       }
     }
   }
@@ -226,7 +256,15 @@ export const NoneSelected = {
   parameters: {
     docs: {
       source: {
-        code: '<OCheckboxGroup label="Ничего не выбрано" size="md"><OCheckbox label="Уведомления по email" /><OCheckbox label="SMS уведомления" /><OCheckbox label="Push уведомления" /><OCheckbox label="Telegram уведомления" /></OCheckboxGroup>'
+        code: `<OCheckboxGroup
+  label="Ничего не выбрано"
+  size="md"
+>
+  <OCheckbox label="Уведомления по email" />
+  <OCheckbox label="SMS уведомления" />
+  <OCheckbox label="Push уведомления" />
+  <OCheckbox label="Telegram уведомления" />
+</OCheckboxGroup>`
       }
     }
   }
@@ -254,7 +292,15 @@ export const WithDisabled = {
   parameters: {
     docs: {
       source: {
-        code: '<OCheckboxGroup label="С отключенными элементами" size="md"><OCheckbox label="Доступная опция 1" /><OCheckbox label="Доступная опция 2" /><OCheckbox label="Отключенная опция" :is-disabled="true" /><OCheckbox label="Еще одна доступная" /></OCheckboxGroup>'
+        code: `<OCheckboxGroup
+  label="С отключенными элементами"
+  size="md"
+>
+  <OCheckbox label="Доступная опция 1" />
+  <OCheckbox label="Доступная опция 2" />
+  <OCheckbox label="Отключенная опция" :is-disabled="true" />
+  <OCheckbox label="Еще одна доступная" />
+</OCheckboxGroup>`
       }
     }
   }
@@ -280,7 +326,16 @@ export const MixedSizes = {
   parameters: {
     docs: {
       source: {
-        code: '<div style="display: flex; flex-direction: column; gap: 2rem;"><OCheckboxGroup label="Размер MD" size="md"><OCheckbox label="Email уведомления" /><OCheckbox label="SMS уведомления" /></OCheckboxGroup><OCheckboxGroup label="Размер SM" size="sm"><OCheckbox label="Email уведомления" size="sm" /><OCheckbox label="SMS уведомления" size="sm" /></OCheckboxGroup></div>'
+        code: `<div style="display: flex; flex-direction: column; gap: 2rem;">
+  <OCheckboxGroup label="Размер MD" size="md">
+    <OCheckbox label="Email уведомления" />
+    <OCheckbox label="SMS уведомления" />
+  </OCheckboxGroup>
+  <OCheckboxGroup label="Размер SM" size="sm">
+    <OCheckbox label="Email уведомления" size="sm" />
+    <OCheckbox label="SMS уведомления" size="sm" />
+  </OCheckboxGroup>
+</div>`
       }
     }
   }
@@ -317,7 +372,21 @@ export const InContext = {
   parameters: {
     docs: {
       source: {
-        code: '<div style="max-width: 400px; padding: 2rem; background: var(--color-background-page-lvl-1); border-radius: var(--border-radius-lg);"><h3>Настройки уведомлений</h3><p>Выберите способы получения уведомлений</p><OCheckboxGroup label="Способы уведомлений" size="md"><OCheckbox label="Email уведомления" /><OCheckbox label="Push уведомления" /><OCheckbox label="SMS сообщения" /></OCheckboxGroup><div style="margin-top: 2rem; padding-top: 1.5rem; border-top: 1px solid var(--color-border-secondary);"><OCheckboxGroup label="Дополнительные настройки" size="sm"><OCheckbox label="Согласен с условиями" size="sm" /><OCheckbox label="Рекламные предложения" size="sm" /></OCheckboxGroup></div></div>'
+        code: `<div style="max-width: 400px; padding: 2rem; background: var(--color-background-page-lvl-1); border-radius: var(--border-radius-lg);">
+  <h3>Настройки уведомлений</h3>
+  <p>Выберите способы получения уведомлений</p>
+  <OCheckboxGroup label="Способы уведомлений" size="md">
+    <OCheckbox label="Email уведомления" />
+    <OCheckbox label="Push уведомления" />
+    <OCheckbox label="SMS сообщения" />
+  </OCheckboxGroup>
+  <div style="margin-top: 2rem; padding-top: 1.5rem; border-top: 1px solid var(--color-border-secondary);">
+    <OCheckboxGroup label="Дополнительные настройки" size="sm">
+      <OCheckbox label="Согласен с условиями" size="sm" />
+      <OCheckbox label="Рекламные предложения" size="sm" />
+    </OCheckboxGroup>
+  </div>
+</div>`
       }
     }
   }

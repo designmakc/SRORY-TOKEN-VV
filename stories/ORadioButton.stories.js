@@ -3,7 +3,7 @@ import { useDesignTokens } from '../src/composables/useDesignTokens';
 import { ref } from 'vue';
 
 export default {
-  title: 'Components/ORadioButton',
+  title: 'Components/RadioButton/ORadioButton',
   component: ORadioButton,
   tags: ['autodocs'],
   argTypes: {
