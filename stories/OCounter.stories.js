@@ -1,6 +1,23 @@
 import OCounter from '../src/components/OCounter.vue'
 import { useDesignTokens } from '../src/composables/useDesignTokens'
 
+// Функция для генерации динамического кода
+const generateCode = (args) => {
+  const props = [];
+  
+  // Добавляем только измененные props (не дефолтные)
+  if (args.label && args.label !== '2') props.push(`label="${args.label}"`);
+  if (args.variant && args.variant !== 'primary') props.push(`variant="${args.variant}"`);
+  if (args.size && args.size !== 'md') props.push(`size="${args.size}"`);
+  
+  // Форматирование для читабельности
+  if (props.length <= 2) {
+    return `<OCounter ${props.join(' ')} />`;
+  } else {
+    return `<OCounter\n  ${props.join('\n  ')}\n/>`;
+  }
+};
+
 export default {
   title: 'Components/OCounter',
   component: OCounter,
@@ -8,17 +25,26 @@ export default {
   argTypes: {
     label: {
       control: { type: 'text' },
-      description: 'Текст или число для отображения в счетчике'
+      description: 'Текст или число для отображения в счетчике',
+      table: {
+        defaultValue: { summary: '2' }
+      }
     },
     variant: {
       control: { type: 'select' },
       options: ['primary', 'secondary', 'tertiary', 'inverse'],
-      description: 'Стиль компонента'
+      description: 'Стиль компонента',
+      table: {
+        defaultValue: { summary: 'primary' }
+      }
     },
     size: {
       control: { type: 'select' },
       options: ['md', 'sm', 'xs'],
-      description: 'Размер компонента'
+      description: 'Размер компонента',
+      table: {
+        defaultValue: { summary: 'md' }
+      }
     }
   },
   decorators: [
@@ -45,10 +71,15 @@ export const Primary = {
     variant: 'primary',
     size: 'md'
   },
+  render: (args) => ({
+    components: { OCounter },
+    setup() { return { args }; },
+    template: '<OCounter v-bind="args" />'
+  }),
   parameters: {
     docs: {
       source: {
-        code: '<OCounter label="2" variant="primary" size="md" />',
+        transform: (code, storyContext) => generateCode(storyContext.args),
       },
     },
   },
@@ -60,10 +91,15 @@ export const Secondary = {
     variant: 'secondary',
     size: 'md'
   },
+  render: (args) => ({
+    components: { OCounter },
+    setup() { return { args }; },
+    template: '<OCounter v-bind="args" />'
+  }),
   parameters: {
     docs: {
       source: {
-        code: '<OCounter label="5" variant="secondary" size="md" />',
+        transform: (code, storyContext) => generateCode(storyContext.args),
       },
     },
   },
@@ -75,10 +111,15 @@ export const Tertiary = {
     variant: 'tertiary',
     size: 'md'
   },
+  render: (args) => ({
+    components: { OCounter },
+    setup() { return { args }; },
+    template: '<OCounter v-bind="args" />'
+  }),
   parameters: {
     docs: {
       source: {
-        code: '<OCounter label="12" variant="tertiary" size="md" />',
+        transform: (code, storyContext) => generateCode(storyContext.args),
       },
     },
   },
@@ -90,10 +131,15 @@ export const Inverse = {
     variant: 'inverse',
     size: 'md'
   },
+  render: (args) => ({
+    components: { OCounter },
+    setup() { return { args }; },
+    template: '<OCounter v-bind="args" />'
+  }),
   parameters: {
     docs: {
       source: {
-        code: '<OCounter label="99+" variant="inverse" size="md" />',
+        transform: (code, storyContext) => generateCode(storyContext.args),
       },
     },
   },
@@ -106,14 +152,192 @@ export const Docs = {
     variant: 'primary',
     size: 'md'
   },
+  render: (args) => ({
+    components: { OCounter },
+    setup() { return { args }; },
+    template: '<OCounter v-bind="args" />'
+  }),
   parameters: {
     docs: {
+      source: {
+        transform: (code, storyContext) => generateCode(storyContext.args),
+      },
       description: {
         story: 'Основная документация компонента OCounter с примерами использования и описанием всех вариантов'
       }
     }
   }
 }
+
+// Все варианты
+export const AllVariants = {
+  render: () => ({
+    components: { OCounter },
+    template: `
+      <div class="story-container">
+        <div class="story-row">
+          <span class="story-label">Primary:</span>
+          <OCounter label="2" variant="primary" size="md" />
+          <OCounter label="5" variant="primary" size="sm" />
+          <OCounter label="99+" variant="primary" size="xs" />
+        </div>
+        <div class="story-row">
+          <span class="story-label">Secondary:</span>
+          <OCounter label="2" variant="secondary" size="md" />
+          <OCounter label="5" variant="secondary" size="sm" />
+          <OCounter label="99+" variant="secondary" size="xs" />
+        </div>
+        <div class="story-row">
+          <span class="story-label">Tertiary:</span>
+          <OCounter label="2" variant="tertiary" size="md" />
+          <OCounter label="5" variant="tertiary" size="sm" />
+          <OCounter label="99+" variant="tertiary" size="xs" />
+        </div>
+        <div class="story-row story-row--dark">
+          <span class="story-label">Inverse:</span>
+          <OCounter label="2" variant="inverse" size="md" />
+          <OCounter label="5" variant="inverse" size="sm" />
+          <OCounter label="99+" variant="inverse" size="xs" />
+        </div>
+      </div>
+    `
+  }),
+  parameters: {
+    docs: {
+      source: {
+        transform: (code, storyContext) => generateCode(storyContext.args),
+      },
+    },
+  },
+};
+
+// Все размеры
+export const AllSizes = {
+  render: () => ({
+    components: { OCounter },
+    template: `
+      <div class="story-container">
+        <div class="story-row">
+          <span class="story-label">MD:</span>
+          <OCounter label="10" size="md" />
+          <OCounter label="10" size="md" variant="secondary" />
+        </div>
+        <div class="story-row">
+          <span class="story-label">SM:</span>
+          <OCounter label="10" size="sm" />
+          <OCounter label="10" size="sm" variant="secondary" />
+        </div>
+        <div class="story-row">
+          <span class="story-label">XS:</span>
+          <OCounter label="10" size="xs" />
+          <OCounter label="10" size="xs" variant="secondary" />
+        </div>
+      </div>
+    `
+  }),
+  parameters: {
+    docs: {
+      source: {
+        transform: (code, storyContext) => generateCode(storyContext.args),
+      },
+    },
+  },
+};
+
+// Логика отображения чисел
+export const NumberLogic = {
+  render: () => ({
+    components: { OCounter },
+    template: `
+      <div class="story-container number-logic-container">
+        <div class="number-group">
+          <span class="number-label">1:</span>
+          <OCounter label="1" />
+        </div>
+        <div class="number-group">
+          <span class="number-label">99:</span>
+          <OCounter label="99" />
+        </div>
+        <div class="number-group">
+          <span class="number-label">100:</span>
+          <OCounter label="100" />
+        </div>
+        <div class="number-group">
+          <span class="number-label">1000:</span>
+          <OCounter label="1000" />
+        </div>
+        <div class="number-group">
+          <span class="number-label">Custom:</span>
+          <OCounter label="New!" />
+        </div>
+      </div>
+    `
+  }),
+  parameters: {
+    docs: {
+      source: {
+        transform: (code, storyContext) => generateCode(storyContext.args),
+      },
+    },
+  },
+};
+
+// В контексте использования (например, кнопка)
+export const InContext = {
+  render: () => ({
+    components: { OCounter },
+    template: `
+      <div class="context-container">
+        <h3>Новые сообщения</h3>
+        <div class="context-buttons">
+          <button class="context-button context-button--primary">
+            Входящие
+            <OCounter label="3" variant="inverse" size="sm" />
+          </button>
+          <button class="context-button context-button--secondary">
+            Архив
+            <OCounter label="15" variant="primary" size="sm" />
+          </button>
+        </div>
+        
+        <h3>Статистика</h3>
+        <div class="context-stats">
+          <div class="stat-item">
+            Лайки:
+            <OCounter label="1.2K" variant="primary" size="md" />
+          </div>
+          <div class="stat-item">
+            Комментарии:
+            <OCounter label="247" variant="secondary" size="sm" />
+          </div>
+        </div>
+
+        <h3>Аватары</h3>
+        <div class="context-avatars">
+          <div class="avatar-container">
+            <span class="avatar-icon">👤</span>
+            <div class="avatar-badge">
+              <OCounter label="2" variant="primary" size="xs" />
+            </div>
+          </div>
+          <div class="avatar-container">
+            <span class="avatar-icon">🔔</span>
+            <div class="avatar-badge">
+              <OCounter label="99+" variant="inverse" size="xs" />
+            </div>
+          </div>
+        </div>
+      </div>
+    `
+  }),
+  parameters: {
+    docs: {
+      source: {
+        transform: (code, storyContext) => generateCode(storyContext.args),
+      },
+    },
+  },
+};
 
 // Добавляем CSS стили для Stories
 const storyStyles = `

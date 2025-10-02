@@ -94,8 +94,8 @@ export const parameters = {
   },
   docs: {
     source: {
-      type: 'code',
-      state: 'closed',
+      type: 'dynamic',
+      state: 'open',
       excludeDecorators: true,
       format: true,
       language: 'html',

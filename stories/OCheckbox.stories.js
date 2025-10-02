@@ -2,6 +2,28 @@ import OCheckbox from '../src/components/OCheckbox.vue';
 import { useDesignTokens } from '../src/composables/useDesignTokens';
 import { ref } from 'vue';
 
+// Функция для генерации динамического кода
+const generateCode = (args) => {
+  const props = [];
+  
+  // Добавляем только измененные props (не дефолтные)
+  if (args.variant && args.variant !== 'primary') props.push(`variant="${args.variant}"`);
+  if (args.size && args.size !== 'md') props.push(`size="${args.size}"`);
+  if (args.state && args.state !== 'default') props.push(`state="${args.state}"`);
+  if (args.label) props.push(`label="${args.label}"`);
+  if (args.isChecked) props.push(':isChecked="true"');
+  if (args.isDisabled) props.push(':isDisabled="true"');
+  if (args.hasError) props.push(':hasError="true"');
+  if (!args.hasLabel) props.push(':hasLabel="false"');
+  
+  // Форматирование для читабельности
+  if (props.length <= 2) {
+    return `<OCheckbox ${props.join(' ')} />`;
+  } else {
+    return `<OCheckbox\n  ${props.join('\n  ')}\n/>`;
+  }
+};
+
 export default {
   title: 'Components/Checkbox/OCheckbox',
   component: OCheckbox,
@@ -82,7 +104,7 @@ export const Primary = {
   parameters: {
     docs: {
       source: {
-        code: '<OCheckbox variant="primary" label="Primary checkbox" />',
+        transform: (code, storyContext) => generateCode(storyContext.args),
       },
     },
   },

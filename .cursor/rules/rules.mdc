@@ -6,6 +6,23 @@ Always use context7 for code generation, setup, configuration, or library/API do
 
 # Vue 3 + Figma Tokens - Cursor Rules
 
+## ⚡ КРАТКАЯ ПАМЯТКА - STORYBOOK ДИНАМИЧЕСКИЙ КОД
+
+**3 ОБЯЗАТЕЛЬНЫХ ШАГА для каждого нового компонента:**
+
+1. **Добавь `generateCode()` в начало stories файла**
+2. **Используй `render: (args) => ({...})` в каждой story**
+3. **Добавь `parameters.docs.source.transform`**
+
+**Проверь `.storybook/preview.js`:**
+```javascript
+docs: { source: { type: 'dynamic', state: 'open' } }
+```
+
+**БЕЗ ЭТОГО КОД НЕ БУДЕТ ДИНАМИЧЕСКИМ!**
+
+---
+
 ## КРИТИЧЕСКИЕ ЗАПРЕТЫ
 
 ### НЕТ TAILWIND
@@ -22,6 +39,13 @@ Always use context7 for code generation, setup, configuration, or library/API do
 - Названия токенов
 - Значения свойств
 - CSS свойства которых нет в Figma
+
+ВАЖЛИВО ДЛЯ ТЕКСТОВИХ ЕЛЕМЕНТІВ:
+- Якщо TEXT елемент має "styles" з "name" - використовуй компонент OTypography
+- Значення "name" зі стилів використовуй як prop "variant"
+- Перетворюй назву стилю: "Header/sm" → "header-sm", "Label/lg" → "label-lg"
+- НЕ використовуй окремі CSS властивості для типографіки
+
 
 ## ОБЯЗАТЕЛЬНАЯ СТРУКТУРА
 
@@ -99,6 +123,28 @@ defineProps({
 import OComponent from '../src/components/OComponent.vue';
 import { useDesignTokens } from '../src/composables/useDesignTokens';
 
+// Функция для генерации динамического кода
+const generateCode = (args) => {
+  const props = [];
+  
+  // Добавляем только измененные props (не дефолтные значения)
+  if (args.variant && args.variant !== 'primary') props.push(`variant="${args.variant}"`);
+  if (args.size && args.size !== 'md') props.push(`size="${args.size}"`);
+  if (args.label) props.push(`label="${args.label}"`);
+  // Добавь свои props здесь...
+  
+  // Boolean props
+  if (args.isDisabled) props.push(':isDisabled="true"');
+  if (args.isLoading) props.push(':isLoading="true"');
+  
+  // Форматирование для читабельности
+  if (props.length <= 2) {
+    return `<OComponent ${props.join(' ')} />`;
+  } else {
+    return `<OComponent\n  ${props.join('\n  ')}\n/>`;
+  }
+};
+
 export default {
   title: 'Components/ComponentName',
   component: OComponent,
@@ -107,7 +153,10 @@ export default {
     variant: {
       control: 'select',
       options: ['primary', 'secondary'],
-      description: 'Вариант стиля'
+      description: 'Вариант стиля',
+      table: {
+        defaultValue: { summary: 'primary' }
+      }
     }
   },
   decorators: [
@@ -120,15 +169,23 @@ export default {
   ]
 };
 
-// CSF3 формат с объектами + КОМПАКТНЫЙ КОД
+// CSF3 формат с объектами + ДИНАМИЧЕСКИЙ КОД
 export const Primary = {
   args: {
-    variant: 'primary'
+    variant: 'primary',
+    label: 'Label text'
   },
+  render: (args) => ({
+    components: { OComponent },
+    setup() {
+      return { args };
+    },
+    template: '<OComponent v-bind="args" />'
+  }),
   parameters: {
     docs: {
       source: {
-        code: '<OComponent variant="primary" />',
+        transform: (code, storyContext) => generateCode(storyContext.args),
       },
     },
   },
@@ -140,13 +197,54 @@ export const Primary = {
 ✅ `tags: ['autodocs']` - ОБЯЗАТЕЛЬНО  
 ✅ CSF3 формат: `export const Primary = { args: {...} }`  
 ✅ Decorators для тем  
-✅ argTypes с описаниями  
-✅ **ОБЯЗАТЕЛЬНО** parameters.docs.source.code с компактным HTML кодом  
-✅ Минимум 3 stories: Primary, AllVariants, InContext  
+✅ argTypes с описаниями и table.defaultValue  
+✅ **ОБЯЗАТЕЛЬНО** `generateCode()` функция для динамического кода  
+✅ **ОБЯЗАТЕЛЬНО** `render: (args) => ({...})` для интерактивности  
+✅ **ОБЯЗАТЕЛЬНО** `parameters.docs.source.transform` вместо `code`  
+✅ Минимум 3 stories: Primary, AllVariants, Playground  
 
 ❌ НЕ используй `.bind({})` - не работает с темами  
-❌ НЕ используй функции-истории `(args) => Template(args)`  
+❌ НЕ используй статичный `code:` - только `transform:`  
 ❌ НЕ показывай внутреннюю логику в коде (ref, setup, const)
+
+### Динамический код - ОБЯЗАТЕЛЬНО:
+
+**Всегда добавляй функцию generateCode() в начале файла:**
+
+```javascript
+const generateCode = (args) => {
+  const props = [];
+  
+  // Только измененные props
+  if (args.variant !== 'primary') props.push(`variant="${args.variant}"`);
+  if (args.label) props.push(`label="${args.label}"`);
+  if (args.isDisabled) props.push(':isDisabled="true"');
+  
+  // Форматирование
+  if (props.length <= 2) {
+    return `<OComponent ${props.join(' ')} />`;
+  } else {
+    return `<OComponent\n  ${props.join('\n  ')}\n/>`;
+  }
+};
+```
+
+**Всегда используй в stories:**
+
+```javascript
+render: (args) => ({
+  components: { OComponent },
+  setup() { return { args }; },
+  template: '<OComponent v-bind="args" />'
+}),
+parameters: {
+  docs: {
+    source: {
+      transform: (code, storyContext) => generateCode(storyContext.args),
+    },
+  },
+}
+```
 
 ## ЕДИНИЦЫ ИЗМЕРЕНИЯ
 
@@ -157,6 +255,26 @@ export const Primary = {
 
 НЕ добавляются для:
 -  font-weight, line-height, z-index
+
+## STORYBOOK PREVIEW НАСТРОЙКА
+
+**В `.storybook/preview.js` должно быть:**
+
+```javascript
+export const parameters = {
+  docs: {
+    source: {
+      type: 'dynamic',        // ✅ ОБЯЗАТЕЛЬНО для динамического кода
+      state: 'open',          // ✅ Показывать код сразу
+      excludeDecorators: true,
+      format: true,
+      language: 'html',
+    },
+  },
+};
+```
+
+**Без этой настройки динамический код НЕ РАБОТАЕТ!**
 
 ## КОМАНДЫ
 
@@ -172,9 +290,14 @@ npm run storybook                      # Запуск
 - [ ] Нет Tailwind классов
 - [ ] Нет хардкода
 - [ ] Все токены существуют
-- [ ] все Props совпадают с Figma!
+- [ ] Все Props совпадают с Figma!
 - [ ] Stories созданы
 - [ ] `tags: ['autodocs']` есть
+- [ ] **ОБЯЗАТЕЛЬНО** `generateCode()` функция добавлена
+- [ ] **ОБЯЗАТЕЛЬНО** `render: (args) => ({...})` для интерактивности
+- [ ] **ОБЯЗАТЕЛЬНО** `parameters.docs.source.transform` вместо `code`
+- [ ] argTypes имеют table.defaultValue
+- [ ] Код динамически меняется при изменении параметров в Controls
 
 ## ПРИМЕРЫ
 
@@ -213,6 +336,117 @@ npm run storybook                      # Запуск
 import { findVariablesByPattern } from '@/utils/figma-variables-resolver';
 console.log(findVariablesByPattern('button', 'Semantic'));
 ```
+
+---
+
+## БЫСТРЫЙ СТАРТ: СОЗДАНИЕ НОВОГО КОМПОНЕНТА
+
+### 1. Создай компонент `src/components/O[Name].vue`
+
+```vue
+<template>
+  <div :class="['o-component', `o-component--${variant}`]">
+    <slot />
+  </div>
+</template>
+
+<script setup>
+defineProps({
+  variant: {
+    type: String,
+    default: 'primary',
+    validator: (v) => ['primary', 'secondary'].includes(v)
+  }
+});
+</script>
+
+<style scoped>
+.o-component {
+  background: var(--color-background-primary);
+  padding: var(--spacing-md);
+}
+</style>
+```
+
+### 2. Создай stories `stories/O[Name].stories.js`
+
+```javascript
+import OComponent from '../src/components/OComponent.vue';
+import { useDesignTokens } from '../src/composables/useDesignTokens';
+
+// ✅ ОБЯЗАТЕЛЬНО: Функция для динамического кода
+const generateCode = (args) => {
+  const props = [];
+  if (args.variant !== 'primary') props.push(`variant="${args.variant}"`);
+  if (props.length <= 2) return `<OComponent ${props.join(' ')} />`;
+  return `<OComponent\n  ${props.join('\n  ')}\n/>`;
+};
+
+export default {
+  title: 'Components/OComponent',
+  component: OComponent,
+  tags: ['autodocs'],
+  argTypes: {
+    variant: {
+      control: 'select',
+      options: ['primary', 'secondary'],
+      description: 'Вариант стиля',
+      table: { defaultValue: { summary: 'primary' } }
+    }
+  },
+  decorators: [(story, context) => {
+    const { setTheme, setBreakpoint } = useDesignTokens();
+    if (context.globals.theme) setTheme(context.globals.theme);
+    if (context.globals.breakpoint) setBreakpoint(context.globals.breakpoint);
+    return { components: { story }, template: '<story />' };
+  }]
+};
+
+// ✅ ОБЯЗАТЕЛЬНО: render + transform
+export const Primary = {
+  args: { variant: 'primary' },
+  render: (args) => ({
+    components: { OComponent },
+    setup() { return { args }; },
+    template: '<OComponent v-bind="args" />'
+  }),
+  parameters: {
+    docs: {
+      source: {
+        transform: (code, storyContext) => generateCode(storyContext.args),
+      },
+    },
+  },
+};
+```
+
+### 3. Проверь `.storybook/preview.js`
+
+```javascript
+export const parameters = {
+  docs: {
+    source: {
+      type: 'dynamic',  // ✅ ОБЯЗАТЕЛЬНО!
+      state: 'open',
+    },
+  },
+};
+```
+
+### 4. Запусти Storybook
+
+```bash
+npm run storybook
+```
+
+### 5. Проверь чек-лист
+
+- [ ] Префикс "O" в названии
+- [ ] Только токены (без хардкода)
+- [ ] `generateCode()` функция есть
+- [ ] `render: (args) => ({...})` есть
+- [ ] `parameters.docs.source.transform` есть
+- [ ] Код динамически меняется в Controls
 
 ---
 

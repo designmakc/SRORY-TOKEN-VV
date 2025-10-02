@@ -91,6 +91,7 @@ const computedTag = computed(() => {
   font-size: var(--typography-font-size-h1);
   font-weight: var(--typography-font-weight-h1);
   line-height: var(--typography-line-height-h1);
+  letter-spacing: var(--typography-letter-spacing-h1);
 }
 
 /* Adaptive H2: font-family, font-size, font-weight, line-height */
@@ -99,6 +100,7 @@ const computedTag = computed(() => {
   font-size: var(--typography-font-size-h2);
   font-weight: var(--typography-font-weight-h2);
   line-height: var(--typography-line-height-h2);
+  letter-spacing: var(--typography-letter-spacing-h2);
 }
 
 /* Adaptive H3: font-family, font-size, font-weight, line-height */
@@ -107,6 +109,7 @@ const computedTag = computed(() => {
   font-size: var(--typography-font-size-h3);
   font-weight: var(--typography-font-weight-h3);
   line-height: var(--typography-line-height-h3);
+  letter-spacing: var(--typography-letter-spacing-h3);
 }
 
 /* Adaptive H4: font-family, font-size, font-weight, line-height */
@@ -115,6 +118,7 @@ const computedTag = computed(() => {
   font-size: var(--typography-font-size-h4);
   font-weight: var(--typography-font-weight-h4);
   line-height: var(--typography-line-height-h4);
+  letter-spacing: var(--typography-letter-spacing-h4);
 }
 
 /* Adaptive H5: font-family, font-size, font-weight, line-height */
@@ -123,6 +127,7 @@ const computedTag = computed(() => {
   font-size: var(--typography-font-size-h5);
   font-weight: var(--typography-font-weight-h5);
   line-height: var(--typography-line-height-h5);
+  letter-spacing: var(--typography-letter-spacing-h5);
 }
 
 /* ==================== HEADER SCALE ==================== */
@@ -132,6 +137,7 @@ const computedTag = computed(() => {
   font-size: var(--typography-font-size-header-6xl);
   font-weight: var(--typography-font-weight-header-6xl);
   line-height: var(--typography-line-height-header-6xl);
+  letter-spacing: var(--typography-letter-spacing-header-6xl);
 }
 
 /* Header 5XL: font-family, font-size, font-weight, line-height */
@@ -140,6 +146,7 @@ const computedTag = computed(() => {
   font-size: var(--typography-font-size-header-5xl);
   font-weight: var(--typography-font-weight-header-5xl);
   line-height: var(--typography-line-height-header-5xl);
+  letter-spacing: var(--typography-letter-spacing-header-5xl);
 }
 
 /* Header 4XL: font-family, font-size, font-weight, line-height */
@@ -148,6 +155,7 @@ const computedTag = computed(() => {
   font-size: var(--typography-font-size-header-4xl);
   font-weight: var(--typography-font-weight-header-4xl);
   line-height: var(--typography-line-height-header-4xl);
+  letter-spacing: var(--typography-letter-spacing-header-4xl);
 }
 
 /* Header 3XL: font-family, font-size, font-weight, line-height */
@@ -156,6 +164,7 @@ const computedTag = computed(() => {
   font-size: var(--typography-font-size-header-3xl);
   font-weight: var(--typography-font-weight-header-3xl);
   line-height: var(--typography-line-height-header-3xl);
+  letter-spacing: var(--typography-letter-spacing-header-3xl);
 }
 
 /* Header 2XL: font-family, font-size, font-weight, line-height */
@@ -164,6 +173,7 @@ const computedTag = computed(() => {
   font-size: var(--typography-font-size-header-2xl);
   font-weight: var(--typography-font-weight-header-2xl);
   line-height: var(--typography-line-height-header-2xl);
+  letter-spacing: var(--typography-letter-spacing-header-2xl);
 }
 
 /* Header XL: font-family, font-size, font-weight, line-height */
@@ -172,6 +182,7 @@ const computedTag = computed(() => {
   font-size: var(--typography-font-size-header-xl);
   font-weight: var(--typography-font-weight-header-xl);
   line-height: var(--typography-line-height-header-xl);
+  letter-spacing: var(--typography-letter-spacing-header-xl);
 }
 
 /* Header LG: font-family, font-size, font-weight, line-height */
@@ -180,6 +191,7 @@ const computedTag = computed(() => {
   font-size: var(--typography-font-size-header-lg);
   font-weight: var(--typography-font-weight-header-lg);
   line-height: var(--typography-line-height-header-lg);
+  letter-spacing: var(--typography-letter-spacing-header-lg);
 }
 
 /* Header MD: font-family, font-size, font-weight, line-height */
@@ -188,6 +200,7 @@ const computedTag = computed(() => {
   font-size: var(--typography-font-size-header-md);
   font-weight: var(--typography-font-weight-header-md);
   line-height: var(--typography-line-height-header-md);
+  letter-spacing: var(--typography-letter-spacing-header-md);
 }
 
 /* Header SM: font-family, font-size, font-weight, line-height */
@@ -196,6 +209,7 @@ const computedTag = computed(() => {
   font-size: var(--typography-font-size-header-sm);
   font-weight: var(--typography-font-weight-header-sm);
   line-height: var(--typography-line-height-header-sm);
+  letter-spacing: var(--typography-letter-spacing-header-sm);
 }
 
 /* Header XS: font-family, font-size, font-weight, line-height */
@@ -204,6 +218,7 @@ const computedTag = computed(() => {
   font-size: var(--typography-font-size-header-xs);
   font-weight: var(--typography-font-weight-header-xs);
   line-height: var(--typography-line-height-header-xs);
+  letter-spacing: var(--typography-letter-spacing-header-xs);
 }
 
 /* Header 2XS: font-family, font-size, font-weight, line-height */
@@ -212,6 +227,7 @@ const computedTag = computed(() => {
   font-size: var(--typography-font-size-header-2xs);
   font-weight: var(--typography-font-weight-header-2xs);
   line-height: var(--typography-line-height-header-2xs);
+  letter-spacing: var(--typography-letter-spacing-header-2xs);
 }
 
 /* Header 3XS: font-family, font-size, font-weight, line-height */
@@ -220,6 +236,7 @@ const computedTag = computed(() => {
   font-size: var(--typography-font-size-header-3xs);
   font-weight: var(--typography-font-weight-header-3xs);
   line-height: var(--typography-line-height-header-3xs);
+  letter-spacing: var(--typography-letter-spacing-header-3xs);
 }
 
 /* ==================== TRIM SCALE ==================== */
@@ -229,6 +246,7 @@ const computedTag = computed(() => {
   font-size: var(--typography-font-size-header-4xl);
   font-weight: var(--typography-font-weight-header-4xl);
   line-height: var(--typography-line-height-trim-4xl);
+  letter-spacing: var(--typography-letter-spacing-header-4xl);
 }
 
 /* Trim 3XL: font-family, font-size, font-weight, line-height (compact) */
@@ -237,6 +255,7 @@ const computedTag = computed(() => {
   font-size: var(--typography-font-size-header-3xl);
   font-weight: var(--typography-font-weight-header-3xl);
   line-height: var(--typography-line-height-trim-3xl);
+  letter-spacing: var(--typography-letter-spacing-header-3xl);
 }
 
 /* Trim 2XL: font-family, font-size, font-weight, line-height (compact) */
@@ -245,6 +264,7 @@ const computedTag = computed(() => {
   font-size: var(--typography-font-size-header-2xl);
   font-weight: var(--typography-font-weight-header-2xl);
   line-height: var(--typography-line-height-trim-2xl);
+  letter-spacing: var(--typography-letter-spacing-header-2xl);
 }
 
 /* Trim XL: font-family, font-size, font-weight, line-height (compact) */
@@ -253,6 +273,7 @@ const computedTag = computed(() => {
   font-size: var(--typography-font-size-header-xl);
   font-weight: var(--typography-font-weight-header-xl);
   line-height: var(--typography-line-height-trim-xl);
+  letter-spacing: var(--typography-letter-spacing-header-xl);
 }
 
 /* Trim LG: font-family, font-size, font-weight, line-height (compact) */
@@ -261,6 +282,7 @@ const computedTag = computed(() => {
   font-size: var(--typography-font-size-header-lg);
   font-weight: var(--typography-font-weight-header-lg);
   line-height: var(--typography-line-height-trim-lg);
+  letter-spacing: var(--typography-letter-spacing-header-lg);
 }
 
 /* Trim MD: font-family, font-size, font-weight, line-height (compact) */
@@ -269,6 +291,7 @@ const computedTag = computed(() => {
   font-size: var(--typography-font-size-header-md);
   font-weight: var(--typography-font-weight-header-md);
   line-height: var(--typography-line-height-trim-md);
+  letter-spacing: var(--typography-letter-spacing-header-md);
 }
 
 /* Trim SM: font-family, font-size, font-weight, line-height (compact) */
@@ -277,6 +300,7 @@ const computedTag = computed(() => {
   font-size: var(--typography-font-size-header-sm);
   font-weight: var(--typography-font-weight-header-sm);
   line-height: var(--typography-line-height-trim-sm);
+  letter-spacing: var(--typography-letter-spacing-header-sm);
 }
 
 /* Trim XS: font-family, font-size, font-weight, line-height (compact) */
@@ -285,6 +309,7 @@ const computedTag = computed(() => {
   font-size: var(--typography-font-size-header-xs);
   font-weight: var(--typography-font-weight-header-xs);
   line-height: var(--typography-line-height-trim-xs);
+  letter-spacing: var(--typography-letter-spacing-header-xs);
 }
 
 /* Trim 2XS: font-family, font-size, font-weight, line-height (compact) */
@@ -293,6 +318,7 @@ const computedTag = computed(() => {
   font-size: var(--typography-font-size-header-2xs);
   font-weight: var(--typography-font-weight-header-2xs);
   line-height: var(--typography-line-height-trim-2xs);
+  letter-spacing: var(--typography-letter-spacing-header-2xs);
 }
 
 /* Trim 3XS: font-family, font-size, font-weight, line-height (compact) */
@@ -301,6 +327,7 @@ const computedTag = computed(() => {
   font-size: var(--typography-font-size-header-3xs);
   font-weight: var(--typography-font-weight-header-3xs);
   line-height: var(--typography-line-height-trim-3xs);
+  letter-spacing: var(--typography-letter-spacing-header-3xs);
 }
 
 /* ==================== BODY TEXT ==================== */
