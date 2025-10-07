@@ -1,0 +1,32 @@
+:root {
+  --color-sizing-desk-desk-form-background: #242f6b;
+  --content-sizing-bonus-section-size: lg;
+  --content-sizing-burger-menu-size: none;
+  --content-sizing-desk-desk-actions-size: md;
+  --content-sizing-desk-desk-modal-size: md;
+  --content-sizing-desk-method-group-size: lg;
+  --content-sizing-event-card-size: md;
+  --content-sizing-event-section-size: lg;
+  --content-sizing-footer-size: lg;
+  --content-sizing-game-section-size: lg;
+  --content-sizing-header-size: lg;
+  --content-sizing-header-top-menu-size: lg;
+  --content-sizing-jackpot-card-size: md;
+  --content-sizing-jackpot-group-string: md;
+  --content-sizing-jackpot-header-size: lg;
+  --content-sizing-jackpot-section-size: lg;
+  --content-sizing-main-banner-size: lg;
+  --content-sizing-message-card-size: lg;
+  --content-sizing-modal-size-button: lg; /* размер кнопок в зависимости от ширины экрана */
+  --content-sizing-modal-size-footer-lg: lg; /* размер кнопок в зависимости от ширины экрана */
+  --content-sizing-modal-size-footer-md: md; /* размер кнопок в зависимости от ширины экрана */
+  --content-sizing-navigation-panel-size: lg;
+  --content-sizing-profile-menu-size: md;
+  --content-sizing-promo-section-size: lg;
+  --content-sizing-providers-card-size: md;
+  --content-sizing-providers-section-size: lg;
+  --content-sizing-section-title-size: lg;
+  --content-sizing-tournaments-section-size: lg;
+  --content-sizing-winner-section-size: md;
+  --content-typography-font-family: Olymp Display;
+}
