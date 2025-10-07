@@ -1,0 +1,140 @@
+:root {
+  --color-color-background-button-accent-blue-default: #2237aa; /* Фон акцентных кнопок в обычном состоянии (default) */
+  --color-color-background-button-accent-blue-hover: #3c54d8; /* Фон акцентных кнопок в состоянии наведения (hover) */
+  --color-color-background-button-accent-blue-loader: #2237aa; /* Фон акцентных кнопок в состоянии загрузки (loader) */
+  --color-color-background-button-accent-blue-press: #5a6fe2; /* Фон акцентных кнопок в состоянии нажатия (press) */
+  --color-color-background-button-accent-green-default: #219653; /* Фон акцентных кнопок в обычном состоянии (default) */
+  --color-color-background-button-accent-green-hover: #62b862; /* Фон акцентных кнопок в состоянии наведения (hover) */
+  --color-color-background-button-accent-green-loader: #219653; /* Фон акцентных кнопок в состоянии загрузки (loader) */
+  --color-color-background-button-accent-green-press: #72bf72; /* Фон акцентных кнопок в состоянии нажатия (press) */
+  --color-color-background-button-outline-default: rgba(255, 255, 255, 0); /* Фон третичных кнопок (обычно прозрачные) в обычном состоянии (default) */
+  --color-color-background-button-outline-hover: rgba(255, 255, 255, 0.14); /* Фон третичных кнопок в состоянии наведения (hover) */
+  --color-color-background-button-outline-loader: rgba(255, 255, 255, 0); /* Фон третичных кнопок в состоянии загрузки (loader) */
+  --color-color-background-button-outline-press: rgba(255, 255, 255, 0.28); /* Фон третичных кнопок в состоянии нажатия (press) */
+  --color-color-background-button-primary-default: #f6a913; /* Фон основных кнопок в обычном состоянии (default) */
+  --color-color-background-button-primary-hover: #f7b636; /* Фон основных кнопок в состоянии наведения (hover) */
+  --color-color-background-button-primary-loader: #f6a913; /* Фон основных кнопок в состоянии загрузки (loader) */
+  --color-color-background-button-primary-press: #f8c154; /* Фон основных кнопок в состоянии нажатия (press) */
+  --color-color-background-button-secondary-default: rgba(255, 255, 255, 0.07); /* Фон кнопок secondary в обычном состоянии (default) */
+  --color-color-background-button-secondary-hover: rgba(255, 255, 255, 0.14); /* Фон кнопок secondary, в состоянии  наведения (hover) */
+  --color-color-background-button-secondary-loader: rgba(255, 255, 255, 0.07); /* Фон кнопок secondary в состоянии загрузки (loader) */
+  --color-color-background-button-secondary-press: rgba(255, 255, 255, 0.28); /* Фон кнопок secondary в состоянии нажатия (press) */
+  --color-color-background-button-tertiary-default: rgba(255, 255, 255, 0); /* Фон третичных кнопок (обычно прозрачные) в обычном состоянии (default) */
+  --color-color-background-button-tertiary-hover: rgba(255, 255, 255, 0.14); /* Фон третичных кнопок в состоянии наведения (hover) */
+  --color-color-background-button-tertiary-loader: rgba(255, 255, 255, 0); /* Фон третичных кнопок в состоянии загрузки (loader) */
+  --color-color-background-button-tertiary-press: rgba(255, 255, 255, 0.28); /* Фон третичных кнопок в состоянии нажатия (press) */
+  --color-color-background-feedback-error-lvl-1: #e64b41; /* Фон ошибки — основной уровень (lvl-1) */
+  --color-color-background-feedback-error-lvl-2: rgba(230, 75, 65, 0.35); /* Фон ошибки — дополнительный уровень (lvl-2) */
+  --color-color-background-feedback-error-lvl-3: rgba(230, 75, 65, 0.2); /* Фон ошибки — дополнительный уровень (lvl-2) */
+  --color-color-background-feedback-info-lvl-1: #865ed4; /* Фон информационных сообщений — основной уровень (lvl-1) */
+  --color-color-background-feedback-info-lvl-2: rgba(158, 113, 255, 0.35); /* Фон информационных сообщений — дополнительный уровень (lvl-2) */
+  --color-color-background-feedback-info-lvl-3: rgba(158, 113, 255, 0.2); /* Фон информационных сообщений — дополнительный уровень (lvl-2) */
+  --color-color-background-feedback-inverse-lvl-1: #ffffff; /* Основной контрастный фон. Светлый фон поверх тёмного UI или цветных блоков */
+  --color-color-background-feedback-inverse-lvl-2: rgba(255, 255, 255, 0.47); /* Вторичный фон для вложенных элементов. Более светлый или менее акцентный */
+  --color-color-background-feedback-primary: #f6a913; /* Основной акцентный фон для визуального отклика (например, counter, badge) */
+  --color-color-background-feedback-secondary: rgba(255, 255, 255, 0.07); /* Вторичный, менее акцентный фон отклика или счётчиков */
+  --color-color-background-feedback-success-lvl-1: #62b862; /* Фон успеха — основной уровень (lvl-1) */
+  --color-color-background-feedback-success-lvl-2: rgba(114, 191, 114, 0.35); /* Фон успеха — дополнительный уровень (lvl-2) */
+  --color-color-background-feedback-success-lvl-3: rgba(114, 191, 114, 0.2); /* Фон успеха — дополнительный уровень (lvl-2) */
+  --color-color-background-feedback-warning-lvl-1: #f6a913; /* Фон предупреждения — основной уровень (lvl-1) */
+  --color-color-background-feedback-warning-lvl-2: rgba(247, 182, 54, 0.35); /* Фон предупреждения — дополнительный уровень (lvl-2) */
+  --color-color-background-feedback-warning-lvl-3: rgba(247, 182, 54, 0.2); /* Фон предупреждения — дополнительный уровень (lvl-2) */
+  --color-color-background-input-default: rgba(255, 255, 255, 0.07); /* Фон поля ввода в состояниях default, hover и focus */
+  --color-color-background-interactive-accent-default: #219653; /* Фон акцентных кнопок в обычном состоянии (default) */
+  --color-color-background-interactive-accent-hover: #62b862; /* Фон акцентных кнопок в состоянии наведения (hover) */
+  --color-color-background-interactive-accent-loader: #219653; /* Фон акцентных кнопок в состоянии загрузки (loader) */
+  --color-color-background-interactive-accent-press: #72bf72; /* Фон акцентных кнопок в состоянии нажатия (press) */
+  --color-color-background-interactive-fifth-default: rgba(255, 255, 255, 0.04); /* Фон третичных кнопок (обычно прозрачные) в обычном состоянии (default) */
+  --color-color-background-interactive-fifth-hover: rgba(255, 255, 255, 0.07); /* Фон третичных кнопок в состоянии наведения (hover) */
+  --color-color-background-interactive-fifth-press: rgba(255, 255, 255, 0.14); /* Фон третичных кнопок в состоянии нажатия (press) */
+  --color-color-background-interactive-fifth-selected: rgba(247, 182, 54, 0.2); /* Фон третичных кнопок в состоянии нажатия (press) */
+  --color-color-background-interactive-fourth-default: rgba(255, 255, 255, 0.07); /* Фон третичных кнопок (обычно прозрачные) в обычном состоянии (default) */
+  --color-color-background-interactive-fourth-hover: rgba(255, 255, 255, 0.14); /* Фон третичных кнопок в состоянии наведения (hover) */
+  --color-color-background-interactive-fourth-press: rgba(255, 255, 255, 0.28); /* Фон третичных кнопок в состоянии нажатия (press) */
+  --color-color-background-interactive-fourth-selected: rgba(247, 182, 54, 0.2); /* Фон третичных кнопок в состоянии нажатия (press) */
+  --color-color-background-interactive-primary-default: #f6a913; /* Фон основных кнопок в обычном состоянии (default) */
+  --color-color-background-interactive-primary-hover: #f7b636; /* Фон основных кнопок в состоянии наведения (hover) */
+  --color-color-background-interactive-primary-press: #f8c154; /* Фон основных кнопок в состоянии нажатия (press) */
+  --color-color-background-interactive-secondary-default: rgba(255, 255, 255, 0.7); /* Фон кнопок secondary в обычном состоянии (default) */
+  --color-color-background-interactive-secondary-hover: rgba(255, 255, 255, 0.47); /* Фон кнопок secondary, в состоянии  наведения (hover) */
+  --color-color-background-interactive-secondary-press: rgba(255, 255, 255, 0.28); /* Фон кнопок secondary в состоянии нажатия (press) */
+  --color-color-background-interactive-tertiary-default: rgba(255, 255, 255, 0.14); /* Фон третичных кнопок (обычно прозрачные) в обычном состоянии (default) */
+  --color-color-background-interactive-tertiary-hover: rgba(255, 255, 255, 0.28); /* Фон третичных кнопок в состоянии наведения (hover) */
+  --color-color-background-interactive-tertiary-press: rgba(255, 255, 255, 0.47); /* Фон третичных кнопок в состоянии нажатия (press) */
+  --color-color-background-interactive-tertiary-selected: rgba(247, 182, 54, 0.2); /* Фон третичных кнопок в состоянии нажатия (press) */
+  --color-color-background-interactive-transparent-surfaces-default: rgba(255, 255, 255, 0); /* Фон третичных кнопок (обычно прозрачные) в обычном состоянии (default) */
+  --color-color-background-interactive-transparent-surfaces-hover: rgba(255, 255, 255, 0.04); /* Фон третичных кнопок в состоянии наведения (hover) */
+  --color-color-background-interactive-transparent-surfaces-press: rgba(255, 255, 255, 0.07); /* Фон третичных кнопок в состоянии нажатия (press) */
+  --color-color-background-interactive-transparent-surfaces-selected: rgba(247, 182, 54, 0.2); /* Фон третичных кнопок в состоянии нажатия (press) */
+  --color-color-background-modal-overlay: rgba(18, 18, 18, 0.7);
+  --color-color-background-navbar: rgba(19, 31, 96, 0.94);
+  --color-color-background-page-lvl-1: #030534; /* Основной фон страницы */
+  --color-color-background-page-lvl-2: #131f60; /* Фон секций страницы */
+  --color-color-background-page-lvl-3: #242f6b; /* Фон карточек на странице */
+  --color-color-background-section-gradient-gradient-end: rgba(19, 31, 96, 0); /* Конечный цвет градиента секции на странице */
+  --color-color-background-section-gradient-gradient-start: rgba(19, 31, 96, 0.4); /* Начальный цвет градиента секции на странице */
+  --color-color-background-section-lvl-1-default: #030534; /* Основной фон страницы */
+  --color-color-background-section-lvl-1-hover: #131f60; /* Основной фон страницы */
+  --color-color-background-section-lvl-1-press: #131f60; /* Основной фон страницы */
+  --color-color-background-section-lvl-2-default: #131f60; /* Фон секций страницы */
+  --color-color-background-section-lvl-2-hover: #242f6b; /* Фон секций страницы */
+  --color-color-background-section-lvl-2-press: #242f6b; /* Фон секций страницы */
+  --color-color-background-section-lvl-3-default: #242f6b; /* Фон карточек на странице */
+  --color-color-background-section-lvl-3-hover: #2237aa; /* Фон карточек на странице */
+  --color-color-background-section-lvl-3-press: #2237aa; /* Фон карточек на странице */
+  --color-color-background-top-menu: #0b154b;
+  --color-color-border-accent: #f7b636; /* Цвет второстепенных границ элементов интерфейса */
+  --color-color-border-button-outline: rgba(255, 255, 255, 0.9); /* Цвет границы кнопки outline */
+  --color-color-border-input-default: rgba(255, 255, 255, 0.14); /* Цвет границы поля ввода в обычном состоянии (default) */
+  --color-color-border-input-error: #e64b41; /* Цвет границы поля ввода в состоянии ошибки (error) */
+  --color-color-border-input-focus: #f7b636; /* Цвет границы поля ввода в состоянии фокуса (focus) */
+  --color-color-border-input-hover: rgba(255, 255, 255, 0.28); /* Цвет границы поля ввода в состоянии наведения (hover) */
+  --color-color-border-interactive-default: rgba(255, 255, 255, 0.47); /* Цвет границ интерактивных элементов в обычном состоянии (default) */
+  --color-color-border-interactive-error: #e64b41; /* Цвет границы поля ввода в состоянии ошибки (error) */
+  --color-color-border-interactive-focus: #f6a913; /* Цвет границ интерактивных элементов в состоянии фокуса (focus) */
+  --color-color-border-interactive-hover: rgba(255, 255, 255, 0.7); /* Цвет границ интерактивных элементов в состоянии наведения (hover) */
+  --color-color-border-interactive-press: rgba(255, 255, 255, 0.9); /* Цвет границ интерактивных элементов в состоянии наведения (hover) */
+  --color-color-border-primary: rgba(255, 255, 255, 0.14); /* Цвет основных границ элементов интерфейса */
+  --color-color-border-secondary: rgba(255, 255, 255, 0.07); /* Цвет второстепенных границ элементов интерфейса */
+  --color-color-icon-accent: #f6a913; /* Цвет акцентных иконок */
+  --color-color-icon-avaliable: #62b862; /* Цвет акцентных иконок */
+  --color-color-icon-feedback-error: #e64b41; /* Цвет иконок для сообщений об ошибках */
+  --color-color-icon-feedback-info: #9e71ff; /* Цвет иконок для информационных сообщений */
+  --color-color-icon-feedback-success: #72bf72; /* Цвет иконок для успешных сообщений */
+  --color-color-icon-feedback-warning: #f6a913; /* Цвет иконок для предупреждающих сообщений */
+  --color-color-icon-input-default: rgba(255, 255, 255, 0.7); /* Цвет иконок в полях ввода в обычном состоянии (default) */
+  --color-color-icon-input-focus: rgba(255, 255, 255, 0.9); /* Цвет иконок в полях ввода в состоянии фокуса (focus) */
+  --color-color-icon-inverse: rgba(18, 18, 18, 0.92); /* Цвет иконок для инверсного фона */
+  --color-color-icon-on-interactive-primary: rgba(18, 18, 18, 0.92); /* Цвет иконок на кнопках primary в состояниях default, hover, press и loader */
+  --color-color-icon-on-interactive-secondary: rgba(255, 255, 255, 0.9); /* Цвет иконок на кнопках secondary, accent и tertiary */
+  --color-color-icon-on-interactive-tertiary: rgba(255, 255, 255, 0.47); /* Цвет иконок на кнопках secondary, accent и tertiary */
+  --color-color-icon-primary: rgba(255, 255, 255, 0.9); /* Цвет иконок основного уровня */
+  --color-color-icon-secondary: rgba(255, 255, 255, 0.7); /* Цвет иконок вторичного уровня */
+  --color-color-icon-tertiary: rgba(255, 255, 255, 0.47); /* Цвет иконок третичного уровня */
+  --color-color-icon-timer-default: rgba(255, 255, 255, 0.7); /* Цвет иконок в полях ввода в обычном состоянии (default) */
+  --color-color-icon-timer-expired: rgba(255, 255, 255, 0.47); /* Цвет иконок в полях ввода в состоянии фокуса (focus) */
+  --color-color-icon-timer-expiring: #e64b41; /* Цвет иконок в полях ввода в состоянии фокуса (focus) */
+  --color-color-text-accent: #f7b636; /* цвет для акцентного текста */
+  --color-color-text-error: #e64b41; /* цвет для текста ошибок */
+  --color-color-text-fourth: rgba(255, 255, 255, 0.28); /* цвет для вспомогательного текста */
+  --color-color-text-info: #865ed4; /* цвет для информационного текста */
+  --color-color-text-input-label: rgba(255, 255, 255, 0.7);
+  --color-color-text-input-value-input: rgba(255, 255, 255, 0.9);
+  --color-color-text-inverse: rgba(18, 18, 18, 0.92); /* цвет для инвертированного текста */
+  --color-color-text-link-accent-default: #f6a913; /* цвет текстовой ссылки */
+  --color-color-text-link-accent-hover: #f7b636; /* цвет текстовой ссылки при состоянии hover */
+  --color-color-text-link-primary-default: rgba(255, 255, 255, 0.9); /* цвет текстовой ссылки */
+  --color-color-text-link-primary-hover: rgba(255, 255, 255, 0.7); /* цвет текстовой ссылки при состоянии hover */
+  --color-color-text-link-secondary-default: rgba(255, 255, 255, 0.7); /* цвет текстовой ссылки */
+  --color-color-text-link-secondary-hover: rgba(255, 255, 255, 0.47); /* цвет текстовой ссылки при состоянии hover */
+  --color-color-text-link-tertiary-default: rgba(255, 255, 255, 0.47); /* цвет текстовой ссылки */
+  --color-color-text-link-tertiary-hover: rgba(255, 255, 255, 0.28); /* цвет текстовой ссылки при состоянии hover */
+  --color-color-text-on-interactive-primary: rgba(18, 18, 18, 0.92); /* цвет текста на кнопках primary в состоянии default, hover, press, loader */
+  --color-color-text-on-interactive-secondary: rgba(255, 255, 255, 0.9); /* цвет текста на кнопках secondary, accent, tertiary в состоянии default, hover, press, loader */
+  --color-color-text-primary: rgba(255, 255, 255, 0.9); /* цвет основного текста */
+  --color-color-text-secondary: rgba(255, 255, 255, 0.7); /* цвет второстепенного текста */
+  --color-color-text-success: #62b862; /* цвет для текста подтверждения */
+  --color-color-text-tertiary: rgba(255, 255, 255, 0.47); /* цвет для вспомогательного текста */
+  --content-typography-font-family-body: Roboto; /* Шрифт для основного текста */
+  --content-typography-font-family-header: Olymp Display; /* Шрифт для заголовков */
+}
