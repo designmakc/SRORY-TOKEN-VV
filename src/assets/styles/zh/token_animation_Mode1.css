@@ -1,0 +1,11 @@
+:root {
+  --content-delay-long: 150ms;
+  --content-delay-medium: 100ms;
+  --content-delay-short: 50ms;
+  --content-duration-long: 400ms;
+  --content-duration-medium: 250ms;
+  --content-duration-short: 150ms;
+  --content-easing-accelerate: cubic-bezier(0.4, 0, 1, 1);
+  --content-easing-decelerate: cubic-bezier(0.0, 0, 0.2, 1);
+  --content-easing-standard: cubic-bezier(0.4, 0, 0.2, 1);
+}
