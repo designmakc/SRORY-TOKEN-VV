@@ -1,0 +1,13 @@
+:root {
+  --color-theme-color-background-page-lvl-1: #1d1d1d; /* Основной фон страницы */
+  --color-theme-color-background-page-lvl-2: #2d2d2d; /* Фон секций страницы */
+  --color-theme-color-background-page-lvl-3: #3c3c3c; /* Фон карточек на странице */
+  --color-theme-color-background-section-accent-end: rgba(19, 31, 96, 0); /* Начальный цвет градиента секции на странице */
+  --color-theme-color-background-section-accent-start: rgba(235, 80, 154, 0.35); /* Начальный цвет градиента секции на странице */
+  --color-theme-color-background-section-default-end: rgba(60, 60, 60, 0); /* Конечный цвет градиента секции на странице */
+  --color-theme-color-background-section-default-start: rgba(60, 60, 60, 0.4); /* Начальный цвет градиента секции на странице */
+  --color-theme-color-background-top-menu: #882211;
+  --color-theme-color-play-button: #a52915;
+  --content-theme-color-logotype: red;
+  --content-theme-typography-font-family-header: Roboto;
+}

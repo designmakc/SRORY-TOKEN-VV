@@ -1,0 +1,49 @@
+:root {
+  --color-button-cash-icon-background: rgba(18, 18, 18, 0.07);
+  --color-calendar-color-background-bar: rgba(255, 255, 255, 0.07);
+  --color-calendar-color-background-calendar-cell-default: rgba(255, 255, 255, 0);
+  --color-calendar-color-background-calendar-cell-hover: rgba(255, 255, 255, 0.07);
+  --color-calendar-color-background-calendar-cell-selected: rgba(247, 182, 54, 0.2);
+  --color-carousel-color-default: rgba(255, 255, 255, 0);
+  --color-carousel-color-default-border: rgba(255, 255, 255, 0.28);
+  --color-carousel-color-hover: rgba(255, 255, 255, 0.14);
+  --color-carousel-color-press: rgba(246, 169, 19, 0.5);
+  --color-carousel-color-selected: #f7b636;
+  --color-carousel-color-selected-border: rgba(247, 182, 54, 0.35);
+  --color-category-card-color-primary-default: #131f60;
+  --color-category-card-color-primary-hover: #242f6b;
+  --color-category-card-color-primary-press: #242f6b;
+  --color-category-card-color-secondary-default: rgba(255, 255, 255, 0.14);
+  --color-category-card-color-secondary-hover: rgba(255, 255, 255, 0.28);
+  --color-category-card-color-secondary-press: rgba(255, 255, 255, 0.28);
+  --color-category-card-color-tertiary-default: rgba(255, 255, 255, 0.07);
+  --color-category-card-color-tertiary-hover: rgba(255, 255, 255, 0.14);
+  --color-category-card-color-tertiary-press: rgba(255, 255, 255, 0.14);
+  --color-dropdown-color-background-item-default: rgba(255, 255, 255, 0);
+  --color-dropdown-color-background-item-hover: rgba(255, 255, 255, 0.07);
+  --color-dropdown-color-background-item-press: rgba(255, 255, 255, 0.14);
+  --color-dropdown-color-background-item-selected: rgba(255, 255, 255, 0.07);
+  --color-dropdown-color-background-list: #242f6b;
+  --color-lvl-badge-default: rgba(90, 111, 226, 0.16);
+  --color-pagination-color-default: rgba(255, 255, 255, 0);
+  --color-pagination-color-hover: rgba(255, 255, 255, 0.14);
+  --color-pagination-color-press: rgba(255, 255, 255, 0.47);
+  --color-pagination-color-selected: #f6a913;
+  --color-pagination-color-selected-hover: #f7b636;
+  --color-pagination-color-selected-press: #f8c154;
+  --color-progress-bar-color-background-bar: rgba(255, 255, 255, 0.14);
+  --color-progress-bar-color-background-progress-green: rgba(33, 150, 83, 0.5);
+  --color-progress-bar-color-background-progress-grey: rgba(255, 255, 255, 0.28);
+  --color-scroll-color-default: rgba(255, 255, 255, 0.28);
+  --color-scroll-color-hover: rgba(255, 255, 255, 0.47);
+  --color-scroll-color-press: rgba(255, 255, 255, 0.7);
+  --color-tag-color-background-green: #219653; /* Основной акцентный фон для визуального отклика (например, counter, badge) */
+  --color-tag-color-background-lime: #3db125; /* Основной акцентный фон для визуального отклика (например, counter, badge) */
+  --color-tag-color-background-pink: #eb509a; /* Вторичный, менее акцентный фон отклика или счётчиков */
+  --color-tag-color-background-purple: #865ed4; /* Вторичный, менее акцентный фон отклика или счётчиков */
+  --color-tag-color-background-rose: #e64b41; /* Вторичный, менее акцентный фон отклика или счётчиков */
+  --color-tag-color-background-transparent: rgba(255, 255, 255, 0.14); /* Основной акцентный фон для визуального отклика (например, counter, badge) */
+  --color-tag-color-background-transparent-inverse: rgba(18, 18, 18, 0.25); /* Основной акцентный фон для визуального отклика (например, counter, badge) */
+  --color-tag-color-background-white: #ffffff; /* Основной акцентный фон для визуального отклика (например, counter, badge) */
+  --color-tag-color-background-yellow: #f6a913; /* Вторичный, менее акцентный фон отклика или счётчиков */
+}
