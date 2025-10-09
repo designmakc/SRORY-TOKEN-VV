@@ -398,7 +398,7 @@
   /* Accent Primary variant */
   .o-button--accent-primary {
     background: var(--color-background-button-accent-primary-default);
-    color: var(--color-text-on-interactive-secondary);
+    color: var(--color-text-on-interactive-tertiary);
   }
   
   .o-button--accent-primary.o-button--hover {
@@ -416,7 +416,7 @@
   /* Accent Secondary variant */
   .o-button--accent-secondary {
     background: var(--color-background-button-accent-secondary-default);
-    color: var(--color-text-on-interactive-secondary);
+    color: var(--color-text-on-interactive-tertiary);
   }
   
   .o-button--accent-secondary.o-button--hover {
@@ -530,9 +530,5 @@
     cursor: pointer;
   }
   
-  /* Focus стили */
-  .o-button:focus-visible {
-    outline: 2px solid var(--color-border-focus);
-    outline-offset: 2px;
-  }
+
   </style>
