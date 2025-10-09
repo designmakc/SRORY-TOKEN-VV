@@ -23,6 +23,13 @@ export default {
 };
 
 export const Default = {
+  render: (args) => ({
+    components: { OCounter },
+    setup() {
+      return { args };
+    },
+    template: '<OCounter v-bind="args" />'
+  }),
   args: {
     label: '2',
     variant: 'primary',
@@ -33,6 +40,9 @@ export const Default = {
 export const AllVariants = {
   render: () => ({
     components: { OCounter },
+    setup() {
+      return {};
+    },
     template: `
       <div style="display: flex; gap: 12px; align-items: center;">
         <OCounter label="5" variant="primary" />
@@ -47,6 +57,9 @@ export const AllVariants = {
 export const AllSizes = {
   render: () => ({
     components: { OCounter },
+    setup() {
+      return {};
+    },
     template: `
       <div style="display: flex; gap: 12px; align-items: center;">
         <OCounter label="5" size="xs" />

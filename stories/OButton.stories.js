@@ -18,7 +18,7 @@ export default {
     state: {
       control: 'select',
       options: ['default', 'hover', 'press'],
-      description: 'Размер кнопки'
+      description: 'Состояние компонента'
     },
     label: {
       control: 'text',
@@ -36,6 +36,13 @@ export default {
 };
 
 export const Default = {
+  render: (args) => ({
+    components: { OButton },
+    setup() {
+      return { args };
+    },
+    template: '<OButton v-bind="args" />'
+  }),
   args: {
     label: 'Сделать действие',
     variant: 'primary',
@@ -47,6 +54,9 @@ export const Default = {
 export const AllVariants = {
   render: () => ({
     components: { OButton },
+    setup() {
+      return {};
+    },
     template: `
       <div style="display: flex; gap: 12px; flex-wrap: wrap;">
         <OButton variant="primary" label="Primary" />
@@ -63,6 +73,9 @@ export const AllVariants = {
 export const AllSizes = {
   render: () => ({
     components: { OButton },
+    setup() {
+      return {};
+    },
     template: `
       <div style="display: flex; gap: 12px; align-items: center;">
         <OButton size="xs" label="XS" />

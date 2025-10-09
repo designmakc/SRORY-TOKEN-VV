@@ -24,6 +24,13 @@ export default {
 };
 
 export const Default = {
+  render: (args) => ({
+    components: { OTypography },
+    setup() {
+      return { args };
+    },
+    template: '<OTypography v-bind="args">Typography</OTypography>'
+  }),
   args: {
     variant: 'header-lg',
     tag: 'h1'
@@ -33,6 +40,9 @@ export const Default = {
 export const Headers = {
   render: () => ({
     components: { OTypography },
+    setup() {
+      return {};
+    },
     template: `
       <div style="display: flex; flex-direction: column; gap: 16px;">
         <OTypography variant="header-6xl">Header 6XL</OTypography>
@@ -53,6 +63,9 @@ export const Headers = {
 export const Body = {
   render: () => ({
     components: { OTypography },
+    setup() {
+      return {};
+    },
     template: `
       <div style="display: flex; flex-direction: column; gap: 12px;">
         <OTypography variant="body-lg">Body Large</OTypography>
@@ -67,6 +80,9 @@ export const Body = {
 export const Labels = {
   render: () => ({
     components: { OTypography },
+    setup() {
+      return {};
+    },
     template: `
       <div style="display: flex; flex-direction: column; gap: 12px;">
         <OTypography variant="label-lg">Label Large</OTypography>

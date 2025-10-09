@@ -25,6 +25,13 @@ export default {
 };
 
 export const Default = {
+  render: (args) => ({
+    components: { OCheckboxGroup },
+    setup() {
+      return { args };
+    },
+    template: '<OCheckboxGroup v-bind="args" />'
+  }),
   args: {
     variant: 'primary',
     size: 'md',
@@ -35,6 +42,9 @@ export const Default = {
 export const AllDirections = {
   render: () => ({
     components: { OCheckboxGroup },
+    setup() {
+      return {};
+    },
     template: `
       <div style="display: flex; flex-direction: column; gap: 24px;">
         <div>

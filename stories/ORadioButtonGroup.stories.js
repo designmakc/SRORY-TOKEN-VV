@@ -25,6 +25,13 @@ export default {
 };
 
 export const Default = {
+  render: (args) => ({
+    components: { ORadioButtonGroup },
+    setup() {
+      return { args };
+    },
+    template: '<ORadioButtonGroup v-bind="args" />'
+  }),
   args: {
     variant: 'primary',
     size: 'md',
@@ -35,6 +42,9 @@ export const Default = {
 export const AllDirections = {
   render: () => ({
     components: { ORadioButtonGroup },
+    setup() {
+      return {};
+    },
     template: `
       <div style="display: flex; flex-direction: column; gap: 24px;">
         <div>

@@ -44,7 +44,7 @@ const props = defineProps({
   state: {
     type: String,
     default: 'default',
-    validator: (v) => ['default', 'hover', 'press'].includes(v)
+    validator: (v) => !v || ['default', 'hover', 'press'].includes(v)
   },
   size: {
     type: String,

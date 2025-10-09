@@ -2,27 +2,27 @@
 
 /* Убираем влияния от Storybook обёрток */
 [class*="story--"] {
-  all: unset !important;
-  display: block !important;
   margin: 0 !important;
   padding: 0 !important;
   border: none !important;
   background: transparent !important;
   box-sizing: border-box !important;
+  /* НЕ используем all: unset - это сбрасывает все стили включая display */
+  /* НЕ используем display: block - пусть компоненты сами контролируют display */
 }
 
-/* Защита для компонентов */
-[class*="story--"] .o-button,
-[class*="story--"] .o-checkbox,
-[class*="story--"] .o-radio-button,
-[class*="story--"] .o-counter,
-[class*="story--"] .o-icon-wrap,
-[class*="story--"] .o-typography {
-  display: inline-flex !important;
-  align-items: center !important;
+/* Защита для компонентов - убираем влияния обёрток */
+[class*="story--"] > .o-button,
+[class*="story--"] > .o-checkbox,
+[class*="story--"] > .o-radio-button,
+[class*="story--"] > .o-counter,
+[class*="story--"] > .o-icon-wrap,
+[class*="story--"] > .o-typography {
   margin: 0 !important;
   padding: 0 !important;
   box-sizing: border-box !important;
+  /* НЕ переопределяем display - компоненты сами знают какой display им нужен */
+  /* НЕ переопределяем align-items - это влияет на внутреннее выравнивание */
 }
 
 /* Базовые исправления */

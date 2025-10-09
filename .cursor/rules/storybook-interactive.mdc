@@ -1,0 +1,119 @@
+---
+alwaysApply: true
+---
+# Правило интерактивности Storybook
+
+## Обязательные требования для всех stories с `tags: ['autodocs']`
+
+### 1. Базовые stories (Default, Checked, Disabled, Error и т.д.)
+
+Всегда использовать `render()` с `setup()` и реактивным состоянием:
+
+```js
+// Импортировать ref и watch из vue
+import { ref, watch } from 'vue';
+
+export const Default = {
+  render: (args) => ({
+    components: { ComponentName },
+    setup() {
+      const reactiveState = ref(args.propName);
+      // ВАЖНО: watch для синхронизации с Storybook Controls
+      watch(() => args.propName, (newVal) => {
+        reactiveState.value = newVal;
+      });
+      return { args, reactiveState };
+    },
+    template: `<ComponentName v-bind="args" @update:propName="reactiveState = $event" :propName="reactiveState" />`
+  }),
+  args: {
+    propName: initialValue
+  }
+};
+```
+
+### 2. Групповые stories (AllVariants, AllSizes и т.д.)
+
+Синхронизировать состояние всех компонентов через общий `ref`:
+
+```js
+export const AllVariants = {
+  render: () => ({
+    components: { ComponentName },
+    setup() {
+      const sharedState = ref(false);
+      return { sharedState };
+    },
+    template: `
+      <div style="display: flex; flex-direction: column; gap: 12px;">
+        <ComponentName variant="primary" @update:propName="sharedState = $event" :propName="sharedState" />
+        <ComponentName variant="secondary" @update:propName="sharedState = $event" :propName="sharedState" />
+      </div>
+    `
+  })
+};
+```
+
+### 3. Обязательные элементы
+
+- **setup()**: всегда использовать для создания реактивного состояния
+- **ref**: импортировать из `vue` для создания реактивных переменных
+- **watch**: импортировать из `vue` для синхронизации с Storybook Controls
+- **watch(() => args.propName, ...)**: следить за изменениями в Controls и обновлять локальное состояние
+- **@update:propName и :propName**: для двусторонней связи с компонентом (НЕ используйте v-model в template строках)
+- **return**: возвращать все реактивные переменные и args из setup()
+
+### 4. Компоненты по типам
+
+#### Checkbox
+```js
+const isChecked = ref(args.isChecked);
+watch(() => args.isChecked, (newVal) => {
+  isChecked.value = newVal;
+});
+template: `<OCheckbox v-bind="args" @update:isChecked="isChecked = $event" :isChecked="isChecked" />`
+```
+
+#### RadioButton (одиночная кнопка)
+```js
+const isChecked = ref(args.isChecked);
+watch(() => args.isChecked, (newVal) => {
+  isChecked.value = newVal;
+});
+template: `<ORadioButton v-bind="args" @update:isChecked="isChecked = $event" :isChecked="isChecked" />`
+```
+
+#### RadioButton (группа)
+```js
+const selectedValue = ref(null);
+template: `<ORadioButton value="option1" @change="selectedValue = $event" :isChecked="selectedValue === 'option1'" />`
+```
+
+#### Button, Counter, Typography
+Не требуют реактивного состояния (неинтерактивные или статичные):
+```js
+render: (args) => ({
+  components: { OButton },
+  setup() {
+    return { args };
+  },
+  template: '<OButton v-bind="args" />'
+})
+```
+
+### 5. Проверочный чеклист
+
+- [ ] Используется `render()` вместо простого `args`
+- [ ] Есть `setup()` с реактивным состоянием
+- [ ] `ref` и `watch` импортированы из `vue`
+- [ ] Добавлен `watch(() => args.propName, ...)` для синхронизации с Controls
+- [ ] Используется `@update:propName="state = $event"` и `:propName="state"` (НЕ v-model)
+- [ ] Template обернут в обратные кавычки (backticks)
+- [ ] Компонент реагирует на клики в Storybook
+- [ ] Controls в Storybook изменяют компонент динамически
+
+### 6. Важное замечание о watch
+
+**Без `watch` компонент НЕ будет реагировать на изменения в Storybook Controls!**
+
+Компонент будет кликабелен, но изменение переключателя в Controls не повлияет на состояние компонента. `watch` необходим для синхронизации локального реактивного состояния с изменениями `args` из Controls.

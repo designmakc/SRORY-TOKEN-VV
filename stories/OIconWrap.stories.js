@@ -26,6 +26,13 @@ export default {
 };
 
 export const Default = {
+  render: (args) => ({
+    components: { OIconWrap },
+    setup() {
+      return { args };
+    },
+    template: '<OIconWrap v-bind="args" />'
+  }),
   args: {
     sizeIcon: 24,
     icon: 'navigation-action/play',
@@ -37,6 +44,9 @@ export const Default = {
 export const AllSizes = {
   render: () => ({
     components: { OIconWrap },
+    setup() {
+      return {};
+    },
     template: `
       <div style="display: flex; gap: 12px; align-items: center;">
         <OIconWrap :sizeIcon="12" icon="navigation-action/play" />
@@ -54,6 +64,9 @@ export const AllSizes = {
 export const WithCounter = {
   render: () => ({
     components: { OIconWrap },
+    setup() {
+      return {};
+    },
     template: `
       <div style="display: flex; gap: 12px; align-items: center;">
         <OIconWrap :sizeIcon="24" icon="navigation-action/play" :hasCounter="true" :counterValue="5" />

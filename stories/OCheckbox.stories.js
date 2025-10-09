@@ -1,5 +1,5 @@
 import OCheckbox from '../src/components/OCheckbox.vue';
-import { ref } from 'vue';
+import { ref, watch } from 'vue';
 
 export default {
   title: 'Components/OCheckbox',
@@ -15,6 +15,11 @@ export default {
       control: 'select',
       options: ['md', 'sm'],
       description: 'Размер checkbox'
+    },
+    state: {
+      control: 'select',
+      options: ['default', 'hover', 'press'],
+      description: 'Состояние компонента'
     },
     isChecked: {
       control: 'boolean',
@@ -36,6 +41,17 @@ export default {
 };
 
 export const Default = {
+  render: (args) => ({
+    components: { OCheckbox },
+    setup() {
+      const isChecked = ref(args.isChecked);
+      watch(() => args.isChecked, (newVal) => {
+        isChecked.value = newVal;
+      });
+      return { args, isChecked };
+    },
+    template: `<OCheckbox v-bind="args" @update:isChecked="isChecked = $event" :isChecked="isChecked" />`
+  }),
   args: {
     variant: 'primary',
     size: 'md',
@@ -45,6 +61,17 @@ export const Default = {
 };
 
 export const Checked = {
+  render: (args) => ({
+    components: { OCheckbox },
+    setup() {
+      const isChecked = ref(args.isChecked);
+      watch(() => args.isChecked, (newVal) => {
+        isChecked.value = newVal;
+      });
+      return { args, isChecked };
+    },
+    template: `<OCheckbox v-bind="args" @update:isChecked="isChecked = $event" :isChecked="isChecked" />`
+  }),
   args: {
     variant: 'primary',
     size: 'md',
@@ -54,6 +81,17 @@ export const Checked = {
 };
 
 export const Disabled = {
+  render: (args) => ({
+    components: { OCheckbox },
+    setup() {
+      const isChecked = ref(args.isChecked);
+      watch(() => args.isChecked, (newVal) => {
+        isChecked.value = newVal;
+      });
+      return { args, isChecked };
+    },
+    template: `<OCheckbox v-bind="args" @update:isChecked="isChecked = $event" :isChecked="isChecked" />`
+  }),
   args: {
     variant: 'primary',
     size: 'md',
@@ -64,6 +102,17 @@ export const Disabled = {
 };
 
 export const Error = {
+  render: (args) => ({
+    components: { OCheckbox },
+    setup() {
+      const isChecked = ref(args.isChecked);
+      watch(() => args.isChecked, (newVal) => {
+        isChecked.value = newVal;
+      });
+      return { args, isChecked };
+    },
+    template: `<OCheckbox v-bind="args" @update:isChecked="isChecked = $event" :isChecked="isChecked" />`
+  }),
   args: {
     variant: 'primary',
     size: 'md',
@@ -76,10 +125,14 @@ export const Error = {
 export const AllVariants = {
   render: () => ({
     components: { OCheckbox },
+    setup() {
+      const isChecked = ref(false);
+      return { isChecked };
+    },
     template: `
       <div style="display: flex; flex-direction: column; gap: 12px;">
-        <OCheckbox variant="primary" label="Primary checkbox" />
-        <OCheckbox variant="secondary" label="Secondary checkbox" />
+        <OCheckbox variant="primary" label="Primary checkbox" @update:isChecked="isChecked = $event" :isChecked="isChecked" />
+        <OCheckbox variant="secondary" label="Secondary checkbox" @update:isChecked="isChecked = $event" :isChecked="isChecked" />
       </div>
     `
   })
@@ -88,10 +141,14 @@ export const AllVariants = {
 export const AllSizes = {
   render: () => ({
     components: { OCheckbox },
+    setup() {
+      const isChecked = ref(false);
+      return { isChecked };
+    },
     template: `
       <div style="display: flex; flex-direction: column; gap: 12px;">
-        <OCheckbox size="md" label="Medium checkbox" />
-        <OCheckbox size="sm" label="Small checkbox" />
+        <OCheckbox size="md" label="Medium checkbox" @update:isChecked="isChecked = $event" :isChecked="isChecked" />
+        <OCheckbox size="sm" label="Small checkbox" @update:isChecked="isChecked = $event" :isChecked="isChecked" />
       </div>
     `
   })
