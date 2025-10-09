@@ -9,7 +9,6 @@
 
 <script setup>
 import { computed } from 'vue';
-import { useDesignTokens } from '@/composables/useDesignTokens';
 
 const props = defineProps({
   /**
@@ -51,8 +50,7 @@ const props = defineProps({
   }
 });
 
-// Инициализация токенов дизайна
-useDesignTokens();
+// CSS переменные уже подключены через style.css
 
 // Автоматическое определение тега
 const computedTag = computed(() => {
@@ -87,47 +85,47 @@ const computedTag = computed(() => {
 /* ==================== ADAPTIVE HEADINGS ==================== */
 /* Adaptive H1: font-family, font-size, font-weight, line-height */
 .o-typography--adaptive-h1 {
-  font-family: var(--typography-font-family);
-  font-size: var(--typography-font-size-h1);
-  font-weight: var(--typography-font-weight-h1);
-  line-height: var(--typography-line-height-h1);
-  letter-spacing: var(--typography-letter-spacing-h1);
+  font-family: var(--ad-typography-font-family);
+  font-size: var(--ad-typography-font-size-h1);
+  font-weight: var(--ad-typography-font-weight-h1);
+  line-height: var(--ad-typography-line-height-h1);
+  letter-spacing: var(--ad-typography-letter-spacing-h1);
 }
 
 /* Adaptive H2: font-family, font-size, font-weight, line-height */
 .o-typography--adaptive-h2 {
-  font-family: var(--typography-font-family);
-  font-size: var(--typography-font-size-h2);
-  font-weight: var(--typography-font-weight-h2);
-  line-height: var(--typography-line-height-h2);
-  letter-spacing: var(--typography-letter-spacing-h2);
+  font-family: var(--ad-typography-font-family);
+  font-size: var(--ad-typography-font-size-h2);
+  font-weight: var(--ad-typography-font-weight-h2);
+  line-height: var(--ad-typography-line-height-h2);
+  letter-spacing: var(--ad-typography-letter-spacing-h2);
 }
 
 /* Adaptive H3: font-family, font-size, font-weight, line-height */
 .o-typography--adaptive-h3 {
-  font-family: var(--typography-font-family);
-  font-size: var(--typography-font-size-h3);
-  font-weight: var(--typography-font-weight-h3);
-  line-height: var(--typography-line-height-h3);
-  letter-spacing: var(--typography-letter-spacing-h3);
+  font-family: var(--ad-typography-font-family);
+  font-size: var(--ad-typography-font-size-h3);
+  font-weight: var(--ad-typography-font-weight-h3);
+  line-height: var(--ad-typography-line-height-h3);
+  letter-spacing: var(--ad-typography-letter-spacing-h3);
 }
 
 /* Adaptive H4: font-family, font-size, font-weight, line-height */
 .o-typography--adaptive-h4 {
-  font-family: var(--typography-font-family);
-  font-size: var(--typography-font-size-h4);
-  font-weight: var(--typography-font-weight-h4);
-  line-height: var(--typography-line-height-h4);
-  letter-spacing: var(--typography-letter-spacing-h4);
+  font-family: var(--ad-typography-font-family);
+  font-size: var(--ad-typography-font-size-h4);
+  font-weight: var(--ad-typography-font-weight-h4);
+  line-height: var(--ad-typography-line-height-h4);
+  letter-spacing: var(--ad-typography-letter-spacing-h4);
 }
 
 /* Adaptive H5: font-family, font-size, font-weight, line-height */
 .o-typography--adaptive-h5 {
-  font-family: var(--typography-font-family);
-  font-size: var(--typography-font-size-h5);
-  font-weight: var(--typography-font-weight-h5);
-  line-height: var(--typography-line-height-h5);
-  letter-spacing: var(--typography-letter-spacing-h5);
+  font-family: var(--ad-typography-font-family);
+  font-size: var(--ad-typography-font-size-h5);
+  font-weight: var(--ad-typography-font-weight-h5);
+  line-height: var(--ad-typography-line-height-h5);
+  letter-spacing: var(--ad-typography-letter-spacing-h5);
 }
 
 /* ==================== HEADER SCALE ==================== */

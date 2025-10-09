@@ -1,31 +1,8 @@
 import OCheckbox from '../src/components/OCheckbox.vue';
-import { useDesignTokens } from '../src/composables/useDesignTokens';
 import { ref } from 'vue';
 
-// Функция для генерации динамического кода
-const generateCode = (args) => {
-  const props = [];
-  
-  // Добавляем только измененные props (не дефолтные)
-  if (args.variant && args.variant !== 'primary') props.push(`variant="${args.variant}"`);
-  if (args.size && args.size !== 'md') props.push(`size="${args.size}"`);
-  if (args.state && args.state !== 'default') props.push(`state="${args.state}"`);
-  if (args.label) props.push(`label="${args.label}"`);
-  if (args.isChecked) props.push(':isChecked="true"');
-  if (args.isDisabled) props.push(':isDisabled="true"');
-  if (args.hasError) props.push(':hasError="true"');
-  if (!args.hasLabel) props.push(':hasLabel="false"');
-  
-  // Форматирование для читабельности
-  if (props.length <= 2) {
-    return `<OCheckbox ${props.join(' ')} />`;
-  } else {
-    return `<OCheckbox\n  ${props.join('\n  ')}\n/>`;
-  }
-};
-
 export default {
-  title: 'Components/Checkbox/OCheckbox',
+  title: 'Components/OCheckbox',
   component: OCheckbox,
   tags: ['autodocs'],
   argTypes: {
@@ -33,11 +10,6 @@ export default {
       control: 'select',
       options: ['primary', 'secondary'],
       description: 'Вариант стиля checkbox'
-    },
-    state: {
-      control: 'select',
-      options: ['default', 'hover', 'press'],
-      description: 'Состояние интерактивности'
     },
     size: {
       control: 'select',
@@ -56,440 +28,70 @@ export default {
       control: 'boolean',
       description: 'Состояние ошибки'
     },
-    hasLabel: {
-      control: 'boolean',
-      description: 'Показывать ли label'
-    },
     label: {
       control: 'text',
       description: 'Текст label'
     }
-  },
-  decorators: [
-    (story, context) => {
-      const { setTheme, setBreakpoint } = useDesignTokens();
-      if (context.globals.theme) setTheme(context.globals.theme);
-      if (context.globals.breakpoint) setBreakpoint(context.globals.breakpoint);
-      return { components: { story }, template: '<story />' };
-    }
-  ]
-};
-
-// Primary checkbox
-export const Primary = {
-  args: {
-    variant: 'primary',
-    state: 'default',
-    size: 'md',
-    isChecked: true,
-    isDisabled: false,
-    hasError: false,
-    hasLabel: true,
-    label: 'Primary checkbox'
-  },
-  render: args => ({
-    components: { OCheckbox },
-    setup() {
-      const checked = ref(args.isChecked);
-      return { args, checked };
-    },
-    template: `
-      <OCheckbox 
-        v-bind="args" 
-        :isChecked="checked"
-        @update:isChecked="checked = $event"
-      />
-    `
-  }),
-  parameters: {
-    docs: {
-      source: {
-        transform: (code, storyContext) => generateCode(storyContext.args),
-      },
-    },
-  },
-};
-
-// Interactive checkbox
-export const Interactive = {
-  render: (args) => ({
-    components: { OCheckbox },
-    setup() {
-      const isChecked = ref(false);
-      return { args, isChecked };
-    },
-    template: `
-      <div>
-        <OCheckbox 
-          v-bind="args" 
-          :isChecked="isChecked"
-          @update:isChecked="isChecked = $event"
-        />
-        <p style="margin-top: var(--gap-sm); color: var(--color-text-primary);">
-          Checked: {{ isChecked }}
-        </p>
-      </div>
-    `
-  }),
-  args: {
-    variant: 'primary',
-    state: 'default',
-    size: 'md',
-    isDisabled: false,
-    hasError: false,
-    hasLabel: true,
-    label: 'Click me!'
   }
 };
 
-// Multiple checkboxes with v-model
-export const MultipleCheckboxes = {
+export const Default = {
+  args: {
+    variant: 'primary',
+    size: 'md',
+    label: 'Checkbox',
+    isChecked: false
+  }
+};
+
+export const Checked = {
+  args: {
+    variant: 'primary',
+    size: 'md',
+    label: 'Checked checkbox',
+    isChecked: true
+  }
+};
+
+export const Disabled = {
+  args: {
+    variant: 'primary',
+    size: 'md',
+    label: 'Disabled checkbox',
+    isChecked: false,
+    isDisabled: true
+  }
+};
+
+export const Error = {
+  args: {
+    variant: 'primary',
+    size: 'md',
+    label: 'Error checkbox',
+    isChecked: false,
+    hasError: true
+  }
+};
+
+export const AllVariants = {
   render: () => ({
     components: { OCheckbox },
-    setup() {
-      const checkboxes = ref([
-        { id: 1, label: 'Option 1', checked: false },
-        { id: 2, label: 'Option 2', checked: true },
-        { id: 3, label: 'Option 3', checked: false }
-      ]);
-      
-      const toggleCheckbox = (id) => {
-        const checkbox = checkboxes.value.find(cb => cb.id === id);
-        if (checkbox) {
-          checkbox.checked = !checkbox.checked;
-        }
-      };
-      
-      return { checkboxes, toggleCheckbox };
-    },
     template: `
-      <div>
-        <h3>Multiple Checkboxes</h3>
-        <div v-for="checkbox in checkboxes" :key="checkbox.id" style="margin: var(--gap-sm) 0;">
-          <OCheckbox 
-            :isChecked="checkbox.checked"
-            :label="checkbox.label"
-            @update:isChecked="checkbox.checked = $event"
-          />
-        </div>
-        <p style="margin-top: var(--gap-lg); color: var(--color-text-primary);">
-          Selected: {{ checkboxes.filter(cb => cb.checked).map(cb => cb.label).join(', ') }}
-        </p>
+      <div style="display: flex; flex-direction: column; gap: 12px;">
+        <OCheckbox variant="primary" label="Primary checkbox" />
+        <OCheckbox variant="secondary" label="Secondary checkbox" />
       </div>
     `
   })
 };
 
-// Secondary checkbox
-export const Secondary = {
-  args: {
-    variant: 'secondary',
-    state: 'default',
-    size: 'md',
-    isChecked: true,
-    isDisabled: false,
-    hasError: false,
-    hasLabel: true,
-    label: 'Secondary checkbox'
-  },
-  render: args => ({
-    components: { OCheckbox },
-    setup() {
-      const checked = ref(args.isChecked);
-      return { args, checked };
-    },
-    template: `
-      <OCheckbox 
-        v-bind="args" 
-        :isChecked="checked"
-        @update:isChecked="checked = $event"
-      />
-    `
-  }),
-  parameters: {
-    docs: {
-      source: {
-        code: '<OCheckbox variant="secondary" label="Secondary checkbox" />',
-      },
-    },
-  },
-};
-
-// Small size
-export const Small = {
-  args: {
-    variant: 'primary',
-    state: 'default',
-    size: 'sm',
-    isChecked: true,
-    isDisabled: false,
-    hasError: false,
-    hasLabel: true,
-    label: 'Small checkbox'
-  },
-  render: args => ({
-    components: { OCheckbox },
-    setup() {
-      const checked = ref(args.isChecked);
-      return { args, checked };
-    },
-    template: `
-      <OCheckbox 
-        v-bind="args" 
-        :isChecked="checked"
-        @update:isChecked="checked = $event"
-      />
-    `
-  }),
-  parameters: {
-    docs: {
-      source: {
-        code: '<OCheckbox variant="primary" size="sm" label="Small checkbox" />',
-      },
-    },
-  },
-};
-
-// Unchecked state
-export const Unchecked = {
-  args: {
-    variant: 'primary',
-    state: 'default',
-    size: 'md',
-    isChecked: false,
-    isDisabled: false,
-    hasError: false,
-    hasLabel: true,
-    label: 'Unchecked checkbox'
-  },
-  render: args => ({
-    components: { OCheckbox },
-    setup() {
-      const checked = ref(args.isChecked);
-      return { args, checked };
-    },
-    template: `
-      <OCheckbox 
-        v-bind="args" 
-        :isChecked="checked"
-        @update:isChecked="checked = $event"
-      />
-    `
-  }),
-  parameters: {
-    docs: {
-      source: {
-        code: '<OCheckbox variant="primary" label="Unchecked checkbox" />',
-      },
-    },
-  },
-};
-
-// Disabled state
-export const Disabled = {
-  args: {
-    variant: 'primary',
-    state: 'default',
-    size: 'md',
-    isChecked: true,
-    isDisabled: true,
-    hasError: false,
-    hasLabel: true,
-    label: 'Disabled checkbox'
-  },
-  render: args => ({
-    components: { OCheckbox },
-    setup() {
-      const checked = ref(args.isChecked);
-      return { args, checked };
-    },
-    template: `
-      <OCheckbox 
-        v-bind="args" 
-        :isChecked="checked"
-        @update:isChecked="checked = $event"
-      />
-    `
-  }),
-  parameters: {
-    docs: {
-      source: {
-        code: '<OCheckbox variant="primary" :isDisabled="true" label="Disabled checkbox" />',
-      },
-    },
-  },
-};
-
-// Error state
-export const Error = {
-  args: {
-    variant: 'primary',
-    state: 'default',
-    size: 'md',
-    isChecked: true,
-    isDisabled: false,
-    hasError: true,
-    hasLabel: true,
-    label: 'Error checkbox'
-  },
-  render: args => ({
-    components: { OCheckbox },
-    setup() {
-      const checked = ref(args.isChecked);
-      return { args, checked };
-    },
-    template: `
-      <OCheckbox 
-        v-bind="args" 
-        :isChecked="checked"
-        @update:isChecked="checked = $event"
-      />
-    `
-  }),
-  parameters: {
-    docs: {
-      source: {
-        code: '<OCheckbox variant="primary" :hasError="true" label="Error checkbox" />',
-      },
-    },
-  },
-};
-
-// All States Matrix (как в Figma)
-export const AllStates = {
+export const AllSizes = {
   render: () => ({
     components: { OCheckbox },
     template: `
-      <div style="display: grid; grid-template-columns: repeat(6, 1fr); gap: var(--gap-lg); padding: var(--gap-lg);">
-        <!-- Row 1: default -->
-        <div>
-          <h4>Primary MD Checked</h4>
-          <OCheckbox variant="primary" state="default" size="md" :isChecked="true" />
-        </div>
-        <div>
-          <h4>Secondary MD Checked</h4>
-          <OCheckbox variant="secondary" state="default" size="md" :isChecked="true" />
-        </div>
-        <div>
-          <h4>Primary MD Unchecked</h4>
-          <OCheckbox variant="primary" state="default" size="md" :isChecked="false" />
-        </div>
-        <div>
-          <h4>Primary SM Checked</h4>
-          <OCheckbox variant="primary" state="default" size="sm" :isChecked="true" />
-        </div>
-        <div>
-          <h4>Secondary SM Checked</h4>
-          <OCheckbox variant="secondary" state="default" size="sm" :isChecked="true" />
-        </div>
-        <div>
-          <h4>Primary SM Unchecked</h4>
-          <OCheckbox variant="primary" state="default" size="sm" :isChecked="false" />
-        </div>
-        
-        <!-- Row 2: hover -->
-        <div>
-          <h4>Primary MD Hover</h4>
-          <OCheckbox variant="primary" state="hover" size="md" :isChecked="true" />
-        </div>
-        <div>
-          <h4>Secondary MD Hover</h4>
-          <OCheckbox variant="secondary" state="hover" size="md" :isChecked="true" />
-        </div>
-        <div>
-          <h4>Primary MD Hover Unchecked</h4>
-          <OCheckbox variant="primary" state="hover" size="md" :isChecked="false" />
-        </div>
-        <div>
-          <h4>Primary SM Hover</h4>
-          <OCheckbox variant="primary" state="hover" size="sm" :isChecked="true" />
-        </div>
-        <div>
-          <h4>Secondary SM Hover</h4>
-          <OCheckbox variant="secondary" state="hover" size="sm" :isChecked="true" />
-        </div>
-        <div>
-          <h4>Primary SM Hover Unchecked</h4>
-          <OCheckbox variant="primary" state="hover" size="sm" :isChecked="false" />
-        </div>
-        
-        <!-- Row 3: press -->
-        <div>
-          <h4>Primary MD Press</h4>
-          <OCheckbox variant="primary" state="press" size="md" :isChecked="true" />
-        </div>
-        <div>
-          <h4>Secondary MD Press</h4>
-          <OCheckbox variant="secondary" state="press" size="md" :isChecked="true" />
-        </div>
-        <div>
-          <h4>Primary MD Press Unchecked</h4>
-          <OCheckbox variant="primary" state="press" size="md" :isChecked="false" />
-        </div>
-        <div>
-          <h4>Primary SM Press</h4>
-          <OCheckbox variant="primary" state="press" size="sm" :isChecked="true" />
-        </div>
-        <div>
-          <h4>Secondary SM Press</h4>
-          <OCheckbox variant="secondary" state="press" size="sm" :isChecked="true" />
-        </div>
-        <div>
-          <h4>Primary SM Press Unchecked</h4>
-          <OCheckbox variant="primary" state="press" size="sm" :isChecked="false" />
-        </div>
-        
-        <!-- Row 4: disabled -->
-        <div>
-          <h4>Primary MD Disabled</h4>
-          <OCheckbox variant="primary" state="default" size="md" :isChecked="true" :isDisabled="true" />
-        </div>
-        <div>
-          <h4>Secondary MD Disabled</h4>
-          <OCheckbox variant="secondary" state="default" size="md" :isChecked="true" :isDisabled="true" />
-        </div>
-        <div>
-          <h4>Primary MD Disabled Unchecked</h4>
-          <OCheckbox variant="primary" state="default" size="md" :isChecked="false" :isDisabled="true" />
-        </div>
-        <div>
-          <h4>Primary SM Disabled</h4>
-          <OCheckbox variant="primary" state="default" size="sm" :isChecked="true" :isDisabled="true" />
-        </div>
-        <div>
-          <h4>Secondary SM Disabled</h4>
-          <OCheckbox variant="secondary" state="default" size="sm" :isChecked="true" :isDisabled="true" />
-        </div>
-        <div>
-          <h4>Primary SM Disabled Unchecked</h4>
-          <OCheckbox variant="primary" state="default" size="sm" :isChecked="false" :isDisabled="true" />
-        </div>
-        
-        <!-- Row 5: error -->
-        <div>
-          <h4>Primary MD Error</h4>
-          <OCheckbox variant="primary" state="default" size="md" :isChecked="true" :hasError="true" />
-        </div>
-        <div>
-          <h4>Secondary MD Error</h4>
-          <OCheckbox variant="secondary" state="default" size="md" :isChecked="true" :hasError="true" />
-        </div>
-        <div>
-          <h4>Primary MD Error Unchecked</h4>
-          <OCheckbox variant="primary" state="default" size="md" :isChecked="false" :hasError="true" />
-        </div>
-        <div>
-          <h4>Primary SM Error</h4>
-          <OCheckbox variant="primary" state="default" size="sm" :isChecked="true" :hasError="true" />
-        </div>
-        <div>
-          <h4>Secondary SM Error</h4>
-          <OCheckbox variant="secondary" state="default" size="sm" :isChecked="true" :hasError="true" />
-        </div>
-        <div>
-          <h4>Primary SM Error Unchecked</h4>
-          <OCheckbox variant="primary" state="default" size="sm" :isChecked="false" :hasError="true" />
-        </div>
+      <div style="display: flex; flex-direction: column; gap: 12px;">
+        <OCheckbox size="md" label="Medium checkbox" />
+        <OCheckbox size="sm" label="Small checkbox" />
       </div>
     `
   })

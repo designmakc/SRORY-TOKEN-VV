@@ -1,6 +1,6 @@
-/* Storybook Fixes - Нейтрализация конфликтов с обёртками */
+/* Storybook Fixes - Базовые исправления */
 
-/* Убираем все возможные влияния от Storybook обёрток */
+/* Убираем влияния от Storybook обёрток */
 [class*="story--"] {
   all: unset !important;
   display: block !important;
@@ -9,32 +9,10 @@
   border: none !important;
   background: transparent !important;
   box-sizing: border-box !important;
-  width: auto !important;
-  height: auto !important;
-  min-width: auto !important;
-  min-height: auto !important;
-  max-width: none !important;
-  max-height: none !important;
-  line-height: normal !important;
-  font-size: inherit !important;
-  font-weight: inherit !important;
-  font-family: inherit !important;
-  color: inherit !important;
-  text-align: left !important;
-  vertical-align: baseline !important;
-  position: static !important;
-  top: auto !important;
-  left: auto !important;
-  right: auto !important;
-  bottom: auto !important;
-  z-index: auto !important;
-  overflow: visible !important;
-  transform: none !important;
-  transition: none !important;
-  animation: none !important;
 }
 
-/* Специально для компонентов - защита от влияния обёрток */
+/* Защита для компонентов */
+[class*="story--"] .o-button,
 [class*="story--"] .o-checkbox,
 [class*="story--"] .o-radio-button,
 [class*="story--"] .o-counter,
@@ -44,76 +22,93 @@
   align-items: center !important;
   margin: 0 !important;
   padding: 0 !important;
-  height: auto !important;
-  min-height: auto !important;
-  max-height: none !important;
-  line-height: normal !important;
-  vertical-align: baseline !important;
-  box-sizing: border-box !important;
-  flex-shrink: 0 !important;
-}
-
-/* Защита для внутренних элементов компонентов */
-[class*="story--"] .o-checkbox__box,
-[class*="story--"] .o-radio-button__box,
-[class*="story--"] .o-counter__button,
-[class*="story--"] .o-icon-wrap__icon {
-  display: flex !important;
-  align-items: center !important;
-  justify-content: center !important;
-  margin: 0 !important;
-  padding: 0 !important;
-  height: auto !important;
-  min-height: auto !important;
-  max-height: none !important;
-  line-height: normal !important;
-  vertical-align: baseline !important;
-  box-sizing: border-box !important;
-  flex-shrink: 0 !important;
-}
-
-/* Защита для label элементов */
-[class*="story--"] .o-checkbox__label,
-[class*="story--"] .o-radio-button__label,
-[class*="story--"] .o-counter__label {
-  margin: 0 !important;
-  padding: 0 !important;
-  height: auto !important;
-  min-height: auto !important;
-  max-height: none !important;
-  line-height: normal !important;
-  vertical-align: baseline !important;
-  display: inline !important;
   box-sizing: border-box !important;
 }
 
-/* Убираем возможные flex/grid влияния от Storybook */
+/* Базовые исправления */
 [class*="story--"] * {
   box-sizing: border-box !important;
 }
 
-/* Убираем возможные влияния на размеры от Storybook */
-[class*="story--"] *:not(.o-checkbox):not(.o-radio-button):not(.o-counter):not(.o-icon-wrap):not(.o-typography) {
-  margin: 0 !important;
-  padding: 0 !important;
-  border: none !important;
-  background: transparent !important;
-  height: auto !important;
-  min-height: auto !important;
-  max-height: none !important;
-  width: auto !important;
-  min-width: auto !important;
-  max-width: none !important;
+.docs-story {
+  background-color: var(--color-background-page-lvl-2);
 }
 
-/* Специальная защита для Canvas области */
-.sb-canvas [class*="story--"] {
-  all: unset !important;
-  display: block !important;
+/* Storybook базовая типографика */
+.sb-show-main,
+.docs-story,
+#storybook-root {
+  font-family: var(--typography-font-family-body);
+  font-size: var(--typography-font-size-body-md);
+  font-weight: var(--typography-font-weight-regular);
+  line-height: var(--typography-line-height-body-md);
+  color: var(--color-text-primary);
+  
 }
 
-/* Специальная защита для документации */
-.docs-story [class*="story--"] {
-  all: unset !important;
-  display: block !important;
+/* Заголовки в Storybook документации */
+.sbdocs h1,
+.docs-story h1 {
+  font-family: var(--typography-font-family-header);
+  font-size: var(--typography-font-size-header-3xl);
+  font-weight: var(--typography-font-weight-header-3xl);
+  line-height: var(--typography-line-height-header-3xl);
+  color: var(--color-text-inverse);
 }
+
+.sbdocs h2,
+.docs-story h2 {
+  font-family: var(--typography-font-family-header);
+  font-size: var(--typography-font-size-header-lg);
+  font-weight: var(--typography-font-weight-header-lg);
+  line-height: var(--typography-line-height-header-lg);
+  color: var(--color-text-inverse);
+}
+
+.sbdocs h3,
+.docs-story h3 {
+  font-family: var(--typography-font-family-header);
+  font-size: var(--typography-font-size-header-md);
+  font-weight: var(--typography-font-weight-header-md);
+  line-height: var(--typography-line-height-header-md);
+  color: var(--color-text-inverse);
+}
+
+.sbdocs h4,
+.docs-story h4 {
+  font-family: var(--typography-font-family-header);
+  font-size: var(--typography-font-size-header-sm);
+  font-weight: var(--typography-font-weight-header-sm);
+  line-height: var(--typography-line-height-header-sm);
+  color: var(--color-text-inverse);
+}
+
+.sbdocs h5,
+.docs-story h5 {
+  font-family: var(--typography-font-family-header);
+  font-size: var(--typography-font-size-header-xs);
+  font-weight: var(--typography-font-weight-header-xs);
+  line-height: var(--typography-line-height-header-xs);
+  color: var(--color-text-inverse);
+}
+
+/* Body текст в документации */
+.sbdocs p,
+.sbdocs li,
+.sbdocs td,
+.docs-story p,
+.docs-story li {
+  font-family: var(--typography-font-family-body);
+  font-size: var(--typography-font-size-body-md);
+  font-weight: var(--typography-font-weight-regular);
+  line-height: var(--typography-line-height-body-md);
+  color: var(--color-text-inverse);
+}
+
+.sb-show-main.sb-main-centered {
+
+  background-color: var(--color-background-page-lvl-1) !important;
+}
+
+
+

@@ -31,66 +31,66 @@
         <!-- Все размеры -->
         <div class="button-group">
           <h3>Размеры:</h3>
-          <VButton variant="primary" size="sm">Small</VButton>
-          <VButton variant="primary" size="md">Medium</VButton>
-          <VButton variant="primary" size="lg">Large</VButton>
+          <OButton variant="primary" size="sm">Small</OButton>
+          <OButton variant="primary" size="md">Medium</OButton>
+          <OButton variant="primary" size="lg">Large</OButton>
         </div>
         
         <!-- Все варианты -->
         <div class="button-group">
           <h3>Варианты:</h3>
-          <VButton variant="primary">Primary</VButton>
-          <VButton variant="secondary">Secondary</VButton>
-          <VButton variant="ghost">Ghost</VButton>
+          <OButton variant="primary">Primary</OButton>
+          <OButton variant="secondary">Secondary</OButton>
+          <OButton variant="tertiary">Tertiary</OButton>
         </div>
 
         <!-- С иконками -->
         <div class="button-group">
           <h3>С иконками:</h3>
-          <VButton variant="primary" left-icon="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTEyIDJMMTMuMDkgOC4yNkwyMCA5TDEzLjA5IDE1Ljc0TDEyIDIyTDEwLjkxIDE1Ljc0TDQgOUwxMC45MSA4LjI2TDEyIDJaIiBmaWxsPSJjdXJyZW50Q29sb3IiLz4KPC9zdmc+">
+          <OButton variant="primary" icon="play" iconPosition="left">
             Primary with Icon
-          </VButton>
-          <VButton variant="secondary" left-icon="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTEyIDJMMTMuMDkgOC4yNkwyMCA5TDEzLjA5IDE1Ljc0TDEyIDIyTDEwLjkxIDE1Ljc0TDQgOUwxMC45MSA4LjI2TDEyIDJaIiBmaWxsPSJjdXJyZW50Q29sb3IiLz4KPC9zdmc+">
+          </OButton>
+          <OButton variant="secondary" icon="play" iconPosition="left">
             Secondary with Icon
-          </VButton>
+          </OButton>
         </div>
 
         <!-- Disabled состояние -->
         <div class="button-group">
           <h3>Disabled:</h3>
-          <VButton variant="primary" disabled>Primary Disabled</VButton>
-          <VButton variant="secondary" disabled>Secondary Disabled</VButton>
-          <VButton variant="ghost" disabled>Ghost Disabled</VButton>
+          <OButton variant="primary" :isDisabled="true">Primary Disabled</OButton>
+          <OButton variant="secondary" :isDisabled="true">Secondary Disabled</OButton>
+          <OButton variant="tertiary" :isDisabled="true">Tertiary Disabled</OButton>
         </div>
       </section>
 
-      <section class="demo-section">
-        <h2>Токены в действии</h2>
-        <div class="token-showcase">
-          <div class="color-box" :style="{ backgroundColor: getToken('color/brand/primary') }">
-            Primary Color
-          </div>
-          <div class="color-box" :style="{ backgroundColor: getToken('color/brand/secondary') }">
-            Secondary Color
-          </div>
-          <div class="spacing-demo">
-            Spacing: {{ getToken('spacing/md') }}px
-          </div>
-        </div>
-      </section>
+       <section class="demo-section">
+         <h2>Токены в действии</h2>
+         <div class="token-showcase">
+           <div class="color-box" style="background-color: var(--color-background-button-primary-default);">
+             Primary Color
+           </div>
+           <div class="color-box" style="background-color: var(--color-background-button-secondary-default);">
+             Secondary Color
+           </div>
+           <div class="spacing-demo">
+             Spacing: var(--gap-md)
+           </div>
+         </div>
+       </section>
 
-      <!-- Директива v-tokens в действии -->
+      <!-- CSS переменные в действии -->
       <section class="demo-section">
-        <h2>Использование v-tokens директивы</h2>
+        <h2>Использование CSS переменных</h2>
         <div 
-          v-tokens="{
-            backgroundColor: 'color/background/primary',
-            padding: 'spacing/lg',
-            borderRadius: 'border-radius/md'
-          }"
           class="tokens-demo-box"
+          style="
+            background-color: var(--color-background-page-lvl-2);
+            padding: var(--padding-lg);
+            border-radius: var(--border-radius-md);
+          "
         >
-          <p>Этот блок использует v-tokens директиву для применения токенов напрямую</p>
+          <p>Этот блок использует CSS переменные напрямую из Basic-variables.css</p>
         </div>
       </section>
 
@@ -100,108 +100,106 @@
 
 <script setup>
 import { ref } from 'vue';
-import VButton from './components/VButton.vue';
-import { useDesignTokens } from './composables/useDesignTokens';
+import OButton from './components/OButton.vue';
 
-const { 
-  currentTheme, 
-  currentBreakpoint, 
-  getToken,
-  setTheme,
-  setBreakpoint 
-} = useDesignTokens();
-
-const selectedTheme = ref(currentTheme.value);
-const selectedBreakpoint = ref(currentBreakpoint.value);
+// Простое управление темами через data-атрибуты
+const selectedTheme = ref('blue');
+const selectedBreakpoint = ref('desktop');
 
 const handleThemeChange = () => {
-  setTheme(selectedTheme.value);
+  // Устанавливаем data-theme на document.documentElement
+  document.documentElement.setAttribute('data-theme', selectedTheme.value);
 };
 
 const handleBreakpointChange = () => {
-  setBreakpoint(selectedBreakpoint.value);
+  // Устанавливаем data-adaptive на document.documentElement
+  document.documentElement.setAttribute('data-adaptive', selectedBreakpoint.value);
 };
+
+// Инициализация при загрузке
+document.documentElement.setAttribute('data-theme', selectedTheme.value);
+document.documentElement.setAttribute('data-adaptive', selectedBreakpoint.value);
 </script>
 
 <style scoped>
 .app {
   min-height: 100vh;
-  background-color: var(--color-background-primary);
+  background-color: var(--color-background-page-lvl-1);
   color: var(--color-text-primary);
 }
 
 .app-header {
-  background-color: var(--color-background-secondary);
-  padding: var(--spacing-lg);
+  background-color: var(--color-background-page-lvl-2);
+  padding: var(--padding-lg);
   border-bottom: 1px solid var(--color-border-primary);
   display: flex;
   justify-content: space-between;
   align-items: center;
   flex-wrap: wrap;
-  gap: var(--spacing-md);
+  gap: var(--gap-md);
 }
 
 .app-header h1 {
   margin: 0;
-  font-size: var(--typography-font-size-2xl);
-  font-weight: var(--typography-font-weight-bold);
-  color: var(--color-brand-primary);
+  font-size: var(--typography-font-size-h2);
+  font-weight: var(--typography-font-weight-h2);
+  color: var(--color-text-primary);
 }
 
 .theme-controls {
   display: flex;
-  gap: var(--spacing-md);
+  gap: var(--gap-md);
   align-items: center;
   flex-wrap: wrap;
 }
 
 .theme-controls label {
   font-weight: var(--typography-font-weight-medium);
-  font-size: var(--typography-font-size-sm);
+  font-size: var(--typography-font-size-body-md);
 }
 
 .theme-controls select {
-  padding: var(--spacing-xs) var(--spacing-sm);
+  padding: var(--padding-2xs) var(--padding-sm);
   border: 1px solid var(--color-border-primary);
   border-radius: var(--border-radius-sm);
-  background-color: var(--color-background-primary);
+  background-color: var(--color-background-page-lvl-1);
   color: var(--color-text-primary);
-  font-size: var(--typography-font-size-sm);
+  font-size: var(--typography-font-size-body-md);
   cursor: pointer;
 }
 
 .app-content {
-  padding: var(--spacing-xl);
+  padding: var(--padding-xl);
   max-width: 1200px;
   margin: 0 auto;
 }
 
 .demo-section {
-  margin-bottom: var(--spacing-2xl);
+  margin-bottom: var(--padding-2xl);
 }
 
 .demo-section h2 {
-  font-size: var(--typography-font-size-xl);
-  font-weight: var(--typography-font-weight-semibold);
-  margin-bottom: var(--spacing-lg);
+  font-size: var(--typography-font-size-h3);
+  font-weight: var(--typography-font-weight-h3);
+  margin-bottom: var(--padding-lg);
   color: var(--color-text-primary);
 }
 
 .button-group {
   display: flex;
-  gap: var(--spacing-md);
-  margin-bottom: var(--spacing-md);
+  gap: var(--gap-md);
+  margin-bottom: var(--gap-md);
   flex-wrap: wrap;
 }
 
 .token-showcase {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: var(--spacing-lg);
+  gap: var(--gap-lg);
 }
 
 .color-box {
-  padding: var(--spacing-lg);
+  padding: var(--padding-lg);
   border-radius: var(--border-radius-md);
   color: white;
   font-weight: var(--typography-font-weight-medium);
@@ -213,8 +211,8 @@ const handleBreakpointChange = () => {
 }
 
 .spacing-demo {
-  padding: var(--spacing-lg);
-  background-color: var(--color-background-tertiary);
+  padding: var(--padding-lg);
+  background-color: var(--color-background-page-lvl-3);
   border-radius: var(--border-radius-md);
   text-align: center;
   display: flex;

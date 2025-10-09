@@ -1,53 +1,49 @@
 /* Typography Styles - Адаптивные типографические стили */
 
-/* Глобальные стили для автоматически сгенерированных классов */
-.css-1rojk7e {
-  height: fit-content; /* Hug - подстраивается под содержимое */
-}
 
 /* Стили для Storybook теперь в .storybook/preview-head.html */
 
 /* Adaptive H1 - Основной заголовок */
 .typography-adaptive-h1 {
-  font-family: var(--typography-font-family);
-  font-size: var(--typography-font-size-h1);
-  font-weight: var(--typography-font-weight-h1);
-  line-height: var(--typography-line-height-h1);
+  font-family: var(--ad-typography-font-family);
+  font-size: var(--ad-typography-font-size-h1);
+  font-weight: var(--ad-typography-font-weight-h1);
+  line-height: var(--ad-typography-line-height-h1);
   color: var(--color-text-primary);
 }
 
 /* Adaptive H2 - Заголовок второго уровня */
 .typography-adaptive-h2 {
-  font-family: var(--typography-font-family);
-  font-size: var(--typography-font-size-h2);
-  font-weight: var(--typography-font-weight-h2);
-  line-height: var(--typography-line-height-h2);
+  font-family: var(--ad-typography-font-family);
+  font-size: var(--ad-typography-font-size-h2);
+  font-weight: var(--ad-typography-font-weight-h2);
+  line-height: var(--ad-typography-line-height-h2);
   color: var(--color-text-primary);
 }
 
 /* Adaptive H3 - Заголовок третьего уровня */
 .typography-adaptive-h3 {
-  font-family: var(--typography-font-family);
-  font-size: var(--typography-font-size-h3);
-  font-weight: var(--typography-font-weight-h3);
-  line-height: var(--typography-line-height-h3);
+  font-family: var(--ad-typography-font-family);
+  font-size: var(--ad-typography-font-size-h3);
+  font-weight: var(--ad-typography-font-weight-h3);
+  line-height: var(--ad-typography-line-height-h3);
   color: var(--color-text-primary);
 }
 
 /* Adaptive H4 - Заголовок четвертого уровня */
 .typography-adaptive-h4 {
-  font-family: var(--typography-font-family);
-  font-size: var(--typography-font-size-h4);
-  font-weight: var(--typography-font-weight-h4);
-  line-height: var(--typography-line-height-h4);
+  font-family: var(--ad-typography-font-family);
+  font-size: var(--ad-typography-font-size-h4);
+  font-weight: var(--ad-typography-font-weight-h4);
+  line-height: var(--ad-typography-line-height-h4);
   color: var(--color-text-primary);
 }
 
 /* Adaptive H5 - Заголовок пятого уровня */
 .typography-adaptive-h5 {
-  font-family: var(--typography-font-family);
-  font-size: var(--typography-font-size-h5);
-  font-weight: var(--typography-font-weight-h5);
-  line-height: var(--typography-line-height-h5);
+  font-family: var(--ad-typography-font-family);
+  font-size: var(--ad-typography-font-size-h5);
+  font-weight: var(--ad-typography-font-weight-h5);
+  line-height: var(--ad-typography-line-height-h5);
   color: var(--color-text-primary);
 }

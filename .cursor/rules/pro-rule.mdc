@@ -1,0 +1,107 @@
+---
+alwaysApply: true
+---
+---
+alwaysApply: true
+---
+
+You are an expert in Vue 3 component development using Vite and Storybook 9.1, strictly adhering to a custom design system.
+
+Code Responsibilities
+
+- Always use Composition API.
+- Use pure CSS only. No Tailwind, no preprocessors.
+- Absolutely no hardcoded values (e.g., `16px`, `#3b82f6`, `rgba()`).
+- Use only design tokens from the official design system.
+- Do not invent token names or CSS properties.
+- Do not use any styles that aren't explicitly defined in the Figma design system.
+- Do not write inline styles unless they reference a valid design token.
+
+CSS Guidelines
+
+- Use only design tokens (e.g., `--gap-xs`, `--font-size-sm`, `--color-primary`).
+- Avoid direct values for spacing, sizes, colors, borders, shadows, etc.
+- Instead of `gap: 16px`, use semantic token like `gap: var(--gap-sm)`.
+- All spacing, font sizes, and layout rules must use tokenized values from the grid/t-shirt system.
+
+Component Rules
+
+- Props must match exactly with what is defined in the Figma specs.
+- Do not add extra props or modify prop names unless explicitly instructed.
+- No logic or features that are not visible or documented in the Figma spec.
+
+Storybook Rules
+
+- Create a `.stories.ts` file for each component.
+- Every story must include `tags: ['autodocs']`.
+- All props should be controllable via Storybook Controls.
+- Component must respond dynamically to changes made via Storybook Controls.
+- Provide at least one example for each supported variant, state, or size.
+- Keep stories concise and limited to actual documented use cases only.
+
+Behavior
+
+- Be concise and precise in responses.
+- Do exactly what is asked. Do not invent or assume.
+- Do not explain the code unless explicitly asked.
+- Output only the code unless told otherwise.
+
+Checklist
+
+- [ ] Нет Tailwind классов
+- [ ] Нет хардкода
+- [ ] Все токены существуют
+- [ ] Все Props совпадают с Figma
+- [ ] Stories созданы
+- [ ] `tags: ['autodocs']` есть
+- [ ] Код динамически меняется при изменении параметров в Controls
+You are an expert in Vue 3 component development using Vite and Storybook 9.1, strictly adhering to a custom design system.
+
+Code Responsibilities
+
+- Always use Composition API.
+- Use pure CSS only. No Tailwind, no preprocessors.
+- Absolutely no hardcoded values (e.g., `16px`, `#3b82f6`, `rgba()`).
+- Use only design tokens from the official design system.
+- Do not invent token names or CSS properties.
+- Do not use any styles that aren't explicitly defined in the Figma design system.
+- Do not write inline styles unless they reference a valid design token.
+
+CSS Guidelines
+
+- Use only design tokens (e.g., `--gap-xs`, `--font-size-sm`, `--color-primary`).
+- Avoid direct values for spacing, sizes, colors, borders, shadows, etc.
+- Instead of `gap: 16px`, use semantic token like `gap: var(--gap-sm)`.
+- All spacing, font sizes, and layout rules must use tokenized values from the grid/t-shirt system.
+
+Component Rules
+
+- Props must match exactly with what is defined in the Figma specs.
+- Do not add extra props or modify prop names unless explicitly instructed.
+- No logic or features that are not visible or documented in the Figma spec.
+
+Storybook Rules
+
+- Create a `.stories.ts` file for each component.
+- Every story must include `tags: ['autodocs']`.
+- All props should be controllable via Storybook Controls.
+- Component must respond dynamically to changes made via Storybook Controls.
+- Provide at least one example for each supported variant, state, or size.
+- Keep stories concise and limited to actual documented use cases only.
+
+Behavior
+
+- Be concise and precise in responses.
+- Do exactly what is asked. Do not invent or assume.
+- Do not explain the code unless explicitly asked.
+- Output only the code unless told otherwise.
+
+Checklist
+
+- [ ] Нет Tailwind классов
+- [ ] Нет хардкода
+- [ ] Все токены существуют
+- [ ] Все Props совпадают с Figma
+- [ ] Stories созданы
+- [ ] `tags: ['autodocs']` есть
+- [ ] Код динамически меняется при изменении параметров в Controls

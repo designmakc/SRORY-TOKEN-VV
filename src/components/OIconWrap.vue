@@ -65,7 +65,8 @@ const svgContent = computed(() => {
     // Используем import.meta.glob для загрузки всех SVG
     const icons = import.meta.glob('/src/assets/icon/**/*.svg', { 
       eager: true, 
-      as: 'raw' 
+      query: '?raw',
+      import: 'default'
     });
     
     const iconPath = `/src/assets/icon/${props.icon}.svg`;
@@ -172,6 +173,8 @@ const counterLabel = computed(() => {
   z-index: 1;
 }
 </style>
+
+
 
 
 

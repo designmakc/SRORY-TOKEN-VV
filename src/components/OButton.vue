@@ -89,7 +89,7 @@
     variant: {
       type: String,
       default: 'primary',
-      validator: (v) => ['primary', 'secondary', 'tertiary', 'accentGreen', 'outline', 'accentBlue'].includes(v)
+      validator: (v) => ['primary', 'secondary', 'tertiary', 'accent-primary', 'outline', 'accent-secondary'].includes(v)
     },
     state: {
       type: String,
@@ -395,40 +395,40 @@
     background: var(--color-background-button-tertiary-loader);
   }
   
-  /* Accent Green variant */
-  .o-button--accentGreen {
-    background: var(--color-background-button-accent-green-default);
+  /* Accent Primary variant */
+  .o-button--accent-primary {
+    background: var(--color-background-button-accent-primary-default);
     color: var(--color-text-on-interactive-secondary);
   }
   
-  .o-button--accentGreen.o-button--hover {
-    background: var(--color-background-button-accent-green-hover);
+  .o-button--accent-primary.o-button--hover {
+    background: var(--color-background-button-accent-primary-hover);
   }
   
-  .o-button--accentGreen.o-button--press {
-    background: var(--color-background-button-accent-green-press);
+  .o-button--accent-primary.o-button--press {
+    background: var(--color-background-button-accent-primary-press);
   }
   
-  .o-button--accentGreen.o-button--loading {
-    background: var(--color-background-button-accent-green-loader);
+  .o-button--accent-primary.o-button--loading {
+    background: var(--color-background-button-accent-primary-loader);
   }
   
-  /* Accent Blue variant */
-  .o-button--accentBlue {
-    background: var(--color-background-button-accent-blue-default);
+  /* Accent Secondary variant */
+  .o-button--accent-secondary {
+    background: var(--color-background-button-accent-secondary-default);
     color: var(--color-text-on-interactive-secondary);
   }
   
-  .o-button--accentBlue.o-button--hover {
-    background: var(--color-background-button-accent-blue-hover);
+  .o-button--accent-secondary.o-button--hover {
+    background: var(--color-background-button-accent-secondary-hover);
   }
   
-  .o-button--accentBlue.o-button--press {
-    background: var(--color-background-button-accent-blue-press);
+  .o-button--accent-secondary.o-button--press {
+    background: var(--color-background-button-accent-secondary-press);
   }
   
-  .o-button--accentBlue.o-button--loading {
-    background: var(--color-background-button-accent-blue-loader);
+  .o-button--accent-secondary.o-button--loading {
+    background: var(--color-background-button-accent-secondary-loader);
   }
   
   /* Outline variant */

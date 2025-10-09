@@ -1,208 +1,79 @@
 import OTypography from '../src/components/OTypography.vue';
-import { useDesignTokens } from '../src/composables/useDesignTokens';
 
 export default {
-  title: 'Design System/OTypography',
+  title: 'Components/OTypography',
   component: OTypography,
   tags: ['autodocs'],
   argTypes: {
     variant: {
       control: 'select',
       options: [
-        // Adaptive
-        'adaptive-h1', 'adaptive-h2', 'adaptive-h3', 'adaptive-h4', 'adaptive-h5',
-        // Header
         'header-6xl', 'header-5xl', 'header-4xl', 'header-3xl', 'header-2xl',
-        'header-xl', 'header-lg', 'header-md', 'header-sm', 'header-xs', 'header-2xs', 'header-3xs',
-        // Trim
-        'trim-4xl', 'trim-3xl', 'trim-2xl', 'trim-xl', 'trim-lg', 'trim-md', 'trim-sm', 'trim-xs', 'trim-2xs', 'trim-3xs',
-        // Body
-        'body-lg', 'body-lg-medium', 'body-md', 'body-sm', 'body-xs', 'body-2xs', 'body-2xs-bold',
-        // Label
+        'header-xl', 'header-lg', 'header-md', 'header-sm', 'header-xs',
+        'body-lg', 'body-md', 'body-sm', 'body-xs',
         'label-lg', 'label-md', 'label-sm', 'label-xs'
       ],
-      description: 'Вариант типографики из Figma'
+      description: 'Вариант типографики'
     },
     tag: {
       control: 'select',
       options: ['h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'p', 'span', 'div', 'label'],
-      description: 'HTML тег (автоопределяется если не указан)'
+      description: 'HTML тег'
     }
-  },
+  }
 };
 
-// Простая story для тестирования контролов
 export const Default = {
   args: {
-    variant: 'adaptive-h1',
-    tag: 'h1',
-    children: 'Olymp Casino'
-  },
-  render: (args) => ({
-    components: { OTypography },
-    setup() {
-      return { args };
-    },
-    template: '<OTypography v-bind="args">{{ args.children }}</OTypography>'
-  }),
-  parameters: {
-    docs: {
-      source: {
-        code: '<OTypography variant="adaptive-h1" tag="h1">Olymp Casino</OTypography>',
-      },
-    },
-  },
-};
-
-// Адаптивные заголовки
-export const AdaptiveHeadings = {
-  args: {
-    variant: 'adaptive-h1',
-    children: 'Адаптивный заголовок'
-  },
-  render: (args) => ({
-    components: { OTypography },
-    setup() {
-      return { args };
-    },
-    template: '<OTypography v-bind="args">{{ args.children }}</OTypography>'
-  }),
-  parameters: {
-    docs: {
-      source: {
-        code: '<OTypography variant="adaptive-h1">Адаптивный заголовок</OTypography>',
-      },
-    },
-  },
-};
-
-// Шкала Header
-export const HeaderScale = {
-  args: {
-    variant: 'header-3xl'
-  },
-  render: (args) => ({
-    components: { OTypography },
-    setup() {
-      return { args };
-    },
-    template: '<OTypography v-bind="args">Header 3XL (28px)</OTypography>'
-  }),
-  parameters: {
-    docs: {
-      source: {
-        code: '<OTypography variant="header-3xl">Header 3XL (28px)</OTypography>',
-      },
-    },
-  },
-};
-
-// Шкала Trim
-export const TrimScale = {
-  args: {
-    variant: 'trim-xl'
-  },
-  render: (args) => ({
-    components: { OTypography },
-    setup() {
-      return { args };
-    },
-    template: '<OTypography v-bind="args">Trim XL (22px / 20px)</OTypography>'
-  }),
-  parameters: {
-    docs: {
-      source: {
-        code: '<OTypography variant="trim-xl">Trim XL (22px / 20px)</OTypography>',
-      },
-    },
-  },
-};
-
-// Варианты Body
-export const BodyVariants = {
-  args: {
-    variant: 'body-md'
-  },
-  render: (args) => ({
-    components: { OTypography },
-    setup() {
-      return { args };
-    },
-    template: '<OTypography v-bind="args">Body MD (14px) - Стандартный текст интерфейса</OTypography>'
-  }),
-  parameters: {
-    docs: {
-      source: {
-        code: '<OTypography variant="body-md">Body MD (14px) - Стандартный текст интерфейса</OTypography>',
-      },
-    },
-  },
-};
-
-// Варианты Label
-export const LabelVariants = {
-  args: {
-    variant: 'label-md',
-    tag: 'label'
-  },
-  render: (args) => ({
-    components: { OTypography },
-    setup() {
-      return { args };
-    },
-    template: '<OTypography v-bind="args">Label MD (14px / 14px)</OTypography>'
-  }),
-  parameters: {
-    docs: {
-      source: {
-        code: '<OTypography variant="label-md" tag="label">Label MD (14px / 14px)</OTypography>',
-      },
-    },
-  },
-};
-
-// Сравнение Body vs Label
-export const BodyVsLabel = {
-  args: {
-    variant: 'body-lg'
-  },
-  render: (args) => ({
-    components: { OTypography },
-    setup() {
-      return { args };
-    },
-    template: '<OTypography v-bind="args">Body LG имеет обычный line-height для комфортного чтения</OTypography>'
-  }),
-  parameters: {
-    docs: {
-      source: {
-        code: '<OTypography variant="body-lg">Body LG имеет обычный line-height для комфортного чтения</OTypography>',
-      },
-    },
-  },
-};
-
-
-
-// Полный пример страницы
-export const FullPageExample = {
-  args: {
-    variant: 'adaptive-h1',
+    variant: 'header-lg',
     tag: 'h1'
-  },
-  render: (args) => ({
-    components: { OTypography },
-    setup() {
-      return { args };
-    },
-    template: '<OTypography v-bind="args">Olymp Design System</OTypography>'
-  }),
-  parameters: {
-    docs: {
-      source: {
-        code: '<OTypography variant="adaptive-h1" tag="h1">Olymp Design System</OTypography>',
-      },
-    },
-  },
+  }
 };
 
+export const Headers = {
+  render: () => ({
+    components: { OTypography },
+    template: `
+      <div style="display: flex; flex-direction: column; gap: 16px;">
+        <OTypography variant="header-6xl">Header 6XL</OTypography>
+        <OTypography variant="header-5xl">Header 5XL</OTypography>
+        <OTypography variant="header-4xl">Header 4XL</OTypography>
+        <OTypography variant="header-3xl">Header 3XL</OTypography>
+        <OTypography variant="header-2xl">Header 2XL</OTypography>
+        <OTypography variant="header-xl">Header XL</OTypography>
+        <OTypography variant="header-lg">Header LG</OTypography>
+        <OTypography variant="header-md">Header MD</OTypography>
+        <OTypography variant="header-sm">Header SM</OTypography>
+        <OTypography variant="header-xs">Header XS</OTypography>
+      </div>
+    `
+  })
+};
+
+export const Body = {
+  render: () => ({
+    components: { OTypography },
+    template: `
+      <div style="display: flex; flex-direction: column; gap: 12px;">
+        <OTypography variant="body-lg">Body Large</OTypography>
+        <OTypography variant="body-md">Body Medium</OTypography>
+        <OTypography variant="body-sm">Body Small</OTypography>
+        <OTypography variant="body-xs">Body Extra Small</OTypography>
+      </div>
+    `
+  })
+};
+
+export const Labels = {
+  render: () => ({
+    components: { OTypography },
+    template: `
+      <div style="display: flex; flex-direction: column; gap: 12px;">
+        <OTypography variant="label-lg">Label Large</OTypography>
+        <OTypography variant="label-md">Label Medium</OTypography>
+        <OTypography variant="label-sm">Label Small</OTypography>
+        <OTypography variant="label-xs">Label Extra Small</OTypography>
+      </div>
+    `
+  })
+};
