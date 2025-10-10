@@ -61,12 +61,12 @@
   --color-purple-500-35: rgba(158, 112, 255, 0.35);
   --color-grey-800: rgb(61, 61, 61);
   --color-purple-500-20: rgba(158, 112, 255, 0.2);
-  --color-purple-500-0: rgba(158, 112, 255, 0);
   --color-grey-800-40: rgba(61, 61, 61, 0.4);
+  --color-purple-500-0: rgba(158, 112, 255, 0);
   --color-grey-800-0: rgba(61, 61, 61, 0);
   --color-grey-900: rgb(43, 43, 43);
-  --color-neutrals-white-0: rgba(255, 255, 255, 0);
   --color-grey-950: rgb(28, 28, 28);
+  --color-neutrals-white-0: rgba(255, 255, 255, 0);
   --color-neutrals-white-50: rgba(255, 255, 255, 0.04);
   --color-neutrals-white-100: rgba(255, 255, 255, 0.07);
   --color-neutrals-white-200: rgba(255, 255, 255, 0.14);
@@ -246,7 +246,9 @@
   --color-pink-200-35: rgba(235, 79, 153, 0.35);
   --color-pink-200-20: rgba(235, 79, 153, 0.2);
   --color-orange-300-80: rgba(255, 148, 89, 0.8);
+  --color-orange-300-40: rgba(255, 148, 89, 0.4);
   --color-orange-700-24: rgba(255, 97, 89, 0.24);
+  --color-orange-700-5: rgba(255, 97, 89, 0.05);
   --ad-sizing-main-container-width-max-width: 1920px;
   --ad-sizing-main-content-width-max-width: 1400px;
   --ad-sizing-main-content-width-min-width: 1400px;
@@ -983,6 +985,7 @@
   --theme-color-text-fourth: var(--color-neutrals-white-300);
   --theme-color-text-inverse: var(--color-neutrals-black-900);
   --theme-color-text-accent: var(--color-yellow-500);
+  --theme-component-welcome-bonus-text-accent: var(--color-yellow-500);
   --theme-component-calendar-color-text-accent: var(--color-yellow-500);
   --theme-color-text-error: var(--color-rose-500);
   --theme-color-text-success: var(--color-background-feedback-success-lvl-1);
@@ -1095,12 +1098,12 @@
   --color-purple-500-35: rgba(158, 112, 255, 0.35);
   --color-grey-800: rgb(61, 61, 61);
   --color-purple-500-20: rgba(158, 112, 255, 0.2);
-  --color-purple-500-0: rgba(158, 112, 255, 0);
   --color-grey-800-40: rgba(61, 61, 61, 0.4);
+  --color-purple-500-0: rgba(158, 112, 255, 0);
   --color-grey-800-0: rgba(61, 61, 61, 0);
   --color-grey-900: rgb(43, 43, 43);
-  --color-neutrals-white-0: rgba(255, 255, 255, 0);
   --color-grey-950: rgb(28, 28, 28);
+  --color-neutrals-white-0: rgba(255, 255, 255, 0);
   --color-neutrals-white-50: rgba(255, 255, 255, 0.04);
   --color-neutrals-white-100: rgba(255, 255, 255, 0.07);
   --color-neutrals-white-200: rgba(255, 255, 255, 0.14);
@@ -1280,7 +1283,9 @@
   --color-pink-200-35: rgba(235, 79, 153, 0.35);
   --color-pink-200-20: rgba(235, 79, 153, 0.2);
   --color-orange-300-80: rgba(255, 148, 89, 0.8);
+  --color-orange-300-40: rgba(255, 148, 89, 0.4);
   --color-orange-700-24: rgba(255, 97, 89, 0.24);
+  --color-orange-700-5: rgba(255, 97, 89, 0.05);
 }
 
 /* Collection: adaptive */
@@ -2391,6 +2396,7 @@
   --theme-color-text-fourth: var(--color-neutrals-white-300);
   --theme-color-text-inverse: var(--color-neutrals-black-900);
   --theme-color-text-accent: var(--color-yellow-500);
+  --theme-component-welcome-bonus-text-accent: var(--color-yellow-500);
   --theme-component-calendar-color-text-accent: var(--color-yellow-500);
   --theme-color-text-error: var(--color-rose-500);
   --theme-color-text-success: var(--color-background-feedback-success-lvl-1);
@@ -2593,6 +2599,7 @@
   --theme-color-text-fourth: var(--color-neutrals-white-300);
   --theme-color-text-inverse: var(--color-neutrals-black-900);
   --theme-color-text-accent: var(--color-yellow-500);
+  --theme-component-welcome-bonus-text-accent: var(--color-yellow-500);
   --theme-component-calendar-color-text-accent: var(--color-yellow-500);
   --theme-color-text-error: var(--color-rose-500);
   --theme-color-text-success: var(--color-background-feedback-success-lvl-1);
@@ -2795,6 +2802,7 @@
   --theme-color-text-fourth: var(--color-neutrals-white-300);
   --theme-color-text-inverse: var(--color-neutrals-black-900);
   --theme-color-text-accent: var(--color-yellow-500);
+  --theme-component-welcome-bonus-text-accent: var(--color-yellow-500);
   --theme-component-calendar-color-text-accent: var(--color-yellow-500);
   --theme-color-text-error: var(--color-rose-500);
   --theme-color-text-success: var(--color-background-feedback-success-lvl-1);
@@ -2862,9 +2870,9 @@
   --theme-font-weight-2xs: var(--typography-font-weight-semibold);
   --theme-font-weight-3xs: var(--typography-font-weight-semibold);
   --theme-font-family-header: var(--typography-font-family-tertiary);
-  --theme-component-welcome-bonus-gradient-start: rgb(255, 255, 255);
+  --theme-component-welcome-bonus-gradient-start: var(--color-orange-300-40);
   --theme-component-button-cash-icon-background: var(--color-neutrals-black-100);
-  --theme-component-welcome-bonus-gradient-end: rgb(255, 255, 255);
+  --theme-component-welcome-bonus-gradient-end: var(--color-orange-700-5);
   --theme-component-tag-text-primary: var(--color-neutrals-white-900);
   --theme-component-tag-text-inverse: var(--color-neutrals-black-900);
   --theme-component-tag-icon-primary: var(--color-neutrals-white-900);
@@ -2997,6 +3005,7 @@
   --theme-color-text-fourth: var(--color-neutrals-black-300);
   --theme-color-text-inverse: var(--color-neutrals-white-900);
   --theme-color-text-accent: var(--color-yellow-700);
+  --theme-component-welcome-bonus-text-accent: var(--color-neutrals-black-900);
   --theme-component-calendar-color-text-accent: var(--color-yellow-900);
   --theme-color-text-error: var(--color-rose-500);
   --theme-color-text-success: var(--color-background-feedback-success-lvl-1);
