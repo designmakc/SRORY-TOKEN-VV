@@ -2,7 +2,7 @@ import OCheckbox from '../src/components/OCheckbox.vue';
 import { ref, watch } from 'vue';
 
 export default {
-  title: 'Components/OCheckbox',
+  title: 'Components/Checkbox/OCheckbox',
   component: OCheckbox,
   tags: ['autodocs'],
   argTypes: {

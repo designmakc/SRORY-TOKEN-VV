@@ -2,7 +2,7 @@ import ORadioButtonGroup from '../src/components/ORadioButtonGroup.vue';
 import { ref } from 'vue';
 
 export default {
-  title: 'Components/ORadioButtonGroup',
+  title: 'Components/RadioButton/ORadioButtonGroup',
   component: ORadioButtonGroup,
   tags: ['autodocs'],
   argTypes: {

@@ -53,7 +53,6 @@
   font-size: var(--typography-font-size-header-3xl);
   font-weight: var(--typography-font-weight-header-3xl);
   line-height: var(--typography-line-height-header-3xl);
-  color: var(--color-text-inverse);
 }
 
 .sbdocs h2,
@@ -62,7 +61,6 @@
   font-size: var(--typography-font-size-header-lg);
   font-weight: var(--typography-font-weight-header-lg);
   line-height: var(--typography-line-height-header-lg);
-  color: var(--color-text-inverse);
 }
 
 .sbdocs h3,
@@ -71,7 +69,7 @@
   font-size: var(--typography-font-size-header-md);
   font-weight: var(--typography-font-weight-header-md);
   line-height: var(--typography-line-height-header-md);
-  color: var(--color-text-inverse);
+
 }
 
 .sbdocs h4,
@@ -80,7 +78,7 @@
   font-size: var(--typography-font-size-header-sm);
   font-weight: var(--typography-font-weight-header-sm);
   line-height: var(--typography-line-height-header-sm);
-  color: var(--color-text-inverse);
+
 }
 
 .sbdocs h5,
@@ -89,7 +87,7 @@
   font-size: var(--typography-font-size-header-xs);
   font-weight: var(--typography-font-weight-header-xs);
   line-height: var(--typography-line-height-header-xs);
-  color: var(--color-text-inverse);
+
 }
 
 /* Body текст в документации */
@@ -102,7 +100,7 @@
   font-size: var(--typography-font-size-body-md);
   font-weight: var(--typography-font-weight-regular);
   line-height: var(--typography-line-height-body-md);
-  color: var(--color-text-inverse);
+
 }
 
 .sb-show-main.sb-main-centered {
@@ -110,5 +108,22 @@
   background-color: var(--color-background-page-lvl-1) !important;
 }
 
+/* Сброс line-height для story контейнеров */
+.sb-story,
+.sb-unstyled {
+  line-height: 0 !important;
+ 
+}
+
+/* Или более точечно для компонентов */
+[class*="story--"] {
+  margin: 0 !important;
+  padding: 0 !important;
+  border: none !important;
+  background: transparent !important;
+  box-sizing: border-box !important;
+  line-height: 0 !important; /* <-- ДОБАВИТЬ */
+  font-size: 0 !important; /* <-- ДОБАВИТЬ */
+}
 
 

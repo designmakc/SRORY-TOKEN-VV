@@ -1,0 +1,43 @@
+---
+description: Figma MCP server rules
+globs:
+alwaysApply: true
+---
+
+# Figma MCP Server Rules
+
+## Asset Management
+
+- The Figma MCP Server provides an assets endpoint which can serve image and SVG assets
+- **IMPORTANT**: If the Figma MCP Server returns a localhost source for an image or an SVG, use that image or SVG source directly
+- **IMPORTANT**: DO NOT import/add new icon packages, all the assets should be in the Figma payload
+- **IMPORTANT**: do NOT use or create placeholders if a localhost source is provided
+
+## Design Token Integration
+
+- All design tokens (colors, spacing, typography, etc.) must come from Figma
+- Do not hardcode values that are available as design tokens
+- Use CSS custom properties (variables) for all design tokens[CSS](src/assets/styles/style.css)
+- Token names must match exactly as defined in Figma
+
+## Component Synchronization
+
+- Component props must match exactly with Figma component properties
+- Do not add extra props or modify prop names unless explicitly defined in Figma
+- Component variants in code must correspond to variants in Figma
+- Component states (hover, active, disabled, etc.) must match Figma specifications
+
+## Asset Workflow
+
+1. Request assets from Figma MCP Server
+2. Use provided localhost URLs directly in component code
+3. Do not download or duplicate assets manually
+4. Keep asset references synchronized with Figma source
+
+## Validation Checklist
+
+- [ ] All assets sourced from Figma MCP Server
+- [ ] No hardcoded icon imports from npm packages
+- [ ] No placeholder images or icons
+- [ ] All design tokens match Figma definitions
+- [ ] Component props align with Figma properties
